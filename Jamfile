@@ -1,0 +1,11 @@
+SubDir . ;
+
+SubDirC++Flags $(ALLLIBSC++FLAGS) ;
+
+Main 7drl2018 : src/main.cpp ;
+
+LinkLibraries 7drl2018 : libBase20 ;
+
+MakeLocate 7drl2018 : bin ;
+
+SubInclude . libs ;

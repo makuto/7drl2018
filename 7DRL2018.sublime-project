@@ -3,18 +3,18 @@
 	[
 		{
 			"file_regex": "^([a-zA-Z/][^:\n]*):([0-9]+):?([0-9]+)?:? (.*)$",
-			"name": "Full Build (build Base2.0 and 7DRL)",
-			"shell_cmd": "cd base2.0 && jam -j4 -q BasePseudotarget && cd ../7drl2018/src && jam -j4 -q 7drl2018",
+			"name": "Full Build",
+			"shell_cmd": "jam -j4 -q",
 			"syntax": "JamUnrealBuildOutput.sublime-syntax",
-			"working_dir": "$project_path/.."
+			"working_dir": "$project_path"
 		},
-	// 	{
-	// 		"file_regex": "^([a-zA-Z/][^:\n]*):([0-9]+):?([0-9]+)?:? (.*)$",
-	// 		"name": "Full Build Debug (build Galavant lib and Unreal)",
-	// 		"shell_cmd": "cd galavant && jam -j4 -q -sUNREAL=true GalavantPseudotarget && cd ../galavant-unreal/GalavantUnreal && make GalavantUnreal-Linux-Debug",
-	// 		"syntax": "JamUnrealBuildOutput.sublime-syntax",
-	// 		"working_dir": "$project_path/../../../.."
-	// 	},
+		{
+			// "file_regex": "^([a-zA-Z/][^:\n]*):([0-9]+):?([0-9]+)?:? (.*)$",
+			"name": "Run",
+			"cmd": "./bin/7drl2018",
+			// "syntax": "JamUnrealBuildOutput.sublime-syntax",
+			"working_dir": "$project_path"
+		},
 	// 	{
 	// 		"file_regex": "^([a-zA-Z/][^:\n]*):([0-9]+):?([0-9]+)?:? (.*)$",
 	// 		"name": "GalavantUnreal Build",

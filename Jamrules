@@ -26,8 +26,6 @@ LINK = clang++ ;
 ## Compiler arguments
 ##
 
-# Galavant requires C++11
-
 ## Argument explanation
 #
 #   g = debug symbols
@@ -50,6 +48,8 @@ TESTSC++FLAGS = -g ;
 ALLLIBSC++FLAGS = $(TESTSC++FLAGS) ;
 
 OPTIM = -O0 ;
+
+LINKLIBS = -lsfml-graphics -lsfml-window -lsfml-system ;
 
 # HDRS = thirdParty/flatbuffers/include src ;
 
