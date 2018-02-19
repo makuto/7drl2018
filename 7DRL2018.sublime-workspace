@@ -1,0 +1,4415 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"blood",
+				"bloodNeed"
+			],
+			[
+				"Age",
+				"AgentComponentManager\t(GalavantUnrealFPCharacter.cpp)"
+			],
+			[
+				"Combat",
+				"CombatComponentManager\t(CombatComponentManager.hpp)"
+			],
+			[
+				"Lande",
+				"LandedSound"
+			],
+			[
+				"Galavant",
+				"GalavantUnrealSimpleProjectile.h\t(GalavantUnrealSimpleProjectile.cpp)"
+			],
+			[
+				"UChara",
+				"UCharacterMovementComponent\t(Character.h)"
+			],
+			[
+				"GENERATED",
+				"GENERATED_BODY\t(GalavantUnrealFPCharacter.h)"
+			],
+			[
+				"Character",
+				"CharacterAudio"
+			],
+			[
+				"Chara",
+				"Character.h\t(GalavantUnrealFPCharacter.h)"
+			],
+			[
+				"scene",
+				"sceneComponent"
+			],
+			[
+				"sound",
+				"soundLength"
+			],
+			[
+				"Delta",
+				"DeltaSeconds"
+			],
+			[
+				"s_",
+				"s_timeSinceLastPlay"
+			],
+			[
+				"Edit",
+				"EditAnywhere"
+			],
+			[
+				"UPER",
+				"UPROPERTY"
+			],
+			[
+				"Chu",
+				"ChunkManager"
+			],
+			[
+				"UE",
+				"UE4Editor-Linux-Debug"
+			],
+			[
+				"UE4",
+				"UE4Editor"
+			],
+			[
+				"view",
+				"viewport"
+			],
+			[
+				"Game",
+				"GameViewport"
+			],
+			[
+				"someBul",
+				"someBullshitIn"
+			],
+			[
+				"Cere",
+				"CerealVersion"
+			],
+			[
+				"saveLo",
+				"saveLoadTestIn"
+			],
+			[
+				"save",
+				"saveLoadTest"
+			],
+			[
+				"Save",
+				"SeparateSaveLoadTest"
+			],
+			[
+				"Charact",
+				"CharacterManager\t(CharacterManager.cpp)"
+			],
+			[
+				"Char",
+				"CharacterManager"
+			],
+			[
+				"push",
+				"push_back\t(AgentComponentManager.cpp)"
+			],
+			[
+				"unco",
+				"unconsciousAgents"
+			],
+			[
+				"itera",
+				"iteratorName"
+			],
+			[
+				"iter",
+				"iteratorName"
+			],
+			[
+				"unconscio",
+				"unconsciousAgents\t(UnrealMovementComponent.cpp)"
+			],
+			[
+				"un",
+				"unconsciousAgents"
+			],
+			[
+				"EnttiyLi",
+				"EntityListFindEntity"
+			],
+			[
+				"AgentCom",
+				"AgentComponentManager\t(AgentComponentManager.hpp)"
+			],
+			[
+				"g_",
+				"g_AgentComponentManager\t(AgentComponentManager.hpp)"
+			],
+			[
+				"EntityListRemo",
+				"EntityListRemoveNonUniqueEntitiesInSuspect\t(EntityTypes.hpp)"
+			],
+			[
+				"Unc",
+				"UnconsciousAgents"
+			],
+			[
+				"Unscons",
+				"UnconsciousAgents"
+			],
+			[
+				"AgentC",
+				"AgentConsciousState"
+			],
+			[
+				"Agent",
+				"AgentComponentManager"
+			],
+			[
+				"Uncon",
+				"UnconsciousAgents\t(AgentComponentManager.hpp)"
+			],
+			[
+				"Enttiy",
+				"EntityList"
+			],
+			[
+				"gala",
+				"galavant-unreal"
+			],
+			[
+				"Input",
+				"InputComponent"
+			],
+			[
+				"entti",
+				"entityAssociatedCharacter"
+			],
+			[
+				"find",
+				"findIt"
+			],
+			[
+				"Enti",
+				"EntityList"
+			],
+			[
+				"ActorEnt",
+				"ActorEntityManagement.h\t(GalavantUnrealMain.cpp)"
+			],
+			[
+				"subs",
+				"subscriberConsciousStates"
+			],
+			[
+				"Unsub",
+				"UnsubscribeEntitiesInternal"
+			],
+			[
+				"EntityList",
+				"EntityListRemoveNonUniqueEntitiesInSuspect\t(EntityComponentManager.cpp)"
+			],
+			[
+				"entities",
+				"entitiesToUnsubscribe\t(EntityComponentManager.cpp)"
+			],
+			[
+				"Uns",
+				"UnsubscribeEntities\t(EntityComponentManager.cpp)"
+			],
+			[
+				"Ent",
+				"EntityList"
+			],
+			[
+				"chara",
+				"characterType"
+			],
+			[
+				"unsub",
+				"unsubscribeFunc"
+			],
+			[
+				"uns",
+				"unsubscribeFunc"
+			],
+			[
+				"UnsubscribeEntit",
+				"UnsubscribeEntitiesFunc"
+			],
+			[
+				"Gamepl",
+				"GameplayTimeWorldTimeDelta"
+			],
+			[
+				"Pause",
+				"PausedAtWorldTime"
+			],
+			[
+				"GetWro",
+				"GetWorldTime"
+			],
+			[
+				"Hud",
+				"HUD"
+			],
+			[
+				"Movement",
+				"MovementComponentManager"
+			],
+			[
+				"dead",
+				"deadEntitySpeeds"
+			],
+			[
+				"Conscious",
+				"ConsciousState"
+			],
+			[
+				"Mov",
+				"MovementComponent"
+			],
+			[
+				"should",
+				"shouldRagdoll"
+			],
+			[
+				"death",
+				"deathActionDef"
+			],
+			[
+				"rag",
+				"ragdollFx"
+			],
+			[
+				"ResourceDict",
+				"ResourceDictionaryList"
+			],
+			[
+				"Resour",
+				"ResourceDictionaryList"
+			],
+			[
+				"Active",
+				"ActivateCombatAction\t(CombatComponentManager.hpp)"
+			],
+			[
+				"entity",
+				"entityActor"
+			],
+			[
+				"combat",
+				"combatant"
+			],
+			[
+				"GetActo",
+				"GetActorFromEntity\t(ActorEntityManagement.h)"
+			],
+			[
+				"Entity",
+				"EntityActorMap"
+			],
+			[
+				"curren",
+				"currentTime"
+			],
+			[
+				"total",
+				"totalRuntime"
+			],
+			[
+				"consoleO",
+				"consoleOnlyFrontend"
+			],
+			[
+				"Arrow",
+				"ArrowComponent"
+			],
+			[
+				"AGa",
+				"AGalavantUnrealMain\t(GalavantUnrealMain.cpp)"
+			],
+			[
+				"LOGD",
+				"LOGD_IF"
+			],
+			[
+				"S",
+				"Status"
+			],
+			[
+				"In",
+				"InProgress"
+			],
+			[
+				"Start",
+				"StartGoal"
+			],
+			[
+				"AgentGoa",
+				"AgentGoal"
+			],
+			[
+				"head",
+				"headGoalIt"
+			],
+			[
+				"e",
+				"erase"
+			],
+			[
+				"Add",
+				"AddComponentManager"
+			],
+			[
+				"g_En",
+				"g_EntityComponentManager"
+			],
+			[
+				"Debu",
+				"DebugName\t(UnrealMovementComponent.cpp)"
+			],
+			[
+				"current",
+				"currentComponent"
+			],
+			[
+				"Wo",
+				"WorldResourceType"
+			],
+			[
+				"null",
+				"nullptr"
+			],
+			[
+				"Goal",
+				"GoalStatus"
+			],
+			[
+				"WorldRe",
+				"WorldResourceType"
+			],
+			[
+				"Des",
+				"DestroyActor"
+			],
+			[
+				"Ondes",
+				"OnDestroyCallbacks"
+			],
+			[
+				"OnDes",
+				"OnDestroyCallbacks"
+			],
+			[
+				"debug",
+				"debugTextPosition"
+			],
+			[
+				"Conscio",
+				"ConsciousState\t(AgentComponentManager.cpp)"
+			],
+			[
+				"low",
+				"lowBloodUnconscious"
+			],
+			[
+				"Worl",
+				"WorldPosition"
+			],
+			[
+				"getR",
+				"getResourceTasks"
+			],
+			[
+				"serial",
+				"serialize\t(Actor.cpp)"
+			],
+			[
+				"ActorEntity",
+				"ActorEntityOnDestroy"
+			],
+			[
+				"BlueprintRea",
+				"BlueprintReadOnly"
+			],
+			[
+				"Compon",
+				"Component\t(GalavantUnrealMain.cpp)"
+			],
+			[
+				"Component",
+				"ComponentManager"
+			],
+			[
+				"Componne",
+				"ComponentManagers"
+			],
+			[
+				"Com",
+				"ComponentManager"
+			],
+			[
+				"Compone",
+				"ComponentManager"
+			],
+			[
+				"CombatCom",
+				"CombatComponentManager"
+			],
+			[
+				"ResourcE",
+				"ResourceDictionary"
+			],
+			[
+				"Compne",
+				"ComponentType"
+			],
+			[
+				"Anim",
+				"AnimInstance"
+			],
+			[
+				"CombatF",
+				"CombatFxHandler"
+			],
+			[
+				"EntityComponm",
+				"EntityComponentSystem"
+			],
+			[
+				"del",
+				"deltaSeconds"
+			],
+			[
+				"CombatFx",
+				"CombatFxHandler\t(CombatComponentManager.hpp)"
+			],
+			[
+				"CombatAction",
+				"CombatActionFx\t(CombatComponentManager.hpp)"
+			],
+			[
+				"CombatCompo",
+				"CombatComponentManager.hpp\t(CombatComponentManager.cpp)"
+			],
+			[
+				"Resouce",
+				"ResourceDictionary.hpp\t(Needs.hpp)"
+			],
+			[
+				"Resource",
+				"ResourceKey\t(Needs.hpp)"
+			],
+			[
+				"Attack",
+				"AttackType"
+			],
+			[
+				"new",
+				"newPickups"
+			],
+			[
+				"Clear",
+				"ClearResources"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/home/macoy/Development/code/repositories/galavant/TODO.tasks",
+			"settings":
+			{
+				"buffer_size": 7650,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "GalavantUnreal Cook",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Build All Experiments",
+					""
+				],
+				[
+					"Compile C++11 File",
+					""
+				],
+				[
+					"Full Build (build Galavant lib and Unreal)",
+					""
+				],
+				[
+					"Full Build Debug (build Galavant lib and Unreal)",
+					""
+				],
+				[
+					"GalavantUnreal Build",
+					""
+				],
+				[
+					"GalavantUnreal Build Debug",
+					""
+				],
+				[
+					"GalavantUnreal Cook",
+					""
+				],
+				[
+					"GalavantUnreal Fix 'Game Module Could Not Be Loaded' (DOESN'T WORK)",
+					""
+				],
+				[
+					"GalavantUnreal Fix 'Game Module Could Not Be Loaded' (MAYBE WORKS)",
+					""
+				],
+				[
+					"GalavantUnreal Generate Project Files (Makefile; No VSCode)",
+					""
+				],
+				[
+					"GalavantUnreal Generate Project Files (VSCode; No Makefile)",
+					""
+				],
+				[
+					"GalavantUnreal Quick Clean (linux headers changed error fix)",
+					""
+				],
+				[
+					"GalavantUnreal Standalone Package",
+					""
+				],
+				[
+					"GalavantUnreal Standalone Package Debug",
+					""
+				],
+				[
+					"Guake Galavant",
+					""
+				],
+				[
+					"Guake Galavant Unreal",
+					""
+				],
+				[
+					"Jam Build (not Unreal)",
+					""
+				],
+				[
+					"Jam Build Unreal",
+					""
+				],
+				[
+					"Jam Clean All",
+					""
+				],
+				[
+					"Jam Current Directory",
+					""
+				],
+				[
+					"List",
+					""
+				],
+				[
+					"Standalone Full Build Debug (build Galavant lib and Unreal)",
+					""
+				],
+				[
+					"Unreal Engine Build",
+					""
+				],
+				[
+					"Unreal Engine Build Debug",
+					""
+				],
+				[
+					"Unreal Engine Get Latest and Build (Also debug)",
+					""
+				],
+				[
+					"Unreal Engine Get Latest and Build (No debug)",
+					""
+				],
+				[
+					"Unreal Engine Run (no debug)",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"GalavantUnreal Cook",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Build All Experiments",
+					""
+				],
+				[
+					"Compile C++11 File",
+					""
+				],
+				[
+					"Full Build (build Galavant lib and Unreal)",
+					""
+				],
+				[
+					"Full Build Debug (build Galavant lib and Unreal)",
+					""
+				],
+				[
+					"GalavantUnreal Build",
+					""
+				],
+				[
+					"GalavantUnreal Build Debug",
+					""
+				],
+				[
+					"GalavantUnreal Fix 'Game Module Could Not Be Loaded'",
+					""
+				],
+				[
+					"GalavantUnreal Generate Project Files",
+					""
+				],
+				[
+					"GalavantUnreal Quick Clean",
+					""
+				],
+				[
+					"GalavantUnreal Standalone Package",
+					""
+				],
+				[
+					"GalavantUnreal Standalone Package Debug",
+					""
+				],
+				[
+					"Guake Galavant",
+					""
+				],
+				[
+					"Guake Galavant Unreal",
+					""
+				],
+				[
+					"Jam Build (not Unreal)",
+					""
+				],
+				[
+					"Jam Build Unreal",
+					""
+				],
+				[
+					"Jam Clean All",
+					""
+				],
+				[
+					"Jam Current Directory",
+					""
+				],
+				[
+					"List",
+					""
+				],
+				[
+					"Standalone Full Build Debug (build Galavant lib and Unreal)",
+					""
+				],
+				[
+					"Unreal Engine Build",
+					""
+				],
+				[
+					"Unreal Engine Build Debug",
+					""
+				],
+				[
+					"Unreal Engine Get Latest and Build",
+					""
+				],
+				[
+					"Unreal Engine Run (no debug)",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Standalone Full Build Debug (build Galavant lib and Unreal)",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Build All Experiments",
+					""
+				],
+				[
+					"Compile C++11 File",
+					""
+				],
+				[
+					"Full Build (build Galavant lib and Unreal)",
+					""
+				],
+				[
+					"Full Build Debug (build Galavant lib and Unreal)",
+					""
+				],
+				[
+					"GalavantUnreal Build",
+					""
+				],
+				[
+					"GalavantUnreal Build Debug",
+					""
+				],
+				[
+					"GalavantUnreal Fix 'Game Module Could Not Be Loaded'",
+					""
+				],
+				[
+					"GalavantUnreal Generate Project Files",
+					""
+				],
+				[
+					"GalavantUnreal Quick Clean",
+					""
+				],
+				[
+					"GalavantUnreal Standalone Package",
+					""
+				],
+				[
+					"GalavantUnreal Standalone Package Debug",
+					""
+				],
+				[
+					"Guake Galavant",
+					""
+				],
+				[
+					"Guake Galavant Unreal",
+					""
+				],
+				[
+					"Jam Build (not Unreal)",
+					""
+				],
+				[
+					"Jam Build Unreal",
+					""
+				],
+				[
+					"Jam Clean All",
+					""
+				],
+				[
+					"Jam Current Directory",
+					""
+				],
+				[
+					"List",
+					""
+				],
+				[
+					"Standalone Full Build Debug (build Galavant lib and Unreal)",
+					""
+				],
+				[
+					"Unreal Engine Build",
+					""
+				],
+				[
+					"Unreal Engine Build Debug",
+					""
+				],
+				[
+					"Unreal Engine Get Latest and Build (Also debug)",
+					""
+				],
+				[
+					"Unreal Engine Get Latest and Build (No debug)",
+					""
+				],
+				[
+					"Unreal Engine Run (no debug)",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"GalavantUnreal Fix 'Game Module Could Not Be Loaded'",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Build All Experiments",
+					""
+				],
+				[
+					"Compile C++11 File",
+					""
+				],
+				[
+					"Full Build (build Galavant lib and Unreal)",
+					""
+				],
+				[
+					"Full Build Debug (build Galavant lib and Unreal)",
+					""
+				],
+				[
+					"GalavantUnreal Build",
+					""
+				],
+				[
+					"GalavantUnreal Build Debug",
+					""
+				],
+				[
+					"GalavantUnreal Fix 'Game Module Could Not Be Loaded' (DOESN'T WORK)",
+					""
+				],
+				[
+					"GalavantUnreal Fix 'Game Module Could Not Be Loaded' (MAYBE WORKS)",
+					""
+				],
+				[
+					"GalavantUnreal Generate Project Files",
+					""
+				],
+				[
+					"GalavantUnreal Quick Clean",
+					""
+				],
+				[
+					"GalavantUnreal Standalone Package",
+					""
+				],
+				[
+					"GalavantUnreal Standalone Package Debug",
+					""
+				],
+				[
+					"Guake Galavant",
+					""
+				],
+				[
+					"Guake Galavant Unreal",
+					""
+				],
+				[
+					"Jam Build (not Unreal)",
+					""
+				],
+				[
+					"Jam Build Unreal",
+					""
+				],
+				[
+					"Jam Clean All",
+					""
+				],
+				[
+					"Jam Current Directory",
+					""
+				],
+				[
+					"List",
+					""
+				],
+				[
+					"Standalone Full Build Debug (build Galavant lib and Unreal)",
+					""
+				],
+				[
+					"Unreal Engine Build",
+					""
+				],
+				[
+					"Unreal Engine Build Debug",
+					""
+				],
+				[
+					"Unreal Engine Get Latest and Build (Also debug)",
+					""
+				],
+				[
+					"Unreal Engine Get Latest and Build (No debug)",
+					""
+				],
+				[
+					"Unreal Engine Run (no debug)",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Jam Build Unreal",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Build All Experiments",
+					""
+				],
+				[
+					"Compile C++11 File",
+					""
+				],
+				[
+					"Full Build (build Galavant lib and Unreal)",
+					""
+				],
+				[
+					"GalavantUnreal Build",
+					""
+				],
+				[
+					"GalavantUnreal Fix 'Game Module Could Not Be Loaded'",
+					""
+				],
+				[
+					"GalavantUnreal Generate Project Files",
+					""
+				],
+				[
+					"GalavantUnreal Quick Clean",
+					""
+				],
+				[
+					"Guake Galavant",
+					""
+				],
+				[
+					"Guake Galavant Unreal",
+					""
+				],
+				[
+					"Jam Build (not Unreal)",
+					""
+				],
+				[
+					"Jam Build Unreal",
+					""
+				],
+				[
+					"Jam Clean All",
+					""
+				],
+				[
+					"Jam Current Directory",
+					""
+				],
+				[
+					"List",
+					""
+				],
+				[
+					"Unreal Engine Build",
+					""
+				],
+				[
+					"Unreal Engine Get Latest and Build",
+					""
+				],
+				[
+					"Unreal Engine Run (no debug)",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Unreal Engine Build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Build All Experiments",
+					""
+				],
+				[
+					"Compile C++11 File",
+					""
+				],
+				[
+					"Full Build (build Galavant lib and Unreal)",
+					""
+				],
+				[
+					"GalavantUnreal Build",
+					""
+				],
+				[
+					"GalavantUnreal Generate Project Files",
+					""
+				],
+				[
+					"GalavantUnreal Quick Clean",
+					""
+				],
+				[
+					"Guake Galavant",
+					""
+				],
+				[
+					"Guake Galavant Unreal",
+					""
+				],
+				[
+					"Jam Build (not Unreal)",
+					""
+				],
+				[
+					"Jam Build Unreal",
+					""
+				],
+				[
+					"Jam Clean All",
+					""
+				],
+				[
+					"Jam Current Directory",
+					""
+				],
+				[
+					"List",
+					""
+				],
+				[
+					"Unreal Engine Build",
+					""
+				],
+				[
+					"Unreal Engine Get Latest",
+					""
+				],
+				[
+					"Unreal Engine Run (no debug)",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Unreal Engine Get Latest",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Build All Experiments",
+					""
+				],
+				[
+					"Compile C++11 File",
+					""
+				],
+				[
+					"Full Build (build Galavant lib and Unreal)",
+					""
+				],
+				[
+					"GalavantUnreal Build",
+					""
+				],
+				[
+					"GalavantUnreal Generate Project Files",
+					""
+				],
+				[
+					"GalavantUnreal Quick Clean",
+					""
+				],
+				[
+					"Guake Galavant",
+					""
+				],
+				[
+					"Guake Galavant Unreal",
+					""
+				],
+				[
+					"Jam Build (not Unreal)",
+					""
+				],
+				[
+					"Jam Build Unreal",
+					""
+				],
+				[
+					"Jam Clean All",
+					""
+				],
+				[
+					"Jam Current Directory",
+					""
+				],
+				[
+					"List",
+					""
+				],
+				[
+					"Unreal Engine Build",
+					""
+				],
+				[
+					"Unreal Engine Get Latest and Build",
+					""
+				],
+				[
+					"Unreal Engine Run (no debug)",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Unreal Engine Build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Build All Experiments",
+					""
+				],
+				[
+					"Compile C++11 File",
+					""
+				],
+				[
+					"Full Unreal Build (build Galavant lib and Unreal)",
+					""
+				],
+				[
+					"Guake Galavant",
+					""
+				],
+				[
+					"Guake Galavant Unreal",
+					""
+				],
+				[
+					"Jam Build (not Unreal)",
+					""
+				],
+				[
+					"Jam Build Unreal",
+					""
+				],
+				[
+					"Jam Clean All",
+					""
+				],
+				[
+					"Jam Current Directory",
+					""
+				],
+				[
+					"List",
+					""
+				],
+				[
+					"Unreal Build",
+					""
+				],
+				[
+					"Unreal Generate Project Files",
+					""
+				],
+				[
+					"Unreal Quick Clean",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Full Unreal Build (build Galavant lib and Unreal)",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Build All Experiments",
+					""
+				],
+				[
+					"Compile C++11 File",
+					""
+				],
+				[
+					"Guake Galavant",
+					""
+				],
+				[
+					"Guake Galavant Unreal",
+					""
+				],
+				[
+					"Jam Build (not Unreal)",
+					""
+				],
+				[
+					"Jam Build Unreal",
+					""
+				],
+				[
+					"Jam Clean All",
+					""
+				],
+				[
+					"Jam Current Directory",
+					""
+				],
+				[
+					"List",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Guake Galavant Unreal",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Build All Experiments",
+					""
+				],
+				[
+					"Compile C++11 File",
+					""
+				],
+				[
+					"Guake Galavant",
+					""
+				],
+				[
+					"Guake Galavant Unreal",
+					""
+				],
+				[
+					"Jam Build (not Unreal)",
+					""
+				],
+				[
+					"Jam Build Unreal",
+					""
+				],
+				[
+					"Jam Clean All",
+					""
+				],
+				[
+					"Jam Current Directory",
+					""
+				],
+				[
+					"List",
+					""
+				],
+				[
+					"Unreal Build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Unreal Build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Build All Experiments",
+					""
+				],
+				[
+					"Compile C++11 File",
+					""
+				],
+				[
+					"Guake Galavant",
+					""
+				],
+				[
+					"Guake Galavant Unreal",
+					""
+				],
+				[
+					"Jam Build (not Unreal)",
+					""
+				],
+				[
+					"Jam Build Unreal",
+					""
+				],
+				[
+					"Jam Clean All",
+					""
+				],
+				[
+					"Jam Current Directory",
+					""
+				],
+				[
+					"List",
+					""
+				],
+				[
+					"Unreal Build",
+					""
+				],
+				[
+					"Unreal Quick Clean",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Unreal Build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Build All Experiments",
+					""
+				],
+				[
+					"Compile C++11 File",
+					""
+				],
+				[
+					"Jam",
+					""
+				],
+				[
+					"List",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Jam",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Build All Experiments",
+					""
+				],
+				[
+					"Compile C++11 File",
+					""
+				],
+				[
+					"Jam Build (not Unreal)",
+					""
+				],
+				[
+					"Jam Clean All",
+					""
+				],
+				[
+					"Jam Current Directory",
+					""
+				],
+				[
+					"Jam Unreal",
+					""
+				],
+				[
+					"List",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Jam Unreal",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Build All Experiments",
+					""
+				],
+				[
+					"Compile C++11 File",
+					""
+				],
+				[
+					"Jam Current Directory",
+					""
+				],
+				[
+					"Jam Unreal",
+					""
+				],
+				[
+					"List",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Jam Unreal",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Build All Experiments",
+					""
+				],
+				[
+					"Compile C++11 File",
+					""
+				],
+				[
+					"List",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Build All Experiments",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Build All Experiments",
+					""
+				],
+				[
+					"Full Build (build Galavant lib and Unreal)",
+					""
+				],
+				[
+					"Full Build Debug (build Galavant lib and Unreal)",
+					""
+				],
+				[
+					"GalavantUnreal Build",
+					""
+				],
+				[
+					"GalavantUnreal Build Debug",
+					""
+				],
+				[
+					"GalavantUnreal Fix 'Game Module Could Not Be Loaded'",
+					""
+				],
+				[
+					"GalavantUnreal Generate Project Files",
+					""
+				],
+				[
+					"GalavantUnreal Quick Clean",
+					""
+				],
+				[
+					"GalavantUnreal Standalone Package",
+					""
+				],
+				[
+					"GalavantUnreal Standalone Package Debug",
+					""
+				],
+				[
+					"Guake Galavant",
+					""
+				],
+				[
+					"Guake Galavant Unreal",
+					""
+				],
+				[
+					"Jam Build (not Unreal)",
+					""
+				],
+				[
+					"Jam Build Unreal",
+					""
+				],
+				[
+					"Jam Clean All",
+					""
+				],
+				[
+					"Jam Current Directory",
+					""
+				],
+				[
+					"List",
+					""
+				],
+				[
+					"Standalone Full Build Debug (build Galavant lib and Unreal)",
+					""
+				],
+				[
+					"Unreal Engine Build",
+					""
+				],
+				[
+					"Unreal Engine Build Debug",
+					""
+				],
+				[
+					"Unreal Engine Get Latest and Build",
+					""
+				],
+				[
+					"Unreal Engine Run (no debug)",
+					""
+				]
+			],
+			[
+				"Standalone Full Build Debug (build Galavant lib and Unreal)",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Build All Experiments",
+					""
+				],
+				[
+					"Full Build (build Galavant lib and Unreal)",
+					""
+				],
+				[
+					"Full Build Debug (build Galavant lib and Unreal)",
+					""
+				],
+				[
+					"GalavantUnreal Build",
+					""
+				],
+				[
+					"GalavantUnreal Build Debug",
+					""
+				],
+				[
+					"GalavantUnreal Fix 'Game Module Could Not Be Loaded'",
+					""
+				],
+				[
+					"GalavantUnreal Generate Project Files",
+					""
+				],
+				[
+					"GalavantUnreal Quick Clean",
+					""
+				],
+				[
+					"GalavantUnreal Standalone Package",
+					""
+				],
+				[
+					"Guake Galavant",
+					""
+				],
+				[
+					"Guake Galavant Unreal",
+					""
+				],
+				[
+					"Jam Build (not Unreal)",
+					""
+				],
+				[
+					"Jam Build Unreal",
+					""
+				],
+				[
+					"Jam Clean All",
+					""
+				],
+				[
+					"Jam Current Directory",
+					""
+				],
+				[
+					"List",
+					""
+				],
+				[
+					"Standalone Full Build Debug (build Galavant lib and Unreal)",
+					""
+				],
+				[
+					"Unreal Engine Build",
+					""
+				],
+				[
+					"Unreal Engine Build Debug",
+					""
+				],
+				[
+					"Unreal Engine Get Latest and Build",
+					""
+				],
+				[
+					"Unreal Engine Run (no debug)",
+					""
+				]
+			],
+			[
+				"GalavantUnreal Standalone Package",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Build All Experiments",
+					""
+				],
+				[
+					"Full Build (build Galavant lib and Unreal)",
+					""
+				],
+				[
+					"Full Build Debug (build Galavant lib and Unreal)",
+					""
+				],
+				[
+					"GalavantUnreal Build",
+					""
+				],
+				[
+					"GalavantUnreal Build Debug",
+					""
+				],
+				[
+					"GalavantUnreal Fix 'Game Module Could Not Be Loaded'",
+					""
+				],
+				[
+					"GalavantUnreal Generate Project Files",
+					""
+				],
+				[
+					"GalavantUnreal Quick Clean",
+					""
+				],
+				[
+					"Guake Galavant",
+					""
+				],
+				[
+					"Guake Galavant Unreal",
+					""
+				],
+				[
+					"Jam Build (not Unreal)",
+					""
+				],
+				[
+					"Jam Build Unreal",
+					""
+				],
+				[
+					"Jam Clean All",
+					""
+				],
+				[
+					"Jam Current Directory",
+					""
+				],
+				[
+					"List",
+					""
+				],
+				[
+					"Unreal Engine Build",
+					""
+				],
+				[
+					"Unreal Engine Build Debug",
+					""
+				],
+				[
+					"Unreal Engine Get Latest and Build",
+					""
+				],
+				[
+					"Unreal Engine Run (no debug)",
+					""
+				]
+			],
+			[
+				"Full Build Debug (build Galavant lib and Unreal)",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Build All Experiments",
+					""
+				],
+				[
+					"Full Build (build Galavant lib and Unreal)",
+					""
+				],
+				[
+					"GalavantUnreal Build",
+					""
+				],
+				[
+					"GalavantUnreal Fix 'Game Module Could Not Be Loaded'",
+					""
+				],
+				[
+					"GalavantUnreal Generate Project Files",
+					""
+				],
+				[
+					"GalavantUnreal Quick Clean",
+					""
+				],
+				[
+					"Guake Galavant",
+					""
+				],
+				[
+					"Guake Galavant Unreal",
+					""
+				],
+				[
+					"Jam Build (not Unreal)",
+					""
+				],
+				[
+					"Jam Build Unreal",
+					""
+				],
+				[
+					"Jam Clean All",
+					""
+				],
+				[
+					"Jam Current Directory",
+					""
+				],
+				[
+					"List",
+					""
+				],
+				[
+					"Unreal Engine Build",
+					""
+				],
+				[
+					"Unreal Engine Get Latest and Build",
+					""
+				],
+				[
+					"Unreal Engine Run (no debug)",
+					""
+				]
+			],
+			[
+				"Full Build (build Galavant lib and Unreal)",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Build All Experiments",
+					""
+				],
+				[
+					"Full Build (build Galavant lib and Unreal)",
+					""
+				],
+				[
+					"GalavantUnreal Build",
+					""
+				],
+				[
+					"GalavantUnreal Fix 'Game Module Could Not Be Loaded'",
+					""
+				],
+				[
+					"GalavantUnreal Generate Project Files",
+					""
+				],
+				[
+					"GalavantUnreal Quick Clean",
+					""
+				],
+				[
+					"Guake Galavant",
+					""
+				],
+				[
+					"Guake Galavant Unreal",
+					""
+				],
+				[
+					"Jam Build (not Unreal)",
+					""
+				],
+				[
+					"Jam Build Unreal",
+					""
+				],
+				[
+					"Jam Clean All",
+					""
+				],
+				[
+					"Jam Current Directory",
+					""
+				],
+				[
+					"List",
+					""
+				],
+				[
+					"Unreal Engine Build",
+					""
+				],
+				[
+					"Unreal Engine Get Latest and Build",
+					""
+				],
+				[
+					"Unreal Engine Run (no debug)",
+					""
+				],
+				[
+					"Packages/Jam Language/jam.sublime-build",
+					""
+				]
+			],
+			[
+				"Jam Build (not Unreal)",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Build All Experiments",
+					""
+				],
+				[
+					"Full Build (build Galavant lib and Unreal)",
+					""
+				],
+				[
+					"GalavantUnreal Build",
+					""
+				],
+				[
+					"GalavantUnreal Generate Project Files",
+					""
+				],
+				[
+					"GalavantUnreal Quick Clean",
+					""
+				],
+				[
+					"Guake Galavant",
+					""
+				],
+				[
+					"Guake Galavant Unreal",
+					""
+				],
+				[
+					"Jam Build (not Unreal)",
+					""
+				],
+				[
+					"Jam Build Unreal",
+					""
+				],
+				[
+					"Jam Clean All",
+					""
+				],
+				[
+					"Jam Current Directory",
+					""
+				],
+				[
+					"List",
+					""
+				],
+				[
+					"Unreal Engine Build",
+					""
+				],
+				[
+					"Unreal Engine Get Latest",
+					""
+				],
+				[
+					"Unreal Engine Run (no debug)",
+					""
+				]
+			],
+			[
+				"Full Build (build Galavant lib and Unreal)",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Build All Experiments",
+					""
+				],
+				[
+					"Full Build (build Galavant lib and Unreal)",
+					""
+				],
+				[
+					"GalavantUnreal Build",
+					""
+				],
+				[
+					"GalavantUnreal Generate Project Files",
+					""
+				],
+				[
+					"GalavantUnreal Quick Clean",
+					""
+				],
+				[
+					"Guake Galavant",
+					""
+				],
+				[
+					"Guake Galavant Unreal",
+					""
+				],
+				[
+					"Jam Build (not Unreal)",
+					""
+				],
+				[
+					"Jam Build Unreal",
+					""
+				],
+				[
+					"Jam Clean All",
+					""
+				],
+				[
+					"Jam Current Directory",
+					""
+				],
+				[
+					"List",
+					""
+				],
+				[
+					"Unreal Engine Build",
+					""
+				],
+				[
+					"Unreal Engine Get Latest and Build",
+					""
+				],
+				[
+					"Unreal Engine Run (no debug)",
+					""
+				]
+			],
+			[
+				"Full Build (build Galavant lib and Unreal)",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Build All Experiments",
+					""
+				],
+				[
+					"Full Unreal Build",
+					""
+				],
+				[
+					"Guake Galavant",
+					""
+				],
+				[
+					"Guake Galavant Unreal",
+					""
+				],
+				[
+					"Jam Build (not Unreal)",
+					""
+				],
+				[
+					"Jam Build Unreal",
+					""
+				],
+				[
+					"Jam Clean All",
+					""
+				],
+				[
+					"Jam Current Directory",
+					""
+				],
+				[
+					"List",
+					""
+				],
+				[
+					"Unreal Build",
+					""
+				],
+				[
+					"Unreal Quick Clean",
+					""
+				]
+			],
+			[
+				"Full Unreal Build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Build All Experiments",
+					""
+				],
+				[
+					"Full Unreal Build (build Galavant lib and Unreal)",
+					""
+				],
+				[
+					"Guake Galavant",
+					""
+				],
+				[
+					"Guake Galavant Unreal",
+					""
+				],
+				[
+					"Jam Build (not Unreal)",
+					""
+				],
+				[
+					"Jam Build Unreal",
+					""
+				],
+				[
+					"Jam Clean All",
+					""
+				],
+				[
+					"Jam Current Directory",
+					""
+				],
+				[
+					"List",
+					""
+				],
+				[
+					"Unreal Build",
+					""
+				],
+				[
+					"Unreal Engine Build",
+					""
+				],
+				[
+					"Unreal Generate Project Files",
+					""
+				],
+				[
+					"Unreal Quick Clean",
+					""
+				]
+			],
+			[
+				"Full Unreal Build (build Galavant lib and Unreal)",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Build All Experiments",
+					""
+				],
+				[
+					"Full Unreal Build (build Galavant lib and Unreal)",
+					""
+				],
+				[
+					"Guake Galavant",
+					""
+				],
+				[
+					"Guake Galavant Unreal",
+					""
+				],
+				[
+					"Jam Build (not Unreal)",
+					""
+				],
+				[
+					"Jam Build Unreal",
+					""
+				],
+				[
+					"Jam Clean All",
+					""
+				],
+				[
+					"Jam Current Directory",
+					""
+				],
+				[
+					"List",
+					""
+				],
+				[
+					"Unreal Build",
+					""
+				],
+				[
+					"Unreal Generate Project Files",
+					""
+				],
+				[
+					"Unreal Quick Clean",
+					""
+				]
+			],
+			[
+				"Full Unreal Build (build Galavant lib and Unreal)",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Build All Experiments",
+					""
+				],
+				[
+					"Full Unreal Build (build Galavant lib and Unreal)",
+					""
+				],
+				[
+					"Guake Galavant",
+					""
+				],
+				[
+					"Guake Galavant Unreal",
+					""
+				],
+				[
+					"Jam Build (not Unreal)",
+					""
+				],
+				[
+					"Jam Build Unreal",
+					""
+				],
+				[
+					"Jam Clean All",
+					""
+				],
+				[
+					"Jam Current Directory",
+					""
+				],
+				[
+					"List",
+					""
+				],
+				[
+					"Unreal Build",
+					""
+				],
+				[
+					"Unreal Generate Project Files",
+					""
+				],
+				[
+					"Unreal Quick Clean",
+					""
+				],
+				[
+					"Packages/Default/Syntax Tests.sublime-build",
+					""
+				],
+				[
+					"Packages/Default/Syntax Tests.sublime-build",
+					"All Syntaxes"
+				],
+				[
+					"Packages/Default/Syntax Tests.sublime-build",
+					"Performance"
+				],
+				[
+					"Packages/Default/Syntax Tests.sublime-build",
+					"Regex Compatibility"
+				]
+			],
+			[
+				"Full Unreal Build (build Galavant lib and Unreal)",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Build All Experiments",
+					""
+				],
+				[
+					"Full Unreal Build (build Galavant lib and Unreal)",
+					""
+				],
+				[
+					"Guake Galavant",
+					""
+				],
+				[
+					"Guake Galavant Unreal",
+					""
+				],
+				[
+					"Jam Build (not Unreal)",
+					""
+				],
+				[
+					"Jam Build Unreal",
+					""
+				],
+				[
+					"Jam Clean All",
+					""
+				],
+				[
+					"Jam Current Directory",
+					""
+				],
+				[
+					"List",
+					""
+				],
+				[
+					"Unreal Build",
+					""
+				],
+				[
+					"Unreal Generate Project Files",
+					""
+				],
+				[
+					"Unreal Quick Clean",
+					""
+				],
+				[
+					"Packages/Jam Language/jam.sublime-build",
+					""
+				]
+			],
+			[
+				"Full Unreal Build (build Galavant lib and Unreal)",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Build All Experiments",
+					""
+				],
+				[
+					"Full Unreal Build (build Galavant lib and Unreal)",
+					""
+				],
+				[
+					"Guake Galavant",
+					""
+				],
+				[
+					"Guake Galavant Unreal",
+					""
+				],
+				[
+					"Jam Build (not Unreal)",
+					""
+				],
+				[
+					"Jam Build Unreal",
+					""
+				],
+				[
+					"Jam Clean All",
+					""
+				],
+				[
+					"Jam Current Directory",
+					""
+				],
+				[
+					"List",
+					""
+				],
+				[
+					"Unreal Build",
+					""
+				],
+				[
+					"Unreal Quick Clean",
+					""
+				]
+			],
+			[
+				"Guake Galavant Unreal",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Build All Experiments",
+					""
+				],
+				[
+					"Guake Galavant",
+					""
+				],
+				[
+					"Guake Galavant Unreal",
+					""
+				],
+				[
+					"Jam Build (not Unreal)",
+					""
+				],
+				[
+					"Jam Build Unreal",
+					""
+				],
+				[
+					"Jam Clean All",
+					""
+				],
+				[
+					"Jam Current Directory",
+					""
+				],
+				[
+					"List",
+					""
+				]
+			],
+			[
+				"Jam Build Unreal",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Build All Experiments",
+					""
+				],
+				[
+					"Guake Galavant",
+					""
+				],
+				[
+					"Guake Galavant Unreal",
+					""
+				],
+				[
+					"Jam Build (not Unreal)",
+					""
+				],
+				[
+					"Jam Build Unreal",
+					""
+				],
+				[
+					"Jam Clean All",
+					""
+				],
+				[
+					"Jam Current Directory",
+					""
+				],
+				[
+					"List",
+					""
+				],
+				[
+					"Unreal Build",
+					""
+				]
+			],
+			[
+				"Guake Galavant Unreal",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Build All Experiments",
+					""
+				],
+				[
+					"Guake Galavant",
+					""
+				],
+				[
+					"Guake Galavant Unreal",
+					""
+				],
+				[
+					"Jam Build (not Unreal)",
+					""
+				],
+				[
+					"Jam Build Unreal",
+					""
+				],
+				[
+					"Jam Clean All",
+					""
+				],
+				[
+					"Jam Current Directory",
+					""
+				],
+				[
+					"List",
+					""
+				],
+				[
+					"Unreal Build",
+					""
+				],
+				[
+					"Packages/Jam Language/jam.sublime-build",
+					""
+				]
+			],
+			[
+				"Jam Build Unreal",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Build All Experiments",
+					""
+				],
+				[
+					"Guake Galavant",
+					""
+				],
+				[
+					"Guake Galavant Unreal",
+					""
+				],
+				[
+					"Jam Build (not Unreal)",
+					""
+				],
+				[
+					"Jam Clean All",
+					""
+				],
+				[
+					"Jam Current Directory",
+					""
+				],
+				[
+					"Jam Unreal",
+					""
+				],
+				[
+					"List",
+					""
+				]
+			],
+			[
+				"Jam Unreal",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Build All Experiments",
+					""
+				],
+				[
+					"Jam Build (not Unreal)",
+					""
+				],
+				[
+					"Jam Clean All",
+					""
+				],
+				[
+					"Jam Current Directory",
+					""
+				],
+				[
+					"Jam Unreal",
+					""
+				],
+				[
+					"List",
+					""
+				]
+			],
+			[
+				"Jam Unreal",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Build All Experiments",
+					""
+				],
+				[
+					"Jam Current Directory",
+					""
+				],
+				[
+					"Jam Unreal",
+					""
+				],
+				[
+					"List",
+					""
+				]
+			],
+			[
+				"Jam Unreal",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Build All Experiments",
+					""
+				],
+				[
+					"List",
+					""
+				],
+				[
+					"Packages/Makefile/Make.sublime-build",
+					""
+				],
+				[
+					"Packages/Makefile/Make.sublime-build",
+					"Clean"
+				]
+			],
+			[
+				"Build All Experiments",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Build Ogre Experiment",
+					""
+				],
+				[
+					"Compile C++11 File",
+					""
+				],
+				[
+					"List",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Build Ogre Experiment",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Build Ogre Experiment",
+					""
+				],
+				[
+					"List",
+					""
+				],
+				[
+					"Test compile",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Test compile",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 636.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"save",
+				"Project: Save As"
+			],
+			[
+				"edit",
+				"Project: Edit Project"
+			],
+			[
+				"buil",
+				"Build: Cancel"
+			],
+			[
+				"build",
+				"Build: Cancel"
+			],
+			[
+				"edi",
+				"Project: Edit Project"
+			],
+			[
+				"bu",
+				"Build: Cancel"
+			],
+			[
+				"ed",
+				"Project: Edit"
+			],
+			[
+				"todore",
+				"TodoReview: Project Files"
+			],
+			[
+				"todo",
+				"TodoReview: Project Files"
+			],
+			[
+				"shoin",
+				"SublimeGDB: Show Input Field"
+			],
+			[
+				"pause",
+				"SublimeGDB: Pause"
+			],
+			[
+				"build ",
+				"Build: Cancel"
+			],
+			[
+				"convert to sp",
+				"Indentation: Convert to Spaces"
+			],
+			[
+				"rever",
+				"Permute Lines: Reverse"
+			],
+			[
+				"upper",
+				"Convert Case: Upper Case"
+			],
+			[
+				"show in",
+				"SublimeGDB: Show Input Field"
+			],
+			[
+				"ste",
+				"SublimeGDB: Step Out"
+			],
+			[
+				"showin",
+				"SublimeGDB: Show Input Field"
+			],
+			[
+				"paus",
+				"SublimeGDB: Pause"
+			],
+			[
+				"show ",
+				"SublimeGDB: Show Input Field"
+			],
+			[
+				"preview",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"gdb",
+				"SublimeGDB: Show Input Field"
+			],
+			[
+				"mark",
+				"Markdown HTML Preview"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"title",
+				"Convert Case: Title Case"
+			],
+			[
+				"proc",
+				"Project: Edit"
+			],
+			[
+				"edit sett",
+				"Sync Settings: Edit User Settings"
+			],
+			[
+				"",
+				"AnarchyDebug: Start debugger"
+			],
+			[
+				"anar",
+				"AnarchyDebug: Start debugger"
+			],
+			[
+				"sublime",
+				"SublimeGDB: Stop Debugging"
+			],
+			[
+				"ana",
+				"AnarchyDebug: Start debugger"
+			],
+			[
+				"proje",
+				"Project: Edit"
+			],
+			[
+				"settings",
+				"Preferences: Settings"
+			],
+			[
+				"e",
+				"Project: Edit Project"
+			],
+			[
+				"edito",
+				"Project: Edit Project"
+			],
+			[
+				"gd",
+				"SublimeGDB: Show Input Field"
+			],
+			[
+				"lower",
+				"Convert Case: Lower Case"
+			],
+			[
+				"rename",
+				"File: Rename"
+			],
+			[
+				"edit ",
+				"Project: Edit Project"
+			],
+			[
+				"proj",
+				"Project: Edit"
+			],
+			[
+				"brow",
+				"Preferences: Browse Packages"
+			],
+			[
+				"result",
+				"Markdown Preview: Export HTML in Sublime Text"
+			],
+			[
+				"pro",
+				"Project: Edit"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"step",
+				"SublimeGDB: Step Out"
+			],
+			[
+				"edit pr",
+				"Project: Edit Project"
+			],
+			[
+				"setting",
+				"Preferences: Settings"
+			],
+			[
+				"tab",
+				"Indentation: Convert to Tabs"
+			],
+			[
+				"new",
+				"ANF: New File"
+			],
+			[
+				"pack",
+				"Package Control: Remove Package"
+			],
+			[
+				"quick",
+				"Quick File Creator: Create file"
+			],
+			[
+				"stop",
+				"SublimeGDB: Stop Debugging"
+			],
+			[
+				"git",
+				"GitGutter: Compare Against HEAD"
+			],
+			[
+				"sublimegdb",
+				"SublimeGDB: Pause"
+			],
+			[
+				"dif",
+				"GitGutter: Show Diff Popup"
+			],
+			[
+				"alignm",
+				"Preferences: Alignment Key Bindings – User"
+			],
+			[
+				"c++you",
+				"C++YouCompleteMe: Highlight problems"
+			],
+			[
+				"defaul",
+				"Preferences: Settings - Default"
+			],
+			[
+				"Snippet: in",
+				"Snippet: include guard"
+			],
+			[
+				"Snippet: ",
+				"Snippet: #ifndef … #define … #endif"
+			],
+			[
+				"clan",
+				"Clang Format: Select Style"
+			],
+			[
+				"ind",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"tabs",
+				"Indentation: Convert to Tabs"
+			],
+			[
+				"subl",
+				"Preferences: SublimeClang Settings – Default"
+			]
+		],
+		"width": 1098.0
+	},
+	"console":
+	{
+		"height": 329.0,
+		"history":
+		[
+			"settings",
+			"lldb_python_path",
+			"print(\"test\")",
+			"view.get_regions(\"sublimegdb.breakpoints\")",
+			"view.get_regions(\"sublimegdb_inserted\")",
+			"view.get_regions(\"git_gutter_inserted\")",
+			"view.get_symbols()",
+			"view.get_symbols",
+			"for thing in dir(view):",
+			"dir(view)",
+			"view.get_regions(\"gdb\")",
+			"view.get_regions(\"GDB\")",
+			"view.get_regions(\"circle\")",
+			"view.get_regions(\"breakpoints\")",
+			"view.get_regions(\"breakpoint\")",
+			"view.get_regions(\"keyword.gdb\")",
+			"view.get_regions(\"breakpoints\")",
+			"view.get_regions(\"breakpoint\")",
+			"view.get_regions(\"keyword.gdb\")",
+			"view.get_regions(\"circle\")",
+			"view.get_regions(\"GDB\")",
+			"view.get_regions(\"gdb\")",
+			"view.get_regions(\"sublimegdb\")",
+			"view.get_regions(\"git_gutter_inserted\")",
+			"view.get_regions(\"breakpoints\")",
+			"view.get_regions(\"breakpoint\")",
+			"view.get_regions()",
+			"view.get_regions(\"git_gutter_inserted\")",
+			"YcmDiags",
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			"sublime.packages_path()"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+	],
+	"file_history":
+	[
+		"/home/macoy/Development/code/repositories/galavant/src/game/agent/AgentComponentManager.cpp",
+		"/home/macoy/.config/qtile/config.py",
+		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source/GalavantUnreal/Characters/GalavantUnrealFPCharacter.h",
+		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source/GalavantUnreal/Characters/GalavantUnrealFPCharacter.cpp",
+		"/home/macoy/Development/code/repositories/galavant/src/project/galavantSublime/galavant.sublime-project",
+		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source/GalavantUnreal/Characters/CharacterAudio.cpp",
+		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source/GalavantUnreal/Characters/AgentCharacter.cpp",
+		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source/GalavantUnreal/Characters/AgentCharacter.h",
+		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source/GalavantUnreal/GalavantUnrealMain.cpp",
+		"/home/macoy/Development/code/repositories/galavant/Notes.md",
+		"/home/macoy/Development/code/repositories/galavant/src/game/agent/combat/CombatComponentManager.hpp",
+		"/home/macoy/Development/code/repositories/galavant/src/game/agent/combat/CombatComponentManager.cpp",
+		"/media/macoy/SSD/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Core/Private/Linux/LinuxPlatformMisc.cpp",
+		"/home/macoy/Desktop/cookFail.txt",
+		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source/GalavantUnreal/Actors/GalavantUnrealSimpleProjectile.cpp",
+		"/home/macoy/Development/code/repositories/galavant/src/game/agent/AgentComponentManager.hpp",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Build/BatchFiles/Linux/GenerateProjectFiles.sh",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/GenerateProjectFiles.sh",
+		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/.vscode/macoy_launch_old.json",
+		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source/GalavantUnreal/Actors/GalavantUnrealSimpleProjectile.h",
+		"/home/macoy/Development/code/repositories/galavant/src/game/agent/Needs.hpp",
+		"/home/macoy/Development/code/repositories/src/game/agent/combat/CombatComponentManager.cpp",
+		"/home/macoy/Development/code/repositories/galavant/src/entityComponentSystem/EntityTypes.hpp",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Engine/Classes/GameFramework/Actor.h",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Engine/Classes/GameFramework/Character.h",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Engine/Private/Character.cpp",
+		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source/GalavantUnreal/GalaEntityComponents/UnrealMovementComponent.cpp",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Engine/Private/Actor.cpp",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Engine/Classes/Components/PrimitiveComponent.h",
+		"/media/macoy/SSD/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/CoreUObject/Public/Templates/SubclassOf.h",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Engine/Private/Components/SphereComponent.cpp",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Engine/Classes/Components/SphereComponent.h",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Engine/Classes/Components/ShapeComponent.h",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Engine/Private/Components/ShapeComponent.cpp",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Core/Public/Delegates/DelegateBase.h",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Core/Public/Delegates/DelegateCombinations.h",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Core/Public/Delegates/Delegate.h",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Engine/Classes/GameFramework/NavMovementComponent.h",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Engine/Private/Components/CharacterMovementComponent.cpp",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Engine/Classes/GameFramework/CharacterMovementComponent.h",
+		"/home/macoy/Development/programs/unreal/testing/FirstPersonTemplateCPP/FirstPersonTempCPP/Source/FirstPersonTempCPP/FirstPersonTempCPPCharacter.h",
+		"/home/macoy/Development/programs/unreal/testing/FirstPersonTemplateCPP/FirstPersonTempCPP/Source/FirstPersonTempCPP/FirstPersonTempCPPProjectile.cpp",
+		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source/GalavantUnreal/World/TestPolyVoxChunkManager.cpp",
+		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source/GalavantUnreal/World/TestPolyVoxChunkManager.h",
+		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source/GalavantUnreal/Characters/CharacterAudio.h",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Engine/Private/Components/PawnMovementComponent.cpp",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Engine/Private/Pawn.cpp",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Engine/Private/Interpolation.cpp",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Engine/Public/AudioDevice.h",
+		"/home/macoy/.config/sublime-text-3/Packages/Clang Format/clang_format_custom.sublime-settings",
+		"/home/macoy/.config/sublime-text-3/Packages/User/clang_format_custom.sublime-settings",
+		"/home/macoy/.config/sublime-text-3/Packages/User/clang_format.sublime-settings",
+		"/home/macoy/.config/sublime-text-3/Packages/Clang Format/clang_format.sublime-settings",
+		"/media/macoy/SSD/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/CoreUObject/Public/UObject/Class.h",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Editor/UnrealEd/Classes/TexAligner/TexAligner.h",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Editor/UnrealEd/Public/Settings/EditorSettings.h",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Editor/UnrealEd/Private/Settings/EditorSettings.cpp",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Developer/FunctionalTesting/Classes/TraceQueryTestResults.h",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Programs/UnrealHeaderTool/Private/UHTMakefile/UHTMakefile.h",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Programs/UnrealHeaderTool/Private/UHTMakefile/UHTMakefileHeaderDescriptor.h",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Programs/UnrealHeaderTool/Private/UnrealSourceFile.h",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Programs/UnrealHeaderTool/Private/CodeGenerator.cpp",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Developer/AutomationController/Private/AutomationReport.cpp",
+		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source/GalavantUnreal/ActorEntityManagement.h",
+		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source/GalavantUnreal/ActorEntityManagement.cpp",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Engine/Private/PlayerController.cpp",
+		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source/GalavantUnreal/HUDMinimapActor.cpp",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Engine/Private/Components/PrimitiveComponent.cpp",
+		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Config/DefaultInput.ini",
+		"/home/macoy/.config/sublime-text-3/Packages/Default/arithmetic.py",
+		"/home/macoy/Development/code/repositories/galavant/TODO.tasks",
+		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source/GalavantUnreal/GalavantUnreal.Build.cs",
+		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source/GalavantUnreal/World/TestPolyVoxChunk.cpp",
+		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Config/DefaultEngine.ini",
+		"/media/macoy/SSD/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Core/Public/Containers/Array.h",
+		"/build/glibc-bfm8X4/glibc-2.23/sysdeps/unix/sysv/linux/pt-raise.c",
+		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Saved/Temp/Linux/Engine/Config/BaseEngine.ini",
+		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/LOCAL_package/package/LinuxNoEditor/GalavantUnreal/profile_0002.txt",
+		"/home/macoy/Downloads/deleteMe.log",
+		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source/GalavantUnreal/World/TestPolyVoxChunk.h",
+		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/GalavantUnreal.uproject",
+		"/media/macoy/SSD/Development/code/3rdParty/repositories/UnrealEngine/Engine/Plugins/Runtime/CustomMeshComponent/Source/CustomMeshComponent/Private/CustomMeshComponent.cpp",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Engine/Classes/PhysicsEngine/BodyInstance.h",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Core/Public/Delegates/DelegateSignatureImpl.inl",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Core/Public/Misc/AssertionMacros.h",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Core/Public/Linux/LinuxPlatformMisc.h",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/AssetRegistry/Private/AssetRegistry.cpp",
+		"/home/macoy/Development/code/repositories/galavant/src/game/agent/PlanComponentManager.cpp",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Engine/Classes/Engine/GameViewportClient.h",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/SlateCore/Public/Input/Reply.h",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Engine/Private/Slate/SceneViewport.cpp",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Slate/Public/Framework/Application/SlateApplication.h",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Editor/LevelEditor/Private/SLevelViewport.cpp",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Engine/Classes/Engine/Engine.h",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Engine/Classes/Components/InputComponent.h",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Engine/Private/Components/InputComponent.cpp",
+		"/home/macoy/Development/code/repositories/galavant/src/util/Time.hpp",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Engine/Public/UnrealClient.h",
+		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source/GalavantUnreal/GalavantUnrealMain.h",
+		"/home/macoy/Development/code/repositories/galavant/src/experiments/cereal/cerealTest.cpp",
+		"/home/macoy/Development/code/3rdParty/repositories/cereal/include/cereal/cereal.hpp",
+		"/home/macoy/Development/code/repositories/galavant/src/experiments/cereal/outFancy.json",
+		"/home/macoy/Development/code/3rdParty/repositories/cereal/include/cereal/details/traits.hpp",
+		"/home/macoy/Development/code/repositories/galavant/src/experiments/Jamfile",
+		"/home/macoy/Development/code/repositories/galavant/Jamfile",
+		"/home/macoy/Development/code/repositories/galavant/src/experiments/cereal/out.json",
+		"/home/macoy/Development/code/repositories/galavant/src/experiments/cereal/out.cereal",
+		"/home/macoy/Development/code/repositories/galavant/src/experiments/cereal/out.xml",
+		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source/GalavantUnreal/CharacterManager.cpp",
+		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source/GalavantUnreal/CharacterManager.hpp",
+		"/home/macoy/Development/code/repositories/galavant/src/util/CppHelperMacros.hpp",
+		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source/GalavantUnreal/CombatFx.cpp",
+		"/home/macoy/Development/code/repositories/galavant/src/entityComponentSystem/EntityTypes.cpp",
+		"/home/macoy/Development/code/repositories/galavant/deleteMe_packagingBad.log",
+		"/home/macoy/Development/code/repositories/galavant/src/entityComponentSystem/EntityComponentManager.hpp",
+		"/home/macoy/Development/code/repositories/galavant-unreal/.gitignore",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Engine/Private/UnrealEngine.cpp",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Plugins/Runtime/Steam/SteamVR/Source/SteamVR/Private/SteamVRHMD.cpp",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/ThirdParty/OpenVR/OpenVRv1_0_7/headers/openvr.h",
+		"/build/glibc-bfm8X4/glibc-2.23/elf/dl-close.c",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Editor/InputBindingEditor/Private/InputBindingEditorModule.cpp",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Editor/MainFrame/Private/Menus/MainMenu.cpp",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Editor/InputBindingEditor/Private/EditorKeyboardShortcutSettings.h",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/CoreUObject/Private/UObject/UObjectGlobals.cpp",
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/CoreUObject/Private/UObject/UObjectBase.cpp",
+		"/home/macoy/Desktop/deleteMe_Cooking.log",
+		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source/GalavantUnreal/GalavantUnrealGameMode.cpp",
+		"/home/macoy/Development/code/repositories/galavant/src/entityComponentSystem/EntityComponentManager.cpp"
+	],
+	"find":
+	{
+		"height": 44.0
+	},
+	"find_in_files":
+	{
+		"height": 177.0,
+		"where_history":
+		[
+			"/home/macoy/Development/code/repositories/galavant/src,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source,*.c,*.cpp,*.h,*.hpp,*.cs,Jamfile",
+			"/home/macoy/Development/code/repositories/galavant/src,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source,/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Programs,/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source,*.c,*.cpp,*.h,*.hpp,*.cs,Jamfile",
+			"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Programs,/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source,*.cpp",
+			"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Programs,/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime,*.cpp",
+			"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Programs,/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime,*.h",
+			"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Programs,/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime,*.cpp",
+			"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Programs,/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source,*.h",
+			"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Programs,/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source,*.cpp",
+			"/home/macoy/Development/code/repositories/galavant/src,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source,*.c,*.cpp,*.h,*.hpp,*.cs",
+			"/home/macoy/Development/code/repositories/galavant/src,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source,/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Programs,/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source,*.c,*.cpp,*.h,*.hpp,*.cs,Jamfile",
+			"/home/macoy/Development/code/repositories/galavant/src,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source,/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Programs,/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime,*.c,*.cpp,*.h,*.hpp,*.cs,Jamfile",
+			"/home/macoy/Development/code/repositories/galavant/src,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source,*.c,*.cpp,*.h,*.hpp,*.cs",
+			"/home/macoy/Development/code/repositories/galavant/src,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source,/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Programs,/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime,*.c,*.cpp,*.h,*.hpp,*.cs,Jamfile",
+			"/home/macoy/Development/code/repositories/galavant/src,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source,/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Programs,/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime,*.c,*.cpp,*.h,*.hpp,*.cs",
+			"/home/macoy/Development/code/repositories/galavant/src,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source,*.c,*.cpp,*.h,*.hpp,*.cs",
+			"/home/macoy/Development/code/repositories/galavant/src,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source,/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Programs,/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime,*.c,*.cpp,*.h,*.hpp,*.cs",
+			"/home/macoy/Development/code/repositories/galavant/src,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source,/home/macoy/Downloads/UnrealEngine/Engine/Source/Programs,/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime,*.c,*.cpp,*.h,*.hpp,*.cs",
+			"/home/macoy/Development/code/repositories/galavant/src,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source,/home/macoy/Downloads/UnrealEngine/Engine/Source/Programs,/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime,*.c,*.cpp,*.h,*.hpp",
+			"/home/macoy/Development/code/repositories/galavant/src,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source",
+			"/home/macoy/Development/code/repositories/galavant/src,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source,/home/macoy/Downloads/UnrealEngine/Engine/Source/Programs,/home/macoy/Downloads/UnrealEngine/Engine/Source/Runtime",
+			"/home/macoy/Development/code/repositories/galavant/src,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source",
+			"/home/macoy/Development/code/repositories/galavant/src,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source,/home/macoy/Downloads/UnrealEngine/Engine/Source/Programs,/home/macoy/Downloads/UnrealEngine/Engine/Source/Runtime",
+			"/home/macoy/Development/code/repositories/galavant/src,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source",
+			"/home/macoy/Development/code/repositories/galavant/src,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source,Jamfile",
+			"/home/macoy/Development/code/repositories/galavant/src,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source",
+			"/home/macoy/Development/code/repositories/galavant/thirdParty/plog",
+			"/home/macoy/Development/code/repositories/galavant/src,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source",
+			"/home/macoy/Development/code/repositories/galavant/thirdParty/plog",
+			"/home/macoy/Development/code/repositories/galavant/thirdParty",
+			"/home/macoy/Development/code/repositories/galavant/src/thirdParty",
+			"/home/macoy/Development/code/repositories/galavant/src,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source,/home/macoy/Downloads/UnrealEngine/Engine/Source/Programs,/home/macoy/Downloads/UnrealEngine/Engine/Source/Runtime",
+			"/home/macoy/Development/code/repositories/galavant/src,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source",
+			"/home/macoy/Development/code/repositories/galavant/src,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source,/home/macoy/Downloads/UnrealEngine/Engine/Source/Programs,/home/macoy/Downloads/UnrealEngine/Engine/Source/Runtime",
+			"/home/macoy/Development/code/repositories/galavant/src,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source",
+			"/home/macoy/Development/code/repositories/galavant/src,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source,/home/macoy/Downloads/UnrealEngine/Engine/Source/Programs,/home/macoy/Downloads/UnrealEngine/Engine/Source/Runtime",
+			"/home/macoy/Development/code/repositories/galavant/src,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source",
+			"/home/macoy/Development/code/repositories/galavant/src,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source,/home/macoy/Downloads/UnrealEngine/Engine/Source/Programs,/home/macoy/Downloads/UnrealEngine/Engine/Source/Runtime",
+			"/home/macoy/Development/code/repositories/galavant/src,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source",
+			"/home/macoy/Development/code/repositories/galavant/src,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source,/home/macoy/Downloads/UnrealEngine/Engine/Source/Programs,/home/macoy/Downloads/UnrealEngine/Engine/Source/Runtime",
+			"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/ThirdParty/polyvox",
+			"/media/macoy/Shared/Backups/OldComputers/BlkFlashDrive/From 500GB HD/BACKUPS/PROGRAMMING,*.cpp,*.c\n",
+			"/media/macoy/Shared/Backups/OldComputers/BlkFlashDrive/From 500GB HD/BACKUPS/PROGRAMMING,*.cpp",
+			"/media/macoy/Shared/Backups/OldComputers/BlkFlashDrive/From 500GB HD/BACKUPS/PROGRAMMING",
+			"/home/macoy/Development/code/repositories/galavant/src,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source,/home/macoy/Downloads/UnrealEngine/Engine/Source/Programs,/home/macoy/Downloads/UnrealEngine/Engine/Source/Runtime",
+			"/home/macoy/Development/code/repositories/galavant/src,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source",
+			"/home/macoy/Development/code/repositories/galavant/src,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source,/home/macoy/Downloads/UnrealEngine/Engine/Source/Programs,/home/macoy/Downloads/UnrealEngine/Engine/Source/Runtime",
+			"/home/macoy/Development/code/repositories/galavant/src,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source",
+			"/home/macoy/Development/code/repositories/galavant/src,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source,/home/macoy/Downloads/UnrealEngine/Engine/Source/Programs,/home/macoy/Downloads/UnrealEngine/Engine/Source/Runtime",
+			"/home/macoy/Development/code/repositories/galavant/src,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source",
+			"/home/macoy/Development/code/repositories/galavant/src,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source,/home/macoy/Downloads/UnrealEngine/Engine/Source/Programs,/home/macoy/Downloads/UnrealEngine/Engine/Source/Runtime",
+			"/home/macoy/Development/code/repositories/galavant/src,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source",
+			"/home/macoy/Development/code/repositories/galavant/src,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source,/home/macoy/Downloads/UnrealEngine/Engine/Source/Programs,/home/macoy/Downloads/UnrealEngine/Engine/Source/Runtime",
+			"/home/macoy/Development/code/repositories/galavant/src,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source",
+			"/home/macoy/Development/code/repositories/galavant/src,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source,/home/macoy/Downloads/UnrealEngine/Engine/Source/Programs,/home/macoy/Downloads/UnrealEngine/Engine/Source/Runtime",
+			"/home/macoy/Development/code/repositories/galavant/src,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source",
+			"/home/macoy/Development/code/repositories/galavant/src,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source,/home/macoy/Downloads/UnrealEngine/Engine/Source/Programs,/home/macoy/Downloads/UnrealEngine/Engine/Source/Runtime",
+			"/home/macoy/Development/code/repositories/galavant/src,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source",
+			"/home/macoy/Development/code/repositories/galavant/src",
+			"/home/macoy/Development/code/repositories/galavant/src,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source,/home/macoy/Downloads/UnrealEngine/Engine/Source/Programs,/home/macoy/Downloads/UnrealEngine/Engine/Source/Runtime",
+			"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source,/home/macoy/Downloads/UnrealEngine/Engine/Source/Programs,/home/macoy/Downloads/UnrealEngine/Engine/Source/Runtime",
+			"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/ThirdParty,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source,/home/macoy/Downloads/UnrealEngine/Engine/Source/Programs,/home/macoy/Downloads/UnrealEngine/Engine/Source/Runtime",
+			"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/ThirdParty,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source,/home/macoy/Downloads/UnrealEngine/Engine/Source/Programs,/home/macoy/Downloads/UnrealEngine/Engine/Source/Runtime,/home/macoy/Downloads/UnrealEngine/Engine",
+			"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/ThirdParty,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source,/home/macoy/Downloads/UnrealEngine/Engine/Source/Programs,/home/macoy/Downloads/UnrealEngine/Engine/Source/Runtime,/home/macoy/Downloads/UnrealEngine",
+			"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/ThirdParty,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source,/home/macoy/Downloads/UnrealEngine/Engine/Source/Programs,/home/macoy/Downloads/UnrealEngine/Engine/Source/Runtime",
+			"/home/macoy/Downloads/UnrealEngine/Engine/Source/Runtime,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/ThirdParty,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source",
+			"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/ThirdParty/polyvox",
+			"/home/macoy/Downloads/UnrealEngine/Engine/Source/Runtime,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/ThirdParty,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source",
+			"/home/macoy/Downloads/EmPlan/src",
+			"/home/macoy/Downloads/UnrealEngine/Engine/Source/Runtime,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/ThirdParty,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source,/home/macoy/Downloads/UnrealEngine/Engine/Source",
+			"/home/macoy/Downloads/UnrealEngine/Engine/Source/Runtime,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/ThirdParty,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source",
+			"/home/macoy/Downloads/UnrealEngine/Engine/Source/Runtime,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/ThirdParty",
+			"/home/macoy/Downloads/UnrealEngine/Engine/Source/Runtime"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"arkchar",
+			"landed",
+			"characterAudio.h",
+			"vscode",
+			"GetGoalStatusString",
+			"AgentGoal",
+			"case",
+			"needtyp",
+			"fire",
+			"FLandedSignature",
+			"OnLandedDelegate",
+			"deleg",
+			"OnLanded",
+			"onlanded",
+			"movemen",
+			"manha",
+			"goalManDistanceTolerance",
+			"FootstepPlayRate",
+			"OnLeftFistHit",
+			"leftfist",
+			"IsBound",
+			"OnComponentHit",
+			"FComponentHitSignature",
+			"onjumped",
+			"onjump",
+			"FComponentHitSignature",
+			"hit",
+			"error",
+			"fail",
+			"projectil",
+			"AGalavantUnrealFPProjectile",
+			"FirstPersonTempCPP",
+			"FirstPersonTemp",
+			"sound",
+			"bMovementInProgress",
+			"bmovementin",
+			"UpdatedComponent",
+			"isfall",
+			"UCLASS(",
+			" : public UObject",
+			"ue_",
+			"error",
+			"AddUnrealSourceFiles",
+			"AddUnrealSourceFile",
+			"audio",
+			"PlaySoundAtLocation",
+			"chunkManager",
+			"chunk",
+			"FirstPersonCameraComponent",
+			"OnComponentHit",
+			"OnLeftFistHit",
+			"AddOnScreenDebugMessage",
+			"slate",
+			"penetra",
+			"galavant",
+			"[671]LogStats:",
+			"custommeshcomponent",
+			"galavantunrealgamemode",
+			"can character step",
+			"bNotifyRigidBodyCollision",
+			"simulation generates ",
+			"Viewport",
+			" viewport;",
+			"capturemouse",
+			"ReleaseMouseCapture",
+			"GameViewport;",
+			"for mouse cursor",
+			"mouseCaptured",
+			"BindAction(\"",
+			"bindaction(",
+			"::bindaction(",
+			"exit",
+			"UFUNCTION(exec",
+			"exit",
+			"UFUNCTION(",
+			"jam",
+			"version",
+			"archive",
+			"oAr",
+			"oar",
+			"flatbuffers",
+			"combatant",
+			"Ragdoll",
+			"CharacterMesh_ProfileName",
+			"AlreadyRagdoll",
+			".ConsciousState = ",
+			"conscious",
+			"-",
+			"mono automationtool",
+			"FInputBindingEditorModule",
+			"UEditorKeyboardShortcutSettings",
+			"localization dashboard",
+			"'/Game/",
+			"fpcharac",
+			"failed to find object",
+			"s_Characters",
+			"generate pr",
+			"//",
+			"data.Character",
+			"currentUnsubscribe",
+			"currentFunc",
+			"typedef void (*",
+			"@callback",
+			"UE_LOG",
+			"NAME_SIZE",
+			"#define NAME_SIZE",
+			"NAME_SIZE",
+			"EAnalyticsErrorCodes::Arguments",
+			"invalid arguments",
+			"@Latelink",
+			"@LatelinkDef\n",
+			"deltaSeconds",
+			"g_GameplayTimeManager",
+			"Pause",
+			"pause",
+			"Pause",
+			"pause",
+			"GameplayTimeWorldTimeDelta",
+			"GetWorldTime(",
+			"PauseTimeToCatchUp",
+			"getworldtime(",
+			"packagingresults",
+			"invalid arguments",
+			"packagingresults",
+			"was unable to run successfully",
+			"automationtool was unable to run",
+			"Invalid Arguments",
+			"player"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"ConclusiveExecutionEvents",
+			"Record",
+			"GetActiveWorldParams",
+			"",
+			"ACharacter",
+			"DefaultCharacter",
+			"Htn::TaskExecuteStatus",
+			"SubDirC++Flags",
+			"IsPlannerRunning",
+			"Running_SuccessfulDecompositionStackPush",
+			"World",
+			"Position",
+			"Planner",
+			"Plan",
+			"Status",
+			"Pooled",
+			"PooledComponent",
+			"gv::Noise3d",
+			"noise3d",
+			"GeneratedMesh",
+			"FVector::Dist",
+			"Add",
+			"util",
+			"polyvox",
+			"MULTITHREADING"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/home/macoy/Development/code/repositories/galavant/TODO.tasks",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7650,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/User/Tasks.sublime-syntax",
+							"tabs_extra_last_activated": 1519070622.92,
+							"tabs_extra_last_activated_sheet_index": 0,
+							"tabs_extra_spawned": true,
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 44.0
+	},
+	"input":
+	{
+		"height": 86.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.CppYCM.2":
+	{
+		"height": 0.0
+	},
+	"output.CppYCM.3":
+	{
+		"height": 0.0
+	},
+	"output.clang":
+	{
+		"height": 174.0
+	},
+	"output.exec":
+	{
+		"height": 342.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.mdpopups":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "7DRL2018.sublime-project",
+	"replace":
+	{
+		"height": 81.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"agentcompo",
+				"Galavant/src/game/agent/AgentComponentManager.cpp"
+			],
+			[
+				"fpchar",
+				"Source - Galavant Unreal/GalavantUnreal/Characters/GalavantUnrealFPCharacter.h"
+			],
+			[
+				"characterau",
+				"Source - Galavant Unreal/GalavantUnreal/Characters/CharacterAudio.cpp"
+			],
+			[
+				"agentchar",
+				"Source - Galavant Unreal/GalavantUnreal/Characters/AgentCharacter.h"
+			],
+			[
+				"agentchara",
+				"Source - Galavant Unreal/GalavantUnreal/Characters/AgentCharacter.cpp"
+			],
+			[
+				"lmain.cpp",
+				"Source - Galavant Unreal/GalavantUnreal/GalavantUnrealMain.cpp"
+			],
+			[
+				"notes.",
+				"Galavant/Notes.md"
+			],
+			[
+				"fpchara",
+				"Source - Galavant Unreal/GalavantUnreal/Characters/GalavantUnrealFPCharacter.cpp"
+			],
+			[
+				"combat",
+				"Galavant/src/game/agent/combat/CombatComponentManager.hpp"
+			],
+			[
+				"agentcomp",
+				"Galavant/src/game/agent/AgentComponentManager.hpp"
+			],
+			[
+				"lmain.cp",
+				"Source - Galavant Unreal/GalavantUnreal/GalavantUnrealMain.cpp"
+			],
+			[
+				"needs.",
+				"Galavant/src/game/agent/Needs.hpp"
+			],
+			[
+				"agentcom",
+				"Galavant/src/game/agent/AgentComponentManager.hpp"
+			],
+			[
+				"entitytyp",
+				"Galavant/src/entityComponentSystem/EntityTypes.hpp"
+			],
+			[
+				"actor.h",
+				"Unreal Engine Source/Runtime/Engine/Classes/GameFramework/Actor.h"
+			],
+			[
+				"chara",
+				"Unreal Engine Source/Runtime/Engine/Classes/GameFramework/Character.h"
+			],
+			[
+				"character.h",
+				"Unreal Engine Source/Runtime/Engine/Classes/GameFramework/Character.h"
+			],
+			[
+				"lmovement",
+				"Source - Galavant Unreal/GalavantUnreal/GalaEntityComponents/UnrealMovementComponent.cpp"
+			],
+			[
+				"agentch",
+				"Source - Galavant Unreal/GalavantUnreal/Characters/AgentCharacter.cpp"
+			],
+			[
+				"agentcha",
+				"Source - Galavant Unreal/GalavantUnreal/Characters/AgentCharacter.h"
+			],
+			[
+				"primit",
+				"Unreal Engine Source/Runtime/Engine/Classes/Components/PrimitiveComponent.h"
+			],
+			[
+				"shape",
+				"Unreal Engine Source/Runtime/Engine/Classes/Components/ShapeComponent.h"
+			],
+			[
+				"spherecom",
+				"Unreal Engine Source/Runtime/Engine/Classes/Components/SphereComponent.h"
+			],
+			[
+				"editorsettings.cpp",
+				"Unreal Engine Source/Editor/UnrealEd/Private/Settings/EditorSettings.cpp"
+			],
+			[
+				"actor",
+				"Source - Galavant Unreal/GalavantUnreal/ActorEntityManagement.cpp"
+			],
+			[
+				"actoren",
+				"Source - Galavant Unreal/GalavantUnreal/ActorEntityManagement.h"
+			],
+			[
+				"testpol",
+				"Source - Galavant Unreal/GalavantUnreal/World/TestPolyVoxChunkManager.cpp"
+			],
+			[
+				"polyvox",
+				"Source - Galavant Unreal/GalavantUnreal/World/TestPolyVoxChunkManager.h"
+			],
+			[
+				"default",
+				"Config - Galavant Unreal/Config/DefaultInput.ini"
+			],
+			[
+				"hud",
+				"Source - Galavant Unreal/GalavantUnreal/HUDMinimapActor.cpp"
+			],
+			[
+				"notes",
+				"Galavant/Notes.md"
+			],
+			[
+				"todo",
+				"Galavant/TODO.tasks"
+			],
+			[
+				"baseengine",
+				"Config - Galavant Unreal/Saved/Temp/Linux/Engine/Config/BaseEngine.ini"
+			],
+			[
+				"hudmini",
+				"Source - Galavant Unreal/GalavantUnreal/HUDMinimapActor.cpp"
+			],
+			[
+				"testpoly",
+				"Source - Galavant Unreal/GalavantUnreal/World/TestPolyVoxChunk.h"
+			],
+			[
+				"galavantbuild",
+				"Source - Galavant Unreal/GalavantUnreal/GalavantUnreal.Build.cs"
+			],
+			[
+				"plancom",
+				"Galavant/src/game/agent/PlanComponentManager.cpp"
+			],
+			[
+				"combatcom",
+				"Galavant/src/game/agent/combat/CombatComponentManager.hpp"
+			],
+			[
+				"combatco",
+				"Galavant/src/game/agent/combat/CombatComponentManager.cpp"
+			],
+			[
+				"lmain.",
+				"Source - Galavant Unreal/GalavantUnreal/GalavantUnrealMain.cpp"
+			],
+			[
+				"time.hp",
+				"Galavant/src/util/Time.hpp"
+			],
+			[
+				"fpcharact",
+				"Source - Galavant Unreal/GalavantUnreal/Characters/GalavantUnrealFPCharacter.cpp"
+			],
+			[
+				"lmain.h",
+				"Source - Galavant Unreal/GalavantUnreal/GalavantUnrealMain.h"
+			],
+			[
+				"agentcompon",
+				"Galavant/src/game/agent/AgentComponentManager.cpp"
+			],
+			[
+				"jamfile",
+				"Galavant/Jamfile"
+			],
+			[
+				"cereal",
+				"Galavant/src/experiments/cereal/cerealTest.cpp"
+			],
+			[
+				"charactermana",
+				"Source - Galavant Unreal/GalavantUnreal/CharacterManager.hpp"
+			],
+			[
+				"actorent",
+				"Source - Galavant Unreal/GalavantUnreal/ActorEntityManagement.h"
+			],
+			[
+				"combatfx",
+				"Source - Galavant Unreal/GalavantUnreal/CombatFx.cpp"
+			],
+			[
+				"characterma",
+				"Source - Galavant Unreal/GalavantUnreal/CharacterManager.cpp"
+			],
+			[
+				"movementcompon",
+				"Source - Galavant Unreal/GalavantUnreal/GalaEntityComponents/UnrealMovementComponent.cpp"
+			],
+			[
+				"needs.hp",
+				"Galavant/src/game/agent/Needs.hpp"
+			],
+			[
+				"aagent",
+				"Source - Galavant Unreal/GalavantUnreal/Characters/AgentCharacter.cpp"
+			],
+			[
+				"build.cs",
+				"Source - Galavant Unreal/GalavantUnreal/GalavantUnreal.Build.cs"
+			],
+			[
+				"entitycom",
+				"Galavant/src/entityComponentSystem/EntityComponentManager.hpp"
+			],
+			[
+				"keyboard",
+				"Unreal Engine Source/Editor/InputBindingEditor/Private/EditorKeyboardShortcutSettings.h"
+			],
+			[
+				"lmain.c",
+				"Source - Galavant Unreal/GalavantUnreal/GalavantUnrealMain.cpp"
+			],
+			[
+				"lfpchara",
+				"Source - Galavant Unreal/GalavantUnreal/Characters/GalavantUnrealFPCharacter.cpp"
+			],
+			[
+				"aagentchar",
+				"Source - Galavant Unreal/GalavantUnreal/Characters/AgentCharacter.cpp"
+			],
+			[
+				"uobjectbase",
+				"Unreal Engine Source/Runtime/CoreUObject/Private/UObject/UObjectBase.cpp"
+			],
+			[
+				".buil.",
+				"Source - Galavant Unreal/GalavantUnreal/GalavantUnreal.Build.cs"
+			],
+			[
+				"compone",
+				"Galavant/src/entityComponentSystem/ComponentManager.cpp"
+			],
+			[
+				"lmovem",
+				"Source - Galavant Unreal/GalavantUnreal/GalaEntityComponents/UnrealMovementComponent.hpp"
+			],
+			[
+				"htntasks",
+				"Galavant/src/ai/htn/HTNTasks.hpp"
+			],
+			[
+				"htnpla",
+				"Galavant/src/ai/htn/HTNPlanner.hpp"
+			],
+			[
+				"main",
+				"Galavant/src/main.cpp"
+			],
+			[
+				"entitycomp",
+				"Galavant/src/entityComponentSystem/EntityComponentManager.hpp"
+			],
+			[
+				"entit",
+				"Galavant/src/entityComponentSystem/EntityComponentManager.cpp"
+			],
+			[
+				"lmain",
+				"Source - Galavant Unreal/GalavantUnreal/GalavantUnrealMain.cpp"
+			],
+			[
+				"shader.",
+				"Unreal Engine Source/Runtime/ShaderCore/Private/Shader.cpp"
+			],
+			[
+				"unreallog",
+				"Source - Galavant Unreal/GalavantUnreal/Utilities/GalavantUnrealLog.cpp"
+			],
+			[
+				"unrealnames.h",
+				"Unreal Engine Source/Runtime/Core/Public/UObject/UnrealNames.h"
+			],
+			[
+				"unrealnames",
+				"Unreal Engine Source/Runtime/Core/Private/UObject/UnrealNames.cpp"
+			],
+			[
+				"unreal.buil",
+				"Source - Galavant Unreal/GalavantUnreal/GalavantUnreal.Build.cs"
+			],
+			[
+				"logg",
+				"Galavant/src/util/Logging.cpp"
+			],
+			[
+				"logging",
+				"Galavant/src/util/Logging.hpp"
+			],
+			[
+				"consoleonly",
+				"Galavant/src/frontends/consoleOnly/ConsoleOnlyMain.cpp"
+			],
+			[
+				"utiljamfil",
+				"Galavant/src/util/Jamfile"
+			],
+			[
+				"dynami",
+				"Source - Galavant Unreal/GalavantUnreal/Graphics/DynamicTexture.cpp"
+			],
+			[
+				"fpcharac",
+				"Source - Galavant Unreal/GalavantUnreal/Characters/GalavantUnrealFPCharacter.h"
+			],
+			[
+				"umg",
+				"Unreal Engine Source/Runtime/UMG/Public/UMG.h"
+			],
+			[
+				"fpcharacter",
+				"Source - Galavant Unreal/GalavantUnreal/Characters/GalavantUnrealFPCharacter.cpp"
+			],
+			[
+				"entitycompo",
+				"Galavant/src/entityComponentSystem/EntityComponentManager.hpp"
+			],
+			[
+				"consoleon",
+				"Galavant/src/frontends/consoleOnly/ConsoleOnlyMain.cpp"
+			],
+			[
+				"math.h",
+				"Galavant/src/util/Math.hpp"
+			],
+			[
+				"consolemov",
+				"Galavant/src/frontends/consoleOnly/ConsoleMovementComponentManager.cpp"
+			],
+			[
+				"consolemovem",
+				"Galavant/src/frontends/consoleOnly/ConsoleMovementComponentManager.hpp"
+			],
+			[
+				"math",
+				"Galavant/src/util/Math.hpp"
+			],
+			[
+				"unrealmove",
+				"Source - Galavant Unreal/GalavantUnreal/GalaEntityComponents/UnrealMovementComponent.cpp"
+			],
+			[
+				"movementcompn",
+				"Unreal Engine Source/Runtime/Engine/Classes/GameFramework/MovementComponent.h"
+			],
+			[
+				"unrealmo",
+				"Source - Galavant Unreal/GalavantUnreal/GalaEntityComponents/UnrealMovementComponent.hpp"
+			],
+			[
+				"movementm",
+				"Galavant/src/game/agent/MovementManager.hpp"
+			],
+			[
+				"",
+				"Galavant/Notes.md"
+			],
+			[
+				"collisionprofile.h",
+				"Unreal Engine Source/Runtime/Engine/Classes/Engine/CollisionProfile.h"
+			],
+			[
+				"meshcompon",
+				"Unreal Engine Source/Runtime/Engine/Classes/Components/MeshComponent.h"
+			],
+			[
+				"skinnedmesh",
+				"Unreal Engine Source/Runtime/Engine/Classes/Components/SkinnedMeshComponent.h"
+			],
+			[
+				"skeletalmesh.",
+				"Unreal Engine Source/Runtime/Engine/Classes/Components/SkeletalMeshComponent.h"
+			],
+			[
+				"fx.hp",
+				"Source - Galavant Unreal/GalavantUnreal/CombatFx.hpp"
+			],
+			[
+				"resource",
+				"Galavant/src/util/ResourceDictionary.cpp"
+			],
+			[
+				"resourc",
+				"Galavant/src/util/ResourceDictionary.hpp"
+			],
+			[
+				"agent",
+				"Galavant/src/game/agent/AgentComponentManager.cpp"
+			],
+			[
+				"combatc",
+				"Galavant/src/game/agent/combat/CombatComponentManager.cpp"
+			],
+			[
+				"unrealm",
+				"Source - Galavant Unreal/GalavantUnreal/GalaEntityComponents/UnrealMovementComponent.cpp"
+			],
+			[
+				"lmovemn",
+				"Source - Galavant Unreal/GalavantUnreal/GalaEntityComponents/UnrealMovementComponent.cpp"
+			],
+			[
+				"unreal",
+				"Source - Galavant Unreal/GalavantUnreal/GalaEntityComponents/UnrealMovementComponent.cpp"
+			],
+			[
+				"srcjam",
+				"Galavant/src/Jamfile"
+			],
+			[
+				"jamrules",
+				"Galavant/Jamrules"
+			],
+			[
+				"testingjamf",
+				"Galavant/src/unitTesting/Jamfile"
+			],
+			[
+				"utiljamfile",
+				"Galavant/src/util/Jamfile"
+			],
+			[
+				"htntypes",
+				"Galavant/src/ai/htn/HTNTypes.hpp"
+			],
+			[
+				"aiplanner",
+				"Galavant/src/ai/htn/HTNPlanner.hpp"
+			],
+			[
+				"experimentsjam",
+				"Galavant/src/experiments/noise/Jamfile"
+			],
+			[
+				"experimen",
+				"Galavant/src/experiments/Jamfile"
+			],
+			[
+				"galavantunreallog",
+				"Source - Galavant Unreal/GalavantUnreal/Utilities/GalavantUnrealLog.cpp"
+			],
+			[
+				"actorfactor",
+				"Unreal Engine Source/Editor/UnrealEd/Private/Factories/ActorFactory.cpp"
+			],
+			[
+				"world.cpp",
+				"Unreal Engine Source/Runtime/Engine/Private/World.cpp"
+			],
+			[
+				"actorcompone",
+				"Unreal Engine Source/Runtime/Engine/Classes/Components/ActorComponent.h"
+			],
+			[
+				"scenecomponent",
+				"Unreal Engine Source/Runtime/Engine/Classes/Components/SceneComponent.h"
+			],
+			[
+				"lfpchar",
+				"Source - Galavant Unreal/GalavantUnreal/Characters/GalavantUnrealFPCharacter.h"
+			],
+			[
+				"actorene",
+				"Source - Galavant Unreal/GalavantUnreal/ActorEntityManagement.cpp"
+			],
+			[
+				"agentco",
+				"Galavant/src/game/agent/AgentComponentManager.cpp"
+			],
+			[
+				"interact",
+				"Galavant/src/game/InteractComponentManager.cpp"
+			],
+			[
+				"plancompon",
+				"Galavant/src/game/agent/PlanComponentManager.cpp"
+			],
+			[
+				"lmov",
+				"Source - Galavant Unreal/GalavantUnreal/GalaEntityComponents/UnrealMovementComponent.cpp"
+			],
+			[
+				"agentc",
+				"Galavant/src/game/agent/AgentComponentManager.cpp"
+			],
+			[
+				"en",
+				"Galavant/src/entityComponentSystem/EntityComponentManager.hpp"
+			],
+			[
+				"entityco",
+				"Galavant/src/entityComponentSystem/EntityComponentManager.hpp"
+			],
+			[
+				"compon",
+				"Galavant/src/entityComponentSystem/ComponentManager.cpp"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 813.0,
+		"last_filter": "redd",
+		"selected_items":
+		[
+			[
+				"redd",
+				"~/Development/code/repositories/redditLikedSavedImageDownloader/redditLikedSavedImageDownloader.sublime-project"
+			],
+			[
+				"red",
+				"~/Development/code/repositories/redditLikedSavedImageDownloader/redditLikedSavedImageDownloader.sublime-project"
+			],
+			[
+				"",
+				"~/Development/code/repositories/redditLikedSavedImageDownloader/redditLikedSavedImageDownloader.sublime-project"
+			],
+			[
+				"mus",
+				"/media/macoy/Shared/Backups/Development/Music/DP-24/Music-InThisBackup.sublime-project"
+			],
+			[
+				"re",
+				"~/Development/code/repositories/redditLikedSavedImageDownloader/redditLikedSavedImageDownloader.sublime-project"
+			],
+			[
+				"brut",
+				"~/Documents/brute-force-living/brute-force-living.sublime-project"
+			]
+		],
+		"width": 618.0
+	},
+	"select_symbol":
+	{
+		"height": 56.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"canjum",
+				"CanJump"
+			],
+			[
+				"AddUnrealSourceFile",
+				"AddUnrealSourceFile"
+			],
+			[
+				"play sound",
+				"PlaySoundAtLocation"
+			],
+			[
+				"uspherec",
+				"USphereComponent"
+			],
+			[
+				"mouse capture",
+				"ReleaseMouseCapture"
+			],
+			[
+				"get viewport",
+				"GetViewport"
+			],
+			[
+				"lockmouse",
+				"LockMouse"
+			],
+			[
+				"lock mouse",
+				"LockMouse"
+			],
+			[
+				"lockmous",
+				"LockMouseToViewport"
+			],
+			[
+				"uinput",
+				"UInputComponent"
+			],
+			[
+				"exit",
+				"Exit"
+			],
+			[
+				"getcollisionprofi",
+				"GetCollisionProfileName"
+			],
+			[
+				"AAgentAIController",
+				"AAgentAIController"
+			],
+			[
+				"is cooking",
+				"IsCookingInEditor"
+			],
+			[
+				"is cook",
+				"IsCooking"
+			],
+			[
+				"compileglobal",
+				"CompileGlobalShaderMap"
+			],
+			[
+				"serializeglobal",
+				"SerializeGlobalShaders"
+			],
+			[
+				"getworldtime",
+				"GetWorldTime"
+			],
+			[
+				"create widget",
+				"CreateWidget"
+			],
+			[
+				"umg widget",
+				"SetUMGWidget"
+			],
+			[
+				"mouse over ",
+				"OnMouseHovered"
+			],
+			[
+				"mouseover",
+				"IsMouseOver"
+			],
+			[
+				"sharedptr",
+				"TSharedPtr"
+			],
+			[
+				"findcomponent",
+				"FindComponentByClass"
+			],
+			[
+				"subclasso",
+				"TAssetSubclassOf"
+			],
+			[
+				"setupattach",
+				"SetupAttachment"
+			],
+			[
+				"tweak",
+				"TWeakPtr"
+			],
+			[
+				"printtask",
+				"PrintTaskCallList"
+			],
+			[
+				"needlevel",
+				"NeedLevelTrigger"
+			],
+			[
+				"logger",
+				"Logger"
+			],
+			[
+				"getresource",
+				"GetResource"
+			],
+			[
+				"getfilter",
+				"GetFilterExtension"
+			],
+			[
+				"gettimese",
+				"GetTimeSeconds"
+			],
+			[
+				"getfilterexte",
+				"GetFilterExtension"
+			],
+			[
+				"FHitResult",
+				"FHitResult\n"
+			],
+			[
+				"ecollisionch",
+				"ECollisionChannel\n"
+			],
+			[
+				"linetrace",
+				"LineTraceSingle"
+			],
+			[
+				"executeplan",
+				"ExecutePlan"
+			],
+			[
+				"formatfunc",
+				"FormatFuncName"
+			],
+			[
+				"addcallback",
+				"AddCallback"
+			],
+			[
+				"needdef",
+				"NeedDef"
+			],
+			[
+				"getresour",
+				"GetResourceList"
+			],
+			[
+				"oninter",
+				"OnInteract"
+			],
+			[
+				"topositi",
+				"ToPosition"
+			],
+			[
+				"planstep",
+				"PlanStep"
+			],
+			[
+				"worldsta",
+				"WorldState"
+			],
+			[
+				"agentcomp",
+				"AgentComponentManager"
+			],
+			[
+				"param",
+				"Parameter"
+			],
+			[
+				"plancompon",
+				"PlanComponentManager"
+			]
+		],
+		"width": 1233.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 299.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+		"max_columns": 1
+	}
+}

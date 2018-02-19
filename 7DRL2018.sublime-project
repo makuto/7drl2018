@@ -1,0 +1,250 @@
+{
+	"build_systems":
+	[
+		{
+			"file_regex": "^([a-zA-Z/][^:\n]*):([0-9]+):?([0-9]+)?:? (.*)$",
+			"name": "Full Build (build Base2.0 and 7DRL)",
+			"shell_cmd": "cd base2.0 && jam -j4 -q BasePseudotarget && cd ../7drl2018/src && jam -j4 -q 7drl2018",
+			"syntax": "JamUnrealBuildOutput.sublime-syntax",
+			"working_dir": "$project_path/.."
+		},
+	// 	{
+	// 		"file_regex": "^([a-zA-Z/][^:\n]*):([0-9]+):?([0-9]+)?:? (.*)$",
+	// 		"name": "Full Build Debug (build Galavant lib and Unreal)",
+	// 		"shell_cmd": "cd galavant && jam -j4 -q -sUNREAL=true GalavantPseudotarget && cd ../galavant-unreal/GalavantUnreal && make GalavantUnreal-Linux-Debug",
+	// 		"syntax": "JamUnrealBuildOutput.sublime-syntax",
+	// 		"working_dir": "$project_path/../../../.."
+	// 	},
+	// 	{
+	// 		"file_regex": "^([a-zA-Z/][^:\n]*):([0-9]+):?([0-9]+)?:? (.*)$",
+	// 		"name": "GalavantUnreal Build",
+	// 		"shell_cmd": "make GalavantUnreal",
+	// 		"syntax": "JamUnrealBuildOutput.sublime-syntax",
+	// 		"working_dir": "$project_path/../../../../galavant-unreal/GalavantUnreal"
+	// 	},
+	// 	{
+	// 		"file_regex": "^([a-zA-Z/][^:\n]*):([0-9]+):?([0-9]+)?:? (.*)$",
+	// 		"name": "GalavantUnreal Build Debug",
+	// 		"shell_cmd": "make GalavantUnreal-Linux-Debug",
+	// 		"syntax": "JamUnrealBuildOutput.sublime-syntax",
+	// 		"working_dir": "$project_path/../../../../galavant-unreal/GalavantUnreal"
+	// 	},
+	// 	{
+	// 		"name": "GalavantUnreal Quick Clean (linux headers changed error fix)",
+	// 		"shell_cmd": "rm -r Intermediate/Build",
+	// 		"working_dir": "$project_path/../../../../galavant-unreal/GalavantUnreal"
+	// 	},
+	// 	{
+	// 		"name": "GalavantUnreal Fix 'Game Module Could Not Be Loaded' (DOESN'T WORK)",
+	// 		"shell_cmd": "rm -r Binaries/Linux",
+	// 		"working_dir": "$project_path/../../../../galavant-unreal/GalavantUnreal"
+	// 	},
+	// 	{
+	// 		"name": "GalavantUnreal Fix 'Game Module Could Not Be Loaded' (MAYBE WORKS)",
+	// 		"shell_cmd": "cp /media/macoy/SSD/Development/code/3rdParty/repositories/UnrealEngine/Engine/Plugins/Runtime/CustomMeshComponent/Binaries/Linux/libUE4Editor-CustomMeshComponent-Linux-Debug.so Binaries/Linux",
+	// 		"working_dir": "$project_path/../../../../galavant-unreal/GalavantUnreal"
+	// 	},
+	// 	{
+	// 		"name": "GalavantUnreal Generate Project Files (Makefile; No VSCode)",
+	// 		"shell_cmd": "/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/GenerateProjectFiles.sh -project=/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/GalavantUnreal.uproject -game",
+	// 		"syntax": "JamUnrealBuildOutput.sublime-syntax",
+	// 		"working_dir": "$project_path/../../../../galavant-unreal/GalavantUnreal"
+	// 	},
+	// 	{
+	// 		"name": "GalavantUnreal Generate Project Files (VSCode; No Makefile)",
+	// 		"shell_cmd": "/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/GenerateProjectFiles.sh -project=/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/GalavantUnreal.uproject -game -vscode",
+	// 		"syntax": "JamUnrealBuildOutput.sublime-syntax",
+	// 		"working_dir": "$project_path/../../../../galavant-unreal/GalavantUnreal"
+	// 	},
+	// 	{
+	// 		"name": "GalavantUnreal Standalone Package",
+	// 		"shell_cmd": "mono AutomationTool.exe -ScriptsForProject=/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/GalavantUnreal.uproject BuildCookRun -nocompile -nocompileeditor -nop4 -project=/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/GalavantUnreal.uproject -cook -stage -archive -archivedirectory=/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/LOCAL_package/package/ -package -clientconfig=Development -ue4exe=UE4Editor-Linux-Debug -pak -prereqs -nodebuginfo -nativizeAssets -targetplatform=Linux -build -utf8output",
+	// 		"syntax": "JamUnrealBuildOutput.sublime-syntax",
+	// 		"working_dir": "/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Binaries/DotNET"
+	// 	},
+	// 	{
+	// 		"name": "GalavantUnreal Standalone Package Debug",
+	// 		"shell_cmd": "mono AutomationTool.exe -ScriptsForProject=/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/GalavantUnreal.uproject BuildCookRun -nocompile -nocompileeditor -nop4 -project=/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/GalavantUnreal.uproject -cook -stage -archive -archivedirectory=/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/LOCAL_package/package/ -package -clientconfig=DebugGame -ue4exe=UE4Editor-Linux-Debug -pak -prereqs -nodebuginfo -nativizeAssets -targetplatform=Linux -build -utf8output",
+	// 		"syntax": "JamUnrealBuildOutput.sublime-syntax",
+	// 		"working_dir": "/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Binaries/DotNET"
+	// 	},
+	// 	{
+	// 		"name": "GalavantUnreal Cook (Maybe doesn't work)",
+	// 		"shell_cmd": "mono AutomationTool.exe BuildCookRun -nocompileeditor -nop4 -project=/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/GalavantUnreal.uproject -cook -skipstage -ue4exe=UE4Editor -targetplatform=Linux -utf8output",
+	// 		"syntax": "JamUnrealBuildOutput.sublime-syntax",
+	// 		"working_dir": "/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Binaries/DotNET"
+	// 	},
+	// 	{
+	// 		"file_regex": "^([a-zA-Z/][^:\n]*):([0-9]+):?([0-9]+)?:? (.*)$",
+	// 		"name": "Standalone Full Build Debug (build Galavant lib and Unreal)",
+	// 		"shell_cmd": "cd galavant && jam -j4 -q -sUNREAL=true GalavantPseudotarget && cd ../galavant-unreal/GalavantUnreal && make GalavantUnreal-Linux-Debug && cp -r -u -v Binaries/ LOCAL_package/package/LinuxNoEditor/GalavantUnreal/",
+	// 		"syntax": "JamUnrealBuildOutput.sublime-syntax",
+	// 		"working_dir": "$project_path/../../../.."
+	// 	},
+	// 	{
+	// 		"file_regex": "^([a-zA-Z/][^:\n]*):([0-9]+):?([0-9]+)?:? (.*)$",
+	// 		"name": "Unreal Engine Get Latest and Build (No debug)",
+	// 		"shell_cmd": "guake -n UnrealLatest -e \"cd /home/macoy/Development/code/3rdParty/repositories/UnrealEngine && git pull && ./Setup.sh && ./GenerateProjectFiles.sh && make\"",
+	// 		"syntax": "JamUnrealBuildOutput.sublime-syntax"
+	// 	},
+	// 	{
+	// 		"file_regex": "^([a-zA-Z/][^:\n]*):([0-9]+):?([0-9]+)?:? (.*)$",
+	// 		"name": "Unreal Engine Get Latest and Build (Also debug)",
+	// 		"shell_cmd": "guake -n UnrealLatest -e \"cd /home/macoy/Development/code/3rdParty/repositories/UnrealEngine && git pull && ./Setup.sh && ./GenerateProjectFiles.sh && make UE4Editor UE4Editor-Linux-Debug\"",
+	// 		"syntax": "JamUnrealBuildOutput.sublime-syntax"
+	// 	},
+	// 	{
+	// 		"file_regex": "^([a-zA-Z/][^:\n]*):([0-9]+):?([0-9]+)?:? (.*)$",
+	// 		"name": "Unreal Engine Build",
+	// 		"shell_cmd": "make",
+	// 		"syntax": "JamUnrealBuildOutput.sublime-syntax",
+	// 		"working_dir": "/home/macoy/Development/code/3rdParty/repositories/UnrealEngine"
+	// 	},
+	// 	{
+	// 		"file_regex": "^([a-zA-Z/][^:\n]*):([0-9]+):?([0-9]+)?:? (.*)$",
+	// 		"name": "Unreal Engine Build Debug",
+	// 		"shell_cmd": "make UE4Editor-Linux-Debug",
+	// 		"syntax": "JamUnrealBuildOutput.sublime-syntax",
+	// 		"working_dir": "/home/macoy/Development/code/3rdParty/repositories/UnrealEngine"
+	// 	},
+	// 	{
+	// 		"file_regex": "^([a-zA-Z/][^:\n]*):([0-9]+):?([0-9]+)?:? (.*)$",
+	// 		"name": "Unreal Engine Run (no debug)",
+	// 		"shell_cmd": "./Engine/Binaries/Linux/UE4Editor",
+	// 		"syntax": "JamUnrealBuildOutput.sublime-syntax",
+	// 		"working_dir": "/home/macoy/Development/code/3rdParty/repositories/UnrealEngine"
+	// 	},
+	// 	{
+	// 		"file_regex": "^([a-zA-Z/][^:\n]*):([0-9]+):?([0-9]+)?:? (.*)$",
+	// 		"name": "Jam Current Directory",
+	// 		"shell_cmd": "jam -j4 -q",
+	// 		"syntax": "JamUnrealBuildOutput.sublime-syntax"
+	// 	},
+	// 	{
+	// 		"file_regex": "^([a-zA-Z/][^:\n]*):([0-9]+):?([0-9]+)?:? (.*)$",
+	// 		"name": "Jam Clean All",
+	// 		"shell_cmd": "jam clean",
+	// 		"syntax": "JamUnrealBuildOutput.sublime-syntax",
+	// 		"working_dir": "$project_path/../../.."
+	// 	},
+	// 	{
+	// 		"file_regex": "^([a-zA-Z/][^:\n]*):([0-9]+):?([0-9]+)?:? (.*)$",
+	// 		"name": "Jam Build (not Unreal)",
+	// 		"shell_cmd": "jam -j4 -q",
+	// 		"syntax": "JamUnrealBuildOutput.sublime-syntax",
+	// 		"working_dir": "$project_path/../../.."
+	// 	},
+	// 	{
+	// 		"file_regex": "^([a-zA-Z/][^:\n]*):([0-9]+):?([0-9]+)?:? (.*)$",
+	// 		"name": "Jam Build Unreal",
+	// 		"shell_cmd": "jam -j4 -q -sUNREAL=true GalavantPseudotarget",
+	// 		"syntax": "JamUnrealBuildOutput.sublime-syntax",
+	// 		"working_dir": "$project_path/../../.."
+	// 	},
+	// 	{
+	// 		"name": "Guake Galavant",
+	// 		"shell_cmd": "guake -n Galavant -e \"cd Development/code/repositories/galavant\""
+	// 	},
+	// 	{
+	// 		"name": "Guake Galavant Unreal",
+	// 		"shell_cmd": "guake -n GalavantUnreal -e \"cd Development/code/repositories/galavant-unreal/GalavantUnreal\""
+	// 	},
+	// 	{
+	// 		"cmd":
+	// 		[
+	// 			"g++",
+	// 			"-c",
+	// 			"-std=c++11",
+	// 			"-g",
+	// 			"-Os",
+	// 			"-Wall",
+	// 			"$file"
+	// 		],
+	// 		"file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
+	// 		"name": "Compile C++11 File",
+	// 		"selector": "source.c++"
+	// 	},
+	// 	{
+	// 		"name": "Build All Experiments",
+	// 		"shell_cmd": "make",
+	// 		"working_dir": "$project_path/../../../src/experiments"
+	// 	},
+	// 	{
+	// 		"name": "List",
+	// 		"shell_cmd": "ls -l",
+	// 		"working_dir": "$project_path/../../.."
+	// 	}
+	],
+	"folders":
+	[
+		{
+			"file_include_patterns":
+			[
+				"*.c",
+				"*.cpp",
+				"*.h",
+				"*.hpp",
+				"*.txt",
+				"Jam*",
+				"*.md",
+				"*.tasks"
+			],
+			"folder_exclude_patterns":
+			[
+				"project",
+				"thirdParty"
+			],
+			"name": "7DRL",
+			"path": "/home/macoy/Development/code/repositories/7drl2018"
+		},
+		{
+			"file_include_patterns":
+			[
+				"*.c",
+				"*.cpp",
+				"*.h",
+				"*.hpp",
+				"*.txt",
+				"*.cs",
+				"*.md",
+				"*.sh"
+			],
+			"name": "Base2.0",
+			"path": "/home/macoy/Development/code/repositories/base2.0"
+		},
+	// 	{
+	// 		"name": "Game Data",
+	// 		"path": "/home/macoy/Development/code/repositories/galavant/gamedata"
+	// 	},
+	// 	{
+	// 		"name": "Data",
+	// 		"path": "/home/macoy/Development/code/repositories/galavant/data"
+	// 	},
+	// 	{
+	// 		"name": "Assets",
+	// 		"path": "/home/macoy/Development/code/repositories/galavant/assets"
+	// 	},
+		{
+			"file_include_patterns":
+			[
+				"*.c",
+				"*.cpp",
+				"*.h",
+				"*.hpp",
+				"*.txt",
+				"Jam*",
+				"*.md"
+			],
+			"name": "Galavant",
+			"path": "/home/macoy/Development/code/repositories/galavant"
+		},
+	// 	{
+	// 		"file_include_patterns":
+	// 		[
+	// 			"*.ini"
+	// 		],
+	// 		"name": "Config - Galavant Unreal",
+	// 		"path": "/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal"
+	// 	}
+	],
+}
