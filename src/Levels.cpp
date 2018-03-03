@@ -1,16 +1,37 @@
+#include "noise/noise.hpp"
+
 #include "Levels.hpp"
 
 #include "RLMap.hpp"
 
 void createTestMap(RLMap& map)
 {
-	for (int camY = 0; camY < map.Height; ++camY)
+	for (int tileY = 0; tileY < map.Height; ++tileY)
 	{
-		for (int camX = 0; camX < map.Width; ++camX)
+		for (int tileX = 0; tileX < map.Width; ++tileX)
 		{
-			if ((camY == 0 || camY == map.Height - 1) || (camX == 0 || camX == map.Width - 1))
+			if ((tileY == 0 || tileY == map.Height - 1) || (tileX == 0 || tileX == map.Width - 1))
 			{
-				RLTile& currentTile = map.At(camX, camY);
+				RLTile& currentTile = map.At(tileX, tileY);
+				currentTile.Type = WALL_TYPE;
+				currentTile.Color = {WALL_TILE_COLOR_NORMAL};
+			}
+		}
+	}
+}
+
+void createTestMap2(RLMap& map)
+{
+	static Noise2d noise(3158008);
+	const float scale = 0.1;
+	for (int tileY = 0; tileY < map.Height; ++tileY)
+	{
+		for (int tileX = 0; tileX < map.Width; ++tileX)
+		{
+			float noiseValue = noise.scaledOctaveNoise2d(tileX, tileY, 0, 255, 10, scale, 0.55, 2);
+			if (noiseValue < 100.f)
+			{
+				RLTile& currentTile = map.At(tileX, tileY);
 				currentTile.Type = WALL_TYPE;
 				currentTile.Color = {WALL_TILE_COLOR_NORMAL};
 			}

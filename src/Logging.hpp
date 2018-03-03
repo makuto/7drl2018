@@ -2,6 +2,7 @@
 
 // size_t
 #include <stddef.h>
+#include <string>
 
 // This file is based on PLog's interface but uses C strings only. See Plog:
 //  Plog - portable and simple log for C++
