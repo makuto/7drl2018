@@ -4,6 +4,26 @@
 		"selected_items":
 		[
 			[
+				"debu",
+				"debugText"
+			],
+			[
+				"init",
+				"initializeText"
+			],
+			[
+				"ini",
+				"initializeWindow"
+			],
+			[
+				"mai",
+				"main\tmain()"
+			],
+			[
+				"Base",
+				"Base20Pseudotarget"
+			],
+			[
 				"blood",
 				"bloodNeed"
 			],
@@ -494,42 +514,40 @@
 			[
 				"CombatCompo",
 				"CombatComponentManager.hpp\t(CombatComponentManager.cpp)"
-			],
-			[
-				"Resouce",
-				"ResourceDictionary.hpp\t(Needs.hpp)"
-			],
-			[
-				"Resource",
-				"ResourceKey\t(Needs.hpp)"
-			],
-			[
-				"Attack",
-				"AttackType"
-			],
-			[
-				"new",
-				"newPickups"
-			],
-			[
-				"Clear",
-				"ClearResources"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "/home/macoy/Development/code/repositories/galavant/TODO.tasks",
+			"file": "7DRL2018.sublime-project",
 			"settings":
 			{
-				"buffer_size": 7650,
+				"buffer_size": 1440,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/main.cpp",
+			"settings":
+			{
+				"buffer_size": 977,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/macoy/Development/code/repositories/horizon/src/main.cpp",
+			"settings":
+			{
+				"buffer_size": 15261,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		}
 	],
-	"build_system": "GalavantUnreal Cook",
+	"build_system": "Full Build",
 	"build_system_choices":
 	[
 		[
@@ -2827,6 +2845,90 @@
 				"Test compile",
 				""
 			]
+		],
+		[
+			[
+				[
+					"Full Build",
+					""
+				],
+				[
+					"Guake 7DRL",
+					""
+				],
+				[
+					"Run",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Full Build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Full Build",
+					""
+				],
+				[
+					"Run",
+					""
+				]
+			],
+			[
+				"Full Build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Full Build",
+					""
+				],
+				[
+					"Run",
+					""
+				],
+				[
+					"Packages/Markdown Preview/Markdown.sublime-build",
+					""
+				]
+			],
+			[
+				"Run",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Full Build (build Base2.0 and 7DRL)",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Full Build (build Base2.0 and 7DRL)",
+				""
+			]
 		]
 	],
 	"build_varint": "",
@@ -2836,6 +2938,22 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"move",
+				"File: Move"
+			],
+			[
+				"bro",
+				"Preferences: Browse Packages"
+			],
+			[
+				"pro",
+				"Project: Edit"
+			],
 			[
 				"save",
 				"Project: Save As"
@@ -2933,10 +3051,6 @@
 				"Package Control: Install Package"
 			],
 			[
-				"install",
-				"Package Control: Install Package"
-			],
-			[
 				"title",
 				"Convert Case: Title Case"
 			],
@@ -3007,10 +3121,6 @@
 			[
 				"result",
 				"Markdown Preview: Export HTML in Sublime Text"
-			],
-			[
-				"pro",
-				"Project: Edit"
 			],
 			[
 				"insta",
@@ -3148,9 +3258,27 @@
 	},
 	"expanded_folders":
 	[
+		"/home/macoy/Development/code/repositories/7drl2018",
+		"/home/macoy/Development/code/repositories/7drl2018/libs",
+		"/home/macoy/Development/code/repositories/7drl2018/libs/base2.0"
 	],
 	"file_history":
 	[
+		"/home/macoy/Development/code/repositories/7drl2018/Jamfile",
+		"/home/macoy/Development/code/repositories/7drl2018/libs/base2.0/graphics/graphics.hpp",
+		"/home/macoy/Development/code/repositories/7drl2018/Jamrules",
+		"/home/macoy/Development/code/repositories/base2.0/Jamfile",
+		"/home/macoy/Development/code/repositories/7drl2018/libs/Jamfile",
+		"/home/macoy/Development/code/repositories/7drl2018/README.md",
+		"/home/macoy/Development/code/repositories/base2.0/makefile",
+		"/home/macoy/Development/code/repositories/horizon/makefile",
+		"/home/macoy/Development/code/repositories/base2.0/pseudotarget.cpp",
+		"/home/macoy/Development/code/repositories/galavant/src/experiments/Jamfile",
+		"/home/macoy/Development/code/repositories/7drl2018/src/main.cpp",
+		"/home/macoy/Development/code/repositories/galavant/Jamfile",
+		"/home/macoy/Development/code/repositories/galavant/src/util/Jamfile",
+		"/home/macoy/Development/code/repositories/galavant/src/experiments/noise/Jamfile",
+		"/home/macoy/Development/code/repositories/galavant/TODO.tasks",
 		"/home/macoy/Development/code/repositories/galavant/src/game/agent/AgentComponentManager.cpp",
 		"/home/macoy/.config/qtile/config.py",
 		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source/GalavantUnreal/Characters/GalavantUnrealFPCharacter.h",
@@ -3221,7 +3349,6 @@
 		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Engine/Private/Components/PrimitiveComponent.cpp",
 		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Config/DefaultInput.ini",
 		"/home/macoy/.config/sublime-text-3/Packages/Default/arithmetic.py",
-		"/home/macoy/Development/code/repositories/galavant/TODO.tasks",
 		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source/GalavantUnreal/GalavantUnreal.Build.cs",
 		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source/GalavantUnreal/World/TestPolyVoxChunk.cpp",
 		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Config/DefaultEngine.ini",
@@ -3254,8 +3381,6 @@
 		"/home/macoy/Development/code/3rdParty/repositories/cereal/include/cereal/cereal.hpp",
 		"/home/macoy/Development/code/repositories/galavant/src/experiments/cereal/outFancy.json",
 		"/home/macoy/Development/code/3rdParty/repositories/cereal/include/cereal/details/traits.hpp",
-		"/home/macoy/Development/code/repositories/galavant/src/experiments/Jamfile",
-		"/home/macoy/Development/code/repositories/galavant/Jamfile",
 		"/home/macoy/Development/code/repositories/galavant/src/experiments/cereal/out.json",
 		"/home/macoy/Development/code/repositories/galavant/src/experiments/cereal/out.cereal",
 		"/home/macoy/Development/code/repositories/galavant/src/experiments/cereal/out.xml",
@@ -3266,19 +3391,7 @@
 		"/home/macoy/Development/code/repositories/galavant/src/entityComponentSystem/EntityTypes.cpp",
 		"/home/macoy/Development/code/repositories/galavant/deleteMe_packagingBad.log",
 		"/home/macoy/Development/code/repositories/galavant/src/entityComponentSystem/EntityComponentManager.hpp",
-		"/home/macoy/Development/code/repositories/galavant-unreal/.gitignore",
-		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Engine/Private/UnrealEngine.cpp",
-		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Plugins/Runtime/Steam/SteamVR/Source/SteamVR/Private/SteamVRHMD.cpp",
-		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/ThirdParty/OpenVR/OpenVRv1_0_7/headers/openvr.h",
-		"/build/glibc-bfm8X4/glibc-2.23/elf/dl-close.c",
-		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Editor/InputBindingEditor/Private/InputBindingEditorModule.cpp",
-		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Editor/MainFrame/Private/Menus/MainMenu.cpp",
-		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Editor/InputBindingEditor/Private/EditorKeyboardShortcutSettings.h",
-		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/CoreUObject/Private/UObject/UObjectGlobals.cpp",
-		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/CoreUObject/Private/UObject/UObjectBase.cpp",
-		"/home/macoy/Desktop/deleteMe_Cooking.log",
-		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source/GalavantUnreal/GalavantUnrealGameMode.cpp",
-		"/home/macoy/Development/code/repositories/galavant/src/entityComponentSystem/EntityComponentManager.cpp"
+		"/home/macoy/Development/code/repositories/galavant-unreal/.gitignore"
 	],
 	"find":
 	{
@@ -3368,6 +3481,19 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"debugText",
+			"Text",
+			"text",
+			"defaultText",
+			"initializeText",
+			"textToRender",
+			"100",
+			"Base20Pseudotarget",
+			".hpp",
+			".o:",
+			"$(FLAGS) \"",
+			".cpp",
+			"pool.o",
 			"arkchar",
 			"landed",
 			"characterAudio.h",
@@ -3482,20 +3608,7 @@
 			"deltaSeconds",
 			"g_GameplayTimeManager",
 			"Pause",
-			"pause",
-			"Pause",
-			"pause",
-			"GameplayTimeWorldTimeDelta",
-			"GetWorldTime(",
-			"PauseTimeToCatchUp",
-			"getworldtime(",
-			"packagingresults",
-			"invalid arguments",
-			"packagingresults",
-			"was unable to run successfully",
-			"automationtool was unable to run",
-			"Invalid Arguments",
-			"player"
+			"pause"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -3538,16 +3651,88 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/home/macoy/Development/code/repositories/galavant/TODO.tasks",
+					"file": "7DRL2018.sublime-project",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7650,
+						"buffer_size": 1440,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								703,
+								703
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"open_with_edit": true,
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+							"tabs_extra_last_activated": 1519074696.81,
+							"tabs_extra_last_activated_sheet_index": 0,
+							"tabs_extra_spawned": true,
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 613.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/main.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 977,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								234,
+								234
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tabs_extra_last_activated": 1519873643.04,
+							"tabs_extra_last_activated_sheet_index": 1,
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 225.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 2,
+					"file": "/home/macoy/Development/code/repositories/horizon/src/main.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 15261,
 						"regions":
 						{
 						},
@@ -3561,8 +3746,8 @@
 						"settings":
 						{
 							"git_gutter_is_enabled": true,
-							"syntax": "Packages/User/Tasks.sublime-syntax",
-							"tabs_extra_last_activated": 1519070622.92,
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tabs_extra_last_activated": 1519074793.52,
 							"tabs_extra_last_activated_sheet_index": 0,
 							"tabs_extra_spawned": true,
 							"translate_tabs_to_spaces": false
@@ -3571,7 +3756,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -3594,11 +3779,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.5,
 			1.0
 		],
 		"rows":
@@ -3645,6 +3837,26 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"READ",
+				"7DRL/README.md"
+			],
+			[
+				"main.",
+				"7DRL/src/main.cpp"
+			],
+			[
+				"jamfile",
+				"Galavant/src/experiments/Jamfile"
+			],
+			[
+				"jamfile util",
+				"Galavant/src/util/Jamfile"
+			],
+			[
+				"jamrules",
+				"Galavant/Jamrules"
+			],
 			[
 				"agentcompo",
 				"Galavant/src/game/agent/AgentComponentManager.cpp"
@@ -3820,10 +4032,6 @@
 			[
 				"agentcompon",
 				"Galavant/src/game/agent/AgentComponentManager.cpp"
-			],
-			[
-				"jamfile",
-				"Galavant/Jamfile"
 			],
 			[
 				"cereal",
@@ -4070,10 +4278,6 @@
 				"Galavant/src/Jamfile"
 			],
 			[
-				"jamrules",
-				"Galavant/Jamrules"
-			],
-			[
 				"testingjamf",
 				"Galavant/src/unitTesting/Jamfile"
 			],
@@ -4144,18 +4348,6 @@
 			[
 				"agentc",
 				"Galavant/src/game/agent/AgentComponentManager.cpp"
-			],
-			[
-				"en",
-				"Galavant/src/entityComponentSystem/EntityComponentManager.hpp"
-			],
-			[
-				"entityco",
-				"Galavant/src/entityComponentSystem/EntityComponentManager.hpp"
-			],
-			[
-				"compon",
-				"Galavant/src/entityComponentSystem/ComponentManager.cpp"
 			]
 		],
 		"width": 0.0

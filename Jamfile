@@ -2,7 +2,12 @@ SubDir . ;
 
 SubDirC++Flags $(ALLLIBSC++FLAGS) ;
 
-Main 7drl2018 : src/main.cpp ;
+Main 7drl2018 : src/main.cpp 
+                src/RLMap.cpp 
+                src/Levels.cpp 
+                src/Entity.cpp 
+                src/Logging.cpp 
+                ;
 
 LinkLibraries 7drl2018 : libBase20 ;
 
