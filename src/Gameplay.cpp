@@ -102,8 +102,8 @@ bool PlayGame()
 		skeleton[i].Type = SKELETON_TYPE;
 		skeleton[i].Color = {ENEMY_COLOR_NORMAL};
 		skeleton[i].Description = "skeleton";
-		skeleton[i].Stats["HP"] = {"Health", PLAYER_STARTING_MAX_HEALTH,
-		                           PLAYER_STARTING_MAX_HEALTH};
+		skeleton[i].Stats["HP"] = {"Health", PLAYER_STARTING_MAX_HEALTH, PLAYER_STARTING_MAX_HEALTH,
+		                           0, 0, -1};
 		gameState.npcs.push_back(&skeleton[i]);
 	}
 
@@ -172,6 +172,7 @@ bool PlayGame()
 			if (canMeleeAttack(gameState.player, deltaX, deltaY, gameState.npcs, &npcOut))
 			{
 				playerMeleeAttackNpcGuid = npcOut->Guid;
+				gameState.player.ThisTurnAction = PlayerAction::MeleeAttacked;
 				playerTurnPerformed = true;
 			}
 			else if (canMoveTo(gameState.player, deltaX, deltaY, currentMap))
@@ -193,12 +194,15 @@ bool PlayGame()
 			}
 			else
 			{
-				LOGI << "You bump into a wall";
+				LOGI << WALL_BUMP;
 			}
+		}
 
-			// Pass turn
-			if (gameInp.Tapped(inputCode::Numpad5) || gameInp.Tapped(inputCode::Period))
-				playerTurnPerformed = true;
+		// Pass turn
+		if (gameInp.Tapped(inputCode::Numpad5) || gameInp.Tapped(inputCode::Period))
+		{
+			playerTurnPerformed = true;
+			gameState.player.ThisTurnAction = PlayerAction::Rested;
 		}
 
 		// Perform camera snapping if outside bounds (note that we can move the view around with
@@ -240,6 +244,9 @@ bool PlayGame()
 				// Finished attack
 				playerMeleeAttackNpcGuid = 0;
 			}
+
+			// Update player
+			gameState.player.DoTurn();
 
 			// Update NPCs
 			for (RLEntity* npc : gameState.npcs)

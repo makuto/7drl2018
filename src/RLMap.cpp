@@ -49,8 +49,17 @@ void DrawWorld(RLMap& map, int camXOffset, int camYOffset)
 	{
 		for (int camX = 0; camX < MIN(map.Width, ViewTileWidth); ++camX)
 		{
+			const float fadeNoDisplay = 30.f;
+			const float fadeScale = 1.f;
+
 			int tileX = camX + camXOffset;
 			int tileY = camY + camYOffset;
+
+			float distanceFromPlayer =
+			    distanceTo(tileX, tileY, gameState.player.X, gameState.player.Y);
+			if (distanceFromPlayer > fadeNoDisplay)
+				continue;
+
 			RLTile* currentTile = map.At(tileX, tileY);
 
 			static std::string buffer = "";
@@ -85,14 +94,6 @@ void DrawWorld(RLMap& map, int camXOffset, int camYOffset)
 
 			if (!buffer.empty())
 			{
-				float distanceFromPlayer =
-				    distanceTo(tileX, tileY, gameState.player.X, gameState.player.Y);
-				const float fadeNoDisplay = 30.f;
-				const float fadeScale = 1.f;
-
-				if (distanceFromPlayer > fadeNoDisplay)
-					continue;
-
 				// Don't affect the opacity of monsters
 				if (!std::isalnum(buffer[0]))
 				{

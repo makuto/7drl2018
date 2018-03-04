@@ -47,7 +47,11 @@ void ConsoleAndGameLogOutput(const gv::Logging::Record& record)
 		    GameLog.back().size() < MAX_SINGLE_LOG_SIZE)
 		{
 			std::string& currentTurnLog = GameLog.back();
-			
+
+			// Yes, this is terrible. Don't display wall bump message more than once
+			if (currentTurnLog.find(WALL_BUMP) != std::string::npos && gameLogAction == WALL_BUMP)
+				return;
+
 			// Add divider
 			if (std::isalnum(currentTurnLog[currentTurnLog.size() - 1]))
 				currentTurnLog += ". ";

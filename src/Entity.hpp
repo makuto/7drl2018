@@ -14,10 +14,27 @@ struct RLCombatStat
 	int Max;
 	int Value;
 
+	int RestoreAmount;
+	// 0 = never
+	int RestoreRateTurns;
+	// -1 = never
+	int RestoreOnTurn;
+
 	// Safely add to stat (make sure it stays within range). Returns new value. Accepts negative
 	int Add(int delta);
 };
 typedef std::map<std::string, RLCombatStat> RLCombatStatistics;
+
+#define ForStat(varName, entityPtr)                                                \
+	for (std::pair<const std::string, RLCombatStat> & statPair : entityPtr->Stats) \
+	{                                                                              \
+		RLCombatStat& varName = statPair.second;
+#define ForStatName(varName, statVarName, entityPtr)                               \
+	for (std::pair<const std::string, RLCombatStat> & statPair : entityPtr->Stats) \
+	{                                                                              \
+		RLCombatStat& varName = statPair.second;                                   \
+		const std::string& statVarName = statPair.first;
+#define ForStatEnd() }
 
 class RLEntity
 {
@@ -44,9 +61,19 @@ public:
 	virtual void DoTurn();
 };
 
+enum class PlayerAction : int
+{
+	None = 0,
+
+	Rested,
+	MeleeAttacked
+};
+
 class Player : public RLEntity
 {
 public:
+	PlayerAction ThisTurnAction;
+
 	void Initialize();
 	Player();
 	virtual ~Player() = default;

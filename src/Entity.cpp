@@ -27,8 +27,20 @@ void Player::Initialize()
 	Speed = 1;
 	Description = "yourself";
 
-	Stats["HP"] = {"Health", PLAYER_STARTING_MAX_HEALTH, PLAYER_STARTING_MAX_HEALTH};
-	Stats["SP"] = {"Stamina", PLAYER_STARTING_MAX_STAMINA, PLAYER_STARTING_MAX_STAMINA};
+	Stats["HP"] = {"Health",
+	               PLAYER_STARTING_MAX_HEALTH,
+	               PLAYER_STARTING_MAX_HEALTH,
+	               PLAYER_STARTING_RESTORE_HEALTH,
+	               PLAYER_DEFAULT_RESTORE_RATE_HEALTH,
+	               -1};
+	Stats["SP"] = {"Stamina",
+	               PLAYER_STARTING_MAX_STAMINA,
+	               PLAYER_STARTING_MAX_STAMINA,
+	               PLAYER_STARTING_RESTORE_STAMINA,
+	               PLAYER_DEFAULT_RESTORE_RATE_STAMINA,
+	               -1};
+
+	ThisTurnAction = PlayerAction::None;
 }
 
 Player::Player()
@@ -77,9 +89,52 @@ RLEntity* findEntityById(std::vector<RLEntity*>& npcs, int id)
 void RLEntity::DoTurn()
 {
 }
+
 void Player::DoTurn()
 {
+	//
+	// Update stats
+	//
+	// Restore faster when resting
+	int restoreTurnBonus = 0;
+	switch (ThisTurnAction)
+	{
+		case PlayerAction::None:
+			restoreTurnBonus = 0;
+			break;
+		case PlayerAction::Rested:
+			restoreTurnBonus = PLAYER_RESTING_BONUS;
+			break;
+		case PlayerAction::MeleeAttacked:
+			restoreTurnBonus = PLAYER_MELEE_ATTACKING_BONUS;
+			break;
+		default:
+			break;
+	}
+
+	ForStatName(stat, statName, this)
+	{
+		// Special case: HP doesn't restore if stamina isn't full
+		if (statName == "HP" && Stats["SP"].Value != Stats["SP"].Max)
+			stat.RestoreOnTurn++;
+		else
+			stat.RestoreOnTurn -= restoreTurnBonus;
+
+
+		//LOGD << "Stat " << statName.c_str() << " Value " << stat.Value << " Restore on turn "
+		//     << stat.RestoreOnTurn;
+		if (TurnCounter >= stat.RestoreOnTurn)
+		{
+			stat.Add(stat.RestoreAmount);
+			stat.RestoreOnTurn = TurnCounter + stat.RestoreRateTurns;
+		}
+	}
+	ForStatEnd();
+
+	// Reset turn states
+	ThisTurnAction = PlayerAction::None;
 }
+
 void Enemy::DoTurn()
 {
 	// If we just died, turn into a corpse

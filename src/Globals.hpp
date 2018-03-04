@@ -2,7 +2,11 @@
 
 // Global.hpp is included by all files automatically
 
-#define CLAMP(value, min, max) if (value > max) value = max; else if (value < min) value = min; 
+#define CLAMP(value, min, max) \
+	if (value > max)           \
+		value = max;           \
+	else if (value < min)      \
+		value = min;
 #define MIN(a, b) (a <= b ? a : b)
 #define MAX(a, b) (a >= b ? a : b)
 
@@ -48,4 +52,18 @@
 // Combat constants
 //
 #define PLAYER_STARTING_MAX_HEALTH 100
+#define PLAYER_STARTING_RESTORE_HEALTH 10
+#define PLAYER_DEFAULT_RESTORE_RATE_HEALTH 10
+
 #define PLAYER_STARTING_MAX_STAMINA 100
+#define PLAYER_STARTING_RESTORE_STAMINA 10
+#define PLAYER_DEFAULT_RESTORE_RATE_STAMINA 5
+
+// If the player rests, the number of turns to restore goes down by this number
+#define PLAYER_RESTING_BONUS 1
+#define PLAYER_MELEE_ATTACKING_BONUS -1
+
+//
+// Strings
+//
+#define WALL_BUMP "You bump into a wall"
