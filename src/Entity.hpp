@@ -69,3 +69,5 @@ bool canMeleeAttack(RLEntity& entity, int deltaX, int deltaY, std::vector<RLEnti
                     RLEntity** npcOut);
 
 RLEntity* findEntityById(std::vector<RLEntity*>& npcs, int id);
+
+void UpdateCameraOffset(RLEntity* cameraTrackingEntity, int& camXOffset, int& camYOffset);

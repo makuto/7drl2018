@@ -55,3 +55,27 @@ void ConsoleAndGameLogOutput(const gv::Logging::Record& record)
 		}
 	}
 }
+
+void RecalculateDimensions()
+{
+	TileTextWidth = TileTextHeight / 2;
+
+	ViewTileRightMargin = SidebarTileWidth + 1;
+	ViewTileWidth = (WindowWidth / TileTextWidth) - ViewTileRightMargin;
+	ViewTileHeight = (WindowHeight / TileTextHeight) - ViewTileBottomMargin;
+
+	CamSnapLeftBounds = ViewTileWidth * .2f;
+	CamSnapTopBounds = ViewTileHeight * .2f;
+	CamSnapRightBounds = ViewTileWidth * .8f;
+	CamSnapBottomBounds = ViewTileHeight * .8f;
+
+	SidebarStartX = (ViewTileWidth + 1) * TileTextWidth;
+	SidebarStartY = 0 * TileTextHeight;
+
+	LogY = ViewTileHeight * TileTextHeight;
+}
+
+void SetTextColor(text& text, RLColor& color)
+{
+	text.setColor(color.r, color.g, color.b, color.a);
+}
