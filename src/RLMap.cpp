@@ -3,6 +3,8 @@
 #include "Game.hpp"
 #include "Utilities.hpp"
 
+#include "math/math.hpp"
+
 std::string GetTileDescription(RLTile& tile)
 {
 	std::string description = "";
@@ -83,6 +85,26 @@ void DrawWorld(RLMap& map, int camXOffset, int camYOffset)
 
 			if (!buffer.empty())
 			{
+				float distanceFromPlayer =
+				    distanceTo(tileX, tileY, gameState.player.X, gameState.player.Y);
+				const float fadeNoDisplay = 30.f;
+				const float fadeScale = 1.f;
+
+				if (distanceFromPlayer > fadeNoDisplay)
+					continue;
+
+				// Don't affect the opacity of monsters
+				if (!std::isalnum(buffer[0]))
+				{
+					float fadeDistance = distanceFromPlayer * fadeScale;
+					CLAMP(fadeDistance, 0.f, 100.f);
+					// char newAlpha = 255 / (fadeDistance * fadeDistance * fadeDistance);
+					distanceFromPlayer /= 2.f;
+					CLAMP(distanceFromPlayer, 0.f, 254.f);
+					char newAlpha = 255 - (distanceFromPlayer * distanceFromPlayer);
+					displayText.setAlpha(newAlpha);
+				}
+
 				displayText.setText(buffer);
 				displayText.setPosition(TileTextWidth * camX, TileTextHeight * camY);
 				win.draw(&displayText);

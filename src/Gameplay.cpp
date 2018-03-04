@@ -89,9 +89,9 @@ bool PlayGame()
 
 	RLEntity lookModeCursor;
 
-	RLMap testMap(ViewTileWidth, ViewTileHeight);
-	// createTestMap(testMap);
-	createTestMapNoise(testMap);
+	RLMap currentMap(ViewTileWidth, ViewTileHeight);
+	// createTestMap(currentMap);
+	createTestMapNoise(currentMap);
 
 	Enemy skeleton[3];
 	for (int i = 0; i < 3; ++i)
@@ -174,7 +174,7 @@ bool PlayGame()
 				playerMeleeAttackNpcGuid = npcOut->Guid;
 				playerTurnPerformed = true;
 			}
-			else if (canMoveTo(gameState.player, deltaX, deltaY, testMap))
+			else if (canMoveTo(gameState.player, deltaX, deltaY, currentMap))
 			{
 				gameState.player.X += deltaX;
 				gameState.player.Y += deltaY;
@@ -258,7 +258,7 @@ bool PlayGame()
 		//
 		// Draw map, npcs, player, etc.
 		//
-		DrawWorld(testMap, camXOffset, camYOffset);
+		DrawWorld(currentMap, camXOffset, camYOffset);
 
 		// Draw look mode cursor
 		if (lookMode)
@@ -282,7 +282,7 @@ bool PlayGame()
 		if (lookMode)
 		{
 			std::string description;
-			RLTile* lookTile = testMap.At(lookModeCursor.X, lookModeCursor.Y);
+			RLTile* lookTile = currentMap.At(lookModeCursor.X, lookModeCursor.Y);
 			std::string tileDescription = lookTile ? GetTileDescription(*lookTile) : "";
 			std::string npcDescription;
 			for (RLEntity* npc : gameState.npcs)
