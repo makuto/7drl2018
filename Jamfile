@@ -7,6 +7,8 @@ Main 7drl2018 : src/main.cpp
                 src/Levels.cpp 
                 src/Entity.cpp 
                 src/Logging.cpp 
+                src/Utilities.cpp 
+                src/PlayerDeadScreen.cpp 
                 ;
 
 LinkLibraries 7drl2018 : libBase20 ;

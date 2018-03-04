@@ -5,17 +5,19 @@
 #include "graphics/graphics.hpp"
 #include "input/input.hpp"
 
+#include "Game.hpp"
+#include "GameInput.hpp"
 #include "RLMap.hpp"
-
+#include "Utilities.hpp"
 #include "Entity.hpp"
 #include "Levels.hpp"
 
-#define MAX_SINGLE_LOG_SIZE 300
+#include "PlayerDeadScreen.hpp"
 
-static int TurnCounter = 0;
+int TurnCounter = 0;
 
-static std::vector<std::string> GameLog;
-static int lastTurnLog = 0;
+std::vector<std::string> GameLog;
+int lastTurnLog = 0;
 
 //
 // Dimensions (-1 = RecalculateDimensions() figures it out)
@@ -44,55 +46,10 @@ int SidebarStartY = -1;
 int LogX = 10;
 int LogY = -1;
 
-// @Callback: CustomLogOutputFunc
-void ConsoleAndGameLogOutput(const gv::Logging::Record& record)
-{
-	bool IsWarning = (record.severity == gv::Logging::Severity::warning);
-	bool IsError = (record.severity <= gv::Logging::Severity::error);
-	bool IsInfo = (record.severity == gv::Logging::Severity::info);
-
-	static char funcNameBuffer[256];
-	gv::Logging::FormatFuncName(funcNameBuffer, record.Function, sizeof(funcNameBuffer));
-
-	static char buffer[2048];
-	if (IsInfo)
-		snprintf(buffer, sizeof(buffer), "%s", record.OutBuffer);
-	else
-		snprintf(buffer, sizeof(buffer), "%s():%lu: %s", funcNameBuffer, (unsigned long)record.Line,
-		         record.OutBuffer);
-
-	if (IsError)
-	{
-		std::cout << "Error:   " << buffer << "\n" << std::flush;
-	}
-	else if (IsWarning)
-	{
-		std::cout << "Warning: " << buffer << "\n" << std::flush;
-	}
-	else
-	{
-		std::cout << "Log:     " << buffer << "\n" << std::flush;
-	}
-
-	if (IsInfo)
-	{
-		std::string gameLogAction(buffer);
-
-		// Append logs to the same line if they occur on the same turn
-		if (lastTurnLog == TurnCounter && !GameLog.empty() && gameLogAction != GameLog.back() &&
-		    GameLog.back().size() < MAX_SINGLE_LOG_SIZE)
-		{
-			std::string& currentTurnLog = GameLog.back();
-			currentTurnLog += ". ";
-			currentTurnLog += gameLogAction;
-		}
-		else
-		{
-			GameLog.push_back(gameLogAction);
-			lastTurnLog = TurnCounter;
-		}
-	}
-}
+window win(WindowWidth, WindowHeight, "7DRL 2018 by Makuto");
+inputManager inp(&win);
+text displayText;
+GameInput gameInp(inp);
 
 static gv::Logging::Logger s_GameLogger(gv::Logging::Severity::debug, &ConsoleAndGameLogOutput);
 
@@ -115,77 +72,9 @@ void initializeDisplayText(text& text)
 		LOGE << "Error: Cannot load default text font. Nothing will work\n";
 }
 
-struct GameInput
-{
-	inputManager& inp;
-	std::map<inputCode::keyCode, bool> keyTapStates;
-
-	GameInput(inputManager& newInput) : inp(newInput)
-	{
-	}
-
-	bool Tapped(inputCode::keyCode key)
-	{
-		bool isPressed = inp.isPressed(key);
-
-		std::map<inputCode::keyCode, bool>::iterator findIt = keyTapStates.find(key);
-		if (findIt != keyTapStates.end())
-		{
-			if (isPressed)
-			{
-				if (findIt->second)
-				{
-					// Wasn't tapped this frame
-					return false;
-				}
-				else
-				{
-					findIt->second = true;
-					return true;
-				}
-			}
-			else
-				findIt->second = false;
-		}
-		else
-		{
-			keyTapStates[key] = true;
-			return isPressed;
-		}
-
-		return false;
-	}
-};
-
 void SetTextColor(text& text, RLColor& color)
 {
 	text.setColor(color.r, color.g, color.b, color.a);
-}
-
-bool canMeleeAttack(RLEntity& entity, int deltaX, int deltaY, std::vector<RLEntity>& npcs,
-                    RLEntity** npcOut)
-{
-	for (RLEntity& npc : npcs)
-	{
-		if (entity.X + deltaX == npc.X && entity.Y + deltaY == npc.Y)
-		{
-			*npcOut = &npc;
-			return true;
-		}
-	}
-	*npcOut = nullptr;
-	return false;
-}
-
-RLEntity* findEntityById(std::vector<RLEntity>& npcs, int id)
-{
-	for (RLEntity& npc : npcs)
-	{
-		if (npc.Guid == id)
-			return &npc;
-	}
-
-	return nullptr;
 }
 
 void RecalculateDimensions()
@@ -222,13 +111,18 @@ void UpdateCameraOffset(RLEntity* cameraTrackingEntity, int& camXOffset, int& ca
 	}
 }
 
-window win(WindowWidth, WindowHeight, "7DRL 2018 by Makuto");
-inputManager inp(&win);
-
 bool PlayGame();
 int main(int argc, char const* argv[])
 {
 	initializeWindow(win);
+	RecalculateDimensions();
+
+	//
+	// Display initialization
+	//
+	initializeDisplayText(displayText);
+	displayText.setSize(TileTextHeight);
+	displayText.setColor(WALL_TILE_COLOR_NORMAL);
 
 	bool shouldRestart = true;
 	while (shouldRestart)
@@ -242,16 +136,6 @@ bool PlayGame()
 	RecalculateDimensions();
 
 	LOGI << "Hello 7DRL!\n";
-
-	//
-	// Display initialization
-	//
-	GameInput gameInp(inp);
-
-	text displayText;
-	initializeDisplayText(displayText);
-	displayText.setSize(TileTextHeight);
-	displayText.setColor(WALL_TILE_COLOR_NORMAL);
 
 	//
 	// Reset globals
@@ -327,34 +211,7 @@ bool PlayGame()
 		int deltaX = 0;
 		int deltaY = 0;
 
-		if (gameInp.Tapped(inputCode::Up) || gameInp.Tapped(inputCode::Numpad8))
-			deltaY = -1;
-		if (gameInp.Tapped(inputCode::Down) || gameInp.Tapped(inputCode::Numpad2))
-			deltaY = 1;
-		if (gameInp.Tapped(inputCode::Left) || gameInp.Tapped(inputCode::Numpad4))
-			deltaX = -1;
-		if (gameInp.Tapped(inputCode::Right) || gameInp.Tapped(inputCode::Numpad6))
-			deltaX = 1;
-		if (gameInp.Tapped(inputCode::Numpad9))
-		{
-			deltaX = 1;
-			deltaY = -1;
-		}
-		if (gameInp.Tapped(inputCode::Numpad3))
-		{
-			deltaX = 1;
-			deltaY = 1;
-		}
-		if (gameInp.Tapped(inputCode::Numpad1))
-		{
-			deltaX = -1;
-			deltaY = 1;
-		}
-		if (gameInp.Tapped(inputCode::Numpad7))
-		{
-			deltaX = -1;
-			deltaY = -1;
-		}
+		gameInp.GetInpDirectionalNavigation(deltaX, deltaY);
 
 		if (lookMode)
 		{
@@ -599,57 +456,7 @@ bool PlayGame()
 
 	if (playerDead)
 	{
-		while (!win.shouldClose() && !inp.isPressed(inputCode::Return))
-		{
-			// Quick restart
-			if (inp.isPressed(inputCode::Space))
-				return true;
-
-			int centerOffset = 10;
-			int centerTextX = ((ViewTileWidth / 2) - centerOffset) * TileTextWidth;
-			int centerTextY = ((ViewTileHeight / 2) - centerOffset) * TileTextHeight;
-
-			displayText.setText("You have died!");
-			displayText.setColor(LOG_COLOR_DEAD);
-			displayText.setPosition(centerTextX, centerTextY);
-			win.draw(&displayText);
-
-			displayText.setColor(LOG_COLOR_NORMAL);
-			centerTextY += TileTextHeight * 3;
-			displayText.setPosition(centerTextX, centerTextY);
-			displayText.setText("Press space to restart.");
-			win.draw(&displayText);
-
-			if (GameLog.size())
-			{
-				centerTextY += TileTextHeight * 4;
-				displayText.setText("Log (last ten entries):");
-				displayText.setColor(LOG_COLOR_NORMAL);
-				displayText.setPosition(centerTextX, centerTextY);
-				win.draw(&displayText);
-				centerTextY += TileTextHeight;
-				centerTextX += 48;
-				int numLogEntriesDisplayed = 0;
-				for (std::vector<std::string>::reverse_iterator i = GameLog.rbegin();
-				     i != GameLog.rend(); ++i)
-				{
-					displayText.setText((*i));
-
-					// The last entry was the thing which killed us
-					if (!numLogEntriesDisplayed)
-						displayText.setColor(LOG_COLOR_DEAD);
-					else
-						displayText.setColor(LOG_COLOR_NORMAL);
-					displayText.setPosition(centerTextX, centerTextY);
-					centerTextY += TileTextHeight;
-					win.draw(&displayText);
-
-					if (++numLogEntriesDisplayed > 10)
-						break;
-				}
-			}
-			win.update();
-		}
+		return PlayerDeadScreen();
 	}
 
 	return false;

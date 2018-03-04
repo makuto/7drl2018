@@ -46,3 +46,8 @@ struct Player : RLEntity
 };
 
 bool canMoveTo(RLEntity& entity, int deltaX, int deltaY, RLMap& map);
+
+bool canMeleeAttack(RLEntity& entity, int deltaX, int deltaY, std::vector<RLEntity>& npcs,
+                    RLEntity** npcOut);
+
+RLEntity* findEntityById(std::vector<RLEntity>& npcs, int id);
