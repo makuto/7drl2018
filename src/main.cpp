@@ -10,9 +10,39 @@
 #include "Entity.hpp"
 #include "Levels.hpp"
 
+#define MAX_SINGLE_LOG_SIZE 300
+
 static int TurnCounter = 0;
 
 static std::vector<std::string> GameLog;
+static int lastTurnLog = 0;
+
+//
+// Dimensions (-1 = RecalculateDimensions() figures it out)
+//
+int WindowWidth = 2500;
+int WindowHeight = 1600;
+
+int TileTextHeight = 32;
+int TileTextWidth = -1;
+
+int SidebarTileWidth = 15;
+
+int ViewTileRightMargin = -1;
+int ViewTileBottomMargin = 2;
+int ViewTileWidth = -1;
+int ViewTileHeight = -1;
+
+int CamSnapLeftBounds = -1;
+int CamSnapTopBounds = -1;
+int CamSnapRightBounds = -1;
+int CamSnapBottomBounds = -1;
+
+int SidebarStartX = -1;
+int SidebarStartY = -1;
+
+int LogX = 10;
+int LogY = -1;
 
 // @Callback: CustomLogOutputFunc
 void ConsoleAndGameLogOutput(const gv::Logging::Record& record)
@@ -46,12 +76,11 @@ void ConsoleAndGameLogOutput(const gv::Logging::Record& record)
 
 	if (IsInfo)
 	{
-		static int lastTurnLog = 0;
-
 		std::string gameLogAction(buffer);
 
 		// Append logs to the same line if they occur on the same turn
-		if (lastTurnLog == TurnCounter && !GameLog.empty() && gameLogAction != GameLog.back())
+		if (lastTurnLog == TurnCounter && !GameLog.empty() && gameLogAction != GameLog.back() &&
+		    GameLog.back().size() < MAX_SINGLE_LOG_SIZE)
 		{
 			std::string& currentTurnLog = GameLog.back();
 			currentTurnLog += ". ";
@@ -83,7 +112,7 @@ void initializeWindow(window& win)
 void initializeDisplayText(text& text)
 {
 	if (!text.loadFont("data/fonts/UbuntuMono-R.ttf"))
-		std::cout << "err: cannot load default text font\n";
+		LOGE << "Error: Cannot load default text font. Nothing will work\n";
 }
 
 struct GameInput
@@ -133,36 +162,90 @@ void SetTextColor(text& text, RLColor& color)
 	text.setColor(color.r, color.g, color.b, color.a);
 }
 
+bool canMeleeAttack(RLEntity& entity, int deltaX, int deltaY, std::vector<RLEntity>& npcs,
+                    RLEntity** npcOut)
+{
+	for (RLEntity& npc : npcs)
+	{
+		if (entity.X + deltaX == npc.X && entity.Y + deltaY == npc.Y)
+		{
+			*npcOut = &npc;
+			return true;
+		}
+	}
+	*npcOut = nullptr;
+	return false;
+}
+
+RLEntity* findEntityById(std::vector<RLEntity>& npcs, int id)
+{
+	for (RLEntity& npc : npcs)
+	{
+		if (npc.Guid == id)
+			return &npc;
+	}
+
+	return nullptr;
+}
+
+void RecalculateDimensions()
+{
+	TileTextWidth = TileTextHeight / 2;
+
+	ViewTileRightMargin = SidebarTileWidth + 1;
+	ViewTileWidth = (WindowWidth / TileTextWidth) - ViewTileRightMargin;
+	ViewTileHeight = (WindowHeight / TileTextHeight) - ViewTileBottomMargin;
+
+	CamSnapLeftBounds = ViewTileWidth * .2f;
+	CamSnapTopBounds = ViewTileHeight * .2f;
+	CamSnapRightBounds = ViewTileWidth * .8f;
+	CamSnapBottomBounds = ViewTileHeight * .8f;
+
+	SidebarStartX = (ViewTileWidth + 1) * TileTextWidth;
+	SidebarStartY = 0 * TileTextHeight;
+
+	LogY = ViewTileHeight * TileTextHeight;
+}
+
+void UpdateCameraOffset(RLEntity* cameraTrackingEntity, int& camXOffset, int& camYOffset)
+{
+	if (!cameraTrackingEntity)
+		return;
+
+	if (cameraTrackingEntity->X - camXOffset < CamSnapLeftBounds ||
+	    cameraTrackingEntity->Y - camYOffset < CamSnapTopBounds ||
+	    cameraTrackingEntity->X - camXOffset > CamSnapRightBounds ||
+	    cameraTrackingEntity->Y - camYOffset > CamSnapBottomBounds)
+	{
+		camXOffset = cameraTrackingEntity->X - (ViewTileWidth / 2);
+		camYOffset = cameraTrackingEntity->Y - (ViewTileHeight / 2);
+	}
+}
+
+window win(WindowWidth, WindowHeight, "7DRL 2018 by Makuto");
+inputManager inp(&win);
+
+bool PlayGame();
 int main(int argc, char const* argv[])
 {
-	const int WindowWidth = 2500;
-	const int WindowHeight = 1600;
+	initializeWindow(win);
 
-	const int TileTextHeight = 32;
-	const int TileTextWidth = TileTextHeight / 2;
+	bool shouldRestart = true;
+	while (shouldRestart)
+		shouldRestart = PlayGame();
 
-	const int SidebarTileWidth = 30;
+	return 0;
+}
 
-	const int ViewTileRightMargin = SidebarTileWidth + 1;
-	const int ViewTileBottomMargin = 2;
-	const int ViewTileWidth = (WindowWidth / TileTextWidth) - ViewTileRightMargin;
-	const int ViewTileHeight = (WindowHeight / TileTextHeight) - ViewTileBottomMargin;
-
-	const int SidebarStartX = (ViewTileWidth + 1) * TileTextWidth;
-	const int SidebarStartY = 0 * TileTextHeight;
-
-	const int LogX = 10;
-	const int LogY = ViewTileHeight * TileTextHeight;
+bool PlayGame()
+{
+	RecalculateDimensions();
 
 	LOGI << "Hello 7DRL!\n";
 
 	//
-	// Window / input initialization
+	// Display initialization
 	//
-	window win(WindowWidth, WindowHeight, "7DRL 2018 by Macoy Madson");
-	initializeWindow(win);
-
-	inputManager inp(&win);
 	GameInput gameInp(inp);
 
 	text displayText;
@@ -171,9 +254,14 @@ int main(int argc, char const* argv[])
 	displayText.setColor(WALL_TILE_COLOR_NORMAL);
 
 	//
+	// Reset globals
+	//
+	GameLog.clear();
+	TurnCounter = 0;
+
+	//
 	// Game initialization
 	//
-
 	Player player;
 	player.X = ViewTileWidth / 2;
 	player.Y = ViewTileHeight / 2;
@@ -182,7 +270,7 @@ int main(int argc, char const* argv[])
 
 	RLMap testMap(ViewTileWidth, ViewTileHeight);
 	// createTestMap(testMap);
-	createTestMap2(testMap);
+	createTestMapNoise(testMap);
 
 	RLEntity skeleton;
 	skeleton.X = (ViewTileWidth / 2) + 3;
@@ -195,10 +283,15 @@ int main(int argc, char const* argv[])
 
 	std::vector<RLEntity> npcs{skeleton};
 
+	int playerMeleeAttackNpcGuid = 0;
+
 	int camXOffset = 0;
 	int camYOffset = 0;
+	RLEntity* cameraTrackingEntity = nullptr;
+	UpdateCameraOffset(&player, camXOffset, camYOffset);
 
 	bool lookMode = false;
+	bool playerDead = false;
 
 	while (!win.shouldClose() && !inp.isPressed(inputCode::Return))
 	{
@@ -233,14 +326,35 @@ int main(int argc, char const* argv[])
 		// Directional navigation
 		int deltaX = 0;
 		int deltaY = 0;
-		if (gameInp.Tapped(inputCode::Up))
-			deltaY -= 1;
-		if (gameInp.Tapped(inputCode::Down))
-			deltaY += 1;
-		if (gameInp.Tapped(inputCode::Left))
-			deltaX -= 1;
-		if (gameInp.Tapped(inputCode::Right))
-			deltaX += 1;
+
+		if (gameInp.Tapped(inputCode::Up) || gameInp.Tapped(inputCode::Numpad8))
+			deltaY = -1;
+		if (gameInp.Tapped(inputCode::Down) || gameInp.Tapped(inputCode::Numpad2))
+			deltaY = 1;
+		if (gameInp.Tapped(inputCode::Left) || gameInp.Tapped(inputCode::Numpad4))
+			deltaX = -1;
+		if (gameInp.Tapped(inputCode::Right) || gameInp.Tapped(inputCode::Numpad6))
+			deltaX = 1;
+		if (gameInp.Tapped(inputCode::Numpad9))
+		{
+			deltaX = 1;
+			deltaY = -1;
+		}
+		if (gameInp.Tapped(inputCode::Numpad3))
+		{
+			deltaX = 1;
+			deltaY = 1;
+		}
+		if (gameInp.Tapped(inputCode::Numpad1))
+		{
+			deltaX = -1;
+			deltaY = 1;
+		}
+		if (gameInp.Tapped(inputCode::Numpad7))
+		{
+			deltaX = -1;
+			deltaY = -1;
+		}
 
 		if (lookMode)
 		{
@@ -249,11 +363,21 @@ int main(int argc, char const* argv[])
 				lookModeCursor.X += deltaX;
 				lookModeCursor.Y += deltaY;
 			}
+
+			cameraTrackingEntity = &lookModeCursor;
 		}
+		// Player control
 		else
 		{
-			// Player movement
-			if (canMoveTo(player, deltaX, deltaY, testMap))
+			cameraTrackingEntity = &player;
+
+			RLEntity* npcOut = nullptr;
+			if (canMeleeAttack(player, deltaX, deltaY, npcs, &npcOut))
+			{
+				playerMeleeAttackNpcGuid = npcOut->Guid;
+				playerTurnPerformed = true;
+			}
+			else if (canMoveTo(player, deltaX, deltaY, testMap))
 			{
 				player.X += deltaX;
 				player.Y += deltaY;
@@ -268,7 +392,15 @@ int main(int argc, char const* argv[])
 			{
 				LOGI << "You bump into a wall";
 			}
+
+			// Pass turn
+			if (gameInp.Tapped(inputCode::Numpad5) || gameInp.Tapped(inputCode::Period))
+				playerTurnPerformed = true;
 		}
+
+		// Perform camera snapping if outside bounds (note that we can move the view around with
+		// look mode as well)
+		UpdateCameraOffset(cameraTrackingEntity, camXOffset, camYOffset);
 
 		//
 		// Turn update
@@ -276,6 +408,39 @@ int main(int argc, char const* argv[])
 		if (playerTurnPerformed)
 		{
 			TurnCounter++;
+
+			// Handle melee combat
+			if (playerMeleeAttackNpcGuid)
+			{
+				RLEntity* attackedNpc = findEntityById(npcs, playerMeleeAttackNpcGuid);
+				if (attackedNpc)
+				{
+					int damage = 10;
+					int staminaCost = 10;
+					// If out of stamina, take it out of health
+					int healthCost = player.Stats["SP"].Value < staminaCost ?
+					                     player.Stats["SP"].Value - staminaCost :
+					                     0;
+					player.Stats["SP"].Add(-10);
+					player.Stats["HP"].Add(healthCost);
+
+					attackedNpc->Stats["HP"].Value -= damage;
+					LOGI << "You hit " << attackedNpc->Description.c_str() << " for " << damage
+					     << " damage";
+					if (healthCost)
+						LOGI << "You feel weaker from exertion";
+				}
+
+				// Finished attack
+				playerMeleeAttackNpcGuid = 0;
+			}
+
+			if (!player.Stats["HP"].Value)
+			{
+				LOGI << "You died!";
+				playerDead = true;
+				break;
+			}
 		}
 
 		//
@@ -285,9 +450,9 @@ int main(int argc, char const* argv[])
 		{
 			for (int camX = 0; camX < MIN(testMap.Width, ViewTileWidth); ++camX)
 			{
-				int tileX = camX - camXOffset;
-				int tileY = camY - camYOffset;
-				RLTile& currentTile = testMap.At(tileX, tileY);
+				int tileX = camX + camXOffset;
+				int tileY = camY + camYOffset;
+				RLTile* currentTile = testMap.At(tileX, tileY);
 
 				static std::string buffer = "";
 				buffer.clear();
@@ -312,8 +477,13 @@ int main(int argc, char const* argv[])
 				}
 				else if (buffer.empty())
 				{
-					buffer += currentTile.Type;
-					SetTextColor(displayText, currentTile.Color);
+					if (currentTile)
+					{
+						buffer += currentTile->Type;
+						SetTextColor(displayText, currentTile->Color);
+					}
+					else
+						buffer += " ";
 				}
 
 				displayText.setText(buffer);
@@ -328,8 +498,8 @@ int main(int argc, char const* argv[])
 			static std::string lookModeCursorText(LOOK_MODE_CURSOR);
 			displayText.setText(lookModeCursorText);
 			displayText.setColor(LOOK_CURSOR_COLOR);
-			displayText.setPosition(TileTextWidth * lookModeCursor.X,
-			                        TileTextHeight * lookModeCursor.Y);
+			displayText.setPosition(TileTextWidth * (lookModeCursor.X - camXOffset),
+			                        TileTextHeight * (lookModeCursor.Y - camYOffset));
 			win.draw(&displayText);
 		}
 
@@ -338,8 +508,8 @@ int main(int argc, char const* argv[])
 		//
 		{
 			int currentRowY = SidebarStartY;
-			displayText.setColor(LOG_COLOR_NORMAL);
-			displayText.setText("Stats");
+			displayText.setColor(STATUS_COLOR_UNIMPORTANT);
+			displayText.setText("Status");
 			displayText.setPosition(SidebarStartX, SidebarStartY);
 			win.draw(&displayText);
 			currentRowY += TileTextHeight * 2;
@@ -357,9 +527,22 @@ int main(int argc, char const* argv[])
 
 				displayText.setPosition(SidebarStartX, currentRowY);
 				displayText.setText(statText);
+				// If at the last 20% of the stat, emphasize it
+				if (stat.second.Value <= stat.second.Max * .20f)
+					displayText.setColor(STATUS_COLOR_IMPORTANT);
+				else
+					displayText.setColor(STATUS_COLOR_NORMAL);
 				win.draw(&displayText);
 				currentRowY += TileTextHeight;
 			}
+
+			currentRowY += TileTextHeight;
+			displayText.setPosition(SidebarStartX, currentRowY);
+			std::string turnDisplay = "Turn ";
+			turnDisplay += std::to_string(TurnCounter);
+			displayText.setColor(STATUS_COLOR_UNIMPORTANT);
+			displayText.setText(turnDisplay);
+			win.draw(&displayText);
 		}
 
 		//
@@ -368,8 +551,8 @@ int main(int argc, char const* argv[])
 		if (lookMode)
 		{
 			std::string description;
-			RLTile& lookTile = testMap.At(lookModeCursor.X, lookModeCursor.Y);
-			std::string tileDescription = GetTileDescription(lookTile);
+			RLTile* lookTile = testMap.At(lookModeCursor.X, lookModeCursor.Y);
+			std::string tileDescription = lookTile ? GetTileDescription(*lookTile) : "";
 			std::string npcDescription;
 			for (RLEntity& npc : npcs)
 			{
@@ -403,7 +586,7 @@ int main(int argc, char const* argv[])
 
 			win.draw(&displayText);
 		}
-		else if (GameLog.size())
+		else if (GameLog.size() && lastTurnLog == TurnCounter)
 		{
 			displayText.setText(GameLog.back());
 			displayText.setColor(LOG_COLOR_NORMAL);
@@ -414,5 +597,60 @@ int main(int argc, char const* argv[])
 		win.update();
 	}
 
-	return 0;
+	if (playerDead)
+	{
+		while (!win.shouldClose() && !inp.isPressed(inputCode::Return))
+		{
+			// Quick restart
+			if (inp.isPressed(inputCode::Space))
+				return true;
+
+			int centerOffset = 10;
+			int centerTextX = ((ViewTileWidth / 2) - centerOffset) * TileTextWidth;
+			int centerTextY = ((ViewTileHeight / 2) - centerOffset) * TileTextHeight;
+
+			displayText.setText("You have died!");
+			displayText.setColor(LOG_COLOR_DEAD);
+			displayText.setPosition(centerTextX, centerTextY);
+			win.draw(&displayText);
+
+			displayText.setColor(LOG_COLOR_NORMAL);
+			centerTextY += TileTextHeight * 3;
+			displayText.setPosition(centerTextX, centerTextY);
+			displayText.setText("Press space to restart.");
+			win.draw(&displayText);
+
+			if (GameLog.size())
+			{
+				centerTextY += TileTextHeight * 4;
+				displayText.setText("Log (last ten entries):");
+				displayText.setColor(LOG_COLOR_NORMAL);
+				displayText.setPosition(centerTextX, centerTextY);
+				win.draw(&displayText);
+				centerTextY += TileTextHeight;
+				centerTextX += 48;
+				int numLogEntriesDisplayed = 0;
+				for (std::vector<std::string>::reverse_iterator i = GameLog.rbegin();
+				     i != GameLog.rend(); ++i)
+				{
+					displayText.setText((*i));
+
+					// The last entry was the thing which killed us
+					if (!numLogEntriesDisplayed)
+						displayText.setColor(LOG_COLOR_DEAD);
+					else
+						displayText.setColor(LOG_COLOR_NORMAL);
+					displayText.setPosition(centerTextX, centerTextY);
+					centerTextY += TileTextHeight;
+					win.draw(&displayText);
+
+					if (++numLogEntriesDisplayed > 10)
+						break;
+				}
+			}
+			win.update();
+		}
+	}
+
+	return false;
 }

@@ -26,5 +26,5 @@ struct RLMap
 
 	RLMap(int width, int height);
 
-	RLTile& At(int x, int y);
+	RLTile* At(int x, int y);
 };

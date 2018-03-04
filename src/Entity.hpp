@@ -13,11 +13,16 @@ struct RLCombatStat
 
 	int Max;
 	int Value;
+
+	// Safely add to stat (make sure it stays within range). Returns new value. Accepts negative
+	int Add(int delta);
 };
 typedef std::map<std::string, RLCombatStat> RLCombatStatistics;
 
 struct RLEntity
 {
+	int Guid;
+
 	int X;
 	int Y;
 
@@ -29,6 +34,8 @@ struct RLEntity
 	std::string Description;
 
 	RLCombatStatistics Stats;
+
+	RLEntity();
 
 	bool SamePos(RLEntity& otherEnt);
 };

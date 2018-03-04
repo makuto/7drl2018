@@ -30,11 +30,10 @@ RLMap::RLMap(int width, int height) : Width(width), Height(height)
 	}
 }
 
-RLTile& RLMap::At(int x, int y)
+RLTile* RLMap::At(int x, int y)
 {
-	CLAMP(x, 0, Width - 1);
-	CLAMP(y, 0, Height - 1);
 	unsigned int index = y * Width + x;
-	index = MIN(index, Tiles.size() - 1);
-	return Tiles[index];
+	if (x < 0 || y < 0 || x >= Width || y >= Width || index >= Tiles.size())
+		return nullptr;
+	return &Tiles[index];
 }

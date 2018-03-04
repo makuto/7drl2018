@@ -12,15 +12,15 @@ void createTestMap(RLMap& map)
 		{
 			if ((tileY == 0 || tileY == map.Height - 1) || (tileX == 0 || tileX == map.Width - 1))
 			{
-				RLTile& currentTile = map.At(tileX, tileY);
-				currentTile.Type = WALL_TYPE;
-				currentTile.Color = {WALL_TILE_COLOR_NORMAL};
+				RLTile* currentTile = map.At(tileX, tileY);
+				currentTile->Type = WALL_TYPE;
+				currentTile->Color = {WALL_TILE_COLOR_NORMAL};
 			}
 		}
 	}
 }
 
-void createTestMap2(RLMap& map)
+void createTestMapNoise(RLMap& map)
 {
 	static Noise2d noise(3158008);
 	const float scale = 0.1;
@@ -31,9 +31,9 @@ void createTestMap2(RLMap& map)
 			float noiseValue = noise.scaledOctaveNoise2d(tileX, tileY, 0, 255, 10, scale, 0.55, 2);
 			if (noiseValue < 100.f)
 			{
-				RLTile& currentTile = map.At(tileX, tileY);
-				currentTile.Type = WALL_TYPE;
-				currentTile.Color = {WALL_TILE_COLOR_NORMAL};
+				RLTile* currentTile = map.At(tileX, tileY);
+				currentTile->Type = WALL_TYPE;
+				currentTile->Color = {WALL_TILE_COLOR_NORMAL};
 			}
 		}
 	}
