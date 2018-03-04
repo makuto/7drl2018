@@ -8,10 +8,10 @@
 #include "Entity.hpp"
 #include "Game.hpp"
 #include "GameInput.hpp"
+#include "Gameplay.hpp"
 #include "Levels.hpp"
 #include "RLMap.hpp"
 #include "Utilities.hpp"
-#include "Gameplay.hpp"
 
 #include "PlayerDeadScreen.hpp"
 
@@ -48,7 +48,14 @@ int SidebarStartY = -1;
 int LogX = 10;
 int LogY = -1;
 
-window win(WindowWidth, WindowHeight, "7DRL 2018 by Makuto");
+void windowResizeCB(float width, float height)
+{
+	WindowWidth = width;
+	WindowHeight = height;
+	RecalculateDimensions();
+}
+
+window win(WindowWidth, WindowHeight, "7DRL 2018 by Makuto", &windowResizeCB);
 inputManager inp(&win);
 text displayText;
 GameInput gameInp(inp);
