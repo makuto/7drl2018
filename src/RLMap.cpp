@@ -24,9 +24,20 @@ std::string GetTileDescription(RLTile& tile)
 	return description;
 }
 
+RLMap::RLMap() : Width(128), Height(128)
+{
+	Tiles.resize(Width * Height);
+
+	for (RLTile& tile : Tiles)
+	{
+		tile.Type = FLOOR_TYPE;
+		tile.Color = {FLOOR_TILE_COLOR_NORMAL};
+	}
+}
+
 RLMap::RLMap(int width, int height) : Width(width), Height(height)
 {
-	Tiles.resize(width * height);
+	Tiles.resize(Width * Height);
 
 	for (RLTile& tile : Tiles)
 	{
@@ -45,15 +56,15 @@ RLTile* RLMap::At(int x, int y)
 
 void DrawWorld(RLMap& map, int camXOffset, int camYOffset)
 {
-	for (int camY = 0; camY < MIN(map.Height, ViewTileHeight); ++camY)
+	for (int viewY = 0; viewY < ViewTileHeight; ++viewY)
 	{
-		for (int camX = 0; camX < MIN(map.Width, ViewTileWidth); ++camX)
+		for (int viewX = 0; viewX < ViewTileWidth; ++viewX)
 		{
 			const float fadeNoDisplay = 30.f;
 			const float fadeScale = 1.f;
 
-			int tileX = camX + camXOffset;
-			int tileY = camY + camYOffset;
+			int tileX = viewX + camXOffset;
+			int tileY = viewY + camYOffset;
 
 			float distanceFromPlayer =
 			    distanceTo(tileX, tileY, gameState.player.X, gameState.player.Y);
@@ -107,7 +118,7 @@ void DrawWorld(RLMap& map, int camXOffset, int camYOffset)
 				}
 
 				displayText.setText(buffer);
-				displayText.setPosition(TileTextWidth * camX, TileTextHeight * camY);
+				displayText.setPosition(TileTextWidth * viewX, TileTextHeight * viewY);
 				win.draw(&displayText);
 			}
 		}

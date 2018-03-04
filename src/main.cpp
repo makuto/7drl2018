@@ -18,7 +18,7 @@
 int TurnCounter = 0;
 
 std::vector<std::string> GameLog;
-int lastTurnLog = 0;
+int LastTurnLog = 0;
 GameState gameState;
 
 //
@@ -72,7 +72,7 @@ void initializeWindow(window& win)
 
 	win.shouldClear(true);
 	win.getBase()->setVerticalSyncEnabled(true);
-	win.getBase()->setFramerateLimit(60);
+	win.getBase()->setFramerateLimit(30);
 }
 
 void initializeDisplayText(text& text)

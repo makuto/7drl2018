@@ -1,5 +1,8 @@
 #include "Gameplay.hpp"
 
+// std::sort
+#include <algorithm>
+
 #include "graphics/graphics.hpp"
 #include "input/input.hpp"
 
@@ -89,21 +92,20 @@ bool PlayGame()
 
 	RLEntity lookModeCursor;
 
-	RLMap currentMap(ViewTileWidth, ViewTileHeight);
-	// createTestMap(currentMap);
-	createTestMapNoise(currentMap);
+	LoadNextLevel();
 
 	Enemy skeleton[3];
 	for (int i = 0; i < 3; ++i)
 	{
+		skeleton[i].SpawnStairsDown = (!i);
 		skeleton[i].X = (ViewTileWidth / 2) + 3 + i;
 		skeleton[i].Y = ViewTileHeight / 2;
 		skeleton[i].Speed = 1;
 		skeleton[i].Type = SKELETON_TYPE;
 		skeleton[i].Color = {ENEMY_COLOR_NORMAL};
 		skeleton[i].Description = "skeleton";
-		skeleton[i].Stats["HP"] = {"Health", PLAYER_STARTING_MAX_HEALTH, PLAYER_STARTING_MAX_HEALTH,
-		                           0, 0, -1};
+		skeleton[i].Stats["HP"] = {
+		    "Health", PLAYER_STARTING_MAX_HEALTH, PLAYER_STARTING_MAX_HEALTH, 0, 0, -1};
 		gameState.npcs.push_back(&skeleton[i]);
 	}
 
@@ -130,7 +132,12 @@ bool PlayGame()
 		if (gameInp.Tapped(inputCode::Escape))
 		{
 			if (lookMode)
+			{
 				lookMode = false;
+
+				cameraTrackingEntity = &gameState.player;
+				UpdateCameraOffset(cameraTrackingEntity, camXOffset, camYOffset);
+			}
 			else
 				// Close the game
 				break;
@@ -144,6 +151,12 @@ bool PlayGame()
 			{
 				lookModeCursor.X = gameState.player.X;
 				lookModeCursor.Y = gameState.player.Y;
+			}
+			// Exiting look mode; recenter on player if necessary
+			else
+			{
+				cameraTrackingEntity = &gameState.player;
+				UpdateCameraOffset(cameraTrackingEntity, camXOffset, camYOffset);
 			}
 			lookMode = !lookMode;
 		}
@@ -163,7 +176,7 @@ bool PlayGame()
 
 			cameraTrackingEntity = &lookModeCursor;
 		}
-		// Player control
+		// Player navigation control
 		else if (deltaX || deltaY)
 		{
 			cameraTrackingEntity = &gameState.player;
@@ -175,7 +188,7 @@ bool PlayGame()
 				gameState.player.ThisTurnAction = PlayerAction::MeleeAttacked;
 				playerTurnPerformed = true;
 			}
-			else if (canMoveTo(gameState.player, deltaX, deltaY, currentMap))
+			else if (canMoveTo(gameState.player, deltaX, deltaY, gameState.currentMap))
 			{
 				gameState.player.X += deltaX;
 				gameState.player.Y += deltaY;
@@ -188,8 +201,17 @@ bool PlayGame()
 
 				if (npcOut)
 				{
-					standingOnDisplay += "You stomp on a ";
-					standingOnDisplay += npcOut->Description;
+					if (npcOut->Type == STAIRS_DOWN_TYPE)
+					{
+						standingOnDisplay += "You stand on a ";
+						standingOnDisplay += npcOut->Description;
+						standingOnDisplay += " (Press > to use)";
+					}
+					else
+					{
+						standingOnDisplay += "You stomp on a ";
+						standingOnDisplay += npcOut->Description;
+					}
 				}
 			}
 			else
@@ -198,8 +220,23 @@ bool PlayGame()
 			}
 		}
 
-		// Pass turn
-		if (gameInp.Tapped(inputCode::Numpad5) || gameInp.Tapped(inputCode::Period))
+		// Player descend stairs
+		if ((inp.isPressed(inputCode::LShift) || inp.isPressed(inputCode::RShift)) &&
+		    inp.isPressed(inputCode::Period))
+		{
+			RLEntity* possibleStairs =
+			    findEntityByPosition(gameState.npcs, gameState.player.X, gameState.player.Y);
+			if (possibleStairs)
+			{
+				LoadNextLevel();
+				TurnCounter++;
+				LOGI << "You step through to the next level";
+				// Start the game loop over because it seems right ?
+				continue;
+			}
+		}
+		// Player pass turn
+		else if (gameInp.Tapped(inputCode::Numpad5) || gameInp.Tapped(inputCode::Period))
 		{
 			playerTurnPerformed = true;
 			gameState.player.ThisTurnAction = PlayerAction::Rested;
@@ -253,6 +290,38 @@ bool PlayGame()
 			{
 				npc->DoTurn();
 			}
+			gameState.npcs.insert(gameState.npcs.begin(), gameState.npcsToCreate.begin(),
+			                      gameState.npcsToCreate.end());
+
+			// Resolve NPC movement
+			// Sort so closest move first (that way they can move tightly together)
+			std::sort(gameState.npcs.begin(), gameState.npcs.end(),
+			          sortEntitiesByAscendingDistFromPlayer);
+			for (RLEntity* npc : gameState.npcs)
+			{
+				if (npc->VelocityX || npc->VelocityY)
+				{
+					// Gods forgive me
+					if (gameState.player.X == npc->X + npc->VelocityX &&
+					    gameState.player.Y == npc->Y + npc->VelocityY)
+					{
+						LOGI << "Player hit!";
+					}
+					else
+					{
+						// Do it piecewise
+						if (canMoveTo(*npc, npc->VelocityX, 0, gameState.currentMap) &&
+						    !findEntityByPosition(gameState.npcs, npc->X + npc->VelocityX, npc->Y))
+							npc->X += npc->VelocityX;
+						if (canMoveTo(*npc, 0, npc->VelocityY, gameState.currentMap) &&
+						    !findEntityByPosition(gameState.npcs, npc->X, npc->Y + npc->VelocityY))
+							npc->Y += npc->VelocityY;
+					}
+
+					npc->VelocityX = 0;
+					npc->VelocityY = 0;
+				}
+			}
 
 			if (!gameState.player.Stats["HP"].Value)
 			{
@@ -265,7 +334,7 @@ bool PlayGame()
 		//
 		// Draw map, npcs, player, etc.
 		//
-		DrawWorld(currentMap, camXOffset, camYOffset);
+		DrawWorld(gameState.currentMap, camXOffset, camYOffset);
 
 		// Draw look mode cursor
 		if (lookMode)
@@ -289,34 +358,48 @@ bool PlayGame()
 		if (lookMode)
 		{
 			std::string description;
-			RLTile* lookTile = currentMap.At(lookModeCursor.X, lookModeCursor.Y);
+			RLTile* lookTile = gameState.currentMap.At(lookModeCursor.X, lookModeCursor.Y);
 			std::string tileDescription = lookTile ? GetTileDescription(*lookTile) : "";
 			std::string npcDescription;
+			std::string stairsDescription;
 			for (RLEntity* npc : gameState.npcs)
 			{
 				if (npc->X == lookModeCursor.X && npc->Y == lookModeCursor.Y)
 				{
-					if (npc->Type != CORPSE_TYPE &&
-					    npc->Stats["HP"].Value < npc->Stats["HP"].Max * .2f)
-						npcDescription += "wounded ";
-					npcDescription += npc->Description;
-					if (npc->Type == CORPSE_TYPE)
-						npcDescription += " lying on ";
+					if (npc->Type == STAIRS_DOWN_TYPE)
+					{
+						stairsDescription = npc->Description;
+					}
 					else
-						npcDescription += " standing on ";
+					{
+						if (npc->Type != CORPSE_TYPE &&
+						    npc->Stats["HP"].Value < npc->Stats["HP"].Max * .2f)
+							npcDescription += "wounded ";
 
+						npcDescription += npc->Description;
+
+						if (npc->Type == CORPSE_TYPE)
+							npcDescription += " lying on ";
+						else
+							npcDescription += " standing on ";
+					}
 					break;
 				}
 			}
 
-			if (!tileDescription.empty() || !npcDescription.empty())
+			if (!stairsDescription.empty() || !tileDescription.empty() || !npcDescription.empty())
 			{
 				if (gameState.player.SamePos(lookModeCursor))
 					description += "You are standing on ";
 				else if (description.empty())
 					description += "You see ";
 
-				if (!npcDescription.empty())
+				if (!stairsDescription.empty())
+				{
+					description += "a ";
+					description += stairsDescription;
+				}
+				else if (!npcDescription.empty())
 				{
 					description += "a ";
 					description += npcDescription;
@@ -332,7 +415,7 @@ bool PlayGame()
 
 			win.draw(&displayText);
 		}
-		else if (GameLog.size() && lastTurnLog == TurnCounter)
+		else if (GameLog.size() && LastTurnLog == TurnCounter)
 		{
 			displayText.setText(GameLog.back());
 			displayText.setColor(LOG_COLOR_NORMAL);

@@ -24,6 +24,7 @@ struct RLMap
 
 	std::vector<RLTile> Tiles;
 
+	RLMap();
 	RLMap(int width, int height);
 
 	RLTile* At(int x, int y);

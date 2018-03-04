@@ -44,6 +44,9 @@ public:
 	int X;
 	int Y;
 
+	int VelocityX;
+	int VelocityY;
+
 	int Speed;
 
 	RLEntityType Type;
@@ -83,7 +86,11 @@ public:
 
 class Enemy : public RLEntity
 {
+private:
+	void CheckDoDeath();
+
 public:
+	bool SpawnStairsDown;
 	Enemy() = default;
 	virtual ~Enemy() = default;
 
@@ -96,3 +103,7 @@ bool canMeleeAttack(RLEntity& entity, int deltaX, int deltaY, std::vector<RLEnti
                     RLEntity** npcOut);
 
 RLEntity* findEntityById(std::vector<RLEntity*>& npcs, int id);
+
+RLEntity* findEntityByPosition(std::vector<RLEntity*>& npcs, int x, int y);
+
+bool sortEntitiesByAscendingDistFromPlayer(RLEntity* a, RLEntity* b);

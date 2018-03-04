@@ -1,5 +1,7 @@
 #include "Entity.hpp"
 
+#include "math/math.hpp"
+
 #include "Game.hpp"
 
 int RLCombatStat::Add(int delta)
@@ -61,13 +63,12 @@ bool canMeleeAttack(RLEntity& entity, int deltaX, int deltaY, std::vector<RLEnti
 	{
 		if (entity.X + deltaX == npc->X && entity.Y + deltaY == npc->Y)
 		{
+			*npcOut = npc;
+
 			// Corpse (icky)
 			if (npc->Type == CORPSE_TYPE || !npc->Stats["HP"].Value)
-			{
-				*npcOut = npc;
 				return false;
-			}
-			*npcOut = npc;
+			
 			return true;
 		}
 	}
@@ -80,6 +81,17 @@ RLEntity* findEntityById(std::vector<RLEntity*>& npcs, int id)
 	for (RLEntity* npc : npcs)
 	{
 		if (npc->Guid == id)
+			return npc;
+	}
+
+	return nullptr;
+}
+
+RLEntity* findEntityByPosition(std::vector<RLEntity*>& npcs, int x, int y)
+{
+	for (RLEntity* npc : npcs)
+	{
+		if (npc->X == x && npc->Y == y)
 			return npc;
 	}
 
@@ -120,8 +132,7 @@ void Player::DoTurn()
 		else
 			stat.RestoreOnTurn -= restoreTurnBonus;
 
-
-		//LOGD << "Stat " << statName.c_str() << " Value " << stat.Value << " Restore on turn "
+		// LOGD << "Stat " << statName.c_str() << " Value " << stat.Value << " Restore on turn "
 		//     << stat.RestoreOnTurn;
 		if (TurnCounter >= stat.RestoreOnTurn)
 		{
@@ -137,11 +148,42 @@ void Player::DoTurn()
 
 void Enemy::DoTurn()
 {
+	CheckDoDeath();
+	if (!Stats["HP"].Value)
+		return;
+
+	// Shamble towards the player
+	int deltaX = -(X - gameState.player.X);
+	int deltaY = -(Y - gameState.player.Y);
+
+	CLAMP(deltaX, -Speed, Speed);
+	CLAMP(deltaY, -Speed, Speed);
+	VelocityX = deltaX;
+	VelocityY = deltaY;
+}
+
+void Enemy::CheckDoDeath()
+{
 	// If we just died, turn into a corpse
-	if (!Stats["HP"].Value && Type != CORPSE_TYPE)
+	if (!Stats["HP"].Value && ((SpawnStairsDown && Type != STAIRS_DOWN_TYPE) ||
+	                           (!SpawnStairsDown && Type != CORPSE_TYPE)))
 	{
 		LOGI << "A " << Description.c_str() << " died!";
 		Type = CORPSE_TYPE;
 		Description += " corpse";
+
+		if (SpawnStairsDown)
+		{
+			Description = "portal to the next level";
+			Type = STAIRS_DOWN_TYPE;
+			Color = {STAIRS_COLOR_NORMAL};
+		}
 	}
+}
+
+bool sortEntitiesByAscendingDistFromPlayer(RLEntity* a, RLEntity* b)
+{
+	float aDist = distanceTo(a->X, a->Y, gameState.player.X, gameState.player.Y);
+	float bDist = distanceTo(b->X, b->Y, gameState.player.X, gameState.player.Y);
+	return aDist < bDist;
 }

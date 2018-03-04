@@ -34,6 +34,7 @@
 // Entities
 #define PLAYER_COLOR_NORMAL 252, 145, 57, 255
 #define ENEMY_COLOR_NORMAL 232, 30, 34, 255
+#define STAIRS_COLOR_NORMAL 252, 145, 57, 255
 
 //
 // Tile/Entity Types
@@ -42,6 +43,8 @@
 #define SKELETON_TYPE 's'
 
 #define CORPSE_TYPE '%'
+
+#define STAIRS_DOWN_TYPE '>'
 
 #define WALL_TYPE '#'
 #define FLOOR_TYPE '.'

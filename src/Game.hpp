@@ -9,6 +9,7 @@
 
 #include "Entity.hpp"
 #include "GameInput.hpp"
+#include "RLMap.hpp"
 
 //
 // Dimensions (-1 = RecalculateDimensions() figures it out)
@@ -43,12 +44,15 @@ extern int LogY;
 extern int TurnCounter;
 
 extern std::vector<std::string> GameLog;
-extern int lastTurnLog;
+extern int LastTurnLog;
 
 struct GameState
 {
 	Player player;
 	std::vector<RLEntity*> npcs;
+	std::vector<RLEntity*> npcsToCreate;
+
+	RLMap currentMap;
 };
 
 extern GameState gameState;

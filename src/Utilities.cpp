@@ -43,7 +43,7 @@ void ConsoleAndGameLogOutput(const gv::Logging::Record& record)
 		std::string gameLogAction(buffer);
 
 		// Append logs to the same line if they occur on the same turn
-		if (lastTurnLog == TurnCounter && !GameLog.empty() && gameLogAction != GameLog.back() &&
+		if (LastTurnLog == TurnCounter && !GameLog.empty() &&
 		    GameLog.back().size() < MAX_SINGLE_LOG_SIZE)
 		{
 			std::string& currentTurnLog = GameLog.back();
@@ -63,7 +63,7 @@ void ConsoleAndGameLogOutput(const gv::Logging::Record& record)
 		else
 		{
 			GameLog.push_back(gameLogAction);
-			lastTurnLog = TurnCounter;
+			LastTurnLog = TurnCounter;
 		}
 	}
 }
