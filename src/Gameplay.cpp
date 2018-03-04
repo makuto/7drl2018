@@ -13,6 +13,19 @@
 
 #include "PlayerDeadScreen.hpp"
 
+void UpdateCameraOffset(RLEntity* cameraTrackingEntity, int& camXOffset, int& camYOffset)
+{
+	if (!cameraTrackingEntity)
+		return;
+
+	if (cameraTrackingEntity->X - camXOffset < CamSnapLeftBounds ||
+	    cameraTrackingEntity->X - camXOffset > CamSnapRightBounds)
+		camXOffset = cameraTrackingEntity->X - (ViewTileWidth / 2);
+	if (cameraTrackingEntity->Y - camYOffset < CamSnapTopBounds ||
+	    cameraTrackingEntity->Y - camYOffset > CamSnapBottomBounds)
+		camYOffset = cameraTrackingEntity->Y - (ViewTileHeight / 2);
+}
+
 void DrawSidebar()
 {
 	int currentRowY = SidebarStartY;
@@ -202,13 +215,7 @@ bool PlayGame()
 			if (!standingOnDisplay.empty())
 				LOGI << standingOnDisplay.c_str();
 
-			// Update NPCs
-			for (RLEntity* npc : gameState.npcs)
-			{
-				npc->DoTurn();
-			}
-
-			// Handle melee combat
+			// Handle player's melee combat attack
 			if (playerMeleeAttackNpcGuid)
 			{
 				RLEntity* attackedNpc = findEntityById(gameState.npcs, playerMeleeAttackNpcGuid);
@@ -234,6 +241,12 @@ bool PlayGame()
 				playerMeleeAttackNpcGuid = 0;
 			}
 
+			// Update NPCs
+			for (RLEntity* npc : gameState.npcs)
+			{
+				npc->DoTurn();
+			}
+
 			if (!gameState.player.Stats["HP"].Value)
 			{
 				LOGI << "You died!";
@@ -243,53 +256,9 @@ bool PlayGame()
 		}
 
 		//
-		// Draw map
+		// Draw map, npcs, player, etc.
 		//
-		for (int camY = 0; camY < MIN(testMap.Height, ViewTileHeight); ++camY)
-		{
-			for (int camX = 0; camX < MIN(testMap.Width, ViewTileWidth); ++camX)
-			{
-				int tileX = camX + camXOffset;
-				int tileY = camY + camYOffset;
-				RLTile* currentTile = testMap.At(tileX, tileY);
-
-				static std::string buffer = "";
-				buffer.clear();
-
-				bool shouldDrawTile = true;
-				for (RLEntity* npc : gameState.npcs)
-				{
-					if (npc->X == tileX && npc->Y == tileY && !gameState.player.SamePos(*npc))
-					{
-						buffer += npc->Type;
-						SetTextColor(displayText, npc->Color);
-
-						shouldDrawTile = false;
-						break;
-					}
-				}
-
-				if (buffer.empty() && gameState.player.X == tileX && gameState.player.Y == tileY)
-				{
-					buffer += gameState.player.Type;
-					SetTextColor(displayText, gameState.player.Color);
-				}
-				else if (buffer.empty())
-				{
-					if (currentTile)
-					{
-						buffer += currentTile->Type;
-						SetTextColor(displayText, currentTile->Color);
-					}
-					else
-						buffer += " ";
-				}
-
-				displayText.setText(buffer);
-				displayText.setPosition(TileTextWidth * camX, TileTextHeight * camY);
-				win.draw(&displayText);
-			}
-		}
+		DrawWorld(testMap, camXOffset, camYOffset);
 
 		// Draw look mode cursor
 		if (lookMode)

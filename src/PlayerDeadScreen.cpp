@@ -12,9 +12,12 @@ bool PlayerDeadScreen()
 		if (inp.isPressed(inputCode::Space))
 			return true;
 
-		int centerOffset = 10;
-		int centerTextX = ((ViewTileWidth / 2) - centerOffset) * TileTextWidth;
-		int centerTextY = ((ViewTileHeight / 2) - centerOffset) * TileTextHeight;
+		//int centerOffset = 10;
+		//int centerTextX = ((ViewTileWidth / 2) - centerOffset) * TileTextWidth;
+		//int centerTextY = ((ViewTileHeight / 2) - centerOffset) * TileTextHeight;
+		int centerOffset = 100;
+		int centerTextX = centerOffset;
+		int centerTextY = centerOffset;
 
 		// displayText.setText("You have died!");
 		displayText.setText(YOU_DIED);

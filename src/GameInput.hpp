@@ -2,39 +2,86 @@
 
 struct GameInput
 {
+	struct InputState
+	{
+		bool ProcessedTapped;
+		float KeyRepeatTime;
+	};
+
+	std::map<inputCode::keyCode, InputState> keyTapStates;
+
 	inputManager& inp;
-	std::map<inputCode::keyCode, bool> keyTapStates;
+	timer repeatTimer;
+
+	float KeyRepeatPauseTime;
+	float KeyRepeatTimePerRepeat;
 
 	GameInput(inputManager& newInput) : inp(newInput)
 	{
+		repeatTimer.start();
+		KeyRepeatPauseTime = .500f;
+		KeyRepeatTimePerRepeat = .1f;
+	}
+
+	bool UpdateRepeat(InputState& state, bool isPressed)
+	{
+		float currentTime = repeatTimer.getTime();
+		if (isPressed)
+		{
+			if (state.KeyRepeatTime)
+			{
+				if (state.KeyRepeatTime <= currentTime)
+				{
+					state.KeyRepeatTime = currentTime + KeyRepeatTimePerRepeat;
+					return true;
+				}
+				else
+					return false;
+			}
+			else
+			{
+				state.KeyRepeatTime = currentTime + KeyRepeatPauseTime;
+				return false;
+			}
+		}
+
+		state.KeyRepeatTime = 0.f;
+
+		return false;
 	}
 
 	bool Tapped(inputCode::keyCode key)
 	{
 		bool isPressed = inp.isPressed(key);
 
-		std::map<inputCode::keyCode, bool>::iterator findIt = keyTapStates.find(key);
+		std::map<inputCode::keyCode, InputState>::iterator findIt = keyTapStates.find(key);
 		if (findIt != keyTapStates.end())
 		{
+			bool shouldRepeat = UpdateRepeat(findIt->second, isPressed);
 			if (isPressed)
 			{
-				if (findIt->second)
+				if (findIt->second.ProcessedTapped)
 				{
+					if (shouldRepeat)
+						return true;
 					// Wasn't tapped this frame
 					return false;
 				}
 				else
 				{
-					findIt->second = true;
+					findIt->second.ProcessedTapped = true;
 					return true;
 				}
 			}
 			else
-				findIt->second = false;
+			{
+				findIt->second.ProcessedTapped = false;
+				findIt->second.KeyRepeatTime = 0.f;
+			}
 		}
 		else
 		{
-			keyTapStates[key] = true;
+			keyTapStates[key] = {true, 0.f};
 			return isPressed;
 		}
 

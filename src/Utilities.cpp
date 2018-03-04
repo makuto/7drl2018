@@ -1,6 +1,8 @@
 #include "Utilities.hpp"
 
 #include <iostream>
+// isalnum
+#include <cctype>
 
 #include "Game.hpp"
 
@@ -45,7 +47,13 @@ void ConsoleAndGameLogOutput(const gv::Logging::Record& record)
 		    GameLog.back().size() < MAX_SINGLE_LOG_SIZE)
 		{
 			std::string& currentTurnLog = GameLog.back();
-			currentTurnLog += ". ";
+			
+			// Add divider
+			if (std::isalnum(currentTurnLog[currentTurnLog.size() - 1]))
+				currentTurnLog += ". ";
+			else
+				currentTurnLog += " ";
+
 			currentTurnLog += gameLogAction;
 		}
 		else

@@ -74,21 +74,6 @@ RLEntity* findEntityById(std::vector<RLEntity*>& npcs, int id)
 	return nullptr;
 }
 
-void UpdateCameraOffset(RLEntity* cameraTrackingEntity, int& camXOffset, int& camYOffset)
-{
-	if (!cameraTrackingEntity)
-		return;
-
-	if (cameraTrackingEntity->X - camXOffset < CamSnapLeftBounds ||
-	    cameraTrackingEntity->Y - camYOffset < CamSnapTopBounds ||
-	    cameraTrackingEntity->X - camXOffset > CamSnapRightBounds ||
-	    cameraTrackingEntity->Y - camYOffset > CamSnapBottomBounds)
-	{
-		camXOffset = cameraTrackingEntity->X - (ViewTileWidth / 2);
-		camYOffset = cameraTrackingEntity->Y - (ViewTileHeight / 2);
-	}
-}
-
 void RLEntity::DoTurn()
 {
 }

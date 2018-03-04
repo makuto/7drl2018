@@ -28,3 +28,5 @@ struct RLMap
 
 	RLTile* At(int x, int y);
 };
+
+void DrawWorld(RLMap& map, int camXOffset, int camYOffset);
