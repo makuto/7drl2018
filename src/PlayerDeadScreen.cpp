@@ -1,11 +1,12 @@
 #include "PlayerDeadScreen.hpp"
+#include "Art.hpp"
 
 #include "Game.hpp"
 
 // returns whether or not to restart the game
 bool PlayerDeadScreen()
 {
-	while (!win.shouldClose() && !inp.isPressed(inputCode::Return))
+	while (!win.shouldClose() && !inp.isPressed(inputCode::Return) && !inp.isPressed(inputCode::Escape))
 	{
 		// Quick restart
 		if (inp.isPressed(inputCode::Space))
@@ -15,13 +16,14 @@ bool PlayerDeadScreen()
 		int centerTextX = ((ViewTileWidth / 2) - centerOffset) * TileTextWidth;
 		int centerTextY = ((ViewTileHeight / 2) - centerOffset) * TileTextHeight;
 
-		displayText.setText("You have died!");
+		// displayText.setText("You have died!");
+		displayText.setText(YOU_DIED);
 		displayText.setColor(LOG_COLOR_DEAD);
 		displayText.setPosition(centerTextX, centerTextY);
 		win.draw(&displayText);
 
 		displayText.setColor(LOG_COLOR_NORMAL);
-		centerTextY += TileTextHeight * 3;
+		centerTextY += TileTextHeight * 13;
 		displayText.setPosition(centerTextX, centerTextY);
 		displayText.setText("Press space to restart.");
 		win.draw(&displayText);

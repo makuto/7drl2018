@@ -79,9 +79,6 @@ int main(int argc, char const* argv[])
 	initializeWindow(win);
 	RecalculateDimensions();
 
-	//
-	// Display initialization
-	//
 	initializeDisplayText(displayText);
 	displayText.setSize(TileTextHeight);
 	displayText.setColor(WALL_TILE_COLOR_NORMAL);

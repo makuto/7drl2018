@@ -53,6 +53,7 @@ void DrawSidebar()
 	win.draw(&displayText);
 }
 
+// Returns whether it should restart or not
 bool PlayGame()
 {
 	RecalculateDimensions();
