@@ -5,12 +5,12 @@
 #include "graphics/graphics.hpp"
 #include "input/input.hpp"
 
+#include "Entity.hpp"
 #include "Game.hpp"
 #include "GameInput.hpp"
+#include "Levels.hpp"
 #include "RLMap.hpp"
 #include "Utilities.hpp"
-#include "Entity.hpp"
-#include "Levels.hpp"
 
 #include "PlayerDeadScreen.hpp"
 
@@ -18,6 +18,7 @@ int TurnCounter = 0;
 
 std::vector<std::string> GameLog;
 int lastTurnLog = 0;
+GameState gameState;
 
 //
 // Dimensions (-1 = RecalculateDimensions() figures it out)
@@ -142,13 +143,14 @@ bool PlayGame()
 	//
 	GameLog.clear();
 	TurnCounter = 0;
+	gameState.npcs.clear();
+	gameState.player.Initialize();
 
 	//
 	// Game initialization
 	//
-	Player player;
-	player.X = ViewTileWidth / 2;
-	player.Y = ViewTileHeight / 2;
+	gameState.player.X = ViewTileWidth / 2;
+	gameState.player.Y = ViewTileHeight / 2;
 
 	RLEntity lookModeCursor;
 
@@ -156,23 +158,26 @@ bool PlayGame()
 	// createTestMap(testMap);
 	createTestMapNoise(testMap);
 
-	RLEntity skeleton;
-	skeleton.X = (ViewTileWidth / 2) + 3;
-	skeleton.Y = ViewTileHeight / 2;
-	skeleton.Speed = 1;
-	skeleton.Type = SKELETON_TYPE;
-	skeleton.Color = {ENEMY_COLOR_NORMAL};
-	skeleton.Description = "a skeleton";
-	skeleton.Stats["HP"] = {"Health", PLAYER_STARTING_MAX_HEALTH, PLAYER_STARTING_MAX_HEALTH};
+	Enemy skeleton[3];
+	for (int i = 0; i < 3; ++i)
+	{
+		skeleton[i].X = (ViewTileWidth / 2) + 3 + i;
+		skeleton[i].Y = ViewTileHeight / 2;
+		skeleton[i].Speed = 1;
+		skeleton[i].Type = SKELETON_TYPE;
+		skeleton[i].Color = {ENEMY_COLOR_NORMAL};
+		skeleton[i].Description = "skeleton";
+		skeleton[i].Stats["HP"] = {"Health", PLAYER_STARTING_MAX_HEALTH, PLAYER_STARTING_MAX_HEALTH};
+		gameState.npcs.push_back(&skeleton[i]);
+	}
 
-	std::vector<RLEntity> npcs{skeleton};
 
 	int playerMeleeAttackNpcGuid = 0;
 
 	int camXOffset = 0;
 	int camYOffset = 0;
 	RLEntity* cameraTrackingEntity = nullptr;
-	UpdateCameraOffset(&player, camXOffset, camYOffset);
+	UpdateCameraOffset(&gameState.player, camXOffset, camYOffset);
 
 	bool lookMode = false;
 	bool playerDead = false;
@@ -180,6 +185,7 @@ bool PlayGame()
 	while (!win.shouldClose() && !inp.isPressed(inputCode::Return))
 	{
 		bool playerTurnPerformed = false;
+		std::string standingOnDisplay;
 
 		//
 		// Input
@@ -201,8 +207,8 @@ bool PlayGame()
 			// Entering look mode; set the cursor to the player's position
 			if (!lookMode)
 			{
-				lookModeCursor.X = player.X;
-				lookModeCursor.Y = player.Y;
+				lookModeCursor.X = gameState.player.X;
+				lookModeCursor.Y = gameState.player.Y;
 			}
 			lookMode = !lookMode;
 		}
@@ -224,25 +230,31 @@ bool PlayGame()
 			cameraTrackingEntity = &lookModeCursor;
 		}
 		// Player control
-		else
+		else if (deltaX || deltaY)
 		{
-			cameraTrackingEntity = &player;
+			cameraTrackingEntity = &gameState.player;
 
 			RLEntity* npcOut = nullptr;
-			if (canMeleeAttack(player, deltaX, deltaY, npcs, &npcOut))
+			if (canMeleeAttack(gameState.player, deltaX, deltaY, gameState.npcs, &npcOut))
 			{
 				playerMeleeAttackNpcGuid = npcOut->Guid;
 				playerTurnPerformed = true;
 			}
-			else if (canMoveTo(player, deltaX, deltaY, testMap))
+			else if (canMoveTo(gameState.player, deltaX, deltaY, testMap))
 			{
-				player.X += deltaX;
-				player.Y += deltaY;
+				gameState.player.X += deltaX;
+				gameState.player.Y += deltaY;
 
 				// Decide whether we need to make this a turn
-				if (abs(deltaX) >= player.Speed || abs(deltaY) >= player.Speed)
+				if (abs(deltaX) >= gameState.player.Speed || abs(deltaY) >= gameState.player.Speed)
 				{
 					playerTurnPerformed = true;
+				}
+
+				if (npcOut)
+				{
+					standingOnDisplay += "You stomp on a ";
+					standingOnDisplay += npcOut->Description;
 				}
 			}
 			else
@@ -266,33 +278,42 @@ bool PlayGame()
 		{
 			TurnCounter++;
 
+			if (!standingOnDisplay.empty())
+				LOGI << standingOnDisplay.c_str();
+
+			// Update NPCs
+			for (RLEntity* npc : gameState.npcs)
+			{
+				npc->DoTurn();
+			}
+
 			// Handle melee combat
 			if (playerMeleeAttackNpcGuid)
 			{
-				RLEntity* attackedNpc = findEntityById(npcs, playerMeleeAttackNpcGuid);
+				RLEntity* attackedNpc = findEntityById(gameState.npcs, playerMeleeAttackNpcGuid);
 				if (attackedNpc)
 				{
 					int damage = 10;
 					int staminaCost = 10;
 					// If out of stamina, take it out of health
-					int healthCost = player.Stats["SP"].Value < staminaCost ?
-					                     player.Stats["SP"].Value - staminaCost :
+					int healthCost = gameState.player.Stats["SP"].Value < staminaCost ?
+					                     gameState.player.Stats["SP"].Value - staminaCost :
 					                     0;
-					player.Stats["SP"].Add(-10);
-					player.Stats["HP"].Add(healthCost);
+					gameState.player.Stats["SP"].Add(-staminaCost);
+					gameState.player.Stats["HP"].Add(healthCost);
 
-					attackedNpc->Stats["HP"].Value -= damage;
-					LOGI << "You hit " << attackedNpc->Description.c_str() << " for " << damage
+					attackedNpc->Stats["HP"].Add(-damage);
+					LOGI << "You hit the " << attackedNpc->Description.c_str() << " for " << damage
 					     << " damage";
 					if (healthCost)
-						LOGI << "You feel weaker from exertion";
+						LOGI << "You feel weaker from overexertion";
 				}
 
 				// Finished attack
 				playerMeleeAttackNpcGuid = 0;
 			}
 
-			if (!player.Stats["HP"].Value)
+			if (!gameState.player.Stats["HP"].Value)
 			{
 				LOGI << "You died!";
 				playerDead = true;
@@ -315,22 +336,22 @@ bool PlayGame()
 				buffer.clear();
 
 				bool shouldDrawTile = true;
-				for (RLEntity& npc : npcs)
+				for (RLEntity* npc : gameState.npcs)
 				{
-					if (npc.X == tileX && npc.Y == tileY)
+					if (npc->X == tileX && npc->Y == tileY && !gameState.player.SamePos(*npc))
 					{
-						buffer += npc.Type;
-						SetTextColor(displayText, npc.Color);
+						buffer += npc->Type;
+						SetTextColor(displayText, npc->Color);
 
 						shouldDrawTile = false;
 						break;
 					}
 				}
 
-				if (buffer.empty() && player.X == tileX && player.Y == tileY)
+				if (buffer.empty() && gameState.player.X == tileX && gameState.player.Y == tileY)
 				{
-					buffer += player.Type;
-					SetTextColor(displayText, player.Color);
+					buffer += gameState.player.Type;
+					SetTextColor(displayText, gameState.player.Color);
 				}
 				else if (buffer.empty())
 				{
@@ -371,7 +392,7 @@ bool PlayGame()
 			win.draw(&displayText);
 			currentRowY += TileTextHeight * 2;
 
-			for (std::pair<const std::string, RLCombatStat>& stat : player.Stats)
+			for (std::pair<const std::string, RLCombatStat>& stat : gameState.player.Stats)
 			{
 				std::string statName(stat.second.Name);
 				std::string statValue(std::to_string(stat.second.Value));
@@ -411,26 +432,34 @@ bool PlayGame()
 			RLTile* lookTile = testMap.At(lookModeCursor.X, lookModeCursor.Y);
 			std::string tileDescription = lookTile ? GetTileDescription(*lookTile) : "";
 			std::string npcDescription;
-			for (RLEntity& npc : npcs)
+			for (RLEntity* npc : gameState.npcs)
 			{
-				if (npc.X == lookModeCursor.X && npc.Y == lookModeCursor.Y)
+				if (npc->X == lookModeCursor.X && npc->Y == lookModeCursor.Y)
 				{
-					npcDescription += npc.Description;
+					if (npc->Type != CORPSE_TYPE &&
+					    npc->Stats["HP"].Value < npc->Stats["HP"].Max * .2f)
+						npcDescription += "wounded ";
+					npcDescription += npc->Description;
+					if (npc->Type == CORPSE_TYPE)
+						npcDescription += " lying on ";
+					else
+						npcDescription += " standing on ";
+
 					break;
 				}
 			}
 
 			if (!tileDescription.empty() || !npcDescription.empty())
 			{
-				if (player.SamePos(lookModeCursor))
+				if (gameState.player.SamePos(lookModeCursor))
 					description += "You are standing on ";
 				else if (description.empty())
 					description += "You see ";
 
 				if (!npcDescription.empty())
 				{
+					description += "a ";
 					description += npcDescription;
-					description += " standing on ";
 					description += tileDescription;
 				}
 				else

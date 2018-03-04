@@ -3,9 +3,11 @@
 #include "graphics/graphics.hpp"
 #include "input/input.hpp"
 
+
 #include <string>
 #include <vector>
 
+#include "Entity.hpp"
 #include "GameInput.hpp"
 
 //
@@ -42,6 +44,14 @@ extern int TurnCounter;
 
 extern std::vector<std::string> GameLog;
 extern int lastTurnLog;
+
+struct GameState
+{
+	Player player;
+	std::vector<RLEntity*> npcs;
+};
+
+extern GameState gameState;
 
 //
 // Display / input

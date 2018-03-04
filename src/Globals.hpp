@@ -37,6 +37,8 @@
 #define PLAYER_TYPE '@'
 #define SKELETON_TYPE 's'
 
+#define CORPSE_TYPE '%'
+
 #define WALL_TYPE '#'
 #define FLOOR_TYPE '.'
 

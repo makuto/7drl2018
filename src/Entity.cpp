@@ -18,7 +18,7 @@ bool RLEntity::SamePos(RLEntity& otherEnt)
 	return otherEnt.X == X && otherEnt.Y == Y;
 }
 
-Player::Player()
+void Player::Initialize()
 {
 	Type = PLAYER_TYPE;
 	Color = {PLAYER_COLOR_NORMAL};
@@ -29,20 +29,31 @@ Player::Player()
 	Stats["SP"] = {"Stamina", PLAYER_STARTING_MAX_STAMINA, PLAYER_STARTING_MAX_STAMINA};
 }
 
+Player::Player()
+{
+	Initialize();
+}
+
 bool canMoveTo(RLEntity& entity, int deltaX, int deltaY, RLMap& map)
 {
 	RLTile* tile = map.At(entity.X + deltaX, entity.Y + deltaY);
 	return tile && tile->Type == FLOOR_TYPE;
 }
 
-bool canMeleeAttack(RLEntity& entity, int deltaX, int deltaY, std::vector<RLEntity>& npcs,
+bool canMeleeAttack(RLEntity& entity, int deltaX, int deltaY, std::vector<RLEntity*>& npcs,
                     RLEntity** npcOut)
 {
-	for (RLEntity& npc : npcs)
+	for (RLEntity* npc : npcs)
 	{
-		if (entity.X + deltaX == npc.X && entity.Y + deltaY == npc.Y)
+		if (entity.X + deltaX == npc->X && entity.Y + deltaY == npc->Y)
 		{
-			*npcOut = &npc;
+			// Corpse (icky)
+			if (npc->Type == CORPSE_TYPE || !npc->Stats["HP"].Value)
+			{
+				*npcOut = npc;
+				return false;
+			}
+			*npcOut = npc;
 			return true;
 		}
 	}
@@ -50,13 +61,30 @@ bool canMeleeAttack(RLEntity& entity, int deltaX, int deltaY, std::vector<RLEnti
 	return false;
 }
 
-RLEntity* findEntityById(std::vector<RLEntity>& npcs, int id)
+RLEntity* findEntityById(std::vector<RLEntity*>& npcs, int id)
 {
-	for (RLEntity& npc : npcs)
+	for (RLEntity* npc : npcs)
 	{
-		if (npc.Guid == id)
-			return &npc;
+		if (npc->Guid == id)
+			return npc;
 	}
 
 	return nullptr;
+}
+
+void RLEntity::DoTurn()
+{
+}
+void Player::DoTurn()
+{
+}
+void Enemy::DoTurn()
+{
+	// If we just died, turn into a corpse
+	if (!Stats["HP"].Value && Type != CORPSE_TYPE)
+	{
+		LOGI << "A " << Description.c_str() << " died!";
+		Type = CORPSE_TYPE;
+		Description += " corpse";
+	}
 }

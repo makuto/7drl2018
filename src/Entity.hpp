@@ -19,8 +19,9 @@ struct RLCombatStat
 };
 typedef std::map<std::string, RLCombatStat> RLCombatStatistics;
 
-struct RLEntity
+class RLEntity
 {
+public:
 	int Guid;
 
 	int X;
@@ -36,18 +37,35 @@ struct RLEntity
 	RLCombatStatistics Stats;
 
 	RLEntity();
+	virtual ~RLEntity() = default;
 
 	bool SamePos(RLEntity& otherEnt);
+
+	virtual void DoTurn();
 };
 
-struct Player : RLEntity
+class Player : public RLEntity
 {
+public:
+	void Initialize();
 	Player();
+	virtual ~Player() = default;
+
+	virtual void DoTurn();
+};
+
+class Enemy : public RLEntity
+{
+public:
+	Enemy() = default;
+	virtual ~Enemy() = default;
+
+	virtual void DoTurn() override;
 };
 
 bool canMoveTo(RLEntity& entity, int deltaX, int deltaY, RLMap& map);
 
-bool canMeleeAttack(RLEntity& entity, int deltaX, int deltaY, std::vector<RLEntity>& npcs,
+bool canMeleeAttack(RLEntity& entity, int deltaX, int deltaY, std::vector<RLEntity*>& npcs,
                     RLEntity** npcOut);
 
-RLEntity* findEntityById(std::vector<RLEntity>& npcs, int id);
+RLEntity* findEntityById(std::vector<RLEntity*>& npcs, int id);
