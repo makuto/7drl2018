@@ -51,6 +51,13 @@ Player::Player()
 	Initialize();
 }
 
+Enemy::Enemy()
+{
+	Stats["HP"] = {"", 100, 100, 0, 0, -1};
+	Stats["SP"] = {"", 100, 100, 0, 0, -1};
+	Stats["STR"] = {"", 10, 10, 0, 0, -1};
+}
+
 bool canMoveTo(RLEntity& entity, int deltaX, int deltaY, RLMap& map)
 {
 	RLTile* tile = map.At(entity.X + deltaX, entity.Y + deltaY);
@@ -207,7 +214,8 @@ std::string describePosition(int x, int y)
 	std::string npcDescription;
 	std::string traversablesDescription;
 	std::vector<RLEntity*> entitiesAtPosition = getEntitiesAtPosition(x, y);
-	for (std::vector<RLEntity*>::iterator it = entitiesAtPosition.begin(); it != entitiesAtPosition.end(); ++it)
+	for (std::vector<RLEntity*>::iterator it = entitiesAtPosition.begin();
+	     it != entitiesAtPosition.end(); ++it)
 	{
 		RLEntity* ent = (*it);
 
@@ -276,4 +284,18 @@ bool playerCanUseStairsNow(std::string* stairsDescriptionOut)
 	}
 
 	return false;
+}
+
+void enemyMeleeAttackPlayer(RLEntity* entity)
+{
+	int damage = -entity->Stats["STR"].Value;
+
+	if (damage)
+	{
+		gameState.player.Stats["HP"].Add(damage);
+		if (damage < 0)
+			LOGI << "A " << entity->Description.c_str() << " hit you for " << abs(damage) << " damage!";
+		if (damage > 0)
+			LOGI << "A " << entity->Description.c_str() << " healed you for " << abs(damage) << " health!";
+	}
 }

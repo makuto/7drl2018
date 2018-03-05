@@ -6,9 +6,15 @@ Ignore input when not focused
 
 Speed doesn't actually work
 
+Text wrap on small windows
+
+Enemies pathfind to player
+
 Todo
 -------
 Figure out why it seems to crash (is it a sublime problem?)
+
+Improve position description
 
 Doing
 -------

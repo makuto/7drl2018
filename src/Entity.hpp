@@ -93,7 +93,7 @@ private:
 
 public:
 	bool SpawnStairsDown;
-	Enemy() = default;
+	Enemy();
 	virtual ~Enemy() = default;
 
 	virtual void DoTurn() override;
@@ -114,3 +114,4 @@ bool sortEntitiesByAscendingDistFromPlayer(RLEntity* a, RLEntity* b);
 std::string describePosition(int x, int y);
 
 bool playerCanUseStairsNow(std::string* stairsDescriptionOut);
+void enemyMeleeAttackPlayer(RLEntity* entity);

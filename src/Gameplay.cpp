@@ -7,6 +7,7 @@
 #include "input/input.hpp"
 
 #include "Entity.hpp"
+#include "EntityCreators.hpp"
 #include "Game.hpp"
 #include "GameInput.hpp"
 #include "Gameplay.hpp"
@@ -100,12 +101,7 @@ bool PlayGame()
 		skeleton[i].SpawnStairsDown = (!i);
 		skeleton[i].X = (ViewTileWidth / 2) + 3 + i;
 		skeleton[i].Y = ViewTileHeight / 2;
-		skeleton[i].Speed = 1;
-		skeleton[i].Type = SKELETON_TYPE;
-		skeleton[i].Color = {ENEMY_COLOR_NORMAL};
-		skeleton[i].Description = "skeleton";
-		skeleton[i].Stats["HP"] = {
-		    "Health", PLAYER_STARTING_MAX_HEALTH, PLAYER_STARTING_MAX_HEALTH, 0, 0, -1};
+		initSkeleton(&skeleton[i]);
 		gameState.npcs.push_back(&skeleton[i]);
 	}
 
@@ -315,7 +311,7 @@ bool PlayGame()
 					if (gameState.player.X == npc->X + npc->VelocityX &&
 					    gameState.player.Y == npc->Y + npc->VelocityY)
 					{
-						LOGI << "Player hit!";
+						enemyMeleeAttackPlayer(npc);
 					}
 					else
 					{
@@ -397,6 +393,7 @@ bool PlayGame()
 
 			win.draw(&displayText);
 		}
+		// Show the last turn's log
 		else if (GameLog.size() && LastTurnLog == TurnCounter)
 		{
 			displayText.setText(GameLog.back());
