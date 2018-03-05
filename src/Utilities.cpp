@@ -51,6 +51,9 @@ void ConsoleAndGameLogOutput(const gv::Logging::Record& record)
 			// Yes, this is terrible. Don't display wall bump message more than once
 			if (currentTurnLog.find(WALL_BUMP) != std::string::npos && gameLogAction == WALL_BUMP)
 				return;
+			if (currentTurnLog.find(LOOK_MODE_EXIT) != std::string::npos &&
+			    gameLogAction == LOOK_MODE_EXIT)
+				return;
 
 			// Add divider
 			if (std::isalnum(currentTurnLog[currentTurnLog.size() - 1]))
@@ -62,6 +65,9 @@ void ConsoleAndGameLogOutput(const gv::Logging::Record& record)
 		}
 		else
 		{
+			if (gameLogAction == LOOK_MODE_EXIT)
+				return;
+
 			GameLog.push_back(gameLogAction);
 			LastTurnLog = TurnCounter;
 		}

@@ -2,6 +2,10 @@ Potential Features
 -------
 Nice fog effect by having radius around the player plus some noise, changing transparency of every char
 
+Ignore input when not focused
+
+Speed doesn't actually work
+
 Todo
 -------
 Figure out why it seems to crash (is it a sublime problem?)

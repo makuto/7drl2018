@@ -81,11 +81,30 @@ void DrawWorld(RLMap& map, int camXOffset, int camYOffset)
 			{
 				if (npc->X == tileX && npc->Y == tileY && !gameState.player.SamePos(*npc))
 				{
-					buffer += npc->Type;
-					SetTextColor(displayText, npc->Color);
+					if (buffer.empty())
+					{
+						buffer += npc->Type;
+						SetTextColor(displayText, npc->Color);
 
-					shouldDrawTile = false;
-					break;
+						shouldDrawTile = false;
+					}
+					// Ensure we draw non traversables on top
+					else if (!buffer.empty() && !npc->IsTraversable)
+					{
+						buffer.clear();
+						buffer += npc->Type;
+						SetTextColor(displayText, npc->Color);
+
+						shouldDrawTile = false;
+					}
+					else if (!buffer.empty() && npc->Type == STAIRS_DOWN_TYPE)
+					{
+						buffer.clear();
+						buffer += npc->Type;
+						SetTextColor(displayText, npc->Color);
+
+						shouldDrawTile = false;
+					}
 				}
 			}
 

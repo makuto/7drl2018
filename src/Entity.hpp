@@ -56,6 +56,8 @@ public:
 
 	RLCombatStatistics Stats;
 
+	bool IsTraversable;
+
 	RLEntity();
 	virtual ~RLEntity() = default;
 
@@ -104,6 +106,11 @@ bool canMeleeAttack(RLEntity& entity, int deltaX, int deltaY, std::vector<RLEnti
 
 RLEntity* findEntityById(std::vector<RLEntity*>& npcs, int id);
 
-RLEntity* findEntityByPosition(std::vector<RLEntity*>& npcs, int x, int y);
+std::vector<RLEntity*> getEntitiesAtPosition(int x, int y);
+bool isNonTraversableEntityAtPosition(int x, int y);
 
 bool sortEntitiesByAscendingDistFromPlayer(RLEntity* a, RLEntity* b);
+
+std::string describePosition(int x, int y);
+
+bool playerCanUseStairsNow(std::string* stairsDescriptionOut);

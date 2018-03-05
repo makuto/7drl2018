@@ -67,6 +67,7 @@
 #define PLAYER_MELEE_ATTACKING_BONUS -1
 
 //
-// Strings
+// Only display once in log strings
 //
 #define WALL_BUMP "You bump into a wall"
+#define LOOK_MODE_EXIT "(Last turn)"

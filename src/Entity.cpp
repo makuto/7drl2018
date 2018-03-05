@@ -15,6 +15,7 @@ RLEntity::RLEntity()
 {
 	static int nextGuid = 1;
 	Guid = nextGuid++;
+	IsTraversable = false;
 }
 
 bool RLEntity::SamePos(RLEntity& otherEnt)
@@ -59,20 +60,15 @@ bool canMoveTo(RLEntity& entity, int deltaX, int deltaY, RLMap& map)
 bool canMeleeAttack(RLEntity& entity, int deltaX, int deltaY, std::vector<RLEntity*>& npcs,
                     RLEntity** npcOut)
 {
-	for (RLEntity* npc : npcs)
-	{
-		if (entity.X + deltaX == npc->X && entity.Y + deltaY == npc->Y)
-		{
-			*npcOut = npc;
-
-			// Corpse (icky)
-			if (npc->Type == CORPSE_TYPE || !npc->Stats["HP"].Value)
-				return false;
-			
-			return true;
-		}
-	}
 	*npcOut = nullptr;
+	std::vector<RLEntity*> entitiesAtPosition =
+	    getEntitiesAtPosition(entity.X + deltaX, entity.Y + deltaY);
+	for (RLEntity* npc : entitiesAtPosition)
+	{
+		*npcOut = npc;
+		if (!npc->IsTraversable && npc->Stats["HP"].Value)
+			return true;
+	}
 	return false;
 }
 
@@ -87,15 +83,27 @@ RLEntity* findEntityById(std::vector<RLEntity*>& npcs, int id)
 	return nullptr;
 }
 
-RLEntity* findEntityByPosition(std::vector<RLEntity*>& npcs, int x, int y)
+std::vector<RLEntity*> getEntitiesAtPosition(int x, int y)
 {
-	for (RLEntity* npc : npcs)
+	std::vector<RLEntity*> entitiesAtPosition;
+	for (RLEntity* npc : gameState.npcs)
 	{
 		if (npc->X == x && npc->Y == y)
-			return npc;
+			entitiesAtPosition.push_back(npc);
 	}
 
-	return nullptr;
+	return entitiesAtPosition;
+}
+
+bool isNonTraversableEntityAtPosition(int x, int y)
+{
+	std::vector<RLEntity*> entitiesAtPosition = getEntitiesAtPosition(x, y);
+	for (RLEntity* npc : entitiesAtPosition)
+	{
+		if (!npc->IsTraversable)
+			return true;
+	}
+	return false;
 }
 
 void RLEntity::DoTurn()
@@ -169,6 +177,7 @@ void Enemy::CheckDoDeath()
 	                           (!SpawnStairsDown && Type != CORPSE_TYPE)))
 	{
 		LOGI << "A " << Description.c_str() << " died!";
+		IsTraversable = true;
 		Type = CORPSE_TYPE;
 		Description += " corpse";
 
@@ -186,4 +195,85 @@ bool sortEntitiesByAscendingDistFromPlayer(RLEntity* a, RLEntity* b)
 	float aDist = distanceTo(a->X, a->Y, gameState.player.X, gameState.player.Y);
 	float bDist = distanceTo(b->X, b->Y, gameState.player.X, gameState.player.Y);
 	return aDist < bDist;
+}
+
+std::string describePosition(int x, int y)
+{
+	std::string description;
+
+	RLTile* lookTile = gameState.currentMap.At(x, y);
+	std::string tileDescription = lookTile ? GetTileDescription(*lookTile) : "";
+
+	std::string npcDescription;
+	std::string traversablesDescription;
+	std::vector<RLEntity*> entitiesAtPosition = getEntitiesAtPosition(x, y);
+	for (std::vector<RLEntity*>::iterator it = entitiesAtPosition.begin(); it != entitiesAtPosition.end(); ++it)
+	{
+		RLEntity* ent = (*it);
+
+		if (!ent->IsTraversable)
+		{
+			if (ent->Stats["HP"].Value < ent->Stats["HP"].Max * .2f)
+				npcDescription += "wounded ";
+
+			npcDescription += "a ";
+			npcDescription += ent->Description;
+		}
+		else
+		{
+			if (!traversablesDescription.empty())
+			{
+				if (ent == entitiesAtPosition.back())
+					traversablesDescription += ", and a ";
+				else
+					traversablesDescription += ", a ";
+			}
+			else
+				traversablesDescription += "a ";
+			traversablesDescription += ent->Description;
+		}
+	}
+
+	if (!traversablesDescription.empty() || !tileDescription.empty() || !npcDescription.empty())
+	{
+		if (!npcDescription.empty())
+		{
+			description += npcDescription;
+		}
+
+		if (!traversablesDescription.empty())
+		{
+			if (!npcDescription.empty())
+				description += " on ";
+			description += traversablesDescription;
+		}
+
+		// Only describe the ground if there's nothing on it
+		if (!tileDescription.empty())
+		{
+			if (!npcDescription.empty() || !traversablesDescription.empty())
+				description += " on ";
+			description += tileDescription;
+		}
+	}
+
+	return description;
+}
+
+bool playerCanUseStairsNow(std::string* stairsDescriptionOut)
+{
+	std::vector<RLEntity*> possibleStairs =
+	    getEntitiesAtPosition(gameState.player.X, gameState.player.Y);
+	for (RLEntity* ent : possibleStairs)
+	{
+		if (ent->Type == STAIRS_DOWN_TYPE)
+		{
+			if (stairsDescriptionOut)
+				*stairsDescriptionOut = ent->Description;
+
+			return true;
+		}
+	}
+
+	return false;
 }
