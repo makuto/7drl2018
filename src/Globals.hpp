@@ -85,3 +85,8 @@
 //
 #define WALL_BUMP "You bump into a wall"
 #define LOOK_MODE_EXIT "(Last turn)"
+
+//
+// Engine tuning
+//
+#define MAX_PLACEMENT_ATTEMPTS 100

@@ -10,8 +10,7 @@
 
 void placeEntityWithinSquareRandomSensibly(RLEntity* entity, int xCenter, int yCenter, int radius)
 {
-	srand(gameState.seed * (gameState.currentLevel + (unsigned long)entity));
-	while (1)
+	for (int i = 0; i < MAX_PLACEMENT_ATTEMPTS; i++)
 	{
 		int xPos = ((rand() % (radius * 2)) - radius) + xCenter;
 		int yPos = ((rand() % (radius * 2)) - radius) + yCenter;
@@ -32,12 +31,16 @@ void placeEntityWithinSquareRandomSensibly(RLEntity* entity, int xCenter, int yC
 		entity->Y = yPos;
 		return;
 	}
+
+	LOGE << "Could not place entity " << entity->Description.c_str() << " within " << MAX_PLACEMENT_ATTEMPTS << " attempts! Seed " << gameState.seed * gameState.currentLevel;
+	// We failed to find a place quickly. Pick something arbitrary
+	entity->X = xCenter + 1;
+	entity->Y = yCenter;
 }
 
 void placeEntityRandomSensibly(RLEntity* entity)
 {
-	srand(gameState.seed * (gameState.currentLevel + (unsigned long)entity));
-	while (1)
+	for (int i = 0; i < MAX_PLACEMENT_ATTEMPTS; i++)
 	{
 		int xPos = rand() % gameState.currentMap.Width;
 		int yPos = rand() % gameState.currentMap.Height;
@@ -58,6 +61,11 @@ void placeEntityRandomSensibly(RLEntity* entity)
 		entity->Y = yPos;
 		return;
 	}
+
+	LOGE << "Could not place entity " << entity->Description.c_str() << " within " << MAX_PLACEMENT_ATTEMPTS << " attempts! Seed " << gameState.seed * gameState.currentLevel;
+	// We failed to find a place quickly. Pick something arbitrary
+	entity->X = 1;
+	entity->Y = 1;
 }
 
 void createTestMap(RLMap& map)
@@ -215,9 +223,11 @@ void LoadNextLevel()
 	ClearNpcs();
 
 	gameState.currentLevel++;
-	if (gameState.currentLevel <= 2)
+	srand(gameState.seed * gameState.currentLevel);
+
+	if (gameState.currentLevel <= 3)
 		createForest();
-	else if (gameState.currentLevel < 5)
+	else if (gameState.currentLevel <= 6)
 		createBarren();
 	else
 		createHellscape();
