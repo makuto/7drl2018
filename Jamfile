@@ -6,7 +6,7 @@ Main 7drl2018 : src/main.cpp
                 src/RLMap.cpp 
                 src/Levels.cpp 
                 src/Entity.cpp 
-                src/EntityCreators.cpp 
+                src/Enemies.cpp 
                 src/Logging.cpp 
                 src/Utilities.cpp 
                 src/PlayerDeadScreen.cpp 

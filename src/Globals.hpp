@@ -29,7 +29,10 @@
 
 // Tiles
 #define WALL_TILE_COLOR_NORMAL 255, 255, 255, 255
+#define TREE_TILE_COLOR_NORMAL 184, 247, 34, 255
+#define GRASS_TILE_COLOR_NORMAL 164, 227, 14, 255
 #define FLOOR_TILE_COLOR_NORMAL 46, 64, 75, 255
+#define	HELL_TILE_COLOR_NORMAL 232, 30, 34, 255
 
 // Entities
 #define PLAYER_COLOR_NORMAL 252, 145, 57, 255
@@ -47,6 +50,7 @@
 #define STAIRS_DOWN_TYPE '>'
 
 #define WALL_TYPE '#'
+#define TREE_TYPE '#'
 #define FLOOR_TYPE '.'
 
 #define LOOK_MODE_CURSOR "_"
@@ -62,9 +66,18 @@
 #define PLAYER_STARTING_RESTORE_STAMINA 10
 #define PLAYER_DEFAULT_RESTORE_RATE_STAMINA 5
 
+#define PLAYER_STARTING_MAX_STRENGTH 10
+
 // If the player rests, the number of turns to restore goes down by this number
 #define PLAYER_RESTING_BONUS 1
 #define PLAYER_MELEE_ATTACKING_BONUS -1
+
+// The absolute max a single summoner can spawn
+#define MAX_SINGLE_SUMMONS 100
+#define SUMMONING_RADIUS 3
+#define	SUMMONER_SPAWN_RATE_TURNS 20
+// Each level, spawn rate turns cooldown decreases by this * level
+#define SUMMONER_SPAWN_RATE_LEVEL_MULTIPLIER 0.5f
 
 //
 // Only display once in log strings

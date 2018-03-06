@@ -88,8 +88,9 @@ public:
 
 class Enemy : public RLEntity
 {
-private:
+protected:
 	void CheckDoDeath();
+	void MoveTowardsPlayer();
 
 public:
 	bool SpawnStairsDown;
@@ -115,3 +116,4 @@ std::string describePosition(int x, int y);
 
 bool playerCanUseStairsNow(std::string* stairsDescriptionOut);
 void enemyMeleeAttackPlayer(RLEntity* entity);
+void playerMeleeAttackEnemy(RLEntity* entity);

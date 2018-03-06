@@ -1,9 +1,63 @@
+#include "math/math.hpp"
 #include "noise/noise.hpp"
 
 #include "Levels.hpp"
 
-#include "RLMap.hpp"
+#include "Enemies.hpp"
 #include "Game.hpp"
+#include "RLMap.hpp"
+
+void placeEntityWithinSquareRandomSensibly(RLEntity* entity, int xCenter, int yCenter, int radius)
+{
+	srand(gameState.seed * (gameState.currentLevel + (unsigned long)entity));
+	while (1)
+	{
+		int xPos = ((rand() % (radius * 2)) - radius) + xCenter;
+		int yPos = ((rand() % (radius * 2)) - radius) + yCenter;
+
+		RLTile* tileAt = gameState.currentMap.At(xPos, yPos);
+		// TODO: Add check to see if player could get to them
+		if (!tileAt || tileAt->Type != FLOOR_TYPE)
+			continue;
+
+		if (xPos == gameState.player.X && yPos == gameState.player.Y)
+			continue;
+
+		if (manhattanTo(xPos, yPos, gameState.player.X, gameState.player.Y) < 3.f)
+			continue;
+
+		// Met all our criteria
+		entity->X = xPos;
+		entity->Y = yPos;
+		return;
+	}
+}
+
+void placeEntityRandomSensibly(RLEntity* entity)
+{
+	srand(gameState.seed * (gameState.currentLevel + (unsigned long)entity));
+	while (1)
+	{
+		int xPos = rand() % gameState.currentMap.Width;
+		int yPos = rand() % gameState.currentMap.Height;
+
+		RLTile* tileAt = gameState.currentMap.At(xPos, yPos);
+		// TODO: Add check to see if player could get to them
+		if (!tileAt || tileAt->Type != FLOOR_TYPE)
+			continue;
+
+		if (xPos == gameState.player.X && yPos == gameState.player.Y)
+			continue;
+
+		if (manhattanTo(xPos, yPos, gameState.player.X, gameState.player.Y) < 3.f)
+			continue;
+
+		// Met all our criteria
+		entity->X = xPos;
+		entity->Y = yPos;
+		return;
+	}
+}
 
 void createTestMap(RLMap& map)
 {
@@ -40,24 +94,133 @@ void createTestMapNoise(RLMap& map)
 	}
 }
 
-void LoadNextLevel()
+void createHellscape()
 {
-	gameState.npcs.clear();
-	
-	gameState.currentMap.Tiles.resize(gameState.currentMap.Width * gameState.currentMap.Height);
-	Noise2d noise(982347);
+	gameState.currentMap.SetSize(500, 500);
+	Noise2d noise(gameState.seed * gameState.currentLevel);
 	const float scale = 0.1;
 	for (int tileY = 0; tileY < gameState.currentMap.Height; ++tileY)
 	{
 		for (int tileX = 0; tileX < gameState.currentMap.Width; ++tileX)
 		{
+			RLTile* currentTile = gameState.currentMap.At(tileX, tileY);
 			float noiseValue = noise.scaledOctaveNoise2d(tileX, tileY, 0, 255, 10, scale, 0.55, 2);
+			// Wall
 			if (noiseValue < 100.f)
 			{
-				RLTile* currentTile = gameState.currentMap.At(tileX, tileY);
 				currentTile->Type = WALL_TYPE;
 				currentTile->Color = {WALL_TILE_COLOR_NORMAL};
 			}
+			// Ground
+			else
+			{
+				currentTile->Type = FLOOR_TYPE;
+				// Add some variation
+				if (noiseValue > 150.f)
+				{
+					currentTile->Color = {FLOOR_TILE_COLOR_NORMAL};
+					currentTile->DescriptionOverride.clear();
+				}
+				else
+				{
+					currentTile->Color = {HELL_TILE_COLOR_NORMAL};
+					// TODO: Dumb
+					currentTile->DescriptionOverride = "a patch of hot earth";
+				}
+			}
 		}
 	}
+}
+
+void createBarren()
+{
+	gameState.currentMap.SetSize(300, 300);
+	Noise2d noise(gameState.seed * gameState.currentLevel);
+	const float scale = 0.1;
+	for (int tileY = 0; tileY < gameState.currentMap.Height; ++tileY)
+	{
+		for (int tileX = 0; tileX < gameState.currentMap.Width; ++tileX)
+		{
+			RLTile* currentTile = gameState.currentMap.At(tileX, tileY);
+			float noiseValue = noise.scaledOctaveNoise2d(tileX, tileY, 0, 255, 10, scale, 0.55, 2);
+			// Wall
+			if (noiseValue < 100.f)
+			{
+				currentTile->Type = WALL_TYPE;
+				currentTile->Color = {WALL_TILE_COLOR_NORMAL};
+			}
+			// Ground
+			else
+			{
+				currentTile->Type = FLOOR_TYPE;
+				currentTile->Color = {FLOOR_TILE_COLOR_NORMAL};
+			}
+		}
+	}
+}
+
+void createForest()
+{
+	gameState.currentMap.SetSize(100, 100);
+	Noise2d noise(gameState.seed * gameState.currentLevel);
+	const float scale = 0.1;
+	for (int tileY = 0; tileY < gameState.currentMap.Height; ++tileY)
+	{
+		for (int tileX = 0; tileX < gameState.currentMap.Width; ++tileX)
+		{
+			RLTile* currentTile = gameState.currentMap.At(tileX, tileY);
+			float noiseValue = noise.scaledOctaveNoise2d(tileX, tileY, 0, 255, 10, scale, 0.55, 2);
+			// Tree
+			if (noiseValue < 100.f)
+			{
+				currentTile->Type = TREE_TYPE;
+				currentTile->Color = {TREE_TILE_COLOR_NORMAL};
+				currentTile->DescriptionOverride = "a tree";
+			}
+			// Ground
+			else
+			{
+				currentTile->Type = FLOOR_TYPE;
+
+				// Add some variation
+				if (noiseValue > 150.f)
+				{
+					currentTile->Color = {FLOOR_TILE_COLOR_NORMAL};
+					currentTile->DescriptionOverride.clear();
+				}
+				else
+				{
+					currentTile->Color = {GRASS_TILE_COLOR_NORMAL};
+					currentTile->DescriptionOverride = "a patch of grass";
+				}
+			}
+		}
+	}
+}
+
+void ClearNpcs()
+{
+	for (RLEntity* entity : gameState.npcs)
+		delete entity;
+
+	gameState.npcs.clear();
+}
+
+void LoadNextLevel()
+{
+	ClearNpcs();
+
+	gameState.currentLevel++;
+	if (gameState.currentLevel <= 2)
+		createForest();
+	else if (gameState.currentLevel < 5)
+		createBarren();
+	else
+		createHellscape();
+
+	Summoner* newSummoner = new Summoner();
+	placeEntityRandomSensibly(newSummoner);
+	gameState.npcs.push_back(newSummoner);
+
+	placeEntityRandomSensibly(&gameState.player);
 }

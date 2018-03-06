@@ -7,7 +7,11 @@
 
 std::string GetTileDescription(RLTile& tile)
 {
+	if (!tile.DescriptionOverride.empty())
+		return tile.DescriptionOverride;
+
 	std::string description = "";
+
 	switch (tile.Type)
 	{
 		case '#':
@@ -44,6 +48,14 @@ RLMap::RLMap(int width, int height) : Width(width), Height(height)
 		tile.Type = FLOOR_TYPE;
 		tile.Color = {FLOOR_TILE_COLOR_NORMAL};
 	}
+}
+
+void RLMap::SetSize(int width, int height)
+{
+	Width = width;
+	Height = height;
+
+	Tiles.resize(Width * Height);
 }
 
 RLTile* RLMap::At(int x, int y)

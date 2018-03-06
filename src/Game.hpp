@@ -53,6 +53,13 @@ struct GameState
 	std::vector<RLEntity*> npcsToCreate;
 
 	RLMap currentMap;
+
+	// Changes every play session (but not every level)
+	int seed;
+
+	int currentLevel;
+
+	// Remember to add fields to Reset Globals block!
 };
 
 extern GameState gameState;

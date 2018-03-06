@@ -2,12 +2,14 @@
 
 // std::sort
 #include <algorithm>
+// time
+#include <time.h>
 
 #include "graphics/graphics.hpp"
 #include "input/input.hpp"
 
+#include "Enemies.hpp"
 #include "Entity.hpp"
-#include "EntityCreators.hpp"
 #include "Game.hpp"
 #include "GameInput.hpp"
 #include "Gameplay.hpp"
@@ -68,6 +70,14 @@ void DrawSidebar()
 	displayText.setColor(STATUS_COLOR_UNIMPORTANT);
 	displayText.setText(turnDisplay);
 	win.draw(&displayText);
+
+	currentRowY += TileTextHeight;
+	displayText.setPosition(SidebarStartX, currentRowY);
+	std::string levelDisplay = "Level ";
+	levelDisplay += std::to_string(gameState.currentLevel);
+	displayText.setColor(STATUS_COLOR_UNIMPORTANT);
+	displayText.setText(levelDisplay);
+	win.draw(&displayText);
 }
 
 // Returns whether it should restart or not
@@ -82,36 +92,31 @@ bool PlayGame()
 	//
 	GameLog.clear();
 	TurnCounter = 0;
-	gameState.npcs.clear();
+	gameState.seed = time(nullptr);
+	gameState.currentLevel = 0;
+	ClearNpcs();
 	gameState.player.Initialize();
 
 	//
 	// Game initialization
 	//
-	gameState.player.X = ViewTileWidth / 2;
-	gameState.player.Y = ViewTileHeight / 2;
-
-	RLEntity lookModeCursor;
 
 	LoadNextLevel();
 
-	Enemy skeleton[3];
-	for (int i = 0; i < 3; ++i)
-	{
-		skeleton[i].SpawnStairsDown = (!i);
-		skeleton[i].X = (ViewTileWidth / 2) + 3 + i;
-		skeleton[i].Y = ViewTileHeight / 2;
-		initSkeleton(&skeleton[i]);
-		gameState.npcs.push_back(&skeleton[i]);
-	}
-
+	//
+	// Game loop variables
+	//
+	RLEntity lookModeCursor;
+	
 	int playerMeleeAttackNpcGuid = 0;
 
+	// camera
 	int camXOffset = 0;
 	int camYOffset = 0;
 	RLEntity* cameraTrackingEntity = nullptr;
 	UpdateCameraOffset(&gameState.player, camXOffset, camYOffset);
 
+	// State
 	bool lookMode = false;
 	bool playerDead = false;
 
@@ -268,20 +273,7 @@ bool PlayGame()
 				RLEntity* attackedNpc = findEntityById(gameState.npcs, playerMeleeAttackNpcGuid);
 				if (attackedNpc)
 				{
-					int damage = 10;
-					int staminaCost = 10;
-					// If out of stamina, take it out of health
-					int healthCost = gameState.player.Stats["SP"].Value < staminaCost ?
-					                     gameState.player.Stats["SP"].Value - staminaCost :
-					                     0;
-					gameState.player.Stats["SP"].Add(-staminaCost);
-					gameState.player.Stats["HP"].Add(healthCost);
-
-					attackedNpc->Stats["HP"].Add(-damage);
-					LOGI << "You hit the " << attackedNpc->Description.c_str() << " for " << damage
-					     << " damage";
-					if (healthCost)
-						LOGI << "You feel weaker from overexertion";
+					playerMeleeAttackEnemy(attackedNpc);
 				}
 
 				// Finished attack
@@ -298,6 +290,8 @@ bool PlayGame()
 			}
 			gameState.npcs.insert(gameState.npcs.begin(), gameState.npcsToCreate.begin(),
 			                      gameState.npcsToCreate.end());
+			// I forgot this call at first lol
+			gameState.npcsToCreate.clear();
 
 			// Resolve NPC movement
 			// Sort so closest move first (that way they can move tightly together)

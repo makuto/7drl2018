@@ -42,6 +42,8 @@ void Player::Initialize()
 	               PLAYER_STARTING_RESTORE_STAMINA,
 	               PLAYER_DEFAULT_RESTORE_RATE_STAMINA,
 	               -1};
+	Stats["STR"] = {"Strength", PLAYER_STARTING_MAX_STRENGTH, PLAYER_STARTING_MAX_STRENGTH, 0, -1,
+	                -1};
 
 	ThisTurnAction = PlayerAction::None;
 }
@@ -167,14 +169,7 @@ void Enemy::DoTurn()
 	if (!Stats["HP"].Value)
 		return;
 
-	// Shamble towards the player
-	int deltaX = -(X - gameState.player.X);
-	int deltaY = -(Y - gameState.player.Y);
-
-	CLAMP(deltaX, -Speed, Speed);
-	CLAMP(deltaY, -Speed, Speed);
-	VelocityX = deltaX;
-	VelocityY = deltaY;
+	MoveTowardsPlayer();
 }
 
 void Enemy::CheckDoDeath()
@@ -197,6 +192,18 @@ void Enemy::CheckDoDeath()
 	}
 }
 
+void Enemy::MoveTowardsPlayer()
+{
+	// Shamble towards the player
+	int deltaX = -(X - gameState.player.X);
+	int deltaY = -(Y - gameState.player.Y);
+
+	CLAMP(deltaX, -Speed, Speed);
+	CLAMP(deltaY, -Speed, Speed);
+	VelocityX = deltaX;
+	VelocityY = deltaY;
+}
+
 bool sortEntitiesByAscendingDistFromPlayer(RLEntity* a, RLEntity* b)
 {
 	float aDist = distanceTo(a->X, a->Y, gameState.player.X, gameState.player.Y);
@@ -211,6 +218,7 @@ std::string describePosition(int x, int y)
 	RLTile* lookTile = gameState.currentMap.At(x, y);
 	std::string tileDescription = lookTile ? GetTileDescription(*lookTile) : "";
 
+	// Describe entities
 	std::string npcDescription;
 	std::string traversablesDescription;
 	std::vector<RLEntity*> entitiesAtPosition = getEntitiesAtPosition(x, y);
@@ -242,6 +250,7 @@ std::string describePosition(int x, int y)
 		}
 	}
 
+	// Combine descriptions
 	if (!traversablesDescription.empty() || !tileDescription.empty() || !npcDescription.empty())
 	{
 		if (!npcDescription.empty())
@@ -294,8 +303,39 @@ void enemyMeleeAttackPlayer(RLEntity* entity)
 	{
 		gameState.player.Stats["HP"].Add(damage);
 		if (damage < 0)
-			LOGI << "A " << entity->Description.c_str() << " hit you for " << abs(damage) << " damage!";
+			LOGI << "A " << entity->Description.c_str() << " hit you for " << abs(damage)
+			     << " damage!";
 		if (damage > 0)
-			LOGI << "A " << entity->Description.c_str() << " healed you for " << abs(damage) << " health!";
+			LOGI << "A " << entity->Description.c_str() << " healed you for " << abs(damage)
+			     << " health!";
 	}
+}
+
+void playerMeleeAttackEnemy(RLEntity* entity)
+{
+	int damage = -gameState.player.Stats["STR"].Value;
+
+	// Pay for it
+	int staminaCost = 10;
+	// If out of stamina, take it out of health
+	int healthCost = gameState.player.Stats["SP"].Value < staminaCost ?
+	                     gameState.player.Stats["SP"].Value - staminaCost :
+	                     0;
+	gameState.player.Stats["SP"].Add(-staminaCost);
+	gameState.player.Stats["HP"].Add(healthCost);
+
+	// Damage the enemy
+	if (damage)
+	{
+		if (damage < 0)
+		{
+			entity->Stats["HP"].Add(damage);
+
+			LOGI << "You hit the " << entity->Description.c_str() << " for " << abs(damage)
+			     << " damage";
+		}
+	}
+
+	if (healthCost)
+		LOGI << "You feel weaker from overexertion";
 }

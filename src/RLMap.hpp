@@ -1,7 +1,7 @@
 #pragma once
 
-#include <vector>
 #include <string>
+#include <vector>
 
 #include "RLColor.hpp"
 
@@ -13,6 +13,8 @@ struct RLTile
 
 	// Add effects, color etc. later
 	RLColor Color;
+
+	std::string DescriptionOverride;
 };
 
 std::string GetTileDescription(RLTile& tile);
@@ -26,6 +28,8 @@ struct RLMap
 
 	RLMap();
 	RLMap(int width, int height);
+
+	void SetSize(int width, int height);
 
 	RLTile* At(int x, int y);
 };

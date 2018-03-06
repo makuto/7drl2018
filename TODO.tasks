@@ -8,7 +8,10 @@ Speed doesn't actually work
 
 Text wrap on small windows
 
-Enemies pathfind to player
+Enemies pathfind to player (actually, just randomly go in a dir sometimes to not get stuck)
+
+Make color scheme consistent!!!
+
 
 Todo
 -------
@@ -16,8 +19,16 @@ Figure out why it seems to crash (is it a sublime problem?)
 
 Improve position description
 
+
+
+
 Doing
 -------
+
+
+
+
+
 
 Done
 -------
