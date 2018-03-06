@@ -1,5 +1,6 @@
 #include "Entity.hpp"
 
+#include "Globals.hpp"
 #include "math/math.hpp"
 
 #include "Game.hpp"
@@ -197,6 +198,17 @@ void Enemy::MoveTowardsPlayer()
 	// Shamble towards the player
 	int deltaX = -(X - gameState.player.X);
 	int deltaY = -(Y - gameState.player.Y);
+
+	CLAMP(deltaX, -Speed, Speed);
+	CLAMP(deltaY, -Speed, Speed);
+	VelocityX = deltaX;
+	VelocityY = deltaY;
+}
+
+void Enemy::RandomWalk()
+{
+	int deltaX = (rand() % 2) - 1;
+	int deltaY = (rand() % 2) - 1;
 
 	CLAMP(deltaX, -Speed, Speed);
 	CLAMP(deltaY, -Speed, Speed);

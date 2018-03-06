@@ -1,6 +1,7 @@
 #include "math/math.hpp"
 #include "noise/noise.hpp"
 
+#include "Globals.hpp"
 #include "Levels.hpp"
 
 #include "Enemies.hpp"
@@ -96,6 +97,7 @@ void createTestMapNoise(RLMap& map)
 
 void createHellscape()
 {
+	gameState.levelName = "Hellscape";
 	gameState.currentMap.SetSize(500, 500);
 	Noise2d noise(gameState.seed * gameState.currentLevel);
 	const float scale = 0.1;
@@ -134,6 +136,7 @@ void createHellscape()
 
 void createBarren()
 {
+	gameState.levelName = "Barren";
 	gameState.currentMap.SetSize(300, 300);
 	Noise2d noise(gameState.seed * gameState.currentLevel);
 	const float scale = 0.1;
@@ -161,6 +164,7 @@ void createBarren()
 
 void createForest()
 {
+	gameState.levelName = "Forest";
 	gameState.currentMap.SetSize(100, 100);
 	Noise2d noise(gameState.seed * gameState.currentLevel);
 	const float scale = 0.1;

@@ -1,5 +1,7 @@
 #include "Enemies.hpp"
 
+#include "Globals.hpp"
+
 #include "Game.hpp"
 #include "Levels.hpp"
 

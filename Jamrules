@@ -35,7 +35,7 @@ LINK = clang++ ;
 #   -Wno-unused-parameter = I should probably get rid of this at some point
 
 # Arguments used on all projects, regardless of any variables
-C++FLAGS = -std=c++11 -Wall -Wextra -Wno-unused-parameter -include src/Globals.hpp -include src/Logging.hpp ;
+C++FLAGS = -std=c++11 -Wall -Wextra -Wno-unused-parameter -include src/Logging.hpp ;
 
 ALLLIBSC++FLAGS = -g ;
 

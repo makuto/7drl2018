@@ -1,23 +1,26 @@
 #include "PlayerDeadScreen.hpp"
-#include "Art.hpp"
 
+#include "Globals.hpp"
+
+#include "Art.hpp"
 #include "Game.hpp"
 
 // returns whether or not to restart the game
 bool PlayerDeadScreen()
 {
-	while (!win.shouldClose() && !inp.isPressed(inputCode::Return) && !inp.isPressed(inputCode::Escape))
+	while (!win.shouldClose() && !inp.isPressed(inputCode::Return) &&
+	       !inp.isPressed(inputCode::Escape))
 	{
 		// Quick restart
 		if (inp.isPressed(inputCode::Space))
 			return true;
 
-		//int centerOffset = 10;
-		//int centerTextX = ((ViewTileWidth / 2) - centerOffset) * TileTextWidth;
-		//int centerTextY = ((ViewTileHeight / 2) - centerOffset) * TileTextHeight;
-		int centerOffset = 100;
-		int centerTextX = centerOffset;
-		int centerTextY = centerOffset;
+		// int centerOffset = 10;
+		// int centerTextX = ((ViewTileWidth / 2) - centerOffset) * TileTextWidth;
+		// int centerTextY = ((ViewTileHeight / 2) - centerOffset) * TileTextHeight;
+		int centerOffsetPixels = 100;
+		int centerTextX = centerOffsetPixels;
+		int centerTextY = centerOffsetPixels;
 
 		// displayText.setText("You have died!");
 		displayText.setText(YOU_DIED);
@@ -25,8 +28,20 @@ bool PlayerDeadScreen()
 		displayText.setPosition(centerTextX, centerTextY);
 		win.draw(&displayText);
 
-		displayText.setColor(LOG_COLOR_NORMAL);
 		centerTextY += TileTextHeight * 13;
+		std::string progressReport = "You lasted ";
+		progressReport += std::to_string(TurnCounter);
+		progressReport += " turns and reached level ";
+		progressReport += std::to_string(gameState.currentLevel);
+		progressReport += " ";
+		progressReport += gameState.levelName;
+		displayText.setText(progressReport);
+		displayText.setColor(LOG_COLOR_NORMAL);
+		displayText.setPosition(centerTextX, centerTextY);
+		win.draw(&displayText);
+		
+		displayText.setColor(LOG_COLOR_NORMAL);
+		centerTextY += TileTextHeight * 2;
 		displayText.setPosition(centerTextX, centerTextY);
 		displayText.setText("Press space to restart.");
 		win.draw(&displayText);

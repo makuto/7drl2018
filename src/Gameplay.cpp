@@ -8,6 +8,8 @@
 #include "graphics/graphics.hpp"
 #include "input/input.hpp"
 
+#include "Globals.hpp"
+
 #include "Enemies.hpp"
 #include "Entity.hpp"
 #include "Game.hpp"
@@ -63,6 +65,7 @@ void DrawSidebar()
 		currentRowY += TileTextHeight;
 	}
 
+	// Turn counter
 	currentRowY += TileTextHeight;
 	displayText.setPosition(SidebarStartX, currentRowY);
 	std::string turnDisplay = "Turn ";
@@ -72,12 +75,24 @@ void DrawSidebar()
 	win.draw(&displayText);
 
 	currentRowY += TileTextHeight;
+
+	// Level name
+	currentRowY += TileTextHeight;
+	displayText.setPosition(SidebarStartX, currentRowY);
+	std::string levelNameDisplay = gameState.levelName;
+	displayText.setColor(STATUS_COLOR_UNIMPORTANT);
+	displayText.setText(levelNameDisplay);
+	win.draw(&displayText);
+
+	// Level
+	currentRowY += TileTextHeight;
 	displayText.setPosition(SidebarStartX, currentRowY);
 	std::string levelDisplay = "Level ";
 	levelDisplay += std::to_string(gameState.currentLevel);
 	displayText.setColor(STATUS_COLOR_UNIMPORTANT);
 	displayText.setText(levelDisplay);
 	win.draw(&displayText);
+
 }
 
 // Returns whether it should restart or not
@@ -94,20 +109,20 @@ bool PlayGame()
 	TurnCounter = 0;
 	gameState.seed = time(nullptr);
 	gameState.currentLevel = 0;
+	gameState.levelName.clear();
 	ClearNpcs();
 	gameState.player.Initialize();
 
 	//
-	// Game initialization
+	// Level initialization
 	//
-
 	LoadNextLevel();
 
 	//
 	// Game loop variables
 	//
 	RLEntity lookModeCursor;
-	
+
 	int playerMeleeAttackNpcGuid = 0;
 
 	// camera

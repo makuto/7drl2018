@@ -5,6 +5,7 @@
 #include <cctype>
 
 #include "Game.hpp"
+#include "Globals.hpp"
 
 #define MAX_SINGLE_LOG_SIZE 300
 

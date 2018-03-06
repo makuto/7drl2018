@@ -12,6 +12,7 @@
 #include "Levels.hpp"
 #include "RLMap.hpp"
 #include "Utilities.hpp"
+#include "Globals.hpp"
 
 #include "PlayerDeadScreen.hpp"
 

@@ -1,5 +1,6 @@
 #include "RLMap.hpp"
 
+#include "Globals.hpp"
 #include "Game.hpp"
 #include "Utilities.hpp"
 

@@ -59,6 +59,8 @@ struct GameState
 
 	int currentLevel;
 
+	std::string levelName;
+
 	// Remember to add fields to Reset Globals block!
 };
 

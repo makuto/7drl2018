@@ -32,7 +32,7 @@
 #define TREE_TILE_COLOR_NORMAL 184, 247, 34, 255
 #define GRASS_TILE_COLOR_NORMAL 164, 227, 14, 255
 #define FLOOR_TILE_COLOR_NORMAL 46, 64, 75, 255
-#define	HELL_TILE_COLOR_NORMAL 232, 30, 34, 255
+#define HELL_TILE_COLOR_NORMAL 232, 30, 34, 255
 
 // Entities
 #define PLAYER_COLOR_NORMAL 252, 145, 57, 255
@@ -59,8 +59,8 @@
 // Combat constants
 //
 #define PLAYER_STARTING_MAX_HEALTH 100
-#define PLAYER_STARTING_RESTORE_HEALTH 1
-#define PLAYER_DEFAULT_RESTORE_RATE_HEALTH 1
+#define PLAYER_STARTING_RESTORE_HEALTH 5
+#define PLAYER_DEFAULT_RESTORE_RATE_HEALTH 2
 
 #define PLAYER_STARTING_MAX_STAMINA 100
 #define PLAYER_STARTING_RESTORE_STAMINA 10
@@ -75,8 +75,9 @@
 // The absolute max a single summoner can spawn
 #define MAX_SINGLE_SUMMONS 100
 #define SUMMONING_RADIUS 3
-#define	SUMMONER_SPAWN_RATE_TURNS 20
-// Each level, spawn rate turns cooldown decreases by this * level
+#define SUMMONER_SPAWN_RATE_TURNS 40
+// Each level, spawn rate turns cooldown decreases by this * level (0.5 = every other level lower
+// spawn rate by 1)
 #define SUMMONER_SPAWN_RATE_LEVEL_MULTIPLIER 0.5f
 
 //

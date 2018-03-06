@@ -1,3 +1,9 @@
+Notes
+------
+Sublime snippet tab triggers:
+enemy
+enemyImpl
+
 Potential Features
 -------
 Nice fog effect by having radius around the player plus some noise, changing transparency of every char
@@ -19,7 +25,9 @@ Figure out why it seems to crash (is it a sublime problem?)
 
 Improve position description
 
+Random spawn in cube doesn't work as expected
 
+NEXT: Add abilities!
 
 
 Doing

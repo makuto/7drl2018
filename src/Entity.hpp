@@ -90,7 +90,10 @@ class Enemy : public RLEntity
 {
 protected:
 	void CheckDoDeath();
+
+	// Movement types
 	void MoveTowardsPlayer();
+	void RandomWalk();
 
 public:
 	bool SpawnStairsDown;
