@@ -58,4 +58,38 @@ void Summoner::DoTurn()
 		LOGD << "Spawn skeleton at " << newSkeleton->X << ", " << newSkeleton->Y << " spawn rate "
 		     << spawnRate;
 	}
+
+	if (TurnCounter % spawnRate == 0 && NumSpawns < MAX_SINGLE_SUMMONS)
+	{
+		NumSpawns++;
+		LightningWizard* newLightningWizard = new LightningWizard();
+		placeEntityWithinSquareRandomSensibly(newLightningWizard, X, Y, SUMMONING_RADIUS);
+		gameState.npcsToCreate.push_back(newLightningWizard);
+		LOGD << "Spawn LightningWizard at " << newLightningWizard->X << ", "
+		     << newLightningWizard->Y << " spawn rate " << spawnRate;
+	}
+}
+
+LightningWizard::LightningWizard()
+{
+	SpawnStairsDown = false;
+	Speed = 1;
+	Type = 'w';  // TODO: Replace with define?
+	Color = {ENEMY_COLOR_NORMAL};
+	Description = "wizard";
+
+	Stats["HP"] = {"Health", 30, 30, 0, 0, -1};
+	Stats["STR"] = {"Strength", 10, 10, 0, 0, -1};
+}
+
+void LightningWizard::DoTurn()
+{
+	CheckDoDeath();
+	if (!Stats["HP"].Value)
+		return;
+
+	MoveTowardsPlayer();
+
+	if (lightning.CanActivateOnPlayer(this))
+		lightning.EnemyActivate(this);
 }

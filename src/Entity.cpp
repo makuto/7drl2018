@@ -47,6 +47,11 @@ void Player::Initialize()
 	                -1};
 
 	ThisTurnAction = PlayerAction::None;
+
+	for (Ability* ability : Abilities)
+		delete ability;
+	Abilities.clear();
+	Abilities.push_back(new LightningAbility());
 }
 
 Player::Player()
@@ -350,4 +355,24 @@ void playerMeleeAttackEnemy(RLEntity* entity)
 
 	if (healthCost)
 		LOGI << "You feel weaker from overexertion";
+}
+
+RLEntity* getClosestNonTraversableEntity(int x, int y)
+{
+	RLEntity* closestEntity;
+	float closestDist = 10000000.f;
+	for (RLEntity* npc : gameState.npcs)
+	{
+		if (npc->IsTraversable)
+			continue;
+
+		float distTo = distanceTo(x, y, npc->X, npc->Y);
+		if (distTo < closestDist)
+		{
+			closestDist = distTo;
+			closestEntity = npc;
+		}
+	}
+
+	return closestEntity;
 }

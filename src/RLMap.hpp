@@ -29,6 +29,8 @@ struct RLMap
 	RLMap();
 	RLMap(int width, int height);
 
+	void ResetTiles();
+
 	void SetSize(int width, int height);
 
 	RLTile* At(int x, int y);

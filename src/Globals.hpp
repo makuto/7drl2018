@@ -39,9 +39,14 @@
 #define ENEMY_COLOR_NORMAL 232, 30, 34, 255
 #define STAIRS_COLOR_NORMAL 252, 145, 57, 255
 
+// FX
+#define FX_LIGHTNING 0, 255, 0, 100
+
 //
 // Tile/Entity Types
 //
+#define TYPE_NONE ' '
+
 #define PLAYER_TYPE '@'
 #define SKELETON_TYPE 's'
 
@@ -85,8 +90,13 @@
 //
 #define WALL_BUMP "You bump into a wall"
 #define LOOK_MODE_EXIT "(Last turn)"
+#define CANCELLED_ABILITY_ACTIVATE "(Cancelled activate)"
+#define ABILITY_ON_COOLDOWN "Ability on cooldown"
 
 //
 // Engine tuning
 //
 #define MAX_PLACEMENT_ATTEMPTS 100
+
+// How far target mode will snap to enemy
+#define MAX_PLAYER_TARGET_DIST 30.f

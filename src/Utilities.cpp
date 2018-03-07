@@ -55,6 +55,12 @@ void ConsoleAndGameLogOutput(const gv::Logging::Record& record)
 			if (currentTurnLog.find(LOOK_MODE_EXIT) != std::string::npos &&
 			    gameLogAction == LOOK_MODE_EXIT)
 				return;
+			if (currentTurnLog.find(CANCELLED_ABILITY_ACTIVATE) != std::string::npos &&
+			    gameLogAction == CANCELLED_ABILITY_ACTIVATE)
+				return;
+			if (currentTurnLog.find(ABILITY_ON_COOLDOWN) != std::string::npos &&
+			    gameLogAction.find(ABILITY_ON_COOLDOWN) != std::string::npos)
+				return;
 
 			// Add divider
 			if (std::isalnum(currentTurnLog[currentTurnLog.size() - 1]))
@@ -66,6 +72,7 @@ void ConsoleAndGameLogOutput(const gv::Logging::Record& record)
 		}
 		else
 		{
+			// Don't show mode exit if no status
 			if (gameLogAction == LOOK_MODE_EXIT)
 				return;
 

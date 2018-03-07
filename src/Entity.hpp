@@ -1,7 +1,9 @@
 #pragma once
 
 #include <map>
+#include <vector>
 
+#include "Abilities.hpp"
 #include "RLColor.hpp"
 #include "RLMap.hpp"
 
@@ -77,6 +79,7 @@ enum class PlayerAction : int
 class Player : public RLEntity
 {
 public:
+	std::vector<Ability*> Abilities;
 	PlayerAction ThisTurnAction;
 
 	void Initialize();
@@ -120,3 +123,5 @@ std::string describePosition(int x, int y);
 bool playerCanUseStairsNow(std::string* stairsDescriptionOut);
 void enemyMeleeAttackPlayer(RLEntity* entity);
 void playerMeleeAttackEnemy(RLEntity* entity);
+
+RLEntity* getClosestNonTraversableEntity(int x, int y);

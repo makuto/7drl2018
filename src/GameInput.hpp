@@ -119,4 +119,31 @@ struct GameInput
 			deltaY = -1;
 		}
 	}
+
+	std::vector<int> GetInpNumbersTapped()
+	{
+		std::vector<int> numbersTapped;
+		if (Tapped(inputCode::Num0))
+			numbersTapped.push_back(0);
+		if (Tapped(inputCode::Num1))
+			numbersTapped.push_back(1);
+		if (Tapped(inputCode::Num2))
+			numbersTapped.push_back(2);
+		if (Tapped(inputCode::Num3))
+			numbersTapped.push_back(3);
+		if (Tapped(inputCode::Num4))
+			numbersTapped.push_back(4);
+		if (Tapped(inputCode::Num5))
+			numbersTapped.push_back(5);
+		if (Tapped(inputCode::Num6))
+			numbersTapped.push_back(6);
+		if (Tapped(inputCode::Num7))
+			numbersTapped.push_back(7);
+		if (Tapped(inputCode::Num8))
+			numbersTapped.push_back(8);
+		if (Tapped(inputCode::Num9))
+			numbersTapped.push_back(9);
+		
+		return numbersTapped;
+	}
 };

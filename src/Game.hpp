@@ -54,6 +54,8 @@ struct GameState
 
 	RLMap currentMap;
 
+	RLMap vfx;
+
 	// Changes every play session (but not every level)
 	int seed;
 

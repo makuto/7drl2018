@@ -32,8 +32,10 @@ void placeEntityWithinSquareRandomSensibly(RLEntity* entity, int xCenter, int yC
 		return;
 	}
 
-	LOGE << "Could not place entity " << entity->Description.c_str() << " within " << MAX_PLACEMENT_ATTEMPTS << " attempts! Seed " << gameState.seed * gameState.currentLevel;
-	// We failed to find a place quickly. Pick something arbitrary
+	LOGE << "Could not place entity " << entity->Description.c_str() << " within "
+	     << MAX_PLACEMENT_ATTEMPTS << " attempts! Seed " << gameState.seed << " level "
+	     << gameState.currentLevel;
+	// We failed 1ato find a place quickly. Pick something arbitrary
 	entity->X = xCenter + 1;
 	entity->Y = yCenter;
 }
@@ -62,7 +64,9 @@ void placeEntityRandomSensibly(RLEntity* entity)
 		return;
 	}
 
-	LOGE << "Could not place entity " << entity->Description.c_str() << " within " << MAX_PLACEMENT_ATTEMPTS << " attempts! Seed " << gameState.seed * gameState.currentLevel;
+	LOGE << "Could not place entity " << entity->Description.c_str() << " within "
+	     << MAX_PLACEMENT_ATTEMPTS << " attempts! Seed " << gameState.seed << " level "
+	     << gameState.currentLevel;
 	// We failed to find a place quickly. Pick something arbitrary
 	entity->X = 1;
 	entity->Y = 1;
@@ -237,4 +241,8 @@ void LoadNextLevel()
 	gameState.npcs.push_back(newSummoner);
 
 	placeEntityRandomSensibly(&gameState.player);
+
+	// Make sure vfx layer is large enough
+	gameState.vfx.SetSize(gameState.currentMap.Width, gameState.currentMap.Height);
+	gameState.vfx.ResetTiles();
 }

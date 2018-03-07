@@ -1,7 +1,7 @@
 #include "RLMap.hpp"
 
-#include "Globals.hpp"
 #include "Game.hpp"
+#include "Globals.hpp"
 #include "Utilities.hpp"
 
 #include "math/math.hpp"
@@ -51,6 +51,15 @@ RLMap::RLMap(int width, int height) : Width(width), Height(height)
 	}
 }
 
+void RLMap::ResetTiles()
+{
+	for (RLTile& tile : Tiles)
+	{
+		tile.Type = TYPE_NONE;
+		tile.Color = {0, 0, 0, 0};
+	}
+}
+
 void RLMap::SetSize(int width, int height)
 {
 	Width = width;
@@ -85,6 +94,7 @@ void DrawWorld(RLMap& map, int camXOffset, int camYOffset)
 				continue;
 
 			RLTile* currentTile = map.At(tileX, tileY);
+			RLTile* fxTile = gameState.vfx.At(tileX, tileY);
 
 			static std::string buffer = "";
 			buffer.clear();
@@ -148,6 +158,18 @@ void DrawWorld(RLMap& map, int camXOffset, int camYOffset)
 					char newAlpha = 255 - (distanceFromPlayer * distanceFromPlayer);
 					displayText.setAlpha(newAlpha);
 				}
+
+				displayText.setText(buffer);
+				displayText.setPosition(TileTextWidth * viewX, TileTextHeight * viewY);
+				win.draw(&displayText);
+			}
+
+			if (fxTile)
+			{
+				buffer.clear();
+				// buffer += fxTile->Type;
+				buffer += "║";
+				SetTextColor(displayText, fxTile->Color);
 
 				displayText.setText(buffer);
 				displayText.setPosition(TileTextWidth * viewX, TileTextHeight * viewY);

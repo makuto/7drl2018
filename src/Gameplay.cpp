@@ -7,6 +7,7 @@
 
 #include "graphics/graphics.hpp"
 #include "input/input.hpp"
+#include "math/math.hpp"
 
 #include "Globals.hpp"
 
@@ -92,7 +93,6 @@ void DrawSidebar()
 	displayText.setColor(STATUS_COLOR_UNIMPORTANT);
 	displayText.setText(levelDisplay);
 	win.draw(&displayText);
-
 }
 
 // Returns whether it should restart or not
@@ -131,22 +131,62 @@ bool PlayGame()
 	RLEntity* cameraTrackingEntity = nullptr;
 	UpdateCameraOffset(&gameState.player, camXOffset, camYOffset);
 
+	// Target
+	std::string playerAbilityActivatedName;
+	int targetX = -1;
+	int targetY = -1;
+
 	// State
 	bool lookMode = false;
+	bool waitForTargetMode = false;
 	bool playerDead = false;
 
-	while (!win.shouldClose() && !inp.isPressed(inputCode::Return))
+	while (!win.shouldClose())
 	{
 		bool playerTurnPerformed = false;
+		bool playerTargetAcquired = false;
 		std::string standingOnDisplay;
 
 		//
 		// Input
 		//
 
+		// Return / Enter accepts target or closes the game
+		if (gameInp.Tapped(inputCode::Return))
+		{
+			// Confirm target
+			if (waitForTargetMode)
+			{
+				waitForTargetMode = false;
+				targetX = lookModeCursor.X;
+				targetY = lookModeCursor.Y;
+
+				playerTargetAcquired = true;
+			}
+
+			if (lookMode)
+			{
+				lookMode = false;
+
+				cameraTrackingEntity = &gameState.player;
+				UpdateCameraOffset(cameraTrackingEntity, camXOffset, camYOffset);
+			}
+			else
+				// Close the game
+				break;
+		}
+
 		// Escape exits modes or closes the game
 		if (gameInp.Tapped(inputCode::Escape))
 		{
+			// Reset targeting and cancel activation
+			if (waitForTargetMode)
+			{
+				playerAbilityActivatedName.clear();
+				waitForTargetMode = false;
+				LOGI << CANCELLED_ABILITY_ACTIVATE;
+			}
+
 			if (lookMode)
 			{
 				lookMode = false;
@@ -196,8 +236,59 @@ bool PlayGame()
 		}
 		else
 		{
+			// Player abilities
+			std::vector<int> numberKeysPressed = gameInp.GetInpNumbersTapped();
+			if (!numberKeysPressed.empty())
+			{
+				for (unsigned int i = 0; i < gameState.player.Abilities.size(); ++i)
+				{
+					Ability* currentAbility = gameState.player.Abilities[i];
+					std::vector<int>::iterator findIt =
+					    std::find(numberKeysPressed.begin(), numberKeysPressed.end(), i + 1);
+					if (findIt == numberKeysPressed.end())
+						continue;
+
+					if (!currentAbility->IsCooldownDone())
+					{
+						LOGI << ABILITY_ON_COOLDOWN << " (ready in "
+						     << currentAbility->CooldownRemaining() << " turns)";
+						continue;
+					}
+
+					if (currentAbility->RequiresTarget)
+					{
+						waitForTargetMode = true;
+
+						// Enter look mode
+						lookMode = true;
+
+						// Move cursor to closest enemy if possible
+						RLEntity* closestEntity =
+						    getClosestNonTraversableEntity(gameState.player.X, gameState.player.Y);
+						if (closestEntity &&
+						    distanceTo(gameState.player.X, gameState.player.Y, closestEntity->X,
+						               closestEntity->Y) < MAX_PLAYER_TARGET_DIST)
+						{
+							lookModeCursor.X = closestEntity->X;
+							lookModeCursor.Y = closestEntity->Y;
+						}
+						else
+						{
+							lookModeCursor.X = gameState.player.X;
+							lookModeCursor.Y = gameState.player.Y;
+						}
+					}
+					else
+						waitForTargetMode = false;
+
+					playerAbilityActivatedName = currentAbility->Name;
+
+					// Only activate one ability (other keypresses are just ignored)
+					break;
+				}
+			}
 			// Player navigation control
-			if (deltaX || deltaY)
+			else if (deltaX || deltaY)
 			{
 				cameraTrackingEntity = &gameState.player;
 
@@ -256,6 +347,7 @@ bool PlayGame()
 					LoadNextLevel();
 					TurnCounter++;
 					LOGI << "You step through to the next level";
+					playerAbilityActivatedName = "";
 					// Start the game loop over because it seems right ?
 					continue;
 				}
@@ -275,12 +367,54 @@ bool PlayGame()
 		//
 		// Turn update
 		//
+		// Special case: handle no target or two-stage targeted abilities
+		if (!playerAbilityActivatedName.empty() && !waitForTargetMode)
+		{
+			playerTurnPerformed = true;
+		}
+
 		if (playerTurnPerformed)
 		{
 			TurnCounter++;
 
 			if (!standingOnDisplay.empty())
 				LOGI << standingOnDisplay.c_str();
+
+			// Handle player ability activation
+			if (!playerAbilityActivatedName.empty())
+			{
+				bool foundAbility = false;
+				for (Ability* currentAbility : gameState.player.Abilities)
+				{
+					if (currentAbility->Name != playerAbilityActivatedName)
+						continue;
+
+					foundAbility = true;
+
+					LOGD << "Player activated ability " << currentAbility->Name.c_str() << " turn "
+					     << TurnCounter;
+
+					if (currentAbility->RequiresTarget)
+					{
+						LOGD << "Player targeted " << targetX << ", " << targetY;
+						currentAbility->PlayerActivateWithTarget(targetX, targetY);
+					}
+					else
+					{
+						currentAbility->PlayerActivateNoTarget();
+					}
+
+					break;
+				}
+
+				if (!foundAbility)
+				{
+					LOGE << "Player activated ability " << playerAbilityActivatedName.c_str()
+					     << " but it failed (couldn't be found)";
+				}
+
+				playerAbilityActivatedName.clear();
+			}
 
 			// Handle player's melee combat attack
 			if (playerMeleeAttackNpcGuid)
@@ -389,6 +523,10 @@ bool PlayGame()
 		if (lookMode)
 		{
 			std::string description;
+
+			if (waitForTargetMode)
+				description += "[TARGET MODE] ";
+
 			if (gameState.player.SamePos(lookModeCursor))
 				description += "You are standing on ";
 			else
