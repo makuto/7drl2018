@@ -15,6 +15,8 @@ struct Ability
 	std::string Name;
 	std::string Description;
 
+	int Damage;
+
 	Ability();
 	virtual ~Ability() = default;
 

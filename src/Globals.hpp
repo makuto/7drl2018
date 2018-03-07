@@ -85,6 +85,8 @@
 // spawn rate by 1)
 #define SUMMONER_SPAWN_RATE_LEVEL_MULTIPLIER 0.5f
 
+#define RANGED_ENEMY_MAX_DIST_MANHATTAN 30
+
 //
 // Only display once in log strings
 //

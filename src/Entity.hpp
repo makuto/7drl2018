@@ -121,7 +121,10 @@ bool sortEntitiesByAscendingDistFromPlayer(RLEntity* a, RLEntity* b);
 std::string describePosition(int x, int y);
 
 bool playerCanUseStairsNow(std::string* stairsDescriptionOut);
+
+void enemyAbilityDamagePlayer(RLEntity* entity, Ability* ability);
 void enemyMeleeAttackPlayer(RLEntity* entity);
+void playerAbilityDamageEntity(Ability* ability, RLEntity* entity);
 void playerMeleeAttackEnemy(RLEntity* entity);
 
 RLEntity* getClosestNonTraversableEntity(int x, int y);

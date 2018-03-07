@@ -66,6 +66,56 @@ void DrawSidebar()
 		currentRowY += TileTextHeight;
 	}
 
+	//
+	// Abilities
+	//
+	currentRowY += TileTextHeight;
+
+	displayText.setPosition(SidebarStartX, currentRowY);
+	std::string abilityDisplay = "Abilities";
+	displayText.setColor(STATUS_COLOR_UNIMPORTANT);
+	displayText.setText(abilityDisplay);
+	win.draw(&displayText);
+
+	currentRowY += TileTextHeight;
+
+	for (unsigned int i = 0; i < gameState.player.Abilities.size(); ++i)
+	{
+		Ability* currentAbility = gameState.player.Abilities[i];
+
+		displayText.setPosition(SidebarStartX, currentRowY);
+		std::string abilityNameDisplay;
+		abilityNameDisplay += std::to_string(i + 1);
+		abilityNameDisplay += ":";
+		abilityNameDisplay += currentAbility->Name;
+		displayText.setColor(STATUS_COLOR_NORMAL);
+		displayText.setText(abilityNameDisplay);
+		win.draw(&displayText);
+
+		currentRowY += TileTextHeight;
+
+		displayText.setPosition(SidebarStartX, currentRowY);
+		displayText.setColor(STATUS_COLOR_UNIMPORTANT);
+		std::string abilityStatusDisplay;
+		if (currentAbility->IsCooldownDone())
+			abilityStatusDisplay = "  Ready";
+		else
+		{
+			abilityStatusDisplay += "  Ready in ";
+			abilityStatusDisplay += std::to_string(currentAbility->CooldownRemaining());
+			displayText.setColor(STATUS_COLOR_IMPORTANT);
+		}
+
+		displayText.setText(abilityStatusDisplay);
+		win.draw(&displayText);
+
+		currentRowY += TileTextHeight;
+	}
+
+	//
+	// Progression
+	//
+
 	// Turn counter
 	currentRowY += TileTextHeight;
 	displayText.setPosition(SidebarStartX, currentRowY);
@@ -207,12 +257,11 @@ bool PlayGame()
 			{
 				lookModeCursor.X = gameState.player.X;
 				lookModeCursor.Y = gameState.player.Y;
-
-				LOGI << LOOK_MODE_EXIT;
 			}
 			// Exiting look mode; recenter on player if necessary
 			else
 			{
+				LOGI << LOOK_MODE_EXIT;
 				cameraTrackingEntity = &gameState.player;
 				UpdateCameraOffset(cameraTrackingEntity, camXOffset, camYOffset);
 			}
@@ -367,7 +416,8 @@ bool PlayGame()
 		//
 		// Turn update
 		//
-		// Special case: handle no target or two-stage targeted abilities
+		// If we activated an ability and we're done waiting for target, count the turn (and process
+		// the ability)
 		if (!playerAbilityActivatedName.empty() && !waitForTargetMode)
 		{
 			playerTurnPerformed = true;
@@ -379,6 +429,9 @@ bool PlayGame()
 
 			if (!standingOnDisplay.empty())
 				LOGI << standingOnDisplay.c_str();
+
+			// Reset FX layer every turn so new fx can do their thing
+			gameState.vfx.ResetTiles();
 
 			// Handle player ability activation
 			if (!playerAbilityActivatedName.empty())
@@ -494,6 +547,8 @@ bool PlayGame()
 				break;
 			}
 		}
+
+		// Update ability FX
 
 		//
 		// Draw map, npcs, player, etc.

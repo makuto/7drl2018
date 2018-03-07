@@ -168,7 +168,7 @@ void DrawWorld(RLMap& map, int camXOffset, int camYOffset)
 			{
 				buffer.clear();
 				// buffer += fxTile->Type;
-				buffer += "║";
+				buffer += "/";
 				SetTextColor(displayText, fxTile->Color);
 
 				displayText.setText(buffer);

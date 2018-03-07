@@ -328,6 +328,34 @@ void enemyMeleeAttackPlayer(RLEntity* entity)
 	}
 }
 
+void enemyAbilityDamagePlayer(RLEntity* entity, Ability* ability)
+{
+	int damage = -ability->Damage;
+
+	if (damage)
+	{
+		gameState.player.Stats["HP"].Add(damage);
+		if (damage < 0)
+			LOGI << "A " << entity->Description.c_str() << " hit you with " << ability->Name.c_str()
+			     << " for " << abs(damage) << " damage!";
+		if (damage > 0)
+			LOGI << "A " << entity->Description.c_str() << " healed you with "
+			     << ability->Name.c_str() << " for " << abs(damage) << " health!";
+	}
+}
+
+void playerAbilityDamageEntity(Ability* ability, RLEntity* entity)
+{
+	int damage = -ability->Damage;
+
+	if (damage)
+	{
+		entity->Stats["HP"].Add(damage);
+		LOGI << "You hit the " << entity->Description.c_str() << " with " << ability->Name.c_str()
+		     << " for " << abs(damage) << " damage";
+	}
+}
+
 void playerMeleeAttackEnemy(RLEntity* entity)
 {
 	int damage = -gameState.player.Stats["STR"].Value;
