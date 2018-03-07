@@ -46,6 +46,8 @@ void Player::Initialize()
 	Stats["STR"] = {"Strength", PLAYER_STARTING_MAX_STRENGTH, PLAYER_STARTING_MAX_STRENGTH, 0, -1,
 	                -1};
 
+	TrainingStatIndex = "HP";
+
 	ThisTurnAction = PlayerAction::None;
 
 	for (Ability* ability : Abilities)
@@ -57,6 +59,16 @@ void Player::Initialize()
 Player::Player()
 {
 	Initialize();
+}
+
+void Player::LevelUp()
+{
+	int statGain = gameState.currentLevel * STAT_INCREASE_LEVEL_MULTIPLIER;
+	RLCombatStat& levelStat = Stats[gameState.player.TrainingStatIndex];
+	levelStat.Max += statGain;
+	levelStat.Value = levelStat.Max;
+
+	LOGI << "Your training improved your " << levelStat.Name.c_str() << " by " << statGain;
 }
 
 Enemy::Enemy()

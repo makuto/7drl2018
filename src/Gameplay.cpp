@@ -11,6 +11,7 @@
 
 #include "Globals.hpp"
 
+#include "Abilities.hpp"
 #include "Enemies.hpp"
 #include "Entity.hpp"
 #include "Game.hpp"
@@ -44,9 +45,10 @@ void DrawSidebar()
 	win.draw(&displayText);
 	currentRowY += TileTextHeight * 2;
 
+	int statCounter = 0;
 	for (std::pair<const std::string, RLCombatStat>& stat : gameState.player.Stats)
 	{
-		std::string statName(stat.second.Name);
+		std::string statName(std::to_string(statCounter + 1) + ":" + stat.second.Name);
 		std::string statValue(std::to_string(stat.second.Value));
 		std::string statText(statName);
 		// Add justify spaces
@@ -64,7 +66,31 @@ void DrawSidebar()
 			displayText.setColor(STATUS_COLOR_NORMAL);
 		win.draw(&displayText);
 		currentRowY += TileTextHeight;
+
+		statCounter++;
 	}
+
+	//
+	// Leveling
+	//
+	currentRowY += TileTextHeight;
+
+	displayText.setPosition(SidebarStartX, currentRowY);
+	std::string levelingDisplay = "Training ";
+	levelingDisplay += gameState.player.Stats[gameState.player.TrainingStatIndex].Name;
+	displayText.setColor(STATUS_COLOR_UNIMPORTANT);
+	displayText.setText(levelingDisplay);
+	win.draw(&displayText);
+
+	currentRowY += TileTextHeight;
+
+	displayText.setPosition(SidebarStartX, currentRowY);
+	std::string levelingHelpDisplay = "ctrl+num to change";
+	displayText.setColor(STATUS_COLOR_UNIMPORTANT);
+	displayText.setText(levelingHelpDisplay);
+	win.draw(&displayText);
+
+	currentRowY += TileTextHeight;
 
 	//
 	// Abilities
@@ -162,6 +188,7 @@ bool PlayGame()
 	gameState.levelName.clear();
 	ClearNpcs();
 	gameState.player.Initialize();
+	gameState.abilitiesUpdatingFx.clear();
 
 	//
 	// Level initialization
@@ -190,6 +217,10 @@ bool PlayGame()
 	bool lookMode = false;
 	bool waitForTargetMode = false;
 	bool playerDead = false;
+
+	timer frameTimer;
+	frameTimer.start();
+	float lastFrameTime = 0.032f;
 
 	while (!win.shouldClose())
 	{
@@ -285,55 +316,80 @@ bool PlayGame()
 		}
 		else
 		{
-			// Player abilities
+			// Player training and abilities via number keys
 			std::vector<int> numberKeysPressed = gameInp.GetInpNumbersTapped();
 			if (!numberKeysPressed.empty())
 			{
-				for (unsigned int i = 0; i < gameState.player.Abilities.size(); ++i)
+				// Change training
+				if (inp.isPressed(inputCode::LControl) || inp.isPressed(inputCode::RControl))
 				{
-					Ability* currentAbility = gameState.player.Abilities[i];
-					std::vector<int>::iterator findIt =
-					    std::find(numberKeysPressed.begin(), numberKeysPressed.end(), i + 1);
-					if (findIt == numberKeysPressed.end())
-						continue;
-
-					if (!currentAbility->IsCooldownDone())
+					int statIndex = numberKeysPressed[0] - 1;
+					int currentStatIndex = 0;
+					for (std::pair<const std::string, RLCombatStat>& stat : gameState.player.Stats)
 					{
-						LOGI << ABILITY_ON_COOLDOWN << " (ready in "
-						     << currentAbility->CooldownRemaining() << " turns)";
-						continue;
-					}
-
-					if (currentAbility->RequiresTarget)
-					{
-						waitForTargetMode = true;
-
-						// Enter look mode
-						lookMode = true;
-
-						// Move cursor to closest enemy if possible
-						RLEntity* closestEntity =
-						    getClosestNonTraversableEntity(gameState.player.X, gameState.player.Y);
-						if (closestEntity &&
-						    distanceTo(gameState.player.X, gameState.player.Y, closestEntity->X,
-						               closestEntity->Y) < MAX_PLAYER_TARGET_DIST)
+						if (currentStatIndex != statIndex)
 						{
-							lookModeCursor.X = closestEntity->X;
-							lookModeCursor.Y = closestEntity->Y;
+							++currentStatIndex;
+							continue;
+						}
+
+						if (gameState.player.TrainingStatIndex != stat.first)
+							LOGI << TRAINING_CHANGED << stat.second.Name.c_str();
+						
+						gameState.player.TrainingStatIndex = stat.first;
+
+						break;
+					}
+				}
+				// Activate ability
+				else
+				{
+					for (unsigned int i = 0; i < gameState.player.Abilities.size(); ++i)
+					{
+						Ability* currentAbility = gameState.player.Abilities[i];
+						std::vector<int>::iterator findIt =
+						    std::find(numberKeysPressed.begin(), numberKeysPressed.end(), i + 1);
+						if (findIt == numberKeysPressed.end())
+							continue;
+
+						if (!currentAbility->IsCooldownDone())
+						{
+							LOGI << ABILITY_ON_COOLDOWN << " (ready in "
+							     << currentAbility->CooldownRemaining() << " turns)";
+							continue;
+						}
+
+						if (currentAbility->RequiresTarget)
+						{
+							waitForTargetMode = true;
+
+							// Enter look mode
+							lookMode = true;
+
+							// Move cursor to closest enemy if possible
+							RLEntity* closestEntity = getClosestNonTraversableEntity(
+							    gameState.player.X, gameState.player.Y);
+							if (closestEntity &&
+							    distanceTo(gameState.player.X, gameState.player.Y, closestEntity->X,
+							               closestEntity->Y) < MAX_PLAYER_TARGET_DIST)
+							{
+								lookModeCursor.X = closestEntity->X;
+								lookModeCursor.Y = closestEntity->Y;
+							}
+							else
+							{
+								lookModeCursor.X = gameState.player.X;
+								lookModeCursor.Y = gameState.player.Y;
+							}
 						}
 						else
-						{
-							lookModeCursor.X = gameState.player.X;
-							lookModeCursor.Y = gameState.player.Y;
-						}
+							waitForTargetMode = false;
+
+						playerAbilityActivatedName = currentAbility->Name;
+
+						// Only activate one ability (other keypresses are just ignored)
+						break;
 					}
-					else
-						waitForTargetMode = false;
-
-					playerAbilityActivatedName = currentAbility->Name;
-
-					// Only activate one ability (other keypresses are just ignored)
-					break;
 				}
 			}
 			// Player navigation control
@@ -396,7 +452,12 @@ bool PlayGame()
 					LoadNextLevel();
 					TurnCounter++;
 					LOGI << "You step through to the next level";
+
+					gameState.player.LevelUp();
+
+					// This is probably unnecessary
 					playerAbilityActivatedName = "";
+
 					// Start the game loop over because it seems right ?
 					continue;
 				}
@@ -432,6 +493,7 @@ bool PlayGame()
 
 			// Reset FX layer every turn so new fx can do their thing
 			gameState.vfx.ResetTiles();
+			gameState.abilitiesUpdatingFx.clear();
 
 			// Handle player ability activation
 			if (!playerAbilityActivatedName.empty())
@@ -548,7 +610,14 @@ bool PlayGame()
 			}
 		}
 
+		//
 		// Update ability FX
+		//
+		for (Ability* ability : gameState.abilitiesUpdatingFx)
+		{
+			ability->FxUpdate(lastFrameTime);
+			ability->TotalFrameTimeAlive += lastFrameTime;
+		}
 
 		//
 		// Draw map, npcs, player, etc.
@@ -605,6 +674,8 @@ bool PlayGame()
 		}
 
 		win.update();
+		lastFrameTime = frameTimer.getTime();
+		frameTimer.start();
 	}
 
 	if (playerDead)

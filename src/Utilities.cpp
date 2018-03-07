@@ -58,6 +58,11 @@ void ConsoleAndGameLogOutput(const gv::Logging::Record& record)
 			if (currentTurnLog.find(CANCELLED_ABILITY_ACTIVATE) != std::string::npos &&
 			    gameLogAction == CANCELLED_ABILITY_ACTIVATE)
 				return;
+			// What if they change it back on the same turn? Can't suppress that
+			/*if (currentTurnLog.find(TRAINING_CHANGED) != std::string::npos &&
+			    gameLogAction == TRAINING_CHANGED)
+			    return;*/
+
 			if (currentTurnLog.find(ABILITY_ON_COOLDOWN) != std::string::npos &&
 			    gameLogAction.find(ABILITY_ON_COOLDOWN) != std::string::npos)
 				return;

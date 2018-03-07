@@ -81,6 +81,9 @@ class Player : public RLEntity
 public:
 	std::vector<Ability*> Abilities;
 	PlayerAction ThisTurnAction;
+	std::string TrainingStatIndex;
+
+	void LevelUp();
 
 	void Initialize();
 	Player();

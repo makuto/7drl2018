@@ -12,12 +12,27 @@ Ability::Ability()
 	ActivatedOnTurn = -1;
 	Active = false;
 	Damage = 0;
+	TotalFrameTimeAlive = 0.f;
+}
+
+Ability::~Ability()
+{
+	for (std::vector<Ability*>::iterator it = gameState.abilitiesUpdatingFx.begin();
+	     it != gameState.abilitiesUpdatingFx.end(); ++it)
+	{
+		if (*it == this)
+		{
+			gameState.abilitiesUpdatingFx.erase(it);
+			break;
+		}
+	}
 }
 
 void Ability::AbilityActivate()
 {
 	Active = true;
 	ActivatedOnTurn = TurnCounter;
+	TotalFrameTimeAlive = 0.f;
 
 	LOGD << "Activate ability " << Name.c_str() << " turn " << TurnCounter;
 }
@@ -86,8 +101,10 @@ void LightningAbility::EnemyActivate(Enemy* enemyActivator)
 	RLTile* tileAt = gameState.vfx.At(gameState.player.X, gameState.player.Y);
 	if (tileAt)
 	{
-		tileAt->Type = '!';
+		// tileAt->Type = '!';
 		tileAt->Color = {FX_LIGHTNING};
+
+		gameState.abilitiesUpdatingFx.push_back(this);
 	}
 }
 
@@ -95,8 +112,7 @@ void LightningAbility::PlayerActivateWithTarget(int targetX, int targetY)
 {
 	AbilityActivate();
 
-	std::vector<RLEntity*> damageEntities =
-	    getEntitiesAtPosition(targetX, targetY);
+	std::vector<RLEntity*> damageEntities = getEntitiesAtPosition(targetX, targetY);
 	for (RLEntity* entity : damageEntities)
 	{
 		if (!entity->IsTraversable)
@@ -106,8 +122,10 @@ void LightningAbility::PlayerActivateWithTarget(int targetX, int targetY)
 	RLTile* tileAt = gameState.vfx.At(targetX, targetY);
 	if (tileAt)
 	{
-		tileAt->Type = '!';
+		// tileAt->Type = '!';
 		tileAt->Color = {FX_LIGHTNING};
+
+		gameState.abilitiesUpdatingFx.push_back(this);
 	}
 }
 
@@ -120,12 +138,16 @@ void LightningAbility::PlayerActivateNoTarget()
 	RLTile* tileAt = gameState.vfx.At(gameState.player.X, gameState.player.Y);
 	if (tileAt)
 	{
-		tileAt->Type = '!';
+		// tileAt->Type = '!';
 		tileAt->Color = {FX_LIGHTNING};
+
+		gameState.abilitiesUpdatingFx.push_back(this);
 	}
 }
 
 // Called every frame if Active
 void LightningAbility::FxUpdate(float frameTime)
 {
+	if (TotalFrameTimeAlive > 1.f)
+		return;
 }

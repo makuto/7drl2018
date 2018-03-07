@@ -77,6 +77,9 @@
 #define PLAYER_RESTING_BONUS 1
 #define PLAYER_MELEE_ATTACKING_BONUS -1
 
+// Every level, the training stat will increase its max by this * level
+#define STAT_INCREASE_LEVEL_MULTIPLIER 1.5f
+
 // The absolute max a single summoner can spawn
 #define MAX_SINGLE_SUMMONS 100
 #define SUMMONING_RADIUS 3
@@ -94,6 +97,7 @@
 #define LOOK_MODE_EXIT "(Last turn)"
 #define CANCELLED_ABILITY_ACTIVATE "(Cancelled activate)"
 #define ABILITY_ON_COOLDOWN "Ability on cooldown"
+#define TRAINING_CHANGED "Now training "
 
 //
 // Engine tuning

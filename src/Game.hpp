@@ -55,6 +55,7 @@ struct GameState
 	RLMap currentMap;
 
 	RLMap vfx;
+	std::vector<Ability*> abilitiesUpdatingFx;
 
 	// Changes every play session (but not every level)
 	int seed;

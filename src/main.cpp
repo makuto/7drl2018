@@ -31,8 +31,7 @@ int WindowHeight = 1600;
 int TileTextHeight = 32;
 int TileTextWidth = -1;
 
-int SidebarTileWidth = 15;
-
+int SidebarTileWidth = 20;
 int ViewTileRightMargin = -1;
 int ViewTileBottomMargin = 2;
 int ViewTileWidth = -1;

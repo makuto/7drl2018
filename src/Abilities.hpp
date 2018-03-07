@@ -17,8 +17,11 @@ struct Ability
 
 	int Damage;
 
+	// Incremented after FxUpdate. Use to e.g. time out your Fx Update
+	float TotalFrameTimeAlive;
+
 	Ability();
-	virtual ~Ability() = default;
+	virtual ~Ability();
 
 	// Helper functions for managing cooldown mostly
 	bool IsCooldownDone();
