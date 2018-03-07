@@ -40,7 +40,7 @@
 #define STAIRS_COLOR_NORMAL 252, 145, 57, 255
 
 // FX
-#define FX_LIGHTNING 0, 255, 0, 100
+#define FX_LIGHTNING 0, 0, 255, 155
 
 //
 // Tile/Entity Types

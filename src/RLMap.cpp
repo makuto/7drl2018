@@ -166,12 +166,13 @@ void DrawWorld(RLMap& map, int camXOffset, int camYOffset)
 
 			if (fxTile)
 			{
-				buffer.clear();
+				// buffer.clear();
 				// buffer += fxTile->Type;
-				buffer += "/";
+				// buffer += "/";
 				SetTextColor(displayText, fxTile->Color);
 
-				displayText.setText(buffer);
+				std::wstring blockStr = L"█";
+				displayText.setText(blockStr);
 				displayText.setPosition(TileTextWidth * viewX, TileTextHeight * viewY);
 				win.draw(&displayText);
 			}
