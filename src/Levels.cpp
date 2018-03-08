@@ -245,4 +245,6 @@ void LoadNextLevel()
 	// Make sure vfx layer is large enough
 	gameState.vfx.SetSize(gameState.currentMap.Width, gameState.currentMap.Height);
 	gameState.vfx.ResetTiles();
+
+	gameState.abilitySpawnedThisLevel = false;
 }

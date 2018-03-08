@@ -34,6 +34,8 @@
 #define FLOOR_TILE_COLOR_NORMAL 46, 64, 75, 255
 #define HELL_TILE_COLOR_NORMAL 232, 30, 34, 255
 
+#define ABILITY_TILE_COLOR_NORMAL 252, 145, 57, 255
+
 // Entities
 #define PLAYER_COLOR_NORMAL 252, 145, 57, 255
 #define ENEMY_COLOR_NORMAL 232, 30, 34, 255
@@ -51,6 +53,7 @@
 #define SKELETON_TYPE 's'
 
 #define CORPSE_TYPE '%'
+#define ABILITY_TYPE '!'
 
 #define STAIRS_DOWN_TYPE '>'
 
@@ -77,6 +80,8 @@
 #define PLAYER_RESTING_BONUS 1
 #define PLAYER_MELEE_ATTACKING_BONUS -1
 
+#define PLAYER_NUM_ABILITY_SLOTS 3
+
 // Every level, the training stat will increase its max by this * level
 #define STAT_INCREASE_LEVEL_MULTIPLIER 1.5f
 
@@ -89,6 +94,9 @@
 #define SUMMONER_SPAWN_RATE_LEVEL_MULTIPLIER 0.5f
 
 #define RANGED_ENEMY_MAX_DIST_MANHATTAN 30
+
+// Each death, chance of ability dropping = this * level
+#define DEATH_ABILITY_DROP_LEVEL_MULTIPLIER 5.f;
 
 //
 // Only display once in log strings

@@ -95,6 +95,7 @@ public:
 class Enemy : public RLEntity
 {
 protected:
+
 	void CheckDoDeath();
 
 	// Movement types
@@ -102,9 +103,12 @@ protected:
 	void RandomWalk();
 
 public:
+	// If swapped, this enemy now owns the memory belonging to the ability
+	Ability* DroppedAbility;
+
 	bool SpawnStairsDown;
 	Enemy();
-	virtual ~Enemy() = default;
+	virtual ~Enemy();
 
 	virtual void DoTurn() override;
 };
@@ -123,6 +127,7 @@ bool sortEntitiesByAscendingDistFromPlayer(RLEntity* a, RLEntity* b);
 
 std::string describePosition(int x, int y);
 
+bool playerCanSwapAbilityNow(std::string* abilityDescriptionOut);
 bool playerCanUseStairsNow(std::string* stairsDescriptionOut);
 
 void enemyAbilityDamagePlayer(RLEntity* entity, Ability* ability);

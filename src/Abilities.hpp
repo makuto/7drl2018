@@ -40,6 +40,12 @@ struct Ability
 	virtual void FxUpdate(float frameTime);
 };
 
+Ability* getNewRandomAbility();
+
+//
+// Children
+// 
+
 struct LightningAbility : public Ability
 {
 	LightningAbility();

@@ -61,6 +61,7 @@ struct GameState
 	int seed;
 
 	int currentLevel;
+	bool abilitySpawnedThisLevel;
 
 	std::string levelName;
 

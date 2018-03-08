@@ -71,6 +71,11 @@ void Ability::FxUpdate(float frameTime)
 {
 }
 
+Ability* getNewRandomAbility()
+{
+	return new LightningAbility();
+}
+
 //
 // Children
 //

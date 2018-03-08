@@ -51,9 +51,15 @@ void Player::Initialize()
 	ThisTurnAction = PlayerAction::None;
 
 	for (Ability* ability : Abilities)
-		delete ability;
+	{
+		if (ability)
+			delete ability;
+	}
 	Abilities.clear();
-	Abilities.push_back(new LightningAbility());
+	Abilities.resize(PLAYER_NUM_ABILITY_SLOTS);
+	for (Ability* ability : Abilities)
+		ability = nullptr;
+	Abilities[0] = new LightningAbility();
 }
 
 Player::Player()
@@ -76,6 +82,14 @@ Enemy::Enemy()
 	Stats["HP"] = {"", 100, 100, 0, 0, -1};
 	Stats["SP"] = {"", 100, 100, 0, 0, -1};
 	Stats["STR"] = {"", 10, 10, 0, 0, -1};
+
+	DroppedAbility = nullptr;
+}
+
+Enemy::~Enemy()
+{
+	if (DroppedAbility)
+		delete DroppedAbility;
 }
 
 bool canMoveTo(RLEntity& entity, int deltaX, int deltaY, RLMap& map)
@@ -194,7 +208,8 @@ void Enemy::CheckDoDeath()
 {
 	// If we just died, turn into a corpse
 	if (!Stats["HP"].Value && ((SpawnStairsDown && Type != STAIRS_DOWN_TYPE) ||
-	                           (!SpawnStairsDown && Type != CORPSE_TYPE)))
+	                           (!SpawnStairsDown && Type != CORPSE_TYPE)) &&
+	    Type != ABILITY_TYPE)
 	{
 		LOGI << "A " << Description.c_str() << " died!";
 		IsTraversable = true;
@@ -206,6 +221,27 @@ void Enemy::CheckDoDeath()
 			Description = "portal to the next level";
 			Type = STAIRS_DOWN_TYPE;
 			Color = {STAIRS_COLOR_NORMAL};
+		}
+		// If not stairs, chance to spawn ability
+		else
+		{
+			// Spawn an ability maybe
+			if (!gameState.abilitySpawnedThisLevel)
+			{
+				int deathAbilityChance =
+				    gameState.currentLevel * DEATH_ABILITY_DROP_LEVEL_MULTIPLIER;
+				if (rand() % deathAbilityChance == 0)
+				{
+					LOGD << "Spawned ability at chance " << deathAbilityChance;
+					LOGI << "An ability scroll was dropped!";
+					Description = "new ability";
+					Type = ABILITY_TYPE;
+					Color = {ABILITY_TILE_COLOR_NORMAL};
+					gameState.abilitySpawnedThisLevel = true;
+
+					DroppedAbility = getNewRandomAbility();
+				}
+			}
 		}
 	}
 }
@@ -304,6 +340,24 @@ std::string describePosition(int x, int y)
 	}
 
 	return description;
+}
+
+bool playerCanSwapAbilityNow(std::string* abilityDescriptionOut)
+{
+	std::vector<RLEntity*> possibleAbility =
+	    getEntitiesAtPosition(gameState.player.X, gameState.player.Y);
+	for (RLEntity* ent : possibleAbility)
+	{
+		if (ent->Type == ABILITY_TYPE)
+		{
+			if (abilityDescriptionOut)
+				*abilityDescriptionOut = ent->Description;
+
+			return true;
+		}
+	}
+
+	return false;
 }
 
 bool playerCanUseStairsNow(std::string* stairsDescriptionOut)

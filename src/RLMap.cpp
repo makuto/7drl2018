@@ -120,7 +120,18 @@ void DrawWorld(RLMap& map, int camXOffset, int camYOffset)
 
 						shouldDrawTile = false;
 					}
+					// Stairs go on top of all other Traversables, but not e.g. enemies
 					else if (!buffer.empty() && npc->Type == STAIRS_DOWN_TYPE)
+					{
+						buffer.clear();
+						buffer += npc->Type;
+						SetTextColor(displayText, npc->Color);
+
+						shouldDrawTile = false;
+					}
+					// Abilities are high prio but not as high as stairs
+					else if (!buffer.empty() && buffer[0] != STAIRS_DOWN_TYPE &&
+					         npc->Type == ABILITY_TYPE)
 					{
 						buffer.clear();
 						buffer += npc->Type;

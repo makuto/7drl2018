@@ -105,15 +105,17 @@ void DrawSidebar()
 
 	currentRowY += TileTextHeight;
 
-	for (unsigned int i = 0; i < gameState.player.Abilities.size(); ++i)
+	for (unsigned int i = 0; i < PLAYER_NUM_ABILITY_SLOTS; ++i)
 	{
-		Ability* currentAbility = gameState.player.Abilities[i];
+		Ability* currentAbility = nullptr;
+		if (i < gameState.player.Abilities.size())
+			currentAbility = gameState.player.Abilities[i];
 
 		displayText.setPosition(SidebarStartX, currentRowY);
 		std::string abilityNameDisplay;
 		abilityNameDisplay += std::to_string(i + 1);
 		abilityNameDisplay += ":";
-		abilityNameDisplay += currentAbility->Name;
+		abilityNameDisplay += currentAbility ? currentAbility->Name : "Empty";
 		displayText.setColor(STATUS_COLOR_NORMAL);
 		displayText.setText(abilityNameDisplay);
 		win.draw(&displayText);
@@ -123,7 +125,9 @@ void DrawSidebar()
 		displayText.setPosition(SidebarStartX, currentRowY);
 		displayText.setColor(STATUS_COLOR_UNIMPORTANT);
 		std::string abilityStatusDisplay;
-		if (currentAbility->IsCooldownDone())
+		if (!currentAbility)
+			abilityStatusDisplay = "  Empty";
+		else if (currentAbility->IsCooldownDone())
 			abilityStatusDisplay = "  Ready";
 		else
 		{
@@ -209,7 +213,7 @@ bool PlayGame()
 	UpdateCameraOffset(&gameState.player, camXOffset, camYOffset);
 
 	// Target
-	std::string playerAbilityActivatedName;
+	int playerAbilityActivatedIndex = -1;
 	int targetX = -1;
 	int targetY = -1;
 
@@ -263,7 +267,7 @@ bool PlayGame()
 			// Reset targeting and cancel activation
 			if (waitForTargetMode)
 			{
-				playerAbilityActivatedName.clear();
+				playerAbilityActivatedIndex = -1;
 				waitForTargetMode = false;
 				LOGI << CANCELLED_ABILITY_ACTIVATE;
 			}
@@ -320,8 +324,43 @@ bool PlayGame()
 			std::vector<int> numberKeysPressed = gameInp.GetInpNumbersTapped();
 			if (!numberKeysPressed.empty())
 			{
+				// Swap ability
+				if (inp.isPressed(inputCode::LShift) || inp.isPressed(inputCode::RShift))
+				{
+					std::vector<RLEntity*> entitiesAtPosition =
+					    getEntitiesAtPosition(gameState.player.X, gameState.player.Y);
+
+					if (!entitiesAtPosition.empty())
+					{
+						for (RLEntity* ent : entitiesAtPosition)
+						{
+							if (ent->Type == ABILITY_TYPE)
+							{
+								int abilityIndex = numberKeysPressed[0] - 1;
+								if (abilityIndex >= PLAYER_NUM_ABILITY_SLOTS)
+									break;
+
+								Enemy* enemy = static_cast<Enemy*>(ent);
+								Ability* slottedAbility = gameState.player.Abilities[abilityIndex];
+								std::string lastAbilityName =
+								    slottedAbility ? slottedAbility->Name : "empty slot";
+								gameState.player.Abilities[abilityIndex] = enemy->DroppedAbility;
+								enemy->DroppedAbility = slottedAbility;
+								LOGI << "Swapped " << lastAbilityName.c_str() << " for "
+								     << gameState.player.Abilities[abilityIndex]->Name.c_str();
+
+								if (!enemy->DroppedAbility)
+								{
+									enemy->Type = CORPSE_TYPE;
+									enemy->Color = {ENEMY_COLOR_NORMAL};
+									enemy->Description = "ash";
+								}
+							}
+						}
+					}
+				}
 				// Change training
-				if (inp.isPressed(inputCode::LControl) || inp.isPressed(inputCode::RControl))
+				else if (inp.isPressed(inputCode::LControl) || inp.isPressed(inputCode::RControl))
 				{
 					int statIndex = numberKeysPressed[0] - 1;
 					int currentStatIndex = 0;
@@ -335,7 +374,7 @@ bool PlayGame()
 
 						if (gameState.player.TrainingStatIndex != stat.first)
 							LOGI << TRAINING_CHANGED << stat.second.Name.c_str();
-						
+
 						gameState.player.TrainingStatIndex = stat.first;
 
 						break;
@@ -347,6 +386,10 @@ bool PlayGame()
 					for (unsigned int i = 0; i < gameState.player.Abilities.size(); ++i)
 					{
 						Ability* currentAbility = gameState.player.Abilities[i];
+
+						if (!currentAbility)
+							continue;
+
 						std::vector<int>::iterator findIt =
 						    std::find(numberKeysPressed.begin(), numberKeysPressed.end(), i + 1);
 						if (findIt == numberKeysPressed.end())
@@ -385,7 +428,7 @@ bool PlayGame()
 						else
 							waitForTargetMode = false;
 
-						playerAbilityActivatedName = currentAbility->Name;
+						playerAbilityActivatedIndex = i;
 
 						// Only activate one ability (other keypresses are just ignored)
 						break;
@@ -425,6 +468,13 @@ bool PlayGame()
 						standingOnDisplay += "You stomp on ";
 						standingOnDisplay += describePosition(lookModeCursor.X, lookModeCursor.Y);
 
+						std::string abilityDescription;
+						if (playerCanSwapAbilityNow(&abilityDescription))
+						{
+							standingOnDisplay += " (Press shift+[1-3] to swap ability for ";
+							standingOnDisplay += abilityDescription;
+							standingOnDisplay += ")";
+						}
 						std::string stairsDescription;
 						if (playerCanUseStairsNow(&stairsDescription))
 						{
@@ -456,7 +506,7 @@ bool PlayGame()
 					gameState.player.LevelUp();
 
 					// This is probably unnecessary
-					playerAbilityActivatedName = "";
+					playerAbilityActivatedIndex = -1;
 
 					// Start the game loop over because it seems right ?
 					continue;
@@ -479,7 +529,7 @@ bool PlayGame()
 		//
 		// If we activated an ability and we're done waiting for target, count the turn (and process
 		// the ability)
-		if (!playerAbilityActivatedName.empty() && !waitForTargetMode)
+		if (playerAbilityActivatedIndex != -1 && !waitForTargetMode)
 		{
 			playerTurnPerformed = true;
 		}
@@ -489,46 +539,43 @@ bool PlayGame()
 			TurnCounter++;
 
 			if (!standingOnDisplay.empty())
+			{
 				LOGI << standingOnDisplay.c_str();
+				standingOnDisplay.clear();  // probably pointless
+			}
 
 			// Reset FX layer every turn so new fx can do their thing
 			gameState.vfx.ResetTiles();
 			gameState.abilitiesUpdatingFx.clear();
 
 			// Handle player ability activation
-			if (!playerAbilityActivatedName.empty())
+			if (playerAbilityActivatedIndex != -1)
 			{
 				bool foundAbility = false;
-				for (Ability* currentAbility : gameState.player.Abilities)
+				Ability* activateAbility = gameState.player.Abilities[playerAbilityActivatedIndex];
+				if (activateAbility)
 				{
-					if (currentAbility->Name != playerAbilityActivatedName)
-						continue;
-
 					foundAbility = true;
 
-					LOGD << "Player activated ability " << currentAbility->Name.c_str() << " turn "
+					LOGD << "Player activated ability " << activateAbility->Name.c_str() << " turn "
 					     << TurnCounter;
 
-					if (currentAbility->RequiresTarget)
+					if (activateAbility->RequiresTarget)
 					{
 						LOGD << "Player targeted " << targetX << ", " << targetY;
-						currentAbility->PlayerActivateWithTarget(targetX, targetY);
+						activateAbility->PlayerActivateWithTarget(targetX, targetY);
 					}
 					else
-					{
-						currentAbility->PlayerActivateNoTarget();
-					}
-
-					break;
+						activateAbility->PlayerActivateNoTarget();
 				}
 
 				if (!foundAbility)
 				{
-					LOGE << "Player activated ability " << playerAbilityActivatedName.c_str()
+					LOGE << "Player activated ability " << playerAbilityActivatedIndex
 					     << " but it failed (couldn't be found)";
 				}
 
-				playerAbilityActivatedName.clear();
+				playerAbilityActivatedIndex = -1;
 			}
 
 			// Handle player's melee combat attack
