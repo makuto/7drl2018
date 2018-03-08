@@ -4,550 +4,603 @@
 		"selected_items":
 		[
 			[
-				"debu",
-				"debugText"
+				"Barr",
+				"LEVEL_NUM_BARREN"
 			],
 			[
-				"init",
-				"initializeText"
+				"ran",
+				"randomRange"
 			],
 			[
-				"ini",
-				"initializeWindow"
+				"num",
+				"numOptions"
 			],
 			[
-				"mai",
-				"main\tmain()"
+				"abili",
+				"abilityImpl\t7drlAbilitySource"
 			],
 			[
-				"Base",
-				"Base20Pseudotarget"
+				"abil",
+				"abilityHeader\t7drlAbilityHeader"
 			],
 			[
-				"blood",
-				"bloodNeed"
+				"curren",
+				"currentLevel"
 			],
 			[
-				"Age",
-				"AgentComponentManager\t(GalavantUnrealFPCharacter.cpp)"
+				"Random",
+				"RandomWalk\t(Entity.cpp)"
 			],
 			[
-				"Combat",
-				"CombatComponentManager\t(CombatComponentManager.hpp)"
+				"enemy",
+				"enemy\t7drlEntityHeader"
 			],
 			[
-				"Lande",
-				"LandedSound"
+				"player",
+				"playerAbilityActivatedIndex"
 			],
 			[
-				"Galavant",
-				"GalavantUnrealSimpleProjectile.h\t(GalavantUnrealSimpleProjectile.cpp)"
+				"slot",
+				"slottedAbility"
 			],
 			[
-				"UChara",
-				"UCharacterMovementComponent\t(Character.h)"
+				"Light",
+				"LightningAbility"
 			],
 			[
-				"GENERATED",
-				"GENERATED_BODY\t(GalavantUnrealFPCharacter.h)"
+				"abilityDes",
+				"abilityDescriptionOut"
 			],
 			[
-				"Character",
-				"CharacterAudio"
+				"ability",
+				"abilityIndex"
 			],
 			[
-				"Chara",
-				"Character.h\t(GalavantUnrealFPCharacter.h)"
+				"NUM",
+				"numberKeysPressed"
 			],
 			[
-				"scene",
-				"sceneComponent"
+				"A",
+				"ABILITY_TYPE\t(Entity.cpp)"
 			],
 			[
-				"sound",
-				"soundLength"
+				"entit",
+				"entitiesAtPosition"
 			],
 			[
-				"Delta",
-				"DeltaSeconds"
+				"Ability",
+				"ABILITY_TYPE"
 			],
 			[
-				"s_",
-				"s_timeSinceLastPlay"
-			],
-			[
-				"Edit",
-				"EditAnywhere"
-			],
-			[
-				"UPER",
-				"UPROPERTY"
-			],
-			[
-				"Chu",
-				"ChunkManager"
-			],
-			[
-				"UE",
-				"UE4Editor-Linux-Debug"
-			],
-			[
-				"UE4",
-				"UE4Editor"
-			],
-			[
-				"view",
-				"viewport"
-			],
-			[
-				"Game",
-				"GameViewport"
-			],
-			[
-				"someBul",
-				"someBullshitIn"
-			],
-			[
-				"Cere",
-				"CerealVersion"
-			],
-			[
-				"saveLo",
-				"saveLoadTestIn"
-			],
-			[
-				"save",
-				"saveLoadTest"
-			],
-			[
-				"Save",
-				"SeparateSaveLoadTest"
-			],
-			[
-				"Charact",
-				"CharacterManager\t(CharacterManager.cpp)"
-			],
-			[
-				"Char",
-				"CharacterManager"
-			],
-			[
-				"push",
-				"push_back\t(AgentComponentManager.cpp)"
-			],
-			[
-				"unco",
-				"unconsciousAgents"
-			],
-			[
-				"itera",
-				"iteratorName"
-			],
-			[
-				"iter",
-				"iteratorName"
-			],
-			[
-				"unconscio",
-				"unconsciousAgents\t(UnrealMovementComponent.cpp)"
-			],
-			[
-				"un",
-				"unconsciousAgents"
-			],
-			[
-				"EnttiyLi",
-				"EntityListFindEntity"
-			],
-			[
-				"AgentCom",
-				"AgentComponentManager\t(AgentComponentManager.hpp)"
-			],
-			[
-				"g_",
-				"g_AgentComponentManager\t(AgentComponentManager.hpp)"
-			],
-			[
-				"EntityListRemo",
-				"EntityListRemoveNonUniqueEntitiesInSuspect\t(EntityTypes.hpp)"
-			],
-			[
-				"Unc",
-				"UnconsciousAgents"
-			],
-			[
-				"Unscons",
-				"UnconsciousAgents"
-			],
-			[
-				"AgentC",
-				"AgentConsciousState"
-			],
-			[
-				"Agent",
-				"AgentComponentManager"
-			],
-			[
-				"Uncon",
-				"UnconsciousAgents\t(AgentComponentManager.hpp)"
-			],
-			[
-				"Enttiy",
-				"EntityList"
-			],
-			[
-				"gala",
-				"galavant-unreal"
+				"Trainin",
+				"TrainingStatIndex"
 			],
 			[
 				"Input",
-				"InputComponent"
+				"inputCode"
 			],
 			[
-				"entti",
-				"entityAssociatedCharacter"
+				"level",
+				"levelingDisplay"
+			],
+			[
+				"fo",
+				"forv\tVector For Loop"
+			],
+			[
+				"damage",
+				"damageEntities"
+			],
+			[
+				"hit",
+				"hitEntity"
+			],
+			[
+				"mat",
+				"math.hpp\t(Gameplay.cpp)"
+			],
+			[
+				"Enti",
+				"Entity.hpp\t(Gameplay.cpp)"
+			],
+			[
+				"IS",
+				"IsCooldownDone"
+			],
+			[
+				"Abili",
+				"Ability"
+			],
+			[
+				"dist",
+				"distanceTo\t(Entity.cpp)"
+			],
+			[
+				"clos",
+				"closestEntity"
+			],
+			[
+				"target",
+				"targetX"
+			],
+			[
+				"curr",
+				"currentAbility"
+			],
+			[
+				"Abi",
+				"Ability\t(Entity.hpp)"
+			],
+			[
+				"Abil",
+				"AbilityActivate"
 			],
 			[
 				"find",
 				"findIt"
 			],
 			[
-				"Enti",
-				"EntityList"
+				"number",
+				"numberKeysPressed"
 			],
 			[
-				"ActorEnt",
-				"ActorEntityManagement.h\t(GalavantUnrealMain.cpp)"
+				"Acti",
+				"Active"
 			],
 			[
-				"subs",
-				"subscriberConsciousStates"
+				"ACt",
+				"ActivatedOnTurn"
 			],
 			[
-				"Unsub",
-				"UnsubscribeEntitiesInternal"
+				"Cool",
+				"CooldownTime"
 			],
 			[
-				"EntityList",
-				"EntityListRemoveNonUniqueEntitiesInSuspect\t(EntityComponentManager.cpp)"
+				"Activa",
+				"ActivatedOnTurn"
 			],
 			[
-				"entities",
-				"entitiesToUnsubscribe\t(EntityComponentManager.cpp)"
+				"Turn",
+				"TurnCounter"
 			],
 			[
-				"Uns",
-				"UnsubscribeEntities\t(EntityComponentManager.cpp)"
+				"enem",
+				"enemyActivator"
 			],
 			[
-				"Ent",
-				"EntityList"
+				"Cooldo",
+				"CooldownTime\t(Abilities.hpp)"
 			],
 			[
-				"chara",
-				"characterType"
+				"coo",
+				"CooldownRemaining"
 			],
 			[
-				"unsub",
-				"unsubscribeFunc"
+				"ene",
+				"enemyImpl\t7drlEntitySource"
 			],
 			[
-				"uns",
-				"unsubscribeFunc"
+				"MAX",
+				"MAX_PLACEMENT_ATTEMPTS"
 			],
 			[
-				"UnsubscribeEntit",
-				"UnsubscribeEntitiesFunc"
+				"pro",
+				"progressReport"
 			],
 			[
-				"Gamepl",
-				"GameplayTimeWorldTimeDelta"
+				"Globa",
+				"Global.hpp\t(Globals.hpp)"
 			],
 			[
-				"Pause",
-				"PausedAtWorldTime"
+				"new",
+				"newSkeleton"
 			],
 			[
-				"GetWro",
-				"GetWorldTime"
+				"attack",
+				"attackedNpc"
 			],
 			[
-				"Hud",
-				"HUD"
+				"math",
+				"math.hpp\t(RLMap.cpp)"
 			],
 			[
-				"Movement",
-				"MovementComponentManager"
+				"RL",
+				"RLEntity"
 			],
 			[
-				"dead",
-				"deadEntitySpeeds"
+				"Leve",
+				"Levels.hpp\t(Gameplay.cpp)"
 			],
 			[
-				"Conscious",
-				"ConsciousState"
-			],
-			[
-				"Mov",
-				"MovementComponent"
-			],
-			[
-				"should",
-				"shouldRagdoll"
-			],
-			[
-				"death",
-				"deathActionDef"
-			],
-			[
-				"rag",
-				"ragdollFx"
-			],
-			[
-				"ResourceDict",
-				"ResourceDictionaryList"
-			],
-			[
-				"Resour",
-				"ResourceDictionaryList"
-			],
-			[
-				"Active",
-				"ActivateCombatAction\t(CombatComponentManager.hpp)"
-			],
-			[
-				"entity",
-				"entityActor"
-			],
-			[
-				"combat",
-				"combatant"
-			],
-			[
-				"GetActo",
-				"GetActorFromEntity\t(ActorEntityManagement.h)"
-			],
-			[
-				"Entity",
-				"EntityActorMap"
-			],
-			[
-				"curren",
-				"currentTime"
-			],
-			[
-				"total",
-				"totalRuntime"
-			],
-			[
-				"consoleO",
-				"consoleOnlyFrontend"
-			],
-			[
-				"Arrow",
-				"ArrowComponent"
-			],
-			[
-				"AGa",
-				"AGalavantUnrealMain\t(GalavantUnrealMain.cpp)"
-			],
-			[
-				"LOGD",
-				"LOGD_IF"
-			],
-			[
-				"S",
-				"Status"
-			],
-			[
-				"In",
-				"InProgress"
-			],
-			[
-				"Start",
-				"StartGoal"
-			],
-			[
-				"AgentGoa",
-				"AgentGoal"
-			],
-			[
-				"head",
-				"headGoalIt"
-			],
-			[
-				"e",
-				"erase"
-			],
-			[
-				"Add",
-				"AddComponentManager"
-			],
-			[
-				"g_En",
-				"g_EntityComponentManager"
-			],
-			[
-				"Debu",
-				"DebugName\t(UnrealMovementComponent.cpp)"
-			],
-			[
-				"current",
-				"currentComponent"
-			],
-			[
-				"Wo",
-				"WorldResourceType"
-			],
-			[
-				"null",
-				"nullptr"
-			],
-			[
-				"Goal",
-				"GoalStatus"
-			],
-			[
-				"WorldRe",
-				"WorldResourceType"
+				"npcs",
+				"npcsToCreate\t(Gameplay.cpp)"
 			],
 			[
 				"Des",
-				"DestroyActor"
+				"DescriptionOverride"
 			],
 			[
-				"Ondes",
-				"OnDestroyCallbacks"
+				"noise",
+				"noiseValue"
 			],
 			[
-				"OnDes",
-				"OnDestroyCallbacks"
+				"TREE",
+				"TREE_TILE_COLOR_NORMAL\t(Levels.cpp)"
 			],
 			[
-				"debug",
-				"debugTextPosition"
+				"init",
+				"initSkeleton\t(EntityCreators.cpp)"
 			],
 			[
-				"Conscio",
-				"ConsciousState\t(AgentComponentManager.cpp)"
+				"stairs",
+				"stairsDescription"
 			],
 			[
-				"low",
-				"lowBloodUnconscious"
+				"stair",
+				"stairsDescriptionOut"
 			],
 			[
-				"Worl",
-				"WorldPosition"
+				"describe",
+				"describePosition\t(Gameplay.cpp)"
 			],
 			[
-				"getR",
-				"getResourceTasks"
+				"lookMo",
+				"lookModeCursor.Y"
 			],
 			[
-				"serial",
-				"serialize\t(Actor.cpp)"
+				"look",
+				"lookModeCursor"
 			],
 			[
-				"ActorEntity",
-				"ActorEntityOnDestroy"
-			],
-			[
-				"BlueprintRea",
-				"BlueprintReadOnly"
-			],
-			[
-				"Compon",
-				"Component\t(GalavantUnrealMain.cpp)"
-			],
-			[
-				"Component",
-				"ComponentManager"
-			],
-			[
-				"Componne",
-				"ComponentManagers"
-			],
-			[
-				"Com",
-				"ComponentManager"
-			],
-			[
-				"Compone",
-				"ComponentManager"
-			],
-			[
-				"CombatCom",
-				"CombatComponentManager"
-			],
-			[
-				"ResourcE",
-				"ResourceDictionary"
-			],
-			[
-				"Compne",
-				"ComponentType"
-			],
-			[
-				"Anim",
-				"AnimInstance"
-			],
-			[
-				"CombatF",
-				"CombatFxHandler"
-			],
-			[
-				"EntityComponm",
-				"EntityComponentSystem"
+				"trav",
+				"traversablesDescription"
 			],
 			[
 				"del",
-				"deltaSeconds"
+				"deltaY"
 			],
 			[
-				"CombatFx",
-				"CombatFxHandler\t(CombatComponentManager.hpp)"
+				"delta",
+				"deltaX"
 			],
 			[
-				"CombatAction",
-				"CombatActionFx\t(CombatComponentManager.hpp)"
+				"Vel",
+				"VelocityX\t(Gameplay.cpp)"
 			],
 			[
-				"CombatCompo",
-				"CombatComponentManager.hpp\t(CombatComponentManager.cpp)"
+				"Veloc",
+				"VelocityX\t(Entity.cpp)"
+			],
+			[
+				"game",
+				"gameState"
+			],
+			[
+				"RLMap",
+				"RLMap.hpp\t(main.cpp)"
+			],
+			[
+				"npc",
+				"npcDescription"
+			],
+			[
+				"standing",
+				"standingOnDisplay"
+			],
+			[
+				"STA",
+				"STAIRS_DOWN_TYPE\t(Entity.cpp)"
+			],
+			[
+				"Player",
+				"PlayerAction"
+			],
+			[
+				"restore",
+				"restoreTurnBonus"
+			],
+			[
+				"Rest",
+				"RestoreOnTurn"
+			],
+			[
+				"Res",
+				"RestoreOnTurn"
+			],
+			[
+				"ForS",
+				"ForStatEnd\t(Entity.hpp)"
+			],
+			[
+				"RLCo",
+				"RLCombatStat"
+			],
+			[
+				"fade",
+				"fadeDistance"
+			],
+			[
+				"distanc",
+				"distanceFromPlayer"
+			],
+			[
+				"dista",
+				"distanceFromPlayer"
+			],
+			[
+				"displa",
+				"displayText"
+			],
+			[
+				"cam",
+				"camYOffset"
+			],
+			[
+				"ke",
+				"KeyRepeatTime"
+			],
+			[
+				"Key",
+				"KeyRepeatPauseTime"
+			],
+			[
+				"key",
+				"KeyRepeatPauseTime"
+			],
+			[
+				"shoud",
+				"shouldRepeat"
+			],
+			[
+				"tapped",
+				"tappedThisFrame"
+			],
+			[
+				"Draw",
+				"DrawSidebar\t(main.cpp)"
+			],
+			[
+				"for",
+				"for\tFor Loop"
+			],
+			[
+				"standi",
+				"standingOnDisplay"
+			],
+			[
+				"stamin",
+				"staminaCost"
+			],
+			[
+				"PlayerD",
+				"PlayerDeadScreen.hpp\t(PlayerDeadScreen.cpp)"
+			],
+			[
+				"Util",
+				"Utilities.hpp\t(Utilities.cpp)"
+			],
+			[
+				"playerDea",
+				"playerDeadScreen"
+			],
+			[
+				"camY",
+				"camYOffset"
+			],
+			[
+				"camX",
+				"camXOffset"
+			],
+			[
+				"camera",
+				"cameraTrackingEntity"
+			],
+			[
+				"View",
+				"ViewTileWidth"
+			],
+			[
+				"current",
+				"currentTile"
+			],
+			[
+				"center",
+				"centerOffset"
+			],
+			[
+				"Game",
+				"GameLog"
+			],
+			[
+				"should",
+				"shouldRestart"
+			],
+			[
+				"Til",
+				"TileTextWidth"
+			],
+			[
+				"health",
+				"healthCost"
+			],
+			[
+				"turn",
+				"turnDisplay"
+			],
+			[
+				"play",
+				"playerMeleeAttackNpcGuid"
+			],
+			[
+				"np",
+				"npcOut"
+			],
+			[
+				"Set",
+				"setColor"
+			],
+			[
+				"shou",
+				"shouldDrawTile"
+			],
+			[
+				"Sid",
+				"SidebarTileWidth"
+			],
+			[
+				"Vi",
+				"ViewTileHeight"
+			],
+			[
+				"Side",
+				"SidebarStartX"
+			],
+			[
+				"PL",
+				"PLAYER_STARTING_MAX_HEALTH"
+			],
+			[
+				"tile",
+				"tileDescription"
+			],
+			[
+				"loo",
+				"lookModeCursor"
+			],
+			[
+				"ViewTile",
+				"ViewTileWidth"
+			],
+			[
+				"playerDel",
+				"playerDeltaY"
+			],
+			[
+				"is",
+				"isPressed"
+			],
+			[
+				"ma",
+				"map\tstd::map"
+			],
+			[
+				"input",
+				"inputCode"
+			],
+			[
+				"inp",
+				"inputManager"
+			],
+			[
+				"upd",
+				"Update"
+			],
+			[
+				"currentT",
+				"currentTurnLog"
+			],
+			[
+				"pla",
+				"playerDeltaY"
+			],
+			[
+				"PLAY",
+				"PLAYER_COLOR_NORMAL\t(main.cpp)"
+			],
+			[
+				"ViewT",
+				"ViewTileHeight"
+			],
+			[
+				"set",
+				"setColor"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "7DRL2018.sublime-project",
+			"file": "Jamfile",
 			"settings":
 			{
-				"buffer_size": 1440,
+				"buffer_size": 490,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/main.cpp",
+			"file": "TODO.tasks",
 			"settings":
 			{
-				"buffer_size": 977,
+				"buffer_size": 861,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/home/macoy/Development/code/repositories/horizon/src/main.cpp",
+			"file": "src/Abilities.hpp",
 			"settings":
 			{
-				"buffer_size": 15261,
+				"buffer_size": 1640,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/Abilities.cpp",
+			"settings":
+			{
+				"buffer_size": 5517,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/Entity.hpp",
+			"settings":
+			{
+				"buffer_size": 3069,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/Levels.cpp",
+			"settings":
+			{
+				"buffer_size": 7712,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/Enemies.cpp",
+			"settings":
+			{
+				"buffer_size": 3341,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/Entity.cpp",
+			"settings":
+			{
+				"buffer_size": 10930,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/Globals.hpp",
+			"settings":
+			{
+				"buffer_size": 3549,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		}
 	],
-	"build_system": "Full Build",
+	"build_system": "Full Build & Run",
 	"build_system_choices":
 	[
 		[
@@ -2853,6 +2906,62 @@
 					""
 				],
 				[
+					"Full Build & Run",
+					""
+				],
+				[
+					"Guake 7DRL",
+					""
+				],
+				[
+					"Run",
+					""
+				]
+			],
+			[
+				"Full Build & Run",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Full Build",
+					""
+				],
+				[
+					"Full Build & Run",
+					""
+				],
+				[
+					"Guake 7DRL",
+					""
+				],
+				[
+					"Run",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Full Build & Run",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Full Build",
+					""
+				],
+				[
 					"Guake 7DRL",
 					""
 				],
@@ -2939,12 +3048,72 @@
 		"selected_items":
 		[
 			[
-				"install",
-				"Package Control: Install Package"
+				"brow",
+				"Preferences: Browse Packages"
+			],
+			[
+				"bui",
+				"Build: Cancel"
 			],
 			[
 				"move",
 				"File: Move"
+			],
+			[
+				"lower",
+				"Convert Case: Lower Case"
+			],
+			[
+				"ed",
+				"Project: Edit"
+			],
+			[
+				"upp",
+				"Convert Case: Upper Case"
+			],
+			[
+				"b",
+				"Build: Cancel"
+			],
+			[
+				"tit",
+				"Convert Case: Title Case"
+			],
+			[
+				"colo",
+				"Color Picker"
+			],
+			[
+				"buil",
+				"Build: Cancel"
+			],
+			[
+				"conver",
+				"Indentation: Convert to Tabs"
+			],
+			[
+				"col",
+				"Color Picker"
+			],
+			[
+				"edit",
+				"Project: Edit Project"
+			],
+			[
+				"color",
+				"Color Picker"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
 			],
 			[
 				"bro",
@@ -2959,14 +3128,6 @@
 				"Project: Save As"
 			],
 			[
-				"edit",
-				"Project: Edit Project"
-			],
-			[
-				"buil",
-				"Build: Cancel"
-			],
-			[
 				"build",
 				"Build: Cancel"
 			],
@@ -2977,10 +3138,6 @@
 			[
 				"bu",
 				"Build: Cancel"
-			],
-			[
-				"ed",
-				"Project: Edit"
 			],
 			[
 				"todore",
@@ -3047,10 +3204,6 @@
 				"Markdown HTML Preview"
 			],
 			[
-				"instal",
-				"Package Control: Install Package"
-			],
-			[
 				"title",
 				"Convert Case: Title Case"
 			],
@@ -3099,10 +3252,6 @@
 				"SublimeGDB: Show Input Field"
 			],
 			[
-				"lower",
-				"Convert Case: Lower Case"
-			],
-			[
 				"rename",
 				"File: Rename"
 			],
@@ -3115,16 +3264,8 @@
 				"Project: Edit"
 			],
 			[
-				"brow",
-				"Preferences: Browse Packages"
-			],
-			[
 				"result",
 				"Markdown Preview: Export HTML in Sublime Text"
-			],
-			[
-				"insta",
-				"Package Control: Install Package"
 			],
 			[
 				"step",
@@ -3258,23 +3399,86 @@
 	},
 	"expanded_folders":
 	[
-		"/home/macoy/Development/code/repositories/7drl2018",
-		"/home/macoy/Development/code/repositories/7drl2018/libs",
-		"/home/macoy/Development/code/repositories/7drl2018/libs/base2.0"
 	],
 	"file_history":
 	[
-		"/home/macoy/Development/code/repositories/7drl2018/Jamfile",
+		"/home/macoy/.config/sublime-text-3/Packages/User/7drlAbilitySource.sublime-snippet",
+		"/home/macoy/Development/code/repositories/7drl2018/src/RLMap.cpp",
+		"/home/macoy/Development/code/repositories/7drl2018/src/Globals.hpp",
+		"/home/macoy/Development/code/repositories/7drl2018/src/Levels.cpp",
+		"/home/macoy/Development/code/repositories/7drl2018/src/Enemies.cpp",
+		"/home/macoy/Development/code/repositories/7drl2018/src/Enemies.hpp",
+		"/home/macoy/Development/code/repositories/7drl2018/src/Abilities.cpp",
+		"/home/macoy/Development/code/repositories/7drl2018/src/Abilities.hpp",
+		"/home/macoy/Development/code/repositories/7drl2018/src/Entity.hpp",
+		"/home/macoy/Development/code/repositories/7drl2018/src/Gameplay.cpp",
+		"/home/macoy/Development/code/repositories/7drl2018/src/Entity.cpp",
+		"/home/macoy/Development/code/repositories/7drl2018/src/Game.hpp",
+		"/home/macoy/Development/code/repositories/7drl2018/src/Utilities.cpp",
+		"/home/macoy/Development/code/repositories/7drl2018/src/main.cpp",
+		"/home/macoy/Development/code/repositories/7drl2018/libs/base2.0/input/input.hpp",
+		"/home/macoy/Development/code/repositories/horizon/src/main.cpp",
+		"/home/macoy/Development/code/repositories/7drl2018/libs/base2.0/graphics/graphics.cpp",
 		"/home/macoy/Development/code/repositories/7drl2018/libs/base2.0/graphics/graphics.hpp",
+		"/usr/include/SFML/Graphics/Text.hpp",
+		"/home/macoy/Development/code/repositories/horizon/src/world/path.hpp",
+		"/home/macoy/Development/code/repositories/horizon/src/world/path.cpp",
+		"/home/macoy/Development/code/repositories/horizon/src/world/pathManager.hpp",
+		"/home/macoy/Development/code/repositories/horizon/src/world/pathManager.cpp",
+		"/home/macoy/Development/code/repositories/horizon/src/utilities/micropather.cpp",
+		"/home/macoy/Development/code/repositories/horizon/src/utilities/micropather.h",
+		"/home/macoy/Development/code/repositories/7drl2018/src/RLMap.hpp",
+		"/home/macoy/Development/code/repositories/7drl2018/src/GameInput.hpp",
 		"/home/macoy/Development/code/repositories/7drl2018/Jamrules",
+		"/home/macoy/Development/code/repositories/7drl2018/src/Levels.hpp",
+		"/home/macoy/.config/sublime-text-3/Packages/User/7drlEntitySource.sublime-snippet",
+		"/home/macoy/Development/code/repositories/7drl2018/src/PlayerDeadScreen.cpp",
+		"/home/macoy/Development/code/repositories/7drl2018/src/EntityCreators.cpp",
+		"/home/macoy/Development/code/repositories/7drl2018/src/EntityCreators.hpp",
+		"/home/macoy/Development/code/repositories/7drl2018/7DRL2018.sublime-project",
+		"/usr/include/c++/5.4.0/bits/stl_vector.h",
+		"/home/macoy/Development/code/repositories/7drl2018/src/Gameplay.hpp",
+		"/usr/include/SFML/Graphics/RenderTarget.hpp",
+		"/usr/include/SFML/Graphics/RenderWindow.hpp",
+		"/usr/include/SFML/Graphics/View.hpp",
+		"/usr/local/include/SFML/System/Vector2.hpp",
+		"/usr/include/SFML/Window/Window.hpp",
+		"/usr/include/SFML/Window/WindowStyle.hpp",
+		"/usr/include/SFML/Window.hpp",
+		"/home/macoy/Development/code/repositories/7drl2018/libs/base2.0/timer/timer.hpp",
+		"/home/macoy/Development/code/repositories/base2.0/graphics/graphics.hpp",
+		"/home/macoy/Development/code/repositories/base2.0/graphics/graphics.cpp",
+		"/home/macoy/Development/code/repositories/base2.0/.gitignore",
 		"/home/macoy/Development/code/repositories/base2.0/Jamfile",
+		"/usr/include/SFML/Graphics/Color.hpp",
+		"/home/macoy/Development/code/repositories/7drl2018/libs/base2.0/math/math.hpp",
+		"/home/macoy/Development/code/repositories/7drl2018/src/Art.hpp",
+		"/home/macoy/Development/code/repositories/7drl2018/Art.hpp",
+		"/home/macoy/Development/code/repositories/7drl2018/src/RLColor.hpp",
+		"/home/macoy/Development/code/repositories/7drl2018/src/Utilities.hpp",
+		"/home/macoy/Development/code/repositories/7drl2018/src/PlayerDeadScreen.hpp",
+		"/home/macoy/Development/code/repositories/galavant/src/entityComponentSystem/ComponentManager.hpp",
+		"/home/macoy/Development/code/repositories/galavant/src/game/InteractComponentManager.hpp",
+		"/home/macoy/Development/code/repositories/galavant/src/game/InteractComponentManager.cpp",
+		"/home/macoy/Development/code/repositories/7drl2018/src/Logging.cpp",
+		"/home/macoy/Development/code/repositories/7drl2018/src/Logging.hpp",
+		"/home/macoy/Development/code/repositories/horizon/src/world/terrainGeneration.cpp",
+		"/home/macoy/Development/code/repositories/7drl2018/libs/base2.0/noise/noise.hpp",
+		"/home/macoy/Development/code/repositories/horizon/src/world/cell.cpp",
+		"/home/macoy/Development/code/repositories/7drl2018/.gitignore",
+		"/home/macoy/Development/code/repositories/7drl2018/libs/base2.0/input/input.cpp",
+		"/home/macoy/Development/code/repositories/galavant/src/frontends/consoleOnly/ConsoleOnlyMain.cpp",
+		"/home/macoy/Development/code/repositories/galavant/src/util/Math.hpp",
+		"/usr/include/SFML/Window/Keyboard.hpp",
+		"/usr/include/SFML/System/String.hpp",
+		"/home/macoy/.config/sublime-text-3/Packages/User/clang_format_custom.sublime-settings",
+		"/home/macoy/Development/code/repositories/7drl2018/Jamfile",
 		"/home/macoy/Development/code/repositories/7drl2018/libs/Jamfile",
 		"/home/macoy/Development/code/repositories/7drl2018/README.md",
 		"/home/macoy/Development/code/repositories/base2.0/makefile",
 		"/home/macoy/Development/code/repositories/horizon/makefile",
 		"/home/macoy/Development/code/repositories/base2.0/pseudotarget.cpp",
 		"/home/macoy/Development/code/repositories/galavant/src/experiments/Jamfile",
-		"/home/macoy/Development/code/repositories/7drl2018/src/main.cpp",
 		"/home/macoy/Development/code/repositories/galavant/Jamfile",
 		"/home/macoy/Development/code/repositories/galavant/src/util/Jamfile",
 		"/home/macoy/Development/code/repositories/galavant/src/experiments/noise/Jamfile",
@@ -3325,83 +3529,18 @@
 		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source/GalavantUnreal/World/TestPolyVoxChunkManager.h",
 		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source/GalavantUnreal/Characters/CharacterAudio.h",
 		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Engine/Private/Components/PawnMovementComponent.cpp",
-		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Engine/Private/Pawn.cpp",
-		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Engine/Private/Interpolation.cpp",
-		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Engine/Public/AudioDevice.h",
-		"/home/macoy/.config/sublime-text-3/Packages/Clang Format/clang_format_custom.sublime-settings",
-		"/home/macoy/.config/sublime-text-3/Packages/User/clang_format_custom.sublime-settings",
-		"/home/macoy/.config/sublime-text-3/Packages/User/clang_format.sublime-settings",
-		"/home/macoy/.config/sublime-text-3/Packages/Clang Format/clang_format.sublime-settings",
-		"/media/macoy/SSD/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/CoreUObject/Public/UObject/Class.h",
-		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Editor/UnrealEd/Classes/TexAligner/TexAligner.h",
-		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Editor/UnrealEd/Public/Settings/EditorSettings.h",
-		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Editor/UnrealEd/Private/Settings/EditorSettings.cpp",
-		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Developer/FunctionalTesting/Classes/TraceQueryTestResults.h",
-		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Programs/UnrealHeaderTool/Private/UHTMakefile/UHTMakefile.h",
-		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Programs/UnrealHeaderTool/Private/UHTMakefile/UHTMakefileHeaderDescriptor.h",
-		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Programs/UnrealHeaderTool/Private/UnrealSourceFile.h",
-		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Programs/UnrealHeaderTool/Private/CodeGenerator.cpp",
-		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Developer/AutomationController/Private/AutomationReport.cpp",
-		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source/GalavantUnreal/ActorEntityManagement.h",
-		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source/GalavantUnreal/ActorEntityManagement.cpp",
-		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Engine/Private/PlayerController.cpp",
-		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source/GalavantUnreal/HUDMinimapActor.cpp",
-		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Engine/Private/Components/PrimitiveComponent.cpp",
-		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Config/DefaultInput.ini",
-		"/home/macoy/.config/sublime-text-3/Packages/Default/arithmetic.py",
-		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source/GalavantUnreal/GalavantUnreal.Build.cs",
-		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source/GalavantUnreal/World/TestPolyVoxChunk.cpp",
-		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Config/DefaultEngine.ini",
-		"/media/macoy/SSD/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Core/Public/Containers/Array.h",
-		"/build/glibc-bfm8X4/glibc-2.23/sysdeps/unix/sysv/linux/pt-raise.c",
-		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Saved/Temp/Linux/Engine/Config/BaseEngine.ini",
-		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/LOCAL_package/package/LinuxNoEditor/GalavantUnreal/profile_0002.txt",
-		"/home/macoy/Downloads/deleteMe.log",
-		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source/GalavantUnreal/World/TestPolyVoxChunk.h",
-		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/GalavantUnreal.uproject",
-		"/media/macoy/SSD/Development/code/3rdParty/repositories/UnrealEngine/Engine/Plugins/Runtime/CustomMeshComponent/Source/CustomMeshComponent/Private/CustomMeshComponent.cpp",
-		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Engine/Classes/PhysicsEngine/BodyInstance.h",
-		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Core/Public/Delegates/DelegateSignatureImpl.inl",
-		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Core/Public/Misc/AssertionMacros.h",
-		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Core/Public/Linux/LinuxPlatformMisc.h",
-		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/AssetRegistry/Private/AssetRegistry.cpp",
-		"/home/macoy/Development/code/repositories/galavant/src/game/agent/PlanComponentManager.cpp",
-		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Engine/Classes/Engine/GameViewportClient.h",
-		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/SlateCore/Public/Input/Reply.h",
-		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Engine/Private/Slate/SceneViewport.cpp",
-		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Slate/Public/Framework/Application/SlateApplication.h",
-		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Editor/LevelEditor/Private/SLevelViewport.cpp",
-		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Engine/Classes/Engine/Engine.h",
-		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Engine/Classes/Components/InputComponent.h",
-		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Engine/Private/Components/InputComponent.cpp",
-		"/home/macoy/Development/code/repositories/galavant/src/util/Time.hpp",
-		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Engine/Public/UnrealClient.h",
-		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source/GalavantUnreal/GalavantUnrealMain.h",
-		"/home/macoy/Development/code/repositories/galavant/src/experiments/cereal/cerealTest.cpp",
-		"/home/macoy/Development/code/3rdParty/repositories/cereal/include/cereal/cereal.hpp",
-		"/home/macoy/Development/code/repositories/galavant/src/experiments/cereal/outFancy.json",
-		"/home/macoy/Development/code/3rdParty/repositories/cereal/include/cereal/details/traits.hpp",
-		"/home/macoy/Development/code/repositories/galavant/src/experiments/cereal/out.json",
-		"/home/macoy/Development/code/repositories/galavant/src/experiments/cereal/out.cereal",
-		"/home/macoy/Development/code/repositories/galavant/src/experiments/cereal/out.xml",
-		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source/GalavantUnreal/CharacterManager.cpp",
-		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source/GalavantUnreal/CharacterManager.hpp",
-		"/home/macoy/Development/code/repositories/galavant/src/util/CppHelperMacros.hpp",
-		"/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source/GalavantUnreal/CombatFx.cpp",
-		"/home/macoy/Development/code/repositories/galavant/src/entityComponentSystem/EntityTypes.cpp",
-		"/home/macoy/Development/code/repositories/galavant/deleteMe_packagingBad.log",
-		"/home/macoy/Development/code/repositories/galavant/src/entityComponentSystem/EntityComponentManager.hpp",
-		"/home/macoy/Development/code/repositories/galavant-unreal/.gitignore"
+		"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Runtime/Engine/Private/Pawn.cpp"
 	],
 	"find":
 	{
-		"height": 44.0
+		"height": 82.0
 	},
 	"find_in_files":
 	{
-		"height": 177.0,
+		"height": 207.0,
 		"where_history":
 		[
+			"/home/macoy/Development/code/repositories/7drl2018/src",
 			"/home/macoy/Development/code/repositories/galavant/src,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source,*.c,*.cpp,*.h,*.hpp,*.cs,Jamfile",
 			"/home/macoy/Development/code/repositories/galavant/src,/home/macoy/Development/code/repositories/galavant-unreal/GalavantUnreal/Source,/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Programs,/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source,*.c,*.cpp,*.h,*.hpp,*.cs,Jamfile",
 			"/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source/Programs,/home/macoy/Development/code/3rdParty/repositories/UnrealEngine/Engine/Source,*.cpp",
@@ -3481,134 +3620,134 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"debugText",
-			"Text",
-			"text",
-			"defaultText",
-			"initializeText",
-			"textToRender",
-			"100",
-			"Base20Pseudotarget",
-			".hpp",
-			".o:",
-			"$(FLAGS) \"",
-			".cpp",
-			"pool.o",
-			"arkchar",
-			"landed",
-			"characterAudio.h",
-			"vscode",
-			"GetGoalStatusString",
-			"AgentGoal",
-			"case",
-			"needtyp",
-			"fire",
-			"FLandedSignature",
-			"OnLandedDelegate",
-			"deleg",
-			"OnLanded",
-			"onlanded",
-			"movemen",
-			"manha",
-			"goalManDistanceTolerance",
-			"FootstepPlayRate",
-			"OnLeftFistHit",
-			"leftfist",
-			"IsBound",
-			"OnComponentHit",
-			"FComponentHitSignature",
-			"onjumped",
-			"onjump",
-			"FComponentHitSignature",
-			"hit",
-			"error",
-			"fail",
-			"projectil",
-			"AGalavantUnrealFPProjectile",
-			"FirstPersonTempCPP",
-			"FirstPersonTemp",
-			"sound",
-			"bMovementInProgress",
-			"bmovementin",
-			"UpdatedComponent",
-			"isfall",
-			"UCLASS(",
-			" : public UObject",
-			"ue_",
-			"error",
-			"AddUnrealSourceFiles",
-			"AddUnrealSourceFile",
-			"audio",
-			"PlaySoundAtLocation",
-			"chunkManager",
-			"chunk",
-			"FirstPersonCameraComponent",
-			"OnComponentHit",
-			"OnLeftFistHit",
-			"AddOnScreenDebugMessage",
-			"slate",
-			"penetra",
-			"galavant",
-			"[671]LogStats:",
-			"custommeshcomponent",
-			"galavantunrealgamemode",
-			"can character step",
-			"bNotifyRigidBodyCollision",
-			"simulation generates ",
-			"Viewport",
-			" viewport;",
-			"capturemouse",
-			"ReleaseMouseCapture",
-			"GameViewport;",
-			"for mouse cursor",
-			"mouseCaptured",
-			"BindAction(\"",
-			"bindaction(",
-			"::bindaction(",
-			"exit",
-			"UFUNCTION(exec",
-			"exit",
-			"UFUNCTION(",
-			"jam",
-			"version",
-			"archive",
-			"oAr",
-			"oar",
-			"flatbuffers",
-			"combatant",
-			"Ragdoll",
-			"CharacterMesh_ProfileName",
-			"AlreadyRagdoll",
-			".ConsciousState = ",
-			"conscious",
-			"-",
-			"mono automationtool",
-			"FInputBindingEditorModule",
-			"UEditorKeyboardShortcutSettings",
-			"localization dashboard",
-			"'/Game/",
-			"fpcharac",
-			"failed to find object",
-			"s_Characters",
-			"generate pr",
-			"//",
-			"data.Character",
-			"currentUnsubscribe",
-			"currentFunc",
-			"typedef void (*",
-			"@callback",
-			"UE_LOG",
-			"NAME_SIZE",
-			"#define NAME_SIZE",
-			"NAME_SIZE",
-			"EAnalyticsErrorCodes::Arguments",
-			"invalid arguments",
-			"@Latelink",
-			"@LatelinkDef\n",
-			"deltaSeconds",
-			"g_GameplayTimeManager",
-			"Pause",
-			"pause"
+			"enemyActivator->",
+			"gameState.player.",
+			"gameState.player.X",
+			"FX_LIGHTNING",
+			"LightningAbility",
+			"2",
+			"// TODO: Replace with define?",
+			"LevelEntity",
+			"gameState.npcs.push_back(newLevelEntity);\n\t\t}",
+			"LEVELENEMY_SPAWN_NUM_MULTIPLIER_FOREST",
+			"Summoner",
+			"#define",
+			"Type =",
+			"_TYPE",
+			"{",
+			"if (",
+			"LEVEL_NUM_",
+			"LEVEL_NUM_FOREST",
+			"currentAbility",
+			"playerAbilityActivatedIndex",
+			"playerAbilityActivatedName",
+			"gameState.player.Abilities[abilityIndex]",
+			"stairsDescriptionOut",
+			"possibleStairs",
+			"standingOnDisplay",
+			"numberKeysPressed[0] - 1",
+			"Abilities",
+			"Control",
+			"STAIRS_DOWN_TYPE",
+			"Stats[gameState.player.TrainingStatIndex]",
+			"Control,",
+			"Control",
+			"TrainingStatIndex",
+			"levelingDisplay",
+			"abilityDisplay",
+			"gameState.abilitiesUpdatingFx",
+			"frameTime",
+			"currentRealTime",
+			"frametime",
+			"if (tileAt)",
+			"reset",
+			"gameState.player.",
+			"hitEntity",
+			"player.",
+			"you ",
+			"abilityDisplay",
+			"abilityNameDisplay",
+			"abilityDisplay",
+			"turnDisplay",
+			"currentAbility.",
+			"Ability& currentAbility",
+			"input",
+			"gameState.player.",
+			"Abilities",
+			"player activa",
+			"abilityActivated",
+			"targetMode",
+			"LOOK_MODE_EXIT",
+			"playerAbilityActivated",
+			"playerabili",
+			"look mode",
+			"look",
+			"lookMode",
+			"lookModeCursor.",
+			"targetMode",
+			"playerTurnPerformed",
+			"gameState.player.Abilities.",
+			"gameState.player.Abilities[i]",
+			"target",
+			"enemyActivator->",
+			"void ",
+			"virtual",
+			"}",
+			"{",
+			"while",
+			"Skeleton",
+			"skeleton",
+			"Skeleton",
+			"skeleton",
+			"Skeleton",
+			"skeleton",
+			"Skeleton",
+			"currentTile",
+			"virtual",
+			"Seed \" << gameState.seed * gameState.currentLevel",
+			"// We failed to find a place quickly. Pick something arbitrary",
+			"placeEntityRandomSensibly",
+			"srand(gameState.seed * (gameState.currentLevel + (unsigned long)entity));",
+			"srand",
+			"centerOffset",
+			"levelDisplay",
+			"player->",
+			"attackedNpc",
+			"gameState.player.Stats",
+			"PLAYER_STARTING_MAX_STRENGTH",
+			"turnDisplay",
+			"Tiles.",
+			".Tiles",
+			"map.",
+			"gameState.npcs.",
+			"newSkeleton.",
+			"skeleton[i]",
+			"entity->",
+			"Enemy",
+			"Summoner",
+			"Enemy",
+			"createDungeon",
+			"TREE_",
+			"tile.",
+			"skeleton[i]",
+			"LOGI",
+			"entity->",
+			"standingOnDisplay",
+			"lookModeCursor.",
+			"WALL_BUMP",
+			"nonTraversableEnt->",
+			"findEntityByPosition",
+			"stairsDescription",
+			"findEntityByPosition",
+			"npc->",
+			"findEntityByPosition",
+			"byposition",
+			");",
+			" += ",
+			"->IsTraversable",
+			"lastTurnLog",
+			"X",
+			"currentMap"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -3651,112 +3790,299 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 8,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "7DRL2018.sublime-project",
+					"file": "Jamfile",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1440,
+						"buffer_size": 490,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								703,
-								703
+								239,
+								239
 							]
 						],
 						"settings":
 						{
 							"git_gutter_is_enabled": true,
-							"open_with_edit": true,
-							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
-							"tabs_extra_last_activated": 1519074696.81,
+							"syntax": "Packages/Jam Language/jam.tmLanguage",
+							"tabs_extra_last_activated": 1520487668.8,
 							"tabs_extra_last_activated_sheet_index": 0,
-							"tabs_extra_spawned": true,
-							"translate_tabs_to_spaces": false
+							"tabs_extra_moving":
+							[
+								2,
+								0
+							]
 						},
 						"translation.x": 0.0,
-						"translation.y": 613.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "TODO.tasks",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 861,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								79,
+								79
+							]
+						],
+						"settings":
+						{
+							"_anf_new": "",
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tabs_extra_last_activated": 1520489022.41,
+							"tabs_extra_last_activated_sheet_index": 1,
+							"tabs_extra_spawned": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 273.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "src/main.cpp",
+					"buffer": 2,
+					"file": "src/Abilities.hpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 977,
+						"buffer_size": 1640,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								234,
-								234
+								1640,
+								1640
 							]
 						],
 						"settings":
 						{
 							"git_gutter_is_enabled": true,
 							"syntax": "Packages/C++/C++.sublime-syntax",
-							"tabs_extra_last_activated": 1519873643.04,
-							"tabs_extra_last_activated_sheet_index": 1,
+							"tabs_extra_last_activated": 1520489060.83,
+							"tabs_extra_last_activated_sheet_index": 2,
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 225.0,
+						"translation.y": 1329.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 8,
 					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 0,
-			"sheets":
-			[
+				},
 				{
-					"buffer": 2,
-					"file": "/home/macoy/Development/code/repositories/horizon/src/main.cpp",
+					"buffer": 3,
+					"file": "src/Abilities.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 15261,
+						"buffer_size": 5517,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								5517,
+								5517
 							]
 						],
 						"settings":
 						{
 							"git_gutter_is_enabled": true,
 							"syntax": "Packages/C++/C++.sublime-syntax",
-							"tabs_extra_last_activated": 1519074793.52,
-							"tabs_extra_last_activated_sheet_index": 0,
-							"tabs_extra_spawned": true,
+							"tabs_extra_last_activated": 1520489060.98,
+							"tabs_extra_last_activated_sheet_index": 3,
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 8465.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/Entity.hpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3069,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2960,
+								2960
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tabs_extra_last_activated": 1520489061.35,
+							"tabs_extra_last_activated_sheet_index": 4,
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3368.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/Levels.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7712,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2716,
+								2716
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tabs_extra_last_activated": 1520489062.43,
+							"tabs_extra_last_activated_sheet_index": 5,
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3471.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "src/Enemies.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3341,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2477,
+								2477
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tabs_extra_last_activated": 1520489062.81,
+							"tabs_extra_last_activated_sheet_index": 6,
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3627.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "src/Entity.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10930,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7500,
+								7500
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tabs_extra_last_activated": 1520489062.98,
+							"tabs_extra_last_activated_sheet_index": 7,
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 11429.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "src/Globals.hpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3549,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3085,
+								3085
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tabs_extra_last_activated": 1520491315.77,
+							"tabs_extra_last_activated_sheet_index": 8
+						},
+						"translation.x": 0.0,
+						"translation.y": 4020.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -3764,7 +4090,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 44.0
+		"height": 55.0
 	},
 	"input":
 	{
@@ -3779,18 +4105,11 @@
 				0,
 				1,
 				1
-			],
-			[
-				1,
-				0,
-				2,
-				1
 			]
 		],
 		"cols":
 		[
 			0.0,
-			0.5,
 			1.0
 		],
 		"rows":
@@ -3828,7 +4147,7 @@
 	"project": "7DRL2018.sublime-project",
 	"replace":
 	{
-		"height": 81.0
+		"height": 102.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -3837,6 +4156,230 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"entit",
+				"7DRL/src/Entity.cpp"
+			],
+			[
+				"enti",
+				"7DRL/src/Entity.hpp"
+			],
+			[
+				"global",
+				"7DRL/src/Globals.hpp"
+			],
+			[
+				"abili",
+				"7DRL/src/Abilities.cpp"
+			],
+			[
+				"ene",
+				"7DRL/src/Enemies.cpp"
+			],
+			[
+				"level",
+				"7DRL/src/Levels.cpp"
+			],
+			[
+				"enemies",
+				"7DRL/src/Enemies.cpp"
+			],
+			[
+				"enem",
+				"7DRL/src/Enemies.hpp"
+			],
+			[
+				"abilit",
+				"7DRL/src/Abilities.cpp"
+			],
+			[
+				"levels",
+				"7DRL/src/Levels.cpp"
+			],
+			[
+				"entity",
+				"7DRL/src/Entity.cpp"
+			],
+			[
+				"gamepla",
+				"7DRL/src/Gameplay.cpp"
+			],
+			[
+				"globa",
+				"7DRL/src/Globals.hpp"
+			],
+			[
+				"en",
+				"7DRL/src/Enemies.cpp"
+			],
+			[
+				"game.h",
+				"7DRL/src/Game.hpp"
+			],
+			[
+				"leve",
+				"7DRL/src/Levels.cpp"
+			],
+			[
+				"ut",
+				"7DRL/src/Utilities.cpp"
+			],
+			[
+				"inpu",
+				"7DRL/libs/base2.0/input/input.hpp"
+			],
+			[
+				"util",
+				"7DRL/src/Utilities.cpp"
+			],
+			[
+				"game",
+				"7DRL/src/Game.hpp"
+			],
+			[
+				"grap",
+				"7DRL/libs/base2.0/graphics/graphics.cpp"
+			],
+			[
+				"text",
+				"SFML/Graphics/Text.hpp"
+			],
+			[
+				"abil",
+				"7DRL/src/Abilities.hpp"
+			],
+			[
+				"gamein",
+				"7DRL/src/GameInput.hpp"
+			],
+			[
+				"levels.c",
+				"7DRL/src/Levels.cpp"
+			],
+			[
+				"rlmap",
+				"7DRL/src/RLMap.hpp"
+			],
+			[
+				"rlma",
+				"7DRL/src/RLMap.cpp"
+			],
+			[
+				"dead",
+				"7DRL/src/PlayerDeadScreen.cpp"
+			],
+			[
+				"jamrules",
+				"7DRL/Jamrules"
+			],
+			[
+				"gamepl",
+				"7DRL/src/Gameplay.cpp"
+			],
+			[
+				"game.hp",
+				"7DRL/src/Game.hpp"
+			],
+			[
+				"rlm",
+				"7DRL/src/RLMap.cpp"
+			],
+			[
+				"main",
+				"7DRL/src/main.cpp"
+			],
+			[
+				"rl",
+				"7DRL/src/RLMap.cpp"
+			],
+			[
+				"inp",
+				"7DRL/libs/base2.0/input/input.hpp"
+			],
+			[
+				"entity.",
+				"7DRL/src/Entity.cpp"
+			],
+			[
+				"graphi",
+				"7DRL/libs/base2.0/graphics/graphics.hpp"
+			],
+			[
+				"view",
+				"SFML/Graphics/View.hpp"
+			],
+			[
+				"renderw",
+				"SFML/Graphics/RenderWindow.hpp"
+			],
+			[
+				"windo",
+				"SFML/Window/Window.hpp"
+			],
+			[
+				"gra",
+				"7DRL/libs/base2.0/graphics/graphics.cpp"
+			],
+			[
+				"GLOBAL",
+				"7DRL/src/Globals.hpp"
+			],
+			[
+				"graph",
+				"7DRL/libs/base2.0/graphics/graphics.cpp"
+			],
+			[
+				"math.h",
+				"7DRL/libs/base2.0/math/math.hpp"
+			],
+			[
+				"tim",
+				"7DRL/libs/base2.0/timer/timer.hpp"
+			],
+			[
+				"pla",
+				"7DRL/src/PlayerDeadScreen.cpp"
+			],
+			[
+				"ent",
+				"7DRL/src/Entity.hpp"
+			],
+			[
+				"ar",
+				"7DRL/src/Art.hpp"
+			],
+			[
+				"player",
+				"7DRL/src/PlayerDeadScreen.cpp"
+			],
+			[
+				"gamep",
+				"7DRL/src/Gameplay.hpp"
+			],
+			[
+				"noise",
+				"7DRL/libs/base2.0/noise/noise.hpp"
+			],
+			[
+				"loggin",
+				"7DRL/src/Logging.hpp"
+			],
+			[
+				"input.h",
+				"7DRL/libs/base2.0/input/input.hpp"
+			],
+			[
+				"jamru",
+				"7DRL/Jamrules"
+			],
+			[
+				"input",
+				"7DRL/libs/base2.0/input/input.hpp"
+			],
+			[
+				"jamfil",
+				"Jamfile"
+			],
 			[
 				"READ",
 				"7DRL/README.md"
@@ -3852,10 +4395,6 @@
 			[
 				"jamfile util",
 				"Galavant/src/util/Jamfile"
-			],
-			[
-				"jamrules",
-				"Galavant/Jamrules"
 			],
 			[
 				"agentcompo",
@@ -4114,16 +4653,8 @@
 				"Galavant/src/ai/htn/HTNPlanner.hpp"
 			],
 			[
-				"main",
-				"Galavant/src/main.cpp"
-			],
-			[
 				"entitycomp",
 				"Galavant/src/entityComponentSystem/EntityComponentManager.hpp"
-			],
-			[
-				"entit",
-				"Galavant/src/entityComponentSystem/EntityComponentManager.cpp"
 			],
 			[
 				"lmain",
@@ -4136,238 +4667,26 @@
 			[
 				"unreallog",
 				"Source - Galavant Unreal/GalavantUnreal/Utilities/GalavantUnrealLog.cpp"
-			],
-			[
-				"unrealnames.h",
-				"Unreal Engine Source/Runtime/Core/Public/UObject/UnrealNames.h"
-			],
-			[
-				"unrealnames",
-				"Unreal Engine Source/Runtime/Core/Private/UObject/UnrealNames.cpp"
-			],
-			[
-				"unreal.buil",
-				"Source - Galavant Unreal/GalavantUnreal/GalavantUnreal.Build.cs"
-			],
-			[
-				"logg",
-				"Galavant/src/util/Logging.cpp"
-			],
-			[
-				"logging",
-				"Galavant/src/util/Logging.hpp"
-			],
-			[
-				"consoleonly",
-				"Galavant/src/frontends/consoleOnly/ConsoleOnlyMain.cpp"
-			],
-			[
-				"utiljamfil",
-				"Galavant/src/util/Jamfile"
-			],
-			[
-				"dynami",
-				"Source - Galavant Unreal/GalavantUnreal/Graphics/DynamicTexture.cpp"
-			],
-			[
-				"fpcharac",
-				"Source - Galavant Unreal/GalavantUnreal/Characters/GalavantUnrealFPCharacter.h"
-			],
-			[
-				"umg",
-				"Unreal Engine Source/Runtime/UMG/Public/UMG.h"
-			],
-			[
-				"fpcharacter",
-				"Source - Galavant Unreal/GalavantUnreal/Characters/GalavantUnrealFPCharacter.cpp"
-			],
-			[
-				"entitycompo",
-				"Galavant/src/entityComponentSystem/EntityComponentManager.hpp"
-			],
-			[
-				"consoleon",
-				"Galavant/src/frontends/consoleOnly/ConsoleOnlyMain.cpp"
-			],
-			[
-				"math.h",
-				"Galavant/src/util/Math.hpp"
-			],
-			[
-				"consolemov",
-				"Galavant/src/frontends/consoleOnly/ConsoleMovementComponentManager.cpp"
-			],
-			[
-				"consolemovem",
-				"Galavant/src/frontends/consoleOnly/ConsoleMovementComponentManager.hpp"
-			],
-			[
-				"math",
-				"Galavant/src/util/Math.hpp"
-			],
-			[
-				"unrealmove",
-				"Source - Galavant Unreal/GalavantUnreal/GalaEntityComponents/UnrealMovementComponent.cpp"
-			],
-			[
-				"movementcompn",
-				"Unreal Engine Source/Runtime/Engine/Classes/GameFramework/MovementComponent.h"
-			],
-			[
-				"unrealmo",
-				"Source - Galavant Unreal/GalavantUnreal/GalaEntityComponents/UnrealMovementComponent.hpp"
-			],
-			[
-				"movementm",
-				"Galavant/src/game/agent/MovementManager.hpp"
-			],
-			[
-				"",
-				"Galavant/Notes.md"
-			],
-			[
-				"collisionprofile.h",
-				"Unreal Engine Source/Runtime/Engine/Classes/Engine/CollisionProfile.h"
-			],
-			[
-				"meshcompon",
-				"Unreal Engine Source/Runtime/Engine/Classes/Components/MeshComponent.h"
-			],
-			[
-				"skinnedmesh",
-				"Unreal Engine Source/Runtime/Engine/Classes/Components/SkinnedMeshComponent.h"
-			],
-			[
-				"skeletalmesh.",
-				"Unreal Engine Source/Runtime/Engine/Classes/Components/SkeletalMeshComponent.h"
-			],
-			[
-				"fx.hp",
-				"Source - Galavant Unreal/GalavantUnreal/CombatFx.hpp"
-			],
-			[
-				"resource",
-				"Galavant/src/util/ResourceDictionary.cpp"
-			],
-			[
-				"resourc",
-				"Galavant/src/util/ResourceDictionary.hpp"
-			],
-			[
-				"agent",
-				"Galavant/src/game/agent/AgentComponentManager.cpp"
-			],
-			[
-				"combatc",
-				"Galavant/src/game/agent/combat/CombatComponentManager.cpp"
-			],
-			[
-				"unrealm",
-				"Source - Galavant Unreal/GalavantUnreal/GalaEntityComponents/UnrealMovementComponent.cpp"
-			],
-			[
-				"lmovemn",
-				"Source - Galavant Unreal/GalavantUnreal/GalaEntityComponents/UnrealMovementComponent.cpp"
-			],
-			[
-				"unreal",
-				"Source - Galavant Unreal/GalavantUnreal/GalaEntityComponents/UnrealMovementComponent.cpp"
-			],
-			[
-				"srcjam",
-				"Galavant/src/Jamfile"
-			],
-			[
-				"testingjamf",
-				"Galavant/src/unitTesting/Jamfile"
-			],
-			[
-				"utiljamfile",
-				"Galavant/src/util/Jamfile"
-			],
-			[
-				"htntypes",
-				"Galavant/src/ai/htn/HTNTypes.hpp"
-			],
-			[
-				"aiplanner",
-				"Galavant/src/ai/htn/HTNPlanner.hpp"
-			],
-			[
-				"experimentsjam",
-				"Galavant/src/experiments/noise/Jamfile"
-			],
-			[
-				"experimen",
-				"Galavant/src/experiments/Jamfile"
-			],
-			[
-				"galavantunreallog",
-				"Source - Galavant Unreal/GalavantUnreal/Utilities/GalavantUnrealLog.cpp"
-			],
-			[
-				"actorfactor",
-				"Unreal Engine Source/Editor/UnrealEd/Private/Factories/ActorFactory.cpp"
-			],
-			[
-				"world.cpp",
-				"Unreal Engine Source/Runtime/Engine/Private/World.cpp"
-			],
-			[
-				"actorcompone",
-				"Unreal Engine Source/Runtime/Engine/Classes/Components/ActorComponent.h"
-			],
-			[
-				"scenecomponent",
-				"Unreal Engine Source/Runtime/Engine/Classes/Components/SceneComponent.h"
-			],
-			[
-				"lfpchar",
-				"Source - Galavant Unreal/GalavantUnreal/Characters/GalavantUnrealFPCharacter.h"
-			],
-			[
-				"actorene",
-				"Source - Galavant Unreal/GalavantUnreal/ActorEntityManagement.cpp"
-			],
-			[
-				"agentco",
-				"Galavant/src/game/agent/AgentComponentManager.cpp"
-			],
-			[
-				"interact",
-				"Galavant/src/game/InteractComponentManager.cpp"
-			],
-			[
-				"plancompon",
-				"Galavant/src/game/agent/PlanComponentManager.cpp"
-			],
-			[
-				"lmov",
-				"Source - Galavant Unreal/GalavantUnreal/GalaEntityComponents/UnrealMovementComponent.cpp"
-			],
-			[
-				"agentc",
-				"Galavant/src/game/agent/AgentComponentManager.cpp"
 			]
 		],
 		"width": 0.0
 	},
 	"select_project":
 	{
-		"height": 813.0,
-		"last_filter": "redd",
+		"height": 1016.0,
+		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"",
+				"~/Development/code/repositories/redditLikedSavedImageDownloader/redditLikedSavedImageDownloader.sublime-project"
+			],
 			[
 				"redd",
 				"~/Development/code/repositories/redditLikedSavedImageDownloader/redditLikedSavedImageDownloader.sublime-project"
 			],
 			[
 				"red",
-				"~/Development/code/repositories/redditLikedSavedImageDownloader/redditLikedSavedImageDownloader.sublime-project"
-			],
-			[
-				"",
 				"~/Development/code/repositories/redditLikedSavedImageDownloader/redditLikedSavedImageDownloader.sublime-project"
 			],
 			[
@@ -4383,14 +4702,86 @@
 				"~/Documents/brute-force-living/brute-force-living.sublime-project"
 			]
 		],
-		"width": 618.0
+		"width": 772.0
 	},
 	"select_symbol":
 	{
-		"height": 56.0,
-		"last_filter": "",
+		"height": 481.0,
+		"last_filter": "summon",
 		"selected_items":
 		[
+			[
+				"summon",
+				"Summoner"
+			],
+			[
+				"phase",
+				"PhaseDoor"
+			],
+			[
+				"ability ran",
+				"getNewRandomAbility"
+			],
+			[
+				"place",
+				"placeEntityRandomSensibly"
+			],
+			[
+				"randomwal",
+				"RandomWalk"
+			],
+			[
+				"draww",
+				"DrawWorld"
+			],
+			[
+				"enemy",
+				"Enemy"
+			],
+			[
+				"descr",
+				"describePosition"
+			],
+			[
+				"level",
+				"LevelUp"
+			],
+			[
+				"LEVEL",
+				"LevelUp"
+			],
+			[
+				"recal",
+				"RecalculateDimensions"
+			],
+			[
+				"init",
+				"initializeWindow"
+			],
+			[
+				"drawwo",
+				"DrawWorld"
+			],
+			[
+				"player",
+				"Player"
+			],
+			[
+				"drawwor",
+				"DrawWorld"
+			],
+			[
+				"canmove",
+				"canMoveTo"
+			],
+			[
+				"descrip",
+				"describePosition"
+			],
+			[
+				"can ",
+				"canMeleeAttack"
+			],
 			[
 				"canjum",
 				"CanJump"
@@ -4588,7 +4979,7 @@
 				"PlanComponentManager"
 			]
 		],
-		"width": 1233.0
+		"width": 778.0
 	},
 	"selected_group": 0,
 	"settings":

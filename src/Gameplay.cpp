@@ -194,6 +194,9 @@ bool PlayGame()
 	gameState.player.Initialize();
 	gameState.abilitiesUpdatingFx.clear();
 
+	// TODO: Remove before ship!
+	gameState.enableCheats = true;
+
 	//
 	// Level initialization
 	//
@@ -235,6 +238,61 @@ bool PlayGame()
 		//
 		// Input
 		//
+
+		// TODO: Reset before ship!
+		if (gameState.enableCheats)
+		{
+			// Set health to high number
+			if (gameInp.Tapped(inputCode::F1))
+			{
+				RLCombatStat& health = gameState.player.Stats["HP"];
+				health.Max = 10000;
+				health.Value = 10000;
+				LOGD << "Cheat: health up";
+			}
+			// Reset cooldowns
+			if (gameInp.Tapped(inputCode::F2))
+			{
+				for (Ability* ability : gameState.player.Abilities)
+				{
+					if (!ability)
+						continue;
+					ability->ActivatedOnTurn = -1;
+				}
+				LOGD << "Cheat: skip cooldowns";
+			}
+			// Next level
+			if (gameInp.Tapped(inputCode::F3))
+			{
+				LoadNextLevel();
+				TurnCounter++;
+				LOGI << "You step through to the next level";
+
+				LOGD << "Cheat: Next Level";
+
+				continue;
+			}
+			// Level up
+			if (gameInp.Tapped(inputCode::F4))
+			{
+				gameState.player.LevelUp();
+				LOGD << "Cheat: Level up";
+			}
+			// Randomize abilities
+			if (gameInp.Tapped(inputCode::F5))
+			{
+				int counter = 0;
+				for (Ability* ability : gameState.player.Abilities)
+				{
+					if (ability)
+						delete ability;
+					
+					gameState.player.Abilities[counter] = getNewRandomAbility();
+					counter++;
+				}
+				LOGD << "Cheat: skip cooldowns";
+			}
+		}
 
 		// Return / Enter accepts target or closes the game
 		if (gameInp.Tapped(inputCode::Return))

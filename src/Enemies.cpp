@@ -111,7 +111,7 @@ void Summoner::DoTurn()
 	if (gameState.currentLevel > LEVEL_NUM_FOREST)
 	{
 		// Add offset so they aren't spawned on same turn
-		if ((TurnCounter + 5) % spawnRate == 0 && NumSpawns < MAX_SINGLE_SUMMONS)
+		if ((TurnCounter + (rand() % 5)) % spawnRate == 0 && NumSpawns < MAX_SINGLE_SUMMONS)
 		{
 			NumSpawns++;
 			LightningWizard* newLightningWizard = new LightningWizard();

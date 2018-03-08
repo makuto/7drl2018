@@ -65,6 +65,8 @@ struct GameState
 
 	std::string levelName;
 
+	bool enableCheats;
+
 	// Remember to add fields to Reset Globals block!
 };
 

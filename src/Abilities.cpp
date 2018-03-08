@@ -46,6 +46,9 @@ bool Ability::IsCooldownDone()
 
 int Ability::CooldownRemaining()
 {
+	if (ActivatedOnTurn == -1)
+		return false;
+
 	return -(TurnCounter - (ActivatedOnTurn + CooldownTime)) + 1;
 }
 
