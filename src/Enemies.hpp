@@ -1,7 +1,16 @@
 #pragma once
 
-#include "Entity.hpp"
 #include "Abilities.hpp"
+#include "Entity.hpp"
+
+class LevelEnemy : public Enemy
+{
+public:
+	LevelEnemy();
+	virtual ~LevelEnemy() = default;
+
+	virtual void DoTurn() override;
+};
 
 class Skeleton : public Enemy
 {
@@ -16,6 +25,7 @@ class Summoner : public Enemy
 {
 private:
 	int NumSpawns;
+
 public:
 	Summoner();
 	virtual ~Summoner() = default;
@@ -26,6 +36,7 @@ public:
 class LightningWizard : public Enemy
 {
 	LightningAbility lightning;
+
 public:
 	LightningWizard();
 	virtual ~LightningWizard() = default;

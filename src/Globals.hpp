@@ -51,6 +51,11 @@
 
 #define PLAYER_TYPE '@'
 #define SKELETON_TYPE 's'
+#define SUMMONER_TYPE 'c'
+#define GOBLIN_TYPE 'g'
+#define BANDIT_TYPE 'h'
+#define DRAGON_TYPE 'd'
+#define WIZARD_TYPE 'w'
 
 #define CORPSE_TYPE '%'
 #define ABILITY_TYPE '!'
@@ -93,10 +98,25 @@
 // spawn rate by 1)
 #define SUMMONER_SPAWN_RATE_LEVEL_MULTIPLIER 0.5f
 
-#define RANGED_ENEMY_MAX_DIST_MANHATTAN 30
+#define RANGED_ENEMY_MAX_DIST_MANHATTAN 27
+
+#define LEVELENEMY_PLAYER_DETECT_MANHATTAN_RADIUS 20
 
 // Each death, chance of ability dropping = this * level
 #define DEATH_ABILITY_DROP_LEVEL_MULTIPLIER 5.f;
+
+//
+// Levels
+//
+#define LEVEL_NUM_FOREST 3
+#define LEVEL_NUM_BARREN 6
+// lol have fun
+#define LEVEL_NUM_HELLSCAPE 10000
+
+// Number of level enemies spawned = this * level
+#define LEVELENEMY_SPAWN_NUM_MULTIPLIER_FOREST 3.f;
+#define LEVELENEMY_SPAWN_NUM_MULTIPLIER_BARREN 2.f;
+#define LEVELENEMY_SPAWN_NUM_MULTIPLIER_HELLSCAPE 1.2f;
 
 //
 // Only display once in log strings

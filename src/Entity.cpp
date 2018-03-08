@@ -260,8 +260,8 @@ void Enemy::MoveTowardsPlayer()
 
 void Enemy::RandomWalk()
 {
-	int deltaX = (rand() % 2) - 1;
-	int deltaY = (rand() % 2) - 1;
+	int deltaX = (rand() % 3) - 1;
+	int deltaY = (rand() % 3) - 1;
 
 	CLAMP(deltaX, -Speed, Speed);
 	CLAMP(deltaY, -Speed, Speed);

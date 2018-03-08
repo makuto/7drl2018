@@ -229,12 +229,51 @@ void LoadNextLevel()
 	gameState.currentLevel++;
 	srand(gameState.seed * gameState.currentLevel);
 
-	if (gameState.currentLevel <= 3)
+	if (gameState.currentLevel <= LEVEL_NUM_FOREST)
+	{
 		createForest();
-	else if (gameState.currentLevel <= 6)
+
+		int numLevelEnemiesToSpawn =
+		    gameState.currentLevel * LEVELENEMY_SPAWN_NUM_MULTIPLIER_FOREST;
+		for (int i = 0; i < numLevelEnemiesToSpawn; i++)
+		{
+			LevelEnemy* newLevelEnemy = new LevelEnemy();
+			placeEntityRandomSensibly(newLevelEnemy);
+			gameState.npcs.push_back(newLevelEnemy);
+		}
+
+		LOGD << "Spawned " << numLevelEnemiesToSpawn << " level enemies";
+	}
+	else if (gameState.currentLevel <= LEVEL_NUM_BARREN)
+	{
 		createBarren();
-	else
+
+		int numLevelEnemiesToSpawn =
+		    gameState.currentLevel * LEVELENEMY_SPAWN_NUM_MULTIPLIER_BARREN;
+		for (int i = 0; i < numLevelEnemiesToSpawn; i++)
+		{
+			LevelEnemy* newLevelEnemy = new LevelEnemy();
+			placeEntityRandomSensibly(newLevelEnemy);
+			gameState.npcs.push_back(newLevelEnemy);
+		}
+
+		LOGD << "Spawned " << numLevelEnemiesToSpawn << " level enemies";
+	}
+	else if (gameState.currentLevel <= LEVEL_NUM_HELLSCAPE)
+	{
 		createHellscape();
+
+		int numLevelEnemiesToSpawn =
+		    gameState.currentLevel * LEVELENEMY_SPAWN_NUM_MULTIPLIER_HELLSCAPE;
+		for (int i = 0; i < numLevelEnemiesToSpawn; i++)
+		{
+			LevelEnemy* newLevelEnemy = new LevelEnemy();
+			placeEntityRandomSensibly(newLevelEnemy);
+			gameState.npcs.push_back(newLevelEnemy);
+		}
+
+		LOGD << "Spawned " << numLevelEnemiesToSpawn << " level enemies";
+	}
 
 	Summoner* newSummoner = new Summoner();
 	placeEntityRandomSensibly(newSummoner);
