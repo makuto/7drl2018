@@ -60,3 +60,18 @@ struct LightningAbility : public Ability
 	// Called every frame if Active
 	virtual void FxUpdate(float frameTime);
 };
+
+struct PhaseDoor : public Ability
+{
+	PhaseDoor();
+	virtual ~PhaseDoor() = default;
+	virtual bool CanActivateOnPlayer(Enemy* enemy);
+
+	virtual void EnemyActivate(Enemy* enemyActivator);
+
+	virtual void PlayerActivateWithTarget(int targetX, int targetY);
+	virtual void PlayerActivateNoTarget();
+
+	// Called every frame if Active
+	virtual void FxUpdate(float frameTime);
+};

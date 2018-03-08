@@ -12,8 +12,9 @@ void placeEntityWithinSquareRandomSensibly(RLEntity* entity, int xCenter, int yC
 {
 	for (int i = 0; i < MAX_PLACEMENT_ATTEMPTS; i++)
 	{
-		int xPos = ((rand() % (radius * 2)) - radius) + xCenter;
-		int yPos = ((rand() % (radius * 2)) - radius) + yCenter;
+		int randomRange = (radius * 2) + 1;
+		int xPos = ((rand() % randomRange) - radius) + xCenter;
+		int yPos = ((rand() % randomRange) - radius) + yCenter;
 
 		RLTile* tileAt = gameState.currentMap.At(xPos, yPos);
 		// TODO: Add check to see if player could get to them

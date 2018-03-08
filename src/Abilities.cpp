@@ -2,9 +2,11 @@
 
 #include "math/math.hpp"
 
+#include "Globals.hpp"
+
 #include "Entity.hpp"
 #include "Game.hpp"
-#include "Globals.hpp"
+#include "Levels.hpp"
 
 Ability::Ability()
 {
@@ -73,7 +75,17 @@ void Ability::FxUpdate(float frameTime)
 
 Ability* getNewRandomAbility()
 {
-	return new LightningAbility();
+	int numOptions = 2;
+	switch (rand() % numOptions)
+	{
+		case 0:
+			return new LightningAbility();
+		case 1:
+			return new PhaseDoor();
+		default:
+			return new PhaseDoor();
+	}
+	return new PhaseDoor();
 }
 
 //
@@ -155,4 +167,94 @@ void LightningAbility::FxUpdate(float frameTime)
 {
 	if (TotalFrameTimeAlive > 1.f)
 		return;
+}
+
+PhaseDoor::PhaseDoor()
+{
+	RequiresTarget = false;
+	CooldownTime = 1;
+
+	Name = "Phase Door";
+	Description = "Teleport to a random location";
+	Damage = 0;
+}
+
+bool PhaseDoor::CanActivateOnPlayer(Enemy* enemy)
+{
+	return false;
+}
+
+void PhaseDoor::EnemyActivate(Enemy* enemyActivator)
+{
+	AbilityActivate();
+
+	RLTile* tileAt = gameState.vfx.At(enemyActivator->X, enemyActivator->Y);
+	if (tileAt)
+	{
+		// tileAt->Type = '!';
+		tileAt->Color = {FX_PHASE_DOOR};
+
+		// gameState.abilitiesUpdatingFx.push_back(this);
+	}
+
+	placeEntityWithinSquareRandomSensibly(enemyActivator, enemyActivator->X, enemyActivator->Y,
+	                                      PHASE_DOOR_SQUARE_RADIUS);
+}
+
+void PhaseDoor::PlayerActivateWithTarget(int targetX, int targetY)
+{
+	LOGE << "Player somehow activated PhaseDoor despite !RequiresTarget";
+
+	AbilityActivate();
+
+	std::vector<RLEntity*> damageEntities = getEntitiesAtPosition(targetX, targetY);
+	for (RLEntity* entity : damageEntities)
+	{
+		if (!entity->IsTraversable)
+			playerAbilityDamageEntity(this, entity);
+	}
+
+	RLTile* tileAt = gameState.vfx.At(targetX, targetY);
+	if (tileAt)
+	{
+		// tileAt->Type = '!';
+		tileAt->Color = {FX_PHASE_DOOR};
+
+		// gameState.abilitiesUpdatingFx.push_back(this);
+	}
+
+	placeEntityWithinSquareRandomSensibly(&gameState.player, gameState.player.X, gameState.player.Y,
+	                                      PHASE_DOOR_SQUARE_RADIUS);
+
+	LOGI << "You teleport to another place";
+}
+
+void PhaseDoor::PlayerActivateNoTarget()
+{
+	AbilityActivate();
+
+	RLTile* tileAt = gameState.vfx.At(gameState.player.X, gameState.player.Y);
+	if (tileAt)
+	{
+		// tileAt->Type = '!';
+		tileAt->Color = {FX_PHASE_DOOR};
+
+		// gameState.abilitiesUpdatingFx.push_back(this);
+	}
+
+	LOGD << "Phase door player " << gameState.player.X << ", " << gameState.player.Y << " radius "
+	     << PHASE_DOOR_SQUARE_RADIUS;
+	placeEntityWithinSquareRandomSensibly(&gameState.player, gameState.player.X, gameState.player.Y,
+	                                      PHASE_DOOR_SQUARE_RADIUS);
+
+	LOGD << "\tresult Phase door player " << gameState.player.X << ", " << gameState.player.Y;
+
+	LOGI << "You teleport to another place";
+}
+
+// Called every frame if Active
+void PhaseDoor::FxUpdate(float frameTime)
+{
+	// if (TotalFrameTimeAlive > 1.f)
+	//	return;
 }

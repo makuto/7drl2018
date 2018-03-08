@@ -43,6 +43,7 @@
 
 // FX
 #define FX_LIGHTNING 0, 0, 255, 155
+#define FX_PHASE_DOOR 0, 255, 0, 155
 
 //
 // Tile/Entity Types
@@ -103,7 +104,12 @@
 #define LEVELENEMY_PLAYER_DETECT_MANHATTAN_RADIUS 20
 
 // Each death, chance of ability dropping = this * level
-#define DEATH_ABILITY_DROP_LEVEL_MULTIPLIER 5.f;
+#define DEATH_ABILITY_DROP_LEVEL_MULTIPLIER 5.f
+
+//
+// Abilities
+//
+#define PHASE_DOOR_SQUARE_RADIUS 20
 
 //
 // Levels

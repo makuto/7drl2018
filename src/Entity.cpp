@@ -59,7 +59,10 @@ void Player::Initialize()
 	Abilities.resize(PLAYER_NUM_ABILITY_SLOTS);
 	for (Ability* ability : Abilities)
 		ability = nullptr;
+
+	// Testing only TODO: Remove!! ez pz
 	Abilities[0] = new LightningAbility();
+	Abilities[0] = new PhaseDoor();
 }
 
 Player::Player()
@@ -234,12 +237,14 @@ void Enemy::CheckDoDeath()
 				{
 					LOGD << "Spawned ability at chance " << deathAbilityChance;
 					LOGI << "An ability scroll was dropped!";
-					Description = "new ability";
 					Type = ABILITY_TYPE;
 					Color = {ABILITY_TILE_COLOR_NORMAL};
 					gameState.abilitySpawnedThisLevel = true;
 
 					DroppedAbility = getNewRandomAbility();
+
+					Description = "scroll of ";
+					Description += DroppedAbility->Name;
 				}
 			}
 		}
