@@ -175,11 +175,21 @@ void LightningAbility::FxUpdate(float frameTime)
 PhaseDoor::PhaseDoor()
 {
 	RequiresTarget = false;
-	CooldownTime = 1;
-
-	Name = "Phase Door";
-	Description = "Teleport to a random location";
+	CooldownTime = 10;
 	Damage = 0;
+
+	if (gameState.currentLevel < 5)
+	{
+		Name = "Phase Door";
+		Description = "Phase to a random location";
+		Radius = PHASE_DOOR_SQUARE_RADIUS;
+	}
+	else
+	{
+		Name = "Teleport";
+		Description = "Teleport to a random location";
+		Radius = 0;
+	}
 }
 
 bool PhaseDoor::CanActivateOnPlayer(Enemy* enemy)
@@ -200,8 +210,11 @@ void PhaseDoor::EnemyActivate(Enemy* enemyActivator)
 		// gameState.abilitiesUpdatingFx.push_back(this);
 	}
 
-	placeEntityWithinSquareRandomSensibly(enemyActivator, enemyActivator->X, enemyActivator->Y,
-	                                      PHASE_DOOR_SQUARE_RADIUS);
+	if (Radius)
+		placeEntityWithinSquareRandomSensibly(enemyActivator, enemyActivator->X, enemyActivator->Y,
+		                                      Radius);
+	else
+		placeEntityRandomSensibly(enemyActivator);
 }
 
 void PhaseDoor::PlayerActivateWithTarget(int targetX, int targetY)
@@ -226,8 +239,11 @@ void PhaseDoor::PlayerActivateWithTarget(int targetX, int targetY)
 		// gameState.abilitiesUpdatingFx.push_back(this);
 	}
 
-	placeEntityWithinSquareRandomSensibly(&gameState.player, gameState.player.X, gameState.player.Y,
-	                                      PHASE_DOOR_SQUARE_RADIUS);
+	if (Radius)
+		placeEntityWithinSquareRandomSensibly(&gameState.player, gameState.player.X,
+		                                      gameState.player.Y, Radius);
+	else
+		placeEntityRandomSensibly(&gameState.player);
 
 	LOGI << "You teleport to another place";
 }
@@ -246,9 +262,12 @@ void PhaseDoor::PlayerActivateNoTarget()
 	}
 
 	LOGD << "Phase door player " << gameState.player.X << ", " << gameState.player.Y << " radius "
-	     << PHASE_DOOR_SQUARE_RADIUS;
-	placeEntityWithinSquareRandomSensibly(&gameState.player, gameState.player.X, gameState.player.Y,
-	                                      PHASE_DOOR_SQUARE_RADIUS);
+	     << Radius;
+	if (Radius)
+		placeEntityWithinSquareRandomSensibly(&gameState.player, gameState.player.X,
+		                                      gameState.player.Y, Radius);
+	else
+		placeEntityRandomSensibly(&gameState.player);
 
 	LOGD << "\tresult Phase door player " << gameState.player.X << ", " << gameState.player.Y;
 

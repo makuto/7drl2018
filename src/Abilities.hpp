@@ -63,6 +63,8 @@ struct LightningAbility : public Ability
 
 struct PhaseDoor : public Ability
 {
+	int Radius;
+	
 	PhaseDoor();
 	virtual ~PhaseDoor() = default;
 	virtual bool CanActivateOnPlayer(Enemy* enemy);

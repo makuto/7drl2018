@@ -261,8 +261,14 @@ bool PlayGame()
 				}
 				LOGD << "Cheat: skip cooldowns";
 			}
-			// Next level
+			// Level up
 			if (gameInp.Tapped(inputCode::F3))
+			{
+				gameState.player.LevelUp();
+				LOGD << "Cheat: Level up";
+			}
+			// Next level
+			if (gameInp.Tapped(inputCode::F4))
 			{
 				LoadNextLevel();
 				TurnCounter++;
@@ -272,25 +278,27 @@ bool PlayGame()
 
 				continue;
 			}
-			// Level up
-			if (gameInp.Tapped(inputCode::F4))
-			{
-				gameState.player.LevelUp();
-				LOGD << "Cheat: Level up";
-			}
 			// Randomize abilities
-			if (gameInp.Tapped(inputCode::F5))
+			if (gameInp.Tapped(inputCode::F6))
 			{
 				int counter = 0;
 				for (Ability* ability : gameState.player.Abilities)
 				{
 					if (ability)
 						delete ability;
-					
+
 					gameState.player.Abilities[counter] = getNewRandomAbility();
 					counter++;
 				}
-				LOGD << "Cheat: skip cooldowns";
+				LOGD << "Cheat: Randomize abilities";
+			}
+			if (gameInp.Tapped(inputCode::F7))
+			{
+				RLCombatStat& health = gameState.player.Stats["HP"];
+				health.Value = 0;
+				playerDead = true;
+				playerTurnPerformed = true;
+				LOGD << "Cheat: suicide";
 			}
 		}
 
@@ -412,6 +420,13 @@ bool PlayGame()
 									enemy->Type = CORPSE_TYPE;
 									enemy->Color = {ENEMY_COLOR_NORMAL};
 									enemy->Description = "ash";
+								}
+								else
+								{
+									// This isn't the only place where they're called scroll of, fyi
+									// if you want to change it
+									enemy->Description = "scroll of ";
+									enemy->Description += enemy->DroppedAbility->Name;
 								}
 							}
 						}
