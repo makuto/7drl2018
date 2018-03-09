@@ -2,6 +2,9 @@
 
 #include "Globals.hpp"
 
+// std::count
+#include <algorithm>
+
 #include "Art.hpp"
 #include "Game.hpp"
 #include "Utilities.hpp"
@@ -56,6 +59,7 @@ bool PlayerDeadScreen()
 			centerTextY += TileTextHeight;
 			centerTextX += 48;
 			int numLogEntriesDisplayed = 0;
+			unsigned long numLinesLastEntry = 1;
 			for (std::vector<std::string>::reverse_iterator i = GameLog.rbegin();
 			     i != GameLog.rend(); ++i)
 			{
@@ -69,8 +73,10 @@ bool PlayerDeadScreen()
 				else
 					displayText.setColor(LOG_COLOR_NORMAL);
 				displayText.setPosition(centerTextX, centerTextY);
-				centerTextY += TileTextHeight;
 				win.draw(&displayText);
+
+				numLinesLastEntry = std::count(logEntry.begin(), logEntry.end(), '\n') + 1;
+				centerTextY += TileTextHeight * numLinesLastEntry;
 
 				if (++numLogEntriesDisplayed > 10)
 					break;

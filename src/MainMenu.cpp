@@ -12,6 +12,47 @@ std::string story =
     "level to get an Ability (up to one per level).";
 
 // Doesn't take control of window / input
+void DrawGameCompletedScreen()
+{
+	int centerTextX = 15;
+	int centerTextY = ViewTileHeight;
+
+	std::string completedText = VICTORY;
+	displayText.setText(completedText);
+	displayText.setColor(LOG_COLOR_IMPORTANT);
+	displayText.setPosition(centerTextX, centerTextY);
+	win.draw(&displayText);
+
+	centerTextY += TileTextHeight * 11;
+	std::string storyText = "You have destroyed the Callers and vanquished the horrors!";
+	displayText.setText(storyText);
+	displayText.setColor(LOG_COLOR_NORMAL);
+	displayText.setPosition(centerTextX, centerTextY);
+	win.draw(&displayText);
+
+	centerTextY += TileTextHeight * 2;
+	std::string turnsText = "You took ";
+	turnsText += std::to_string(TurnCounter);
+	turnsText += " turns to slay all ";
+	turnsText += std::to_string(NUM_LEVELS_TO_WIN);
+	turnsText += " callers";
+	displayText.setText(turnsText);
+	displayText.setColor(LOG_COLOR_NORMAL);
+	displayText.setPosition(centerTextX, centerTextY);
+	win.draw(&displayText);
+
+	centerTextY += TileTextHeight * 2;
+	std::string detailsText =
+	    "Great job! Thank you for playing Deathcall\n\nPress [Space] to continue in Infinite "
+	    "Mode\nPress [Enter] to quit game";
+
+	displayText.setText(detailsText);
+	displayText.setColor(LOG_COLOR_NORMAL);
+	displayText.setPosition(centerTextX, centerTextY);
+	win.draw(&displayText);
+}
+
+// Doesn't take control of window / input
 void DrawHelpScreen()
 {
 	int centerTextX = 15;

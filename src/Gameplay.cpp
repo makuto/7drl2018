@@ -230,12 +230,37 @@ bool PlayGame()
 	frameTimer.start();
 	float lastFrameTime = 0.032f;
 
+	bool hasAcceptedVictory = false;
+
 	while (!win.shouldClose())
 	{
 		bool playerTurnPerformed = false;
 		bool playerTargetAcquired = false;
 		std::string playerSwappedForAbility;
 		std::string standingOnDisplay;
+
+		//
+		// Victory
+		//
+		if (!hasAcceptedVictory && gameState.currentLevel > NUM_LEVELS_TO_WIN)
+		{
+			DrawGameCompletedScreen();
+
+			if (gameInp.Tapped(inputCode::Space))
+			{
+				hasAcceptedVictory = true;
+				LOGI << "You are victorious but death still calls. Infinite mode!";
+			}
+			else if (gameInp.Tapped(inputCode::Return))
+			{
+				// Quit
+				break;
+			}
+
+			// Special case: wait for accept instead of playing the game
+			win.update();
+			continue;
+		}
 
 		//
 		// Input
