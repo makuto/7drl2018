@@ -18,6 +18,7 @@
 #include "GameInput.hpp"
 #include "Gameplay.hpp"
 #include "Levels.hpp"
+#include "MainMenu.hpp"
 #include "RLMap.hpp"
 #include "Utilities.hpp"
 
@@ -239,6 +240,14 @@ bool PlayGame()
 		// Input
 		//
 
+		// Help screen
+		if (inp.isPressed(inputCode::H))
+		{
+			DrawHelpScreen();
+			win.update();
+			continue;
+		}
+
 		// TODO: Reset before ship!
 		if (gameState.enableCheats)
 		{
@@ -302,7 +311,7 @@ bool PlayGame()
 			}
 		}
 
-		// Return / Enter accepts target or closes the game
+		// Return / Enter accepts target // (no longer) or closes the game
 		if (gameInp.Tapped(inputCode::Return))
 		{
 			// Confirm target
@@ -322,9 +331,9 @@ bool PlayGame()
 				cameraTrackingEntity = &gameState.player;
 				UpdateCameraOffset(cameraTrackingEntity, camXOffset, camYOffset);
 			}
-			else
-				// Close the game
-				break;
+			// else
+			// 	// Close the game
+			// 	break;
 		}
 
 		// Escape exits modes or closes the game

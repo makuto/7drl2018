@@ -119,6 +119,8 @@
 // lol have fun
 #define LEVEL_NUM_HELLSCAPE 10000
 
+#define NUM_LEVELS_TO_WIN 10
+
 // Number of level enemies spawned = this * level
 #define LEVELENEMY_SPAWN_NUM_MULTIPLIER_FOREST 5.f;
 #define LEVELENEMY_SPAWN_NUM_MULTIPLIER_BARREN 6.f;

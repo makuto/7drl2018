@@ -15,6 +15,7 @@
 #include "Globals.hpp"
 
 #include "PlayerDeadScreen.hpp"
+#include "MainMenu.hpp"
 
 int TurnCounter = 0;
 
@@ -25,8 +26,10 @@ GameState gameState;
 //
 // Dimensions (-1 = RecalculateDimensions() figures it out)
 //
-int WindowWidth = 2500;
-int WindowHeight = 1600;
+// int WindowWidth = 2500;
+// int WindowHeight = 1600;
+int WindowWidth = 1200;
+int WindowHeight = 700;
 
 int TileTextHeight = 32;
 int TileTextWidth = -1;
@@ -89,6 +92,11 @@ int main(int argc, char const* argv[])
 	initializeDisplayText(displayText);
 	displayText.setSize(TileTextHeight);
 	displayText.setColor(WALL_TILE_COLOR_NORMAL);
+
+	bool shouldPlay = MainMenu();
+
+	if (!shouldPlay)
+		return 0;
 
 	bool shouldRestart = true;
 	while (shouldRestart)
