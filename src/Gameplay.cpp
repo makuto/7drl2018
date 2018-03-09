@@ -248,8 +248,12 @@ bool PlayGame()
 			continue;
 		}
 
+		// Player dead continue
+		if (playerDead && gameInp.Tapped(inputCode::Space))
+			break;
+
 		// TODO: Reset before ship!
-		if (gameState.enableCheats)
+		if (!playerDead && gameState.enableCheats)
 		{
 			// Set health to high number
 			if (gameInp.Tapped(inputCode::F1))
@@ -312,7 +316,7 @@ bool PlayGame()
 		}
 
 		// Return / Enter accepts target // (no longer) or closes the game
-		if (gameInp.Tapped(inputCode::Return))
+		if (!playerDead && gameInp.Tapped(inputCode::Return))
 		{
 			// Confirm target
 			if (waitForTargetMode)
@@ -393,7 +397,7 @@ bool PlayGame()
 
 			cameraTrackingEntity = &lookModeCursor;
 		}
-		else
+		else if (!playerDead)
 		{
 			// Player training and abilities via number keys
 			std::vector<int> numberKeysPressed = gameInp.GetInpNumbersTapped();
@@ -611,12 +615,12 @@ bool PlayGame()
 		//
 		// If we activated an ability and we're done waiting for target, count the turn (and process
 		// the ability)
-		if (playerAbilityActivatedIndex != -1 && !waitForTargetMode)
+		if (playerAbilityActivatedIndex != -1 && !waitForTargetMode && !playerDead)
 		{
 			playerTurnPerformed = true;
 		}
 
-		if (playerTurnPerformed)
+		if (!playerDead && playerTurnPerformed)
 		{
 			TurnCounter++;
 
@@ -733,9 +737,9 @@ bool PlayGame()
 
 			if (!gameState.player.Stats["HP"].Value)
 			{
+				gameState.player.Type = CORPSE_TYPE;
 				LOGI << "You died!";
 				playerDead = true;
-				break;
 			}
 		}
 
@@ -760,7 +764,7 @@ bool PlayGame()
 			displayText.setText(lookModeCursorText);
 			displayText.setColor(LOOK_CURSOR_COLOR);
 			displayText.setPosition(TileTextWidth * (lookModeCursor.X - camXOffset),
-			                        TileTextHeight * (lookModeCursor.Y - camYOffset));
+			                        TileTextHeight * ((lookModeCursor.Y - camYOffset) + ViewTileTopMargin));
 			win.draw(&displayText);
 		}
 
@@ -797,9 +801,17 @@ bool PlayGame()
 		else if (GameLog.size() && LastTurnLog == TurnCounter)
 		{
 			std::string wrappedLogText = GameLog.back();
+
+			if (playerDead)
+			{
+				displayText.setColor(LOG_COLOR_DEAD);
+				wrappedLogText += " Press [space] to continue...";
+			}
+			else
+				displayText.setColor(LOG_COLOR_NORMAL);
+
 			WrapText(wrappedLogText, true);
 			displayText.setText(wrappedLogText);
-			displayText.setColor(LOG_COLOR_NORMAL);
 			displayText.setPosition(LogX, LogY);
 			win.draw(&displayText);
 		}

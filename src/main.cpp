@@ -32,7 +32,9 @@ GameState gameState;
 int WindowWidth = 1200;
 int WindowHeight = 700;
 
+// Don't be too narrow so as to cut off unwrapped text
 int MinNumTextColumns = 100;
+// Don't be so wide as to end up with tiny TileTextHeight on high DPI screens
 int MaxNumTextColumns = 200;
 
 // This will shrink if we don't have enough for MinNumTextColumns or more than MaxNumTextColumns

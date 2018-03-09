@@ -13,7 +13,7 @@ bool PlayerDeadScreen()
 	       !inp.isPressed(inputCode::Escape))
 	{
 		// Quick restart
-		if (inp.isPressed(inputCode::Space))
+		if (gameInp.Tapped(inputCode::Space))
 			return true;
 
 		// int centerOffset = 10;
@@ -28,7 +28,7 @@ bool PlayerDeadScreen()
 		displayText.setPosition(centerTextX, centerTextY);
 		win.draw(&displayText);
 
-		centerTextY += TileTextHeight * 13;
+		centerTextY += TileTextHeight * 10;
 		std::string progressReport = "You lasted ";
 		progressReport += std::to_string(TurnCounter);
 		progressReport += " turns and reached level ";
@@ -48,7 +48,7 @@ bool PlayerDeadScreen()
 
 		if (GameLog.size())
 		{
-			centerTextY += TileTextHeight * 4;
+			centerTextY += TileTextHeight * 2;
 			displayText.setText("Log (last ten entries):");
 			displayText.setColor(LOG_COLOR_NORMAL);
 			displayText.setPosition(centerTextX, centerTextY);
