@@ -28,19 +28,20 @@ GameState gameState;
 //
 // int WindowWidth = 2500;
 // int WindowHeight = 1600;
+// Hopefully they'll resize the window if it's too small for them...
 int WindowWidth = 1200;
 int WindowHeight = 700;
 
 int MinNumTextColumns = 100;
 int MaxNumTextColumns = 200;
 
-// This will shrink if we don't have enough for MinNumTextColumns
+// This will shrink if we don't have enough for MinNumTextColumns or more than MaxNumTextColumns
 int TileTextHeight = 32;
 int TileTextWidth = -1;
 
 int SidebarTileWidth = 21;
 int ViewTileRightMargin = -1;
-int ViewTileBottomMargin = 2;
+int ViewTileTopMargin = 2;
 int ViewTileWidth = -1;
 int ViewTileHeight = -1;
 

@@ -796,7 +796,9 @@ bool PlayGame()
 		// Show the last turn's log
 		else if (GameLog.size() && LastTurnLog == TurnCounter)
 		{
-			displayText.setText(GameLog.back());
+			std::string wrappedLogText = GameLog.back();
+			WrapText(wrappedLogText, true);
+			displayText.setText(wrappedLogText);
 			displayText.setColor(LOG_COLOR_NORMAL);
 			displayText.setPosition(LogX, LogY);
 			win.draw(&displayText);

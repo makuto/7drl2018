@@ -93,7 +93,7 @@ void RecalculateDimensions()
 
 	ViewTileRightMargin = SidebarTileWidth + 1;
 	ViewTileWidth = (WindowWidth / TileTextWidth) - ViewTileRightMargin;
-	ViewTileHeight = (WindowHeight / TileTextHeight) - ViewTileBottomMargin;
+	ViewTileHeight = (WindowHeight / TileTextHeight) - ViewTileTopMargin;
 
 	CamSnapLeftBounds = ViewTileWidth * .2f;
 	CamSnapTopBounds = ViewTileHeight * .2f;
@@ -103,7 +103,8 @@ void RecalculateDimensions()
 	SidebarStartX = (ViewTileWidth + 1) * TileTextWidth;
 	SidebarStartY = 0 * TileTextHeight;
 
-	LogY = ViewTileHeight * TileTextHeight;
+	// LogY = ViewTileHeight * TileTextHeight;
+	LogY = 5;
 
 	// Ensure we have a reasonable text size
 	int approxNumColumns = ViewTileWidth + SidebarTileWidth + 1;
@@ -126,4 +127,29 @@ void RecalculateDimensions()
 void SetTextColor(text& text, RLColor& color)
 {
 	text.setColor(color.r, color.g, color.b, color.a);
+}
+
+void WrapText(std::string& textToWrap, bool careAboutSidebar)
+{
+	unsigned long maxNumColumns = careAboutSidebar ? ViewTileWidth : (ViewTileWidth + SidebarTileWidth);
+	maxNumColumns -= 10;
+
+	// no need to wrap
+	if (textToWrap.size() + 1 < maxNumColumns)
+		return; 
+
+	unsigned long lastSpaceIndex = 0;
+	unsigned long numCharsInCurrentRow = 0;
+	for (unsigned long i = 0; i < textToWrap.size(); ++i)
+	{
+		numCharsInCurrentRow++;
+		if (textToWrap[i] == ' ')
+			lastSpaceIndex = i;
+
+		if (numCharsInCurrentRow > maxNumColumns && lastSpaceIndex)
+		{
+			textToWrap[lastSpaceIndex] = '\n';
+			numCharsInCurrentRow = i - lastSpaceIndex;
+		}
+	}
 }

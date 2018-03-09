@@ -26,7 +26,7 @@ extern int TileTextWidth;
 extern int SidebarTileWidth;
 
 extern int ViewTileRightMargin;
-extern int ViewTileBottomMargin;
+extern int ViewTileTopMargin;
 extern int ViewTileWidth;
 extern int ViewTileHeight;
 

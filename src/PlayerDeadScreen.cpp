@@ -4,6 +4,7 @@
 
 #include "Art.hpp"
 #include "Game.hpp"
+#include "Utilities.hpp"
 
 // returns whether or not to restart the game
 bool PlayerDeadScreen()
@@ -18,9 +19,8 @@ bool PlayerDeadScreen()
 		// int centerOffset = 10;
 		// int centerTextX = ((ViewTileWidth / 2) - centerOffset) * TileTextWidth;
 		// int centerTextY = ((ViewTileHeight / 2) - centerOffset) * TileTextHeight;
-		int centerOffsetPixels = 100;
-		int centerTextX = centerOffsetPixels;
-		int centerTextY = centerOffsetPixels;
+		int centerTextX = 15;
+		int centerTextY = ViewTileHeight;
 
 		// displayText.setText("You have died!");
 		displayText.setText(YOU_DIED);
@@ -59,7 +59,9 @@ bool PlayerDeadScreen()
 			for (std::vector<std::string>::reverse_iterator i = GameLog.rbegin();
 			     i != GameLog.rend(); ++i)
 			{
-				displayText.setText((*i));
+				std::string logEntry = (*i);
+				WrapText(logEntry, false);
+				displayText.setText(logEntry);
 
 				// The last entry was the thing which killed us
 				if (!numLogEntriesDisplayed)

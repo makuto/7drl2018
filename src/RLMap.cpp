@@ -171,7 +171,8 @@ void DrawWorld(RLMap& map, int camXOffset, int camYOffset)
 				}
 
 				displayText.setText(buffer);
-				displayText.setPosition(TileTextWidth * viewX, TileTextHeight * viewY);
+				displayText.setPosition(TileTextWidth * viewX,
+				                        TileTextHeight * (viewY + ViewTileTopMargin));
 				win.draw(&displayText);
 			}
 
