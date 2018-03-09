@@ -104,6 +104,23 @@ void RecalculateDimensions()
 	SidebarStartY = 0 * TileTextHeight;
 
 	LogY = ViewTileHeight * TileTextHeight;
+
+	// Ensure we have a reasonable text size
+	int approxNumColumns = ViewTileWidth + SidebarTileWidth + 1;
+	if (approxNumColumns < MinNumTextColumns)
+	{
+		LOGD << "Shrinking text height to " << TileTextHeight - 1;
+		TileTextHeight--;
+		RecalculateDimensions();
+	}
+	if (approxNumColumns > MaxNumTextColumns)
+	{
+		LOGD << "Growing text height to " << TileTextHeight + 1;
+		TileTextHeight++;
+		RecalculateDimensions();
+	}
+
+	displayText.setSize(TileTextHeight);
 }
 
 void SetTextColor(text& text, RLColor& color)

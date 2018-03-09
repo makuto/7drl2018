@@ -17,6 +17,9 @@
 extern int WindowWidth;
 extern int WindowHeight;
 
+extern int MinNumTextColumns;
+extern int MaxNumTextColumns;
+
 extern int TileTextHeight;
 extern int TileTextWidth;
 

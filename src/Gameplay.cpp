@@ -53,7 +53,7 @@ void DrawSidebar()
 		std::string statValue(std::to_string(stat.second.Value));
 		std::string statText(statName);
 		// Add justify spaces
-		for (unsigned int i = 0; i < SidebarTileWidth - (statName.size() + statValue.size()) - 1;
+		for (unsigned int i = 0; i < SidebarTileWidth - (statName.size() + statValue.size()) - 2;
 		     i++)
 			statText += ' ';
 		statText += statValue;

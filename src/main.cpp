@@ -31,10 +31,14 @@ GameState gameState;
 int WindowWidth = 1200;
 int WindowHeight = 700;
 
+int MinNumTextColumns = 100;
+int MaxNumTextColumns = 200;
+
+// This will shrink if we don't have enough for MinNumTextColumns
 int TileTextHeight = 32;
 int TileTextWidth = -1;
 
-int SidebarTileWidth = 20;
+int SidebarTileWidth = 21;
 int ViewTileRightMargin = -1;
 int ViewTileBottomMargin = 2;
 int ViewTileWidth = -1;
