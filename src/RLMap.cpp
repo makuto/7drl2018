@@ -185,7 +185,8 @@ void DrawWorld(RLMap& map, int camXOffset, int camYOffset)
 
 				std::wstring blockStr = L"█";
 				displayText.setText(blockStr);
-				displayText.setPosition(TileTextWidth * viewX, TileTextHeight * viewY);
+				displayText.setPosition(TileTextWidth * viewX,
+				                        TileTextHeight * (viewY + ViewTileTopMargin));
 				win.draw(&displayText);
 			}
 		}

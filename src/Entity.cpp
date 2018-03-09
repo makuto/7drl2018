@@ -433,10 +433,24 @@ void playerMeleeAttackEnemy(RLEntity* entity)
 
 	// Pay for it
 	int staminaCost = 10;
-	// If out of stamina, take it out of health
-	int healthCost = gameState.player.Stats["SP"].Value < staminaCost ?
-	                     gameState.player.Stats["SP"].Value - staminaCost :
-	                     0;
+	int healthCost = 0;
+
+	if (ENABLE_OVEREXERTION)
+	{
+		// If out of stamina, take it out of health
+		healthCost = gameState.player.Stats["SP"].Value < staminaCost ?
+		                 gameState.player.Stats["SP"].Value - staminaCost :
+		                 0;
+	}
+	else
+	{
+		if (staminaCost > gameState.player.Stats["SP"].Value)
+		{
+			LOGI << "You miss! You do not have enough stamina!";
+			return;
+		}
+	}
+
 	gameState.player.Stats["SP"].Add(-staminaCost);
 	gameState.player.Stats["HP"].Add(healthCost);
 

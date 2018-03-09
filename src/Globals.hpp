@@ -82,6 +82,8 @@
 
 #define PLAYER_STARTING_MAX_STRENGTH 10
 
+#define ENABLE_OVEREXERTION false
+
 // If the player rests, the number of turns to restore goes down by this number
 #define PLAYER_RESTING_BONUS 1
 #define PLAYER_MELEE_ATTACKING_BONUS -1
@@ -122,9 +124,14 @@
 #define NUM_LEVELS_TO_WIN 10
 
 // Number of level enemies spawned = this * level
-#define LEVELENEMY_SPAWN_NUM_MULTIPLIER_FOREST 5.f;
-#define LEVELENEMY_SPAWN_NUM_MULTIPLIER_BARREN 6.f;
-#define LEVELENEMY_SPAWN_NUM_MULTIPLIER_HELLSCAPE 6.f;
+#define LEVELENEMY_SPAWN_NUM_MULTIPLIER_FOREST 7.f
+#define LEVELENEMY_SPAWN_NUM_MULTIPLIER_BARREN 10.f
+#define LEVELENEMY_SPAWN_NUM_MULTIPLIER_HELLSCAPE 11.f
+
+// Size of one axis e.g. total tiles = FOREST_SIZE * FOREST_SIZE
+#define FOREST_SIZE 80
+#define BARREN_SIZE 120
+#define HELLSCAPE_SIZE 100
 
 //
 // Only display once in log strings

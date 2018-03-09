@@ -111,7 +111,7 @@ void createTestMapNoise(RLMap& map)
 void createHellscape()
 {
 	gameState.levelName = "Hellscape";
-	gameState.currentMap.SetSize(500, 500);
+	gameState.currentMap.SetSize(HELLSCAPE_SIZE, HELLSCAPE_SIZE);
 	Noise2d noise(gameState.seed * gameState.currentLevel);
 	const float scale = 0.1;
 	for (int tileY = 0; tileY < gameState.currentMap.Height; ++tileY)
@@ -150,7 +150,7 @@ void createHellscape()
 void createBarren()
 {
 	gameState.levelName = "Barren";
-	gameState.currentMap.SetSize(300, 300);
+	gameState.currentMap.SetSize(BARREN_SIZE, BARREN_SIZE);
 	Noise2d noise(gameState.seed * gameState.currentLevel);
 	const float scale = 0.1;
 	for (int tileY = 0; tileY < gameState.currentMap.Height; ++tileY)
@@ -178,7 +178,7 @@ void createBarren()
 void createForest()
 {
 	gameState.levelName = "Forest";
-	gameState.currentMap.SetSize(100, 100);
+	gameState.currentMap.SetSize(FOREST_SIZE, FOREST_SIZE);
 	Noise2d noise(gameState.seed * gameState.currentLevel);
 	const float scale = 0.1;
 	for (int tileY = 0; tileY < gameState.currentMap.Height; ++tileY)
