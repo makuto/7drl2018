@@ -9,13 +9,13 @@
 #include "Game.hpp"
 #include "GameInput.hpp"
 #include "Gameplay.hpp"
+#include "Globals.hpp"
 #include "Levels.hpp"
 #include "RLMap.hpp"
 #include "Utilities.hpp"
-#include "Globals.hpp"
 
-#include "PlayerDeadScreen.hpp"
 #include "MainMenu.hpp"
+#include "PlayerDeadScreen.hpp"
 
 int TurnCounter = 0;
 
@@ -72,6 +72,38 @@ GameInput gameInp(inp);
 
 static gv::Logging::Logger s_GameLogger(gv::Logging::Severity::debug, &ConsoleAndGameLogOutput);
 
+sound sfxPlayerDead;
+sound sfxPlayerVictory;
+sound sfxPlayerMeleeAttack;
+sound sfxPlayerMeleeMiss;
+sound sfxLightning;
+sound sfxPhaseDoor;
+sound sfxEnemyMeleeAttack;
+sound sfxNextLevel;
+
+void loadAudio()
+{
+	if (!sfxPlayerDead.load("data/audio/death.ogg"))
+		LOGE << "Failed to load sfxPlayerDead";
+	if (!sfxPlayerVictory.load("data/audio/victory.ogg"))
+		LOGE << "Failed to load sfxPlayerVictory";
+	if (!sfxPlayerMeleeAttack.load("data/audio/quietShaker.ogg"))
+		LOGE << "Failed to load sfxPlayerMeleeAttack";
+	if (!sfxPlayerMeleeMiss.load("data/audio/quietShaker.ogg"))
+		LOGE << "Failed to load sfxPlayerMeleeMiss";
+
+	if (!sfxLightning.load("data/audio/quietShaker.ogg"))
+		LOGE << "Failed to load sfxLightning";
+	if (!sfxPhaseDoor.load("data/audio/quietShaker.ogg"))
+		LOGE << "Failed to load sfxPhaseDoor";
+
+	if (!sfxEnemyMeleeAttack.load("data/audio/hit2.ogg"))
+		LOGE << "Failed to load sfxEnemyMeleeAttack";
+
+	if (!sfxNextLevel.load("data/audio/level.ogg"))
+		LOGE << "Failed to load sfxNextLevel";
+}
+
 void initializeWindow(window& win)
 {
 	win.setBackgroundColor(WIN_BACKGROUND_COLOR);
@@ -99,6 +131,8 @@ int main(int argc, char const* argv[])
 	initializeDisplayText(displayText);
 	displayText.setSize(TileTextHeight);
 	displayText.setColor(WALL_TILE_COLOR_NORMAL);
+
+	loadAudio();
 
 	bool shouldPlay = MainMenu();
 

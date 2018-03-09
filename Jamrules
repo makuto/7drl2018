@@ -43,7 +43,7 @@ OPTIM = -O0 ;
 
 HDRS = libs/base2.0 ;
 
-LINKLIBS = -lsfml-graphics -lsfml-window -lsfml-system ;
+LINKLIBS = -lsfml-audio -lsfml-graphics -lsfml-window -lsfml-system ;
 
 KEEPOBJS = true ; # This doesn't actually fix anything, though it seems like it should
 NOARSCAN = true ; # This actually fixes the problem

@@ -313,6 +313,11 @@ bool PlayGame()
 				TurnCounter++;
 				LOGI << "You step through to the next level";
 
+				if (gameState.currentLevel > NUM_LEVELS_TO_WIN)
+					sfxPlayerVictory.play();
+				else
+					sfxNextLevel.play();
+
 				LOGD << "Cheat: Next Level";
 
 				continue;
@@ -457,7 +462,8 @@ bool PlayGame()
 								playerSwappedForAbility = "Swapped ";
 								playerSwappedForAbility += lastAbilityName;
 								playerSwappedForAbility += " for ";
-								playerSwappedForAbility += gameState.player.Abilities[abilityIndex]->Name.c_str();
+								playerSwappedForAbility +=
+								    gameState.player.Abilities[abilityIndex]->Name.c_str();
 								playerTurnPerformed = true;
 
 								if (!enemy->DroppedAbility)
@@ -584,7 +590,8 @@ bool PlayGame()
 					if (!entitiesAtPosition.empty())
 					{
 						standingOnDisplay += "You stomp on ";
-						standingOnDisplay += describePosition(gameState.player.X, gameState.player.Y);
+						standingOnDisplay +=
+						    describePosition(gameState.player.X, gameState.player.Y);
 
 						std::string abilityDescription;
 						if (playerCanSwapAbilityNow(&abilityDescription))
@@ -616,6 +623,9 @@ bool PlayGame()
 					LoadNextLevel();
 					TurnCounter++;
 					LOGI << "You step through to the next level";
+
+					if (gameState.currentLevel > NUM_LEVELS_TO_WIN)
+						sfxPlayerVictory.play();
 
 					gameState.player.LevelUp();
 
@@ -794,8 +804,9 @@ bool PlayGame()
 			static std::string lookModeCursorText(LOOK_MODE_CURSOR);
 			displayText.setText(lookModeCursorText);
 			displayText.setColor(LOOK_CURSOR_COLOR);
-			displayText.setPosition(TileTextWidth * (lookModeCursor.X - camXOffset),
-			                        TileTextHeight * ((lookModeCursor.Y - camYOffset) + ViewTileTopMargin));
+			displayText.setPosition(
+			    TileTextWidth * (lookModeCursor.X - camXOffset),
+			    TileTextHeight * ((lookModeCursor.Y - camYOffset) + ViewTileTopMargin));
 			win.draw(&displayText);
 		}
 

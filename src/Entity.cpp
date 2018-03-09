@@ -463,6 +463,8 @@ void playerMeleeAttackEnemy(RLEntity* entity)
 
 			LOGI << "You hit the " << entity->Description.c_str() << " for " << abs(damage)
 			     << " damage";
+
+			sfxPlayerMeleeAttack.play();
 		}
 	}
 

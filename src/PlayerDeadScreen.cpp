@@ -9,9 +9,13 @@
 #include "Game.hpp"
 #include "Utilities.hpp"
 
+#include "sound/sound.hpp"
+
 // returns whether or not to restart the game
 bool PlayerDeadScreen()
 {
+	sfxPlayerDead.play();
+
 	while (!win.shouldClose() && !inp.isPressed(inputCode::Return) &&
 	       !inp.isPressed(inputCode::Escape))
 	{

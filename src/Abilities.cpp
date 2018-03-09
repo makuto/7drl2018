@@ -147,6 +147,8 @@ void LightningAbility::PlayerActivateWithTarget(int targetX, int targetY)
 
 		gameState.abilitiesUpdatingFx.push_back(this);
 	}
+
+	sfxLightning.play();
 }
 
 void LightningAbility::PlayerActivateNoTarget()
@@ -272,6 +274,8 @@ void PhaseDoor::PlayerActivateNoTarget()
 	LOGD << "\tresult Phase door player " << gameState.player.X << ", " << gameState.player.Y;
 
 	LOGI << "You teleport to another place";
+
+	sfxPhaseDoor.play();
 }
 
 // Called every frame if Active

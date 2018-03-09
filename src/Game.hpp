@@ -2,6 +2,7 @@
 
 #include "graphics/graphics.hpp"
 #include "input/input.hpp"
+#include "sound/sound.hpp"
 
 
 #include <string>
@@ -82,3 +83,18 @@ extern window win;
 extern inputManager inp;
 extern text displayText;
 extern GameInput gameInp;
+
+//
+// Audio
+//
+extern sound sfxPlayerDead;
+extern sound sfxPlayerVictory;
+extern sound sfxPlayerMeleeAttack;
+extern sound sfxPlayerMeleeMiss;
+
+extern sound sfxLightning;
+extern sound sfxPhaseDoor;
+
+extern sound sfxEnemyMeleeAttack;
+
+extern sound sfxNextLevel;
