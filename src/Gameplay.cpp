@@ -234,6 +234,7 @@ bool PlayGame()
 	{
 		bool playerTurnPerformed = false;
 		bool playerTargetAcquired = false;
+		std::string playerSwappedForAbility;
 		std::string standingOnDisplay;
 
 		//
@@ -425,14 +426,20 @@ bool PlayGame()
 								    slottedAbility ? slottedAbility->Name : "empty slot";
 								gameState.player.Abilities[abilityIndex] = enemy->DroppedAbility;
 								enemy->DroppedAbility = slottedAbility;
-								LOGI << "Swapped " << lastAbilityName.c_str() << " for "
-								     << gameState.player.Abilities[abilityIndex]->Name.c_str();
+								/*LOGI << "Swapped " << lastAbilityName.c_str() << " for "
+								     << gameState.player.Abilities[abilityIndex]->Name.c_str();*/
+
+								playerSwappedForAbility = "Swapped ";
+								playerSwappedForAbility += lastAbilityName;
+								playerSwappedForAbility += " for ";
+								playerSwappedForAbility += gameState.player.Abilities[abilityIndex]->Name.c_str();
+								playerTurnPerformed = true;
 
 								if (!enemy->DroppedAbility)
 								{
 									enemy->Type = CORPSE_TYPE;
 									enemy->Color = {ENEMY_COLOR_NORMAL};
-									enemy->Description = "ash";
+									enemy->Description = "pile of ash";
 								}
 								else
 								{
@@ -552,7 +559,7 @@ bool PlayGame()
 					if (!entitiesAtPosition.empty())
 					{
 						standingOnDisplay += "You stomp on ";
-						standingOnDisplay += describePosition(lookModeCursor.X, lookModeCursor.Y);
+						standingOnDisplay += describePosition(gameState.player.X, gameState.player.Y);
 
 						std::string abilityDescription;
 						if (playerCanSwapAbilityNow(&abilityDescription))
@@ -567,10 +574,6 @@ bool PlayGame()
 							standingOnDisplay += " (Press > to use ";
 							standingOnDisplay += stairsDescription;
 							standingOnDisplay += ")";
-						}
-						else
-						{
-							standingOnDisplay += npcOut->Description;
 						}
 					}
 				}
@@ -623,6 +626,9 @@ bool PlayGame()
 		if (!playerDead && playerTurnPerformed)
 		{
 			TurnCounter++;
+
+			if (!playerSwappedForAbility.empty())
+				LOGI << playerSwappedForAbility.c_str();
 
 			if (!standingOnDisplay.empty())
 			{
