@@ -62,9 +62,8 @@ void Player::Initialize()
 	for (Ability* ability : Abilities)
 		ability = nullptr;
 
-	// Testing only TODO: Remove!! ez pz
-	Abilities[0] = new LightningAbility();
-	Abilities[0] = new PhaseDoor();
+	// Abilities[0] = new LightningAbility();
+	// Abilities[0] = new PhaseDoor();
 }
 
 Player::Player()
@@ -181,13 +180,12 @@ void Player::DoTurn()
 	ForStatName(stat, statName, this)
 	{
 		// Special case: HP doesn't restore if stamina isn't full
-		if (statName == "HP" && Stats["SP"].Value != Stats["SP"].Max)
+		if (statName == "HP" &&
+		    (ENABLE_ONLY_HEAL_FULL_STAMINA && Stats["SP"].Value != Stats["SP"].Max))
 			stat.RestoreOnTurn++;
 		else
 			stat.RestoreOnTurn -= restoreTurnBonus;
 
-		// LOGD << "Stat " << statName.c_str() << " Value " << stat.Value << " Restore on turn "
-		//     << stat.RestoreOnTurn;
 		if (TurnCounter >= stat.RestoreOnTurn)
 		{
 			stat.Add(stat.RestoreAmount);
@@ -414,6 +412,18 @@ void enemyAbilityDamagePlayer(RLEntity* entity, Ability* ability)
 		if (damage > 0)
 			LOGI << "A " << entity->Description.c_str() << " healed you with "
 			     << ability->Name.c_str() << " for " << abs(damage) << " health!";
+	}
+}
+
+void enemyAbilityDamageEntity(Ability* ability, RLEntity* entity)
+{
+	int damage = -ability->Damage;
+
+	if (damage)
+	{
+		entity->Stats["HP"].Add(damage);
+		LOGI << "A " << entity->Description.c_str() << " takes " << abs(damage) << " damage "
+		     << " from " << ability->Name.c_str();
 	}
 }
 

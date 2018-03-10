@@ -43,3 +43,23 @@ public:
 
 	virtual void DoTurn() override;
 };
+
+class ControlWizard : public Enemy
+{
+	PhaseTarget phaseTarget;
+public:
+	ControlWizard();
+	virtual ~ControlWizard() = default;
+
+	virtual void DoTurn() override;
+};
+
+class FireDragon : public Enemy
+{
+	FireBomb fireBomb;
+public:
+	FireDragon();
+	virtual ~FireDragon() = default;
+
+	virtual void DoTurn() override;
+};

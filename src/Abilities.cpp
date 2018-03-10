@@ -79,16 +79,39 @@ void Ability::FxUpdate(float frameTime)
 
 Ability* getNewRandomAbility()
 {
-	int numOptions = 2;
-	switch (rand() % numOptions)
+	if (gameState.currentLevel <= LEVEL_NUM_FOREST)
+		return new PhaseDoor();
+	else if (gameState.currentLevel <= LEVEL_NUM_BARREN)
 	{
-		case 0:
-			return new LightningAbility();
-		case 1:
-			return new PhaseDoor();
-		default:
-			return new PhaseDoor();
+		int numOptions = 3;
+		switch (rand() % numOptions)
+		{
+			case 0:
+				return new LightningAbility();
+			case 1:
+				return new PhaseDoor();
+			case 2:
+				return new PhaseTarget();
+			default:
+				return new PhaseDoor();
+		}
 	}
+	else if (gameState.currentLevel <= LEVEL_NUM_HELLSCAPE)
+	{
+		int numOptions = 3;
+		switch (rand() % numOptions)
+		{
+			case 0:
+				return new LightningAbility();
+			case 1:
+				return new FireBomb();
+			case 2:
+				return new PhaseTarget();
+			default:
+				return new PhaseDoor();
+		}
+	}
+
 	return new PhaseDoor();
 }
 
@@ -127,6 +150,8 @@ void LightningAbility::EnemyActivate(Enemy* enemyActivator)
 
 		gameState.abilitiesUpdatingFx.push_back(this);
 	}
+
+	sfxLightning.play();
 }
 
 void LightningAbility::PlayerActivateWithTarget(int targetX, int targetY)
@@ -281,6 +306,187 @@ void PhaseDoor::PlayerActivateNoTarget()
 
 // Called every frame if Active
 void PhaseDoor::FxUpdate(float frameTime)
+{
+	// if (TotalFrameTimeAlive > 1.f)
+	//	return;
+}
+
+PhaseTarget::PhaseTarget()
+{
+	RequiresTarget = true;
+	CooldownTime = 14;
+
+	Name = "Phase Target";
+	Description = "Phase an enemy to a random location";
+	Damage = 10;
+}
+
+bool PhaseTarget::CanActivateOnPlayer(Enemy* enemy)
+{
+	return IsCooldownDone() &&
+	       manhattanTo(enemy->X, enemy->Y, gameState.player.X, gameState.player.Y) <
+	           RANGED_ENEMY_MAX_DIST_MANHATTAN;
+}
+
+void PhaseTarget::EnemyActivate(Enemy* enemyActivator)
+{
+	AbilityActivate();
+
+	enemyAbilityDamagePlayer(enemyActivator, this);
+
+	RLTile* tileAt = gameState.vfx.At(gameState.player.X, gameState.player.Y);
+	if (tileAt)
+	{
+		// tileAt->Type = '!';
+		tileAt->Color = {FX_PHASE_DOOR};
+
+		gameState.abilitiesUpdatingFx.push_back(this);
+	}
+
+	placeEntityWithinSquareRandomSensibly(&gameState.player, enemyActivator->X, enemyActivator->Y,
+	                                      PHASE_TARGET_ON_PLAYER_RADIUS);
+
+	LOGI << "A " << enemyActivator->Description.c_str() << " force teleported you!";
+}
+
+void PhaseTarget::PlayerActivateWithTarget(int targetX, int targetY)
+{
+	AbilityActivate();
+
+	std::vector<RLEntity*> damageEntities = getEntitiesAtPosition(targetX, targetY);
+	for (RLEntity* entity : damageEntities)
+	{
+		if (!entity->IsTraversable)
+		{
+			playerAbilityDamageEntity(this, entity);
+			placeEntityWithinSquareRandomSensibly(entity, entity->X, entity->Y,
+			                                      PHASE_TARGET_ON_ENEMY_RADIUS);
+		}
+	}
+
+	RLTile* tileAt = gameState.vfx.At(targetX, targetY);
+	if (tileAt)
+	{
+		// tileAt->Type = '!';
+		tileAt->Color = {FX_PHASE_DOOR};
+
+		gameState.abilitiesUpdatingFx.push_back(this);
+	}
+}
+
+void PhaseTarget::PlayerActivateNoTarget()
+{
+	LOGE << "Player somehow activated PhaseTarget despite RequiresTarget";
+
+	AbilityActivate();
+
+	RLTile* tileAt = gameState.vfx.At(gameState.player.X, gameState.player.Y);
+	if (tileAt)
+	{
+		// tileAt->Type = '!';
+		tileAt->Color = {FX_PHASE_DOOR};
+
+		gameState.abilitiesUpdatingFx.push_back(this);
+	}
+}
+
+// Called every frame if Active
+void PhaseTarget::FxUpdate(float frameTime)
+{
+	// if (TotalFrameTimeAlive > 1.f)
+	//	return;
+}
+
+FireBomb::FireBomb()
+{
+	RequiresTarget = true;
+	CooldownTime = 20;
+
+	Name = "Fire Bomb";
+	Description = "Engulf a target in a ball of fire";
+	Damage = 50;
+}
+
+bool FireBomb::CanActivateOnPlayer(Enemy* enemy)
+{
+	return IsCooldownDone() &&
+	       manhattanTo(enemy->X, enemy->Y, gameState.player.X, gameState.player.Y) <
+	           RANGED_ENEMY_MAX_DIST_MANHATTAN;
+}
+
+void fireBombActivate(int X, int Y, FireBomb* bomb, bool isActivatorPlayer)
+{
+	for (int fireY = Y - FIREBOMB_RADIUS; fireY < Y + FIREBOMB_RADIUS; ++fireY)
+	{
+		for (int fireX = X - FIREBOMB_RADIUS; fireX < X + FIREBOMB_RADIUS; ++fireX)
+		{
+			std::vector<RLEntity*> damageEntities = getEntitiesAtPosition(fireX, fireY);
+			for (RLEntity* entity : damageEntities)
+			{
+				if (!entity->IsTraversable)
+				{
+					if (isActivatorPlayer)
+						enemyAbilityDamageEntity(bomb, entity);
+					else
+						playerAbilityDamageEntity(bomb, entity);
+				}
+			}
+
+			RLTile* tileAt = gameState.vfx.At(fireX, fireY);
+			if (tileAt)
+			{
+				// tileAt->Type = '!';
+				tileAt->Color = {FX_FIREBOMB};
+			}
+		}
+	}
+}
+
+void FireBomb::EnemyActivate(Enemy* enemyActivator)
+{
+	AbilityActivate();
+
+	enemyAbilityDamagePlayer(enemyActivator, this);
+
+	fireBombActivate(enemyActivator->X, enemyActivator->Y, this, false);
+
+	gameState.abilitiesUpdatingFx.push_back(this);
+}
+
+void FireBomb::PlayerActivateWithTarget(int targetX, int targetY)
+{
+	AbilityActivate();
+
+	std::vector<RLEntity*> damageEntities = getEntitiesAtPosition(targetX, targetY);
+	for (RLEntity* entity : damageEntities)
+	{
+		if (!entity->IsTraversable)
+			playerAbilityDamageEntity(this, entity);
+	}
+
+	fireBombActivate(targetX, targetY, this, true);
+
+	gameState.abilitiesUpdatingFx.push_back(this);
+}
+
+void FireBomb::PlayerActivateNoTarget()
+{
+	LOGE << "Player somehow activated FireBomb despite RequiresTarget";
+
+	AbilityActivate();
+
+	RLTile* tileAt = gameState.vfx.At(gameState.player.X, gameState.player.Y);
+	if (tileAt)
+	{
+		// tileAt->Type = '!';
+		tileAt->Color = {FX_FIREBOMB};
+
+		gameState.abilitiesUpdatingFx.push_back(this);
+	}
+}
+
+// Called every frame if Active
+void FireBomb::FxUpdate(float frameTime)
 {
 	// if (TotalFrameTimeAlive > 1.f)
 	//	return;

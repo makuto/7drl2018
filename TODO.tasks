@@ -6,36 +6,19 @@ enemyImpl
 
 Potential Features
 -------
-Nice fog effect by having radius around the player plus some noise, changing transparency of every char
-
-Ignore input when not focused
-
-Speed doesn't actually work
-
-Text wrap on small windows
 
 Enemies pathfind to player (actually, just randomly go in a dir sometimes to not get stuck)
 
 Make color scheme consistent!!!
 
 Sound FX!
+Random spawn in cube doesn't work as expected
 
 
 Todo
 -------
-Figure out why it seems to crash (is it a sublime problem?)
-
-Improve position description
-
-Random spawn in cube doesn't work as expected
-
-
-
-REMOVE ENTER CLOSES GAME!
-
 Second restart lighting hitting caller no stairs appeared
 
-Show last screen on death 
 
 
 
@@ -50,6 +33,20 @@ NEXT: Add abilities!
 
 Done
 -------
+Show last screen on death 
+
+REMOVE ENTER CLOSES GAME!
+
+Improve position description
+
+Figure out why it seems to crash (is it a sublime problem?)
+
+Nice fog effect by having radius around the player plus some noise, changing transparency of every char
+
+Ignore input when not focused
+
+Text wrap on small windows
+
 Window resize
 
 Fix melee combat moving into enemy on death

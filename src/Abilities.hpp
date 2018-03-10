@@ -79,3 +79,33 @@ struct PhaseDoor : public Ability
 	// Called every frame if Active
 	virtual void FxUpdate(float frameTime);
 };
+
+struct PhaseTarget : public Ability
+{
+	PhaseTarget();
+	virtual ~PhaseTarget() = default;
+	virtual bool CanActivateOnPlayer(Enemy* enemy);
+
+	virtual void EnemyActivate(Enemy* enemyActivator);
+
+	virtual void PlayerActivateWithTarget(int targetX, int targetY);
+	virtual void PlayerActivateNoTarget();
+
+	// Called every frame if Active
+	virtual void FxUpdate(float frameTime);
+};
+
+struct FireBomb : public Ability
+{
+	FireBomb();
+	virtual ~FireBomb() = default;
+	virtual bool CanActivateOnPlayer(Enemy* enemy);
+
+	virtual void EnemyActivate(Enemy* enemyActivator);
+
+	virtual void PlayerActivateWithTarget(int targetX, int targetY);
+	virtual void PlayerActivateNoTarget();
+
+	// Called every frame if Active
+	virtual void FxUpdate(float frameTime);
+};

@@ -626,6 +626,8 @@ bool PlayGame()
 
 					if (gameState.currentLevel > NUM_LEVELS_TO_WIN)
 						sfxPlayerVictory.play();
+					else
+						sfxNextLevel.play();
 
 					gameState.player.LevelUp();
 
