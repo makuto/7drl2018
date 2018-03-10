@@ -9,7 +9,7 @@ std::string story =
     "You are Deathcaller, a warrior tasked with destroying the Callers in the "
     "world.\nCallers summon unnatural horrors which must be eradicated!\n\n1) Killing "
     "[c]allers will create a portal [>] to the next caller.\n\n2) Kill enough enemies in a "
-    "level to get an Ability (up to one per level).";
+    "level to get an Ability (up to one per level).\n\n3) Try to kill Callers quickly so they cannot spawn more enemies";
 
 // Doesn't take control of window / input
 void DrawGameCompletedScreen()
@@ -59,16 +59,17 @@ void DrawHelpScreen()
 	int centerTextY = ViewTileHeight;
 
 	std::string helpText = story;
-	helpText += "\n\n3) Kill all ";
+	helpText += "\n\n4) Kill all ";
 	helpText += std::to_string(NUM_LEVELS_TO_WIN);
 	helpText +=
 	    " to complete your task!\n\nControls\nNumpad5 or . : Pass turn (stats regenerate faster "
 	    "when waiting)\nArrow keys or Numpad keys: Move up, down, left, right, or diagonally "
 	    "(numpad only)\nL: Toggle look mode. Move to inspect positions\n1 through 3: Activate "
-	    "respective ability\n\t(trained stat will "
-	    "level after stepping through portal; change at any time)\nShift + 1 through 3: Swap "
+	    "respective ability\nShift + 1 through 3: Swap "
 	    "abilities for one on ground \n\t(use when standing on ability scroll [!])\nCtrl + 1 "
-	    "through 3: Train respective stat\nEnter/Return: Confirm target (if in target "
+	    "through 3: Train respective stat\n\t(trained stat will "
+	    "level after stepping through portal; change at any time)\nEnter/Return: Confirm target "
+	    "(if in target "
 	    "mode)\nEscape: Close look/target mode (if applicable) or close the game";
 
 	displayText.setText(helpText);
@@ -92,7 +93,7 @@ void IntroScreen()
 		int centerTextY = ViewTileHeight;
 
 		std::string introStory = story;
-		introStory += "\n\n3) Kill all ";
+		introStory += "\n\n4) Kill all ";
 		introStory += std::to_string(NUM_LEVELS_TO_WIN);
 		introStory += " to complete your task!\n\n(Hold [h] in game to display help/controls)";
 
@@ -101,7 +102,7 @@ void IntroScreen()
 		displayText.setPosition(centerTextX, centerTextY);
 		win.draw(&displayText);
 
-		centerTextY += TileTextHeight * 11;
+		centerTextY += TileTextHeight * 13;
 		std::string exitGame = "[Space] Enter the first portal...";
 		displayText.setText(exitGame);
 		displayText.setColor(LOG_COLOR_IMPORTANT);
@@ -135,14 +136,14 @@ bool MainMenu()
 		displayText.setPosition(centerTextX, centerTextY);
 		win.draw(&displayText);
 
-		centerTextY += TileTextHeight * 13;
-		std::string startGame = "[Space] Start Game";
+		centerTextY += TileTextHeight * 10;
+		std::string startGame = "A 7 Day Roguelike by Macoy Madson.\n\n[Space] Start Game";
 		displayText.setText(startGame);
 		displayText.setColor(LOG_COLOR_NORMAL);
 		displayText.setPosition(centerTextX, centerTextY);
 		win.draw(&displayText);
 
-		centerTextY += TileTextHeight + 3;
+		centerTextY += TileTextHeight *3;
 		std::string exitGame = "[Escape] Close Game";
 		displayText.setText(exitGame);
 		displayText.setColor(LOG_COLOR_NORMAL);

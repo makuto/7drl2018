@@ -279,7 +279,8 @@ bool PlayGame()
 			break;
 
 		// TODO: Reset before ship!
-		if (!playerDead && gameState.enableCheats)
+		if (!playerDead && gameState.enableCheats &&
+		    (inp.isPressed(inputCode::LShift) || inp.isPressed(inputCode::RShift)))
 		{
 			// Set health to high number
 			if (gameInp.Tapped(inputCode::F1))
@@ -626,6 +627,8 @@ bool PlayGame()
 
 					if (gameState.currentLevel > NUM_LEVELS_TO_WIN)
 						sfxPlayerVictory.play();
+					else
+						sfxNextLevel.play();
 
 					gameState.player.LevelUp();
 
@@ -824,7 +827,7 @@ bool PlayGame()
 			std::string description;
 
 			if (waitForTargetMode)
-				description += "[TARGET MODE] ";
+				description += "[TARGET MODE:Enter to Confirm] ";
 
 			if (gameState.player.SamePos(lookModeCursor))
 				description += "You are standing on ";

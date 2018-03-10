@@ -132,6 +132,7 @@ bool playerCanUseStairsNow(std::string* stairsDescriptionOut);
 
 void enemyAbilityDamagePlayer(RLEntity* entity, Ability* ability);
 void enemyMeleeAttackPlayer(RLEntity* entity);
+void enemyAbilityDamageEntity(Ability* ability, RLEntity* entity);
 void playerAbilityDamageEntity(Ability* ability, RLEntity* entity);
 void playerMeleeAttackEnemy(RLEntity* entity);
 

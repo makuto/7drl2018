@@ -26,19 +26,19 @@ LevelEnemy::LevelEnemy()
 	{
 		Type = BANDIT_TYPE;
 		Color = {ENEMY_COLOR_NORMAL};
-		Description = "bandit";
+		Description = "madman";
 
-		Stats["HP"] = {"Health", 40, 40, 0, 0, -1};
-		Stats["STR"] = {"Strength", 10, 10, 0, 0, -1};
+		Stats["HP"] = {"Health", 20, 20, 0, 0, -1};
+		Stats["STR"] = {"Strength", 12, 12, 0, 0, -1};
 	}
 	else if (gameState.currentLevel <= LEVEL_NUM_HELLSCAPE)
 	{
 		Type = DRAGON_TYPE;
 		Color = {ENEMY_COLOR_NORMAL};
-		Description = "drake";
+		Description = "baby drake";
 
-		Stats["HP"] = {"Health", 60, 60, 0, 0, -1};
-		Stats["STR"] = {"Strength", 30, 30, 0, 0, -1};
+		Stats["HP"] = {"Health", 40, 40, 0, 0, -1};
+		Stats["STR"] = {"Strength", 15, 15, 0, 0, -1};
 	}
 }
 
@@ -49,7 +49,8 @@ void LevelEnemy::DoTurn()
 		return;
 
 	if (manhattanTo(X, Y, gameState.player.X, gameState.player.Y) >
-	    LEVELENEMY_PLAYER_DETECT_MANHATTAN_RADIUS)
+	        LEVELENEMY_PLAYER_DETECT_MANHATTAN_RADIUS ||
+	    (Type == BANDIT_TYPE && TurnCounter % BANDIT_CONFUSION_CHANCE < BANDIT_CONFUSION_RATE))
 		RandomWalk();
 	else
 		MoveTowardsPlayer();
@@ -63,7 +64,7 @@ Skeleton::Skeleton()
 	Color = {ENEMY_COLOR_NORMAL};
 	Description = "skeleton";
 
-	Stats["HP"] = {"Health", 30, 30, 0, 0, -1};
+	Stats["HP"] = {"Health", 25, 25, 0, 0, -1};
 	Stats["STR"] = {"Strength", 10, 10, 0, 0, -1};
 }
 
@@ -112,7 +113,7 @@ void Summoner::DoTurn()
 	if (gameState.currentLevel > LEVEL_NUM_FOREST)
 	{
 		// Add offset so they aren't spawned on same turn
-		if ((TurnCounter + (rand() % 5)) % spawnRate == 0 && NumSpawns < MAX_SINGLE_SUMMONS)
+		if ((TurnCounter + (rand() % 5)) % (spawnRate + LIGHTNINGWIZARD_SPAWN_RATE_MODIFIER) == 0 && NumSpawns < MAX_SINGLE_SUMMONS)
 		{
 			NumSpawns++;
 			LightningWizard* newLightningWizard = new LightningWizard();
@@ -120,6 +121,30 @@ void Summoner::DoTurn()
 			gameState.npcsToCreate.push_back(newLightningWizard);
 			LOGD << "Spawn LightningWizard at " << newLightningWizard->X << ", "
 			     << newLightningWizard->Y << " spawn rate " << spawnRate;
+		}
+
+		// Add offset so they aren't spawned on same turn
+		if ((TurnCounter + (rand() % 8)) % (spawnRate + CONTROLWIZARD_SPAWN_RATE_MODIFIER) == 0 && NumSpawns < MAX_SINGLE_SUMMONS)
+		{
+			NumSpawns++;
+			ControlWizard* newControlWizard = new ControlWizard();
+			placeEntityWithinSquareRandomSensibly(newControlWizard, X, Y, SUMMONING_RADIUS);
+			gameState.npcsToCreate.push_back(newControlWizard);
+			LOGD << "Spawn ControlWizard at " << newControlWizard->X << ", " << newControlWizard->Y
+			     << " spawn rate " << spawnRate;
+		}
+	}
+
+	if (gameState.currentLevel > LEVEL_NUM_BARREN)
+	{
+		if ((TurnCounter + (rand() % 8)) % (spawnRate + FIREDRAGON_SPAWN_RATE_MODIFIER) == 0 && NumSpawns < MAX_SINGLE_SUMMONS)
+		{
+			NumSpawns++;
+			FireDragon* newFireDragon = new FireDragon();
+			placeEntityWithinSquareRandomSensibly(newFireDragon, X, Y, SUMMONING_RADIUS);
+			gameState.npcsToCreate.push_back(newFireDragon);
+			LOGD << "Spawn FireDragon at " << newFireDragon->X << ", " << newFireDragon->Y
+			     << " spawn rate " << spawnRate;
 		}
 	}
 }
@@ -146,4 +171,56 @@ void LightningWizard::DoTurn()
 
 	if (lightning.CanActivateOnPlayer(this))
 		lightning.EnemyActivate(this);
+}
+
+ControlWizard::ControlWizard()
+{
+	SpawnStairsDown = false;
+	Speed = 1;
+	Type = CONTROL_WIZARD_TYPE;  // TODO: Replace with define?
+	Color = {ENEMY_COLOR_NORMAL};
+	Description = "control mage";
+
+	Stats["HP"] = {"Health", 10, 10, 0, 0, -1};
+	Stats["STR"] = {"Strength", 10, 10, 0, 0, -1};
+}
+
+void ControlWizard::DoTurn()
+{
+	CheckDoDeath();
+	if (!Stats["HP"].Value)
+		return;
+
+	if (manhattanTo(X, Y, gameState.player.X, gameState.player.Y) >
+	    LEVELENEMY_PLAYER_DETECT_MANHATTAN_RADIUS)
+		RandomWalk();
+	else
+		MoveTowardsPlayer();
+
+	if (phaseTarget.CanActivateOnPlayer(this))
+		phaseTarget.EnemyActivate(this);
+}
+
+FireDragon::FireDragon()
+{
+	SpawnStairsDown = false;
+	Speed = 1;
+	Type = FIRE_DRAGON_TYPE;  // TODO: Replace with define?
+	Color = {ENEMY_COLOR_NORMAL};
+	Description = "dragon";
+
+	Stats["HP"] = {"Health", 80, 80, 0, 0, -1};
+	Stats["STR"] = {"Strength", 20, 20, 0, 0, -1};
+}
+
+void FireDragon::DoTurn()
+{
+	CheckDoDeath();
+	if (!Stats["HP"].Value)
+		return;
+
+	MoveTowardsPlayer();
+
+	if (fireBomb.CanActivateOnPlayer(this) && rand() % DRAGON_FIRE_RATE == 0)
+		fireBomb.EnemyActivate(this);
 }
