@@ -34,11 +34,13 @@ Record& Record::operator<<(const int data)
 	return *this;
 }
 
+#if 0
 Record& Record::operator<<(const unsigned int data)
 {
 	Offset += snprintf(OutBuffer + Offset, sizeof(OutBuffer) - Offset, "%u", data);
 	return *this;
 }
+#endif
 
 Record& Record::operator<<(const float data)
 {
@@ -80,7 +82,7 @@ void FormatFuncName(char* buffer, const char* func, size_t bufferSize)
 		}
 	}
 
-	unsigned long numCharsToCopy = std::min((funcEnd - funcBegin), (long)bufferSize - 1);
+	unsigned long numCharsToCopy = std::min((long)(funcEnd - funcBegin), (long)bufferSize - 1);
 	strncpy(buffer, funcBegin, numCharsToCopy);
 	buffer[numCharsToCopy] = '\0';
 }

@@ -6,6 +6,7 @@
 
 #include "Game.hpp"
 #include "Levels.hpp"
+#include "Logging.hpp"
 
 LevelEnemy::LevelEnemy()
 {

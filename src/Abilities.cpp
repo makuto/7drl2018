@@ -7,6 +7,7 @@
 #include "Entity.hpp"
 #include "Game.hpp"
 #include "Levels.hpp"
+#include "Logging.hpp"
 
 Ability::Ability()
 {

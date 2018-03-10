@@ -183,7 +183,9 @@ void DrawWorld(RLMap& map, int camXOffset, int camYOffset)
 				// buffer += "/";
 				SetTextColor(displayText, fxTile->Color);
 
-				std::wstring blockStr = L"█";
+				/*std::wstring blockStr = L"█";
+				displayText.setText(blockStr);*/
+				std::string blockStr = "/";
 				displayText.setText(blockStr);
 				displayText.setPosition(TileTextWidth * viewX,
 				                        TileTextHeight * (viewY + ViewTileTopMargin));

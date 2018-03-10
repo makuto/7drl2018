@@ -8,6 +8,8 @@
 #include "Game.hpp"
 #include "RLMap.hpp"
 
+#include "Logging.hpp"
+
 void placeEntityWithinSquareRandomSensibly(RLEntity* entity, int xCenter, int yCenter, int radius)
 {
 	for (int i = 0; i < MAX_PLACEMENT_ATTEMPTS; i++)

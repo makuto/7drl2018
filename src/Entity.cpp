@@ -5,6 +5,8 @@
 
 #include "Game.hpp"
 
+#include "Logging.hpp"
+
 int RLCombatStat::Add(int delta)
 {
 	Value += delta;

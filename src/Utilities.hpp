@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Logging.hpp"
+
 void ConsoleAndGameLogOutput(const gv::Logging::Record& record);
 
 void RecalculateDimensions();

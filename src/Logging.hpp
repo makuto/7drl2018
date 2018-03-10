@@ -144,7 +144,9 @@ struct Record
 	Record& operator<<(char data);
 	Record& operator<<(const char* data);
 	Record& operator<<(const int data);
+	#if 0
 	Record& operator<<(const unsigned int data);
+	#endif
 	Record& operator<<(const float data);
 	Record& operator<<(const bool data);
 	Record& operator<<(const size_t data);
