@@ -79,20 +79,24 @@ void Ability::FxUpdate(float frameTime)
 
 Ability* getNewRandomAbility()
 {
-	if (gameState.currentLevel <= LEVEL_NUM_FOREST)
+	// Don't miss the best power
+	if (gameState.currentLevel == 9)
+		return new FireBomb();
+	// They need lightning for stage 4+
+	else if (gameState.currentLevel == LEVEL_NUM_FOREST)
+		return new LightningAbility();
+	else if (gameState.currentLevel <= LEVEL_NUM_FOREST)
 		return new PhaseDoor();
 	else if (gameState.currentLevel <= LEVEL_NUM_BARREN)
 	{
-		int numOptions = 4;
+		int numOptions = 3;
 		switch (rand() % numOptions)
 		{
 			case 0:
 				return new LightningAbility();
 			case 1:
-				return new PhaseDoor();
-			case 2:
 				return new PhaseTarget();
-			case 3:
+			case 2:
 				return new Restoration();
 			default:
 				return new PhaseDoor();
@@ -135,6 +139,9 @@ LightningAbility::LightningAbility()
 
 bool LightningAbility::CanActivateOnPlayer(Enemy* enemy)
 {
+	// Enemies have higher cooldown, lower damange
+	CooldownTime = 20;
+	Damage = 15;
 	return IsCooldownDone() &&
 	       manhattanTo(enemy->X, enemy->Y, gameState.player.X, gameState.player.Y) <
 	           RANGED_ENEMY_MAX_DIST_MANHATTAN;
@@ -327,6 +334,8 @@ PhaseTarget::PhaseTarget()
 
 bool PhaseTarget::CanActivateOnPlayer(Enemy* enemy)
 {
+	// Enemies have higher cooldown
+	CooldownTime = 30;
 	return IsCooldownDone() &&
 	       manhattanTo(enemy->X, enemy->Y, gameState.player.X, gameState.player.Y) <
 	           RANGED_ENEMY_MAX_DIST_MANHATTAN;
@@ -336,7 +345,8 @@ void PhaseTarget::EnemyActivate(Enemy* enemyActivator)
 {
 	AbilityActivate();
 
-	enemyAbilityDamagePlayer(enemyActivator, this);
+	// Don't damage player with phase target (it's annoying enough)
+	// enemyAbilityDamagePlayer(enemyActivator, this);
 
 	RLTile* tileAt = gameState.vfx.At(gameState.player.X, gameState.player.Y);
 	if (tileAt)
@@ -429,7 +439,7 @@ void fireBombActivate(int X, int Y, FireBomb* bomb, bool isActivatorPlayer)
 			{
 				if (!entity->IsTraversable)
 				{
-					if (isActivatorPlayer)
+					if (!isActivatorPlayer)
 						enemyAbilityDamageEntity(bomb, entity);
 					else
 						playerAbilityDamageEntity(bomb, entity);
@@ -452,7 +462,9 @@ void FireBomb::EnemyActivate(Enemy* enemyActivator)
 
 	enemyAbilityDamagePlayer(enemyActivator, this);
 
-	fireBombActivate(enemyActivator->X, enemyActivator->Y, this, false);
+	// todo: should target player, not self
+	// if (rand() % DRAGON_
+	fireBombActivate(gameState.player.X, gameState.player.Y, this, false);
 
 	gameState.abilitiesUpdatingFx.push_back(this);
 }

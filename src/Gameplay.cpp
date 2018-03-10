@@ -826,7 +826,7 @@ bool PlayGame()
 			std::string description;
 
 			if (waitForTargetMode)
-				description += "[TARGET MODE] ";
+				description += "[TARGET MODE:Enter to Confirm] ";
 
 			if (gameState.player.SamePos(lookModeCursor))
 				description += "You are standing on ";

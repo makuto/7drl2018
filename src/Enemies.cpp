@@ -28,8 +28,8 @@ LevelEnemy::LevelEnemy()
 		Color = {ENEMY_COLOR_NORMAL};
 		Description = "madman";
 
-		Stats["HP"] = {"Health", 40, 40, 0, 0, -1};
-		Stats["STR"] = {"Strength", 10, 10, 0, 0, -1};
+		Stats["HP"] = {"Health", 20, 20, 0, 0, -1};
+		Stats["STR"] = {"Strength", 12, 12, 0, 0, -1};
 	}
 	else if (gameState.currentLevel <= LEVEL_NUM_HELLSCAPE)
 	{
@@ -37,8 +37,8 @@ LevelEnemy::LevelEnemy()
 		Color = {ENEMY_COLOR_NORMAL};
 		Description = "baby drake";
 
-		Stats["HP"] = {"Health", 60, 60, 0, 0, -1};
-		Stats["STR"] = {"Strength", 30, 30, 0, 0, -1};
+		Stats["HP"] = {"Health", 40, 40, 0, 0, -1};
+		Stats["STR"] = {"Strength", 15, 15, 0, 0, -1};
 	}
 }
 
@@ -64,7 +64,7 @@ Skeleton::Skeleton()
 	Color = {ENEMY_COLOR_NORMAL};
 	Description = "skeleton";
 
-	Stats["HP"] = {"Health", 30, 30, 0, 0, -1};
+	Stats["HP"] = {"Health", 25, 25, 0, 0, -1};
 	Stats["STR"] = {"Strength", 10, 10, 0, 0, -1};
 }
 
@@ -113,7 +113,7 @@ void Summoner::DoTurn()
 	if (gameState.currentLevel > LEVEL_NUM_FOREST)
 	{
 		// Add offset so they aren't spawned on same turn
-		if ((TurnCounter + (rand() % 5)) % spawnRate == 0 && NumSpawns < MAX_SINGLE_SUMMONS)
+		if ((TurnCounter + (rand() % 5)) % (spawnRate + LIGHTNINGWIZARD_SPAWN_RATE_MODIFIER) == 0 && NumSpawns < MAX_SINGLE_SUMMONS)
 		{
 			NumSpawns++;
 			LightningWizard* newLightningWizard = new LightningWizard();
@@ -124,7 +124,7 @@ void Summoner::DoTurn()
 		}
 
 		// Add offset so they aren't spawned on same turn
-		if ((TurnCounter + (rand() % 8)) % spawnRate == 0 && NumSpawns < MAX_SINGLE_SUMMONS)
+		if ((TurnCounter + (rand() % 8)) % (spawnRate + CONTROLWIZARD_SPAWN_RATE_MODIFIER) == 0 && NumSpawns < MAX_SINGLE_SUMMONS)
 		{
 			NumSpawns++;
 			ControlWizard* newControlWizard = new ControlWizard();
@@ -137,7 +137,7 @@ void Summoner::DoTurn()
 
 	if (gameState.currentLevel > LEVEL_NUM_BARREN)
 	{
-		if ((TurnCounter + (rand() % 8)) % spawnRate == 0 && NumSpawns < MAX_SINGLE_SUMMONS)
+		if ((TurnCounter + (rand() % 8)) % (spawnRate + FIREDRAGON_SPAWN_RATE_MODIFIER) == 0 && NumSpawns < MAX_SINGLE_SUMMONS)
 		{
 			NumSpawns++;
 			FireDragon* newFireDragon = new FireDragon();
@@ -182,7 +182,7 @@ ControlWizard::ControlWizard()
 	Description = "control mage";
 
 	Stats["HP"] = {"Health", 10, 10, 0, 0, -1};
-	Stats["STR"] = {"Strength", 20, 20, 0, 0, -1};
+	Stats["STR"] = {"Strength", 10, 10, 0, 0, -1};
 }
 
 void ControlWizard::DoTurn()
