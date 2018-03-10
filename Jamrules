@@ -2,9 +2,9 @@
 # jam clean
 # jam -j4 -q
 
-# Building Unreal:
+# Building Windows:
 # jam clean
-# jam -j4 -q -sUNREAL=true GalavantPseudotarget
+# jam -j4 -q -sWINDOWS=true
 
 # (if building the same target repeatedly, don't clean, if that wasn't obvious)
 
@@ -35,13 +35,15 @@ LINK = clang++ ;
 #   -Wno-unused-parameter = I should probably get rid of this at some point
 
 # Arguments used on all projects, regardless of any variables
-C++FLAGS = -std=c++11 -Wall -Wextra -Wno-unused-parameter -include src/Logging.hpp ;
+C++FLAGS = -std=c++11 -Wall -Wextra -Wno-unused-parameter ;
 
 ALLLIBSC++FLAGS = -g ;
-
-OPTIM = -O0 ;
-
-HDRS = libs/base2.0 ;
+# Required arguments for linux
+LINUXC++FLAGS = -g ;
+# Required arguments for Windows
+#WINDOWSC++FLAGS = -g -stdlib=libc++ -fPIC ;
+#WINDOWSC++FLAGS = -g -stdlib=libc++ -target x86_64-win32 ;
+#WINDOWSC++FLAGS = -g -stdlib=libc++ -target x86_64-w64-mingw32 ;
 
 LINKLIBS = -lsfml-audio -lsfml-graphics -lsfml-window -lsfml-system ;
 
@@ -51,10 +53,34 @@ NOARSCAN = true ; # This actually fixes the problem
                # It doesn't seem like this is the problem though
 AR = ar cr ;
 
+WINDOWSC++FLAGS = -g -Iwin/SFML-2.4.0/include -lstdc++11 -std=c++11 ;
+# ALLLIBSC++FLAGS should be used for all libraries which might be used by both tests and WINDOWS
+if $(WINDOWS)
+{
+	# C++ = x86_64-w64-mingw32-g++ ;
+	C++ = i686-w64-mingw32-g++ ;
+	ALLLIBSC++FLAGS = $(WINDOWSC++FLAGS) ;
+	# LINK = x86_64-w64-mingw32-g++ ;
+	LINK = i686-w64-mingw32-g++ ;
+	LINKLIBS = -Lwin/SFML-2.4.0/lib -lsfml-audio -lsfml-graphics -lsfml-window -lsfml-system ;
+	AR = i686-w64-mingw32-ar cr ;
+}
+else
+{
+	ALLLIBSC++FLAGS = $(LINUXC++FLAGS) ;
+}
+
+
+OPTIM = -O0 ;
+
+HDRS = libs/base2.0 ;
+
+
+
 # Some helpful Jam commands
 # -q        : stop on failed target
 # -jN       : use N cores
-# -sVAR=VAL : Set VAR to VAL. Note that setting UNREAL=false is the same as setting UNREAL=true,
+# -sVAR=VAL : Set VAR to VAL. Note that setting WINDOWS=false is the same as setting UNREAL=true,
 #              frustratingly
 # -dx       : print commands being used
 # -n        : don't actually run commands
