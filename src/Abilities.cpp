@@ -462,8 +462,6 @@ void FireBomb::EnemyActivate(Enemy* enemyActivator)
 
 	enemyAbilityDamagePlayer(enemyActivator, this);
 
-	// todo: should target player, not self
-	// if (rand() % DRAGON_
 	fireBombActivate(gameState.player.X, gameState.player.Y, this, false);
 
 	gameState.abilitiesUpdatingFx.push_back(this);

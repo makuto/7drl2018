@@ -279,7 +279,8 @@ bool PlayGame()
 			break;
 
 		// TODO: Reset before ship!
-		if (!playerDead && gameState.enableCheats)
+		if (!playerDead && gameState.enableCheats &&
+		    (inp.isPressed(inputCode::LShift) || inp.isPressed(inputCode::RShift)))
 		{
 			// Set health to high number
 			if (gameInp.Tapped(inputCode::F1))
