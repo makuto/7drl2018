@@ -83,7 +83,7 @@ Ability* getNewRandomAbility()
 		return new PhaseDoor();
 	else if (gameState.currentLevel <= LEVEL_NUM_BARREN)
 	{
-		int numOptions = 3;
+		int numOptions = 4;
 		switch (rand() % numOptions)
 		{
 			case 0:
@@ -92,13 +92,15 @@ Ability* getNewRandomAbility()
 				return new PhaseDoor();
 			case 2:
 				return new PhaseTarget();
+			case 3:
+				return new Restoration();
 			default:
 				return new PhaseDoor();
 		}
 	}
 	else if (gameState.currentLevel <= LEVEL_NUM_HELLSCAPE)
 	{
-		int numOptions = 3;
+		int numOptions = 4;
 		switch (rand() % numOptions)
 		{
 			case 0:
@@ -107,6 +109,8 @@ Ability* getNewRandomAbility()
 				return new FireBomb();
 			case 2:
 				return new PhaseTarget();
+			case 3:
+				return new Restoration();
 			default:
 				return new PhaseDoor();
 		}
@@ -416,9 +420,9 @@ bool FireBomb::CanActivateOnPlayer(Enemy* enemy)
 
 void fireBombActivate(int X, int Y, FireBomb* bomb, bool isActivatorPlayer)
 {
-	for (int fireY = Y - FIREBOMB_RADIUS; fireY < Y + FIREBOMB_RADIUS; ++fireY)
+	for (int fireY = Y - FIREBOMB_RADIUS; fireY <= Y + FIREBOMB_RADIUS; ++fireY)
 	{
-		for (int fireX = X - FIREBOMB_RADIUS; fireX < X + FIREBOMB_RADIUS; ++fireX)
+		for (int fireX = X - FIREBOMB_RADIUS; fireX <= X + FIREBOMB_RADIUS; ++fireX)
 		{
 			std::vector<RLEntity*> damageEntities = getEntitiesAtPosition(fireX, fireY);
 			for (RLEntity* entity : damageEntities)
@@ -487,6 +491,87 @@ void FireBomb::PlayerActivateNoTarget()
 
 // Called every frame if Active
 void FireBomb::FxUpdate(float frameTime)
+{
+	// if (TotalFrameTimeAlive > 1.f)
+	//	return;
+}
+
+Restoration::Restoration()
+{
+	RequiresTarget = false;
+	CooldownTime = 20;
+	Damage = 0;
+
+	if (gameState.currentLevel < LEVEL_NUM_BARREN)
+	{
+		Name = "Restoration";
+		Description = "Restore percentage of stats";
+	}
+	else
+	{
+		Name = "Full Restore";
+		Description = "Restore stats";
+	}
+}
+
+bool Restoration::CanActivateOnPlayer(Enemy* enemy)
+{
+	return IsCooldownDone() && false;
+}
+
+void Restoration::EnemyActivate(Enemy* enemyActivator)
+{
+	AbilityActivate();
+
+	enemyAbilityDamagePlayer(enemyActivator, this);
+
+	RLTile* tileAt = gameState.vfx.At(gameState.player.X, gameState.player.Y);
+	if (tileAt)
+	{
+		// tileAt->Type = '!';
+		tileAt->Color = {FX_LIGHTNING};
+
+		gameState.abilitiesUpdatingFx.push_back(this);
+	}
+}
+
+void Restoration::PlayerActivateWithTarget(int targetX, int targetY)
+{
+	LOGE << "Player somehow activated Restoration despite RequiresTarget";
+	AbilityActivate();
+
+	std::vector<RLEntity*> damageEntities = getEntitiesAtPosition(targetX, targetY);
+	for (RLEntity* entity : damageEntities)
+	{
+		if (!entity->IsTraversable)
+			playerAbilityDamageEntity(this, entity);
+	}
+
+	RLTile* tileAt = gameState.vfx.At(targetX, targetY);
+	if (tileAt)
+	{
+		// tileAt->Type = '!';
+		tileAt->Color = {FX_LIGHTNING};
+
+		gameState.abilitiesUpdatingFx.push_back(this);
+	}
+}
+
+void Restoration::PlayerActivateNoTarget()
+{
+	AbilityActivate();
+
+	for (std::pair<const std::string, RLCombatStat>& stat : gameState.player.Stats)
+	{
+		int restoreToValue =
+		    stat.second.Max * (gameState.currentLevel < LEVEL_NUM_BARREN ? 0.75f : 1.f);
+		stat.second.Value = MAX(stat.second.Value, restoreToValue);
+	}
+	LOGI << "You feel restored";
+}
+
+// Called every frame if Active
+void Restoration::FxUpdate(float frameTime)
 {
 	// if (TotalFrameTimeAlive > 1.f)
 	//	return;

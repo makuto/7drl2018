@@ -109,3 +109,18 @@ struct FireBomb : public Ability
 	// Called every frame if Active
 	virtual void FxUpdate(float frameTime);
 };
+
+struct Restoration : public Ability
+{
+	Restoration();
+	virtual ~Restoration() = default;
+	virtual bool CanActivateOnPlayer(Enemy* enemy);
+
+	virtual void EnemyActivate(Enemy* enemyActivator);
+
+	virtual void PlayerActivateWithTarget(int targetX, int targetY);
+	virtual void PlayerActivateNoTarget();
+
+	// Called every frame if Active
+	virtual void FxUpdate(float frameTime);
+};

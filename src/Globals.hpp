@@ -113,7 +113,11 @@
 #define DEATH_ABILITY_DROP_LEVEL_MULTIPLIER 5.f
 
 // Dragons don't shoot fire too often
-#define DRAGON_FIRE_RATE 18
+#define DRAGON_FIRE_RATE 10
+
+// turncounter % chance < rate = random walk
+#define BANDIT_CONFUSION_CHANCE 40
+#define BANDIT_CONFUSION_RATE 20
 
 //
 // Abilities

@@ -26,7 +26,7 @@ LevelEnemy::LevelEnemy()
 	{
 		Type = BANDIT_TYPE;
 		Color = {ENEMY_COLOR_NORMAL};
-		Description = "bandit";
+		Description = "madman";
 
 		Stats["HP"] = {"Health", 40, 40, 0, 0, -1};
 		Stats["STR"] = {"Strength", 10, 10, 0, 0, -1};
@@ -49,7 +49,8 @@ void LevelEnemy::DoTurn()
 		return;
 
 	if (manhattanTo(X, Y, gameState.player.X, gameState.player.Y) >
-	    LEVELENEMY_PLAYER_DETECT_MANHATTAN_RADIUS)
+	        LEVELENEMY_PLAYER_DETECT_MANHATTAN_RADIUS ||
+	    (Type == BANDIT_TYPE && TurnCounter % BANDIT_CONFUSION_CHANCE < BANDIT_CONFUSION_RATE))
 		RandomWalk();
 	else
 		MoveTowardsPlayer();
