@@ -53,6 +53,8 @@ NOARSCAN = true ; # This actually fixes the problem
                # It doesn't seem like this is the problem though
 AR = ar cr ;
 
+LINKFLAGS = -Wl,-rpath,. ;
+
 WINDOWSC++FLAGS = -g -Iwin/SFML-2.4.0/include -lstdc++11 -std=c++11 ;
 # ALLLIBSC++FLAGS should be used for all libraries which might be used by both tests and WINDOWS
 if $(WINDOWS)
