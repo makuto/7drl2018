@@ -19,6 +19,8 @@ Main 7drl2018 : src/main.cpp
                 src/MainMenu.cpp 
                 src/Gameplay.cpp 
                 src/Art.cpp
+                # Tracy
+                tracy/TracyClient.cpp
                 ;
 
 LinkLibraries 7drl2018 : libBase20 ;

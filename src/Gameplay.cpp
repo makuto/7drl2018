@@ -22,6 +22,8 @@
 #include "RLMap.hpp"
 #include "Utilities.hpp"
 
+#include "Tracy.hpp"
+
 #include "PlayerDeadScreen.hpp"
 
 void UpdateCameraOffset(RLEntity* cameraTrackingEntity, int& camXOffset, int& camYOffset)
@@ -39,6 +41,7 @@ void UpdateCameraOffset(RLEntity* cameraTrackingEntity, int& camXOffset, int& ca
 
 void DrawSidebar()
 {
+	ZoneScoped;
 	int currentRowY = SidebarStartY;
 	displayText.setColor(STATUS_COLOR_UNIMPORTANT);
 	displayText.setText("Status");
@@ -179,6 +182,7 @@ void DrawSidebar()
 // Returns whether it should restart or not
 bool PlayGame()
 {
+	ZoneScoped;
 	RecalculateDimensions();
 
 	LOGI << "Hello 7DRL!\n";
@@ -725,9 +729,11 @@ bool PlayGame()
 			gameState.player.DoTurn();
 
 			// Update NPCs
-			for (RLEntity* npc : gameState.npcs)
 			{
-				npc->DoTurn();
+				for (RLEntity* npc : gameState.npcs)
+				{
+					npc->DoTurn();
+				}
 			}
 			gameState.npcs.insert(gameState.npcs.begin(), gameState.npcsToCreate.begin(),
 			                      gameState.npcsToCreate.end());
@@ -864,6 +870,7 @@ bool PlayGame()
 		win.update();
 		lastFrameTime = frameTimer.getTime();
 		frameTimer.start();
+		FrameMark;
 	}
 
 	if (playerDead)

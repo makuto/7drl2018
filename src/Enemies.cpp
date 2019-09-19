@@ -8,6 +8,8 @@
 #include "Levels.hpp"
 #include "Logging.hpp"
 
+#include "Tracy.hpp"
+
 LevelEnemy::LevelEnemy()
 {
 	SpawnStairsDown = false;
@@ -44,6 +46,8 @@ LevelEnemy::LevelEnemy()
 
 void LevelEnemy::DoTurn()
 {
+	ZoneScoped;
+	
 	CheckDoDeath();
 	if (!Stats["HP"].Value)
 		return;
@@ -70,6 +74,8 @@ Skeleton::Skeleton()
 
 void Skeleton::DoTurn()
 {
+	ZoneScoped;
+	
 	CheckDoDeath();
 	if (!Stats["HP"].Value)
 		return;
@@ -92,6 +98,8 @@ Summoner::Summoner()
 
 void Summoner::DoTurn()
 {
+	ZoneScoped;
+	
 	CheckDoDeath();
 	if (!Stats["HP"].Value)
 		return;
@@ -163,6 +171,8 @@ LightningWizard::LightningWizard()
 
 void LightningWizard::DoTurn()
 {
+	ZoneScoped;
+	
 	CheckDoDeath();
 	if (!Stats["HP"].Value)
 		return;
@@ -187,6 +197,8 @@ ControlWizard::ControlWizard()
 
 void ControlWizard::DoTurn()
 {
+	ZoneScoped;
+	
 	CheckDoDeath();
 	if (!Stats["HP"].Value)
 		return;
@@ -215,6 +227,8 @@ FireDragon::FireDragon()
 
 void FireDragon::DoTurn()
 {
+	ZoneScoped;
+	
 	CheckDoDeath();
 	if (!Stats["HP"].Value)
 		return;

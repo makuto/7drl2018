@@ -10,8 +10,12 @@
 
 #include "Logging.hpp"
 
+#include "Tracy.hpp"
+
 void placeEntityWithinSquareRandomSensibly(RLEntity* entity, int xCenter, int yCenter, int radius)
 {
+	ZoneScoped;
+	
 	for (int i = 0; i < MAX_PLACEMENT_ATTEMPTS; i++)
 	{
 		int randomRange = (radius * 2) + 1;
@@ -45,6 +49,8 @@ void placeEntityWithinSquareRandomSensibly(RLEntity* entity, int xCenter, int yC
 
 void placeEntityRandomSensibly(RLEntity* entity)
 {
+	ZoneScoped;
+	
 	for (int i = 0; i < MAX_PLACEMENT_ATTEMPTS; i++)
 	{
 		int xPos = rand() % gameState.currentMap.Width;
@@ -227,6 +233,8 @@ void ClearNpcs()
 
 void LoadNextLevel()
 {
+	ZoneScoped;
+	
 	ClearNpcs();
 
 	gameState.currentLevel++;

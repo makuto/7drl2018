@@ -1,5 +1,7 @@
 #include "Entity.hpp"
 
+#include "Tracy.hpp"
+
 #include "Globals.hpp"
 #include "math/math.hpp"
 
@@ -157,6 +159,7 @@ void RLEntity::DoTurn()
 
 void Player::DoTurn()
 {
+	ZoneScoped;
 	//
 	// Update stats
 	//
@@ -200,6 +203,7 @@ void Player::DoTurn()
 
 void Enemy::DoTurn()
 {
+	ZoneScoped;
 	CheckDoDeath();
 	if (!Stats["HP"].Value)
 		return;

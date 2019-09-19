@@ -6,6 +6,8 @@
 
 #include "math/math.hpp"
 
+#include "Tracy.hpp"
+
 std::string GetTileDescription(RLTile& tile)
 {
 	if (!tile.DescriptionOverride.empty())
@@ -78,6 +80,7 @@ RLTile* RLMap::At(int x, int y)
 
 void DrawWorld(RLMap& map, int camXOffset, int camYOffset)
 {
+	ZoneScoped;
 	for (int viewY = 0; viewY < ViewTileHeight; ++viewY)
 	{
 		for (int viewX = 0; viewX < ViewTileWidth; ++viewX)

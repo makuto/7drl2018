@@ -5,6 +5,8 @@
 #include "Art.hpp"
 #include "Game.hpp"
 
+#include "Tracy.hpp"
+
 std::string story =
     "You are Deathcaller, a warrior tasked with destroying the Callers in the "
     "world.\nCallers summon unnatural horrors which must be eradicated!\n\n1) Killing "
@@ -151,6 +153,8 @@ bool MainMenu()
 		win.draw(&displayText);
 
 		win.update();
+		
+		FrameMark;
 	}
 
 	return false;

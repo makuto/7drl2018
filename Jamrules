@@ -35,7 +35,7 @@ LINK = clang++ ;
 #   -Wno-unused-parameter = I should probably get rid of this at some point
 
 # Arguments used on all projects, regardless of any variables
-C++FLAGS = -std=c++11 -Wall -Wextra -Wno-unused-parameter ;
+C++FLAGS = -std=c++11 -Wall -Wextra -Wno-unused-parameter -DTRACY_ENABLE ;
 
 ALLLIBSC++FLAGS = -g ;
 # Required arguments for linux
@@ -45,7 +45,8 @@ LINUXC++FLAGS = -g ;
 #WINDOWSC++FLAGS = -g -stdlib=libc++ -target x86_64-win32 ;
 #WINDOWSC++FLAGS = -g -stdlib=libc++ -target x86_64-w64-mingw32 ;
 
-LINKLIBS = -lsfml-audio -lsfml-graphics -lsfml-window -lsfml-system ;
+LINKLIBS = -lsfml-audio -lsfml-graphics -lsfml-window -lsfml-system
+           -lpthread -ldl ;
 
 KEEPOBJS = true ; # This doesn't actually fix anything, though it seems like it should
 NOARSCAN = true ; # This actually fixes the problem
@@ -75,7 +76,7 @@ else
 
 OPTIM = -O0 ;
 
-HDRS = libs/base2.0 ;
+HDRS = libs/base2.0 tracy ;
 
 
 

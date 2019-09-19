@@ -1,3 +1,6 @@
 [submodule "libs/base2.0"]
 	path = libs/base2.0
 	url = https://github.com/makuto/base2.0
+[submodule "tracy"]
+	path = tracy
+	url = https://bitbucket.org/wolfpld/tracy.git

@@ -2,6 +2,8 @@
 
 #include <map>
 
+#include "Tracy.hpp"
+
 #include "graphics/graphics.hpp"
 #include "input/input.hpp"
 
@@ -58,8 +60,22 @@ int SidebarStartY = -1;
 int LogX = 10;
 int LogY = -1;
 
+// void* operator new(std::size_t count)
+// {
+//     auto ptr = malloc(count);
+//     TracyAlloc(ptr, count);
+//     return ptr;
+// }
+
+// void operator delete(void* ptr) noexcept
+// {
+//     TracyFree(ptr);
+//     free(ptr);
+// }
+
 void windowResizeCB(float width, float height)
 {
+	ZoneScoped;
 	WindowWidth = width;
 	WindowHeight = height;
 	RecalculateDimensions();
@@ -83,6 +99,7 @@ sound sfxNextLevel;
 
 void loadAudio()
 {
+	ZoneScoped;
 	if (!sfxPlayerDead.load("data/audio/death.ogg"))
 		LOGE << "Failed to load sfxPlayerDead";
 	if (!sfxPlayerVictory.load("data/audio/victory.ogg"))
@@ -106,6 +123,7 @@ void loadAudio()
 
 void initializeWindow(window& win)
 {
+	ZoneScoped;
 	win.setBackgroundColor(WIN_BACKGROUND_COLOR);
 
 	// shouldClose manages some state
@@ -133,7 +151,7 @@ int main(int argc, char const* argv[])
 	displayText.setColor(WALL_TILE_COLOR_NORMAL);
 
 	loadAudio();
-
+	
 	bool shouldPlay = MainMenu();
 
 	if (!shouldPlay)
