@@ -22,6 +22,8 @@ CC = gcc ;
 C++ = clang++ ;
 LINK = clang++ ;
 
+BASE2_DIR = libs/base2.0 ;
+
 ##
 ## Compiler arguments
 ##
@@ -45,15 +47,11 @@ LINUXC++FLAGS = -g ;
 #WINDOWSC++FLAGS = -g -stdlib=libc++ -target x86_64-win32 ;
 #WINDOWSC++FLAGS = -g -stdlib=libc++ -target x86_64-w64-mingw32 ;
 
-LINKLIBS = -lsfml-audio -lsfml-graphics -lsfml-window -lsfml-system ;
-
 KEEPOBJS = true ; # This doesn't actually fix anything, though it seems like it should
 NOARSCAN = true ; # This actually fixes the problem
 #AR = ar rUu ; # I was thinking maybe the AR command was wrong (always outputting deterministically)
                # It doesn't seem like this is the problem though
 AR = ar cr ;
-
-LINKFLAGS = -Wl,-rpath,. ;
 
 WINDOWSC++FLAGS = -g -Iwin/SFML-2.4.0/include -lstdc++11 -std=c++11 ;
 # ALLLIBSC++FLAGS should be used for all libraries which might be used by both tests and WINDOWS
@@ -75,14 +73,38 @@ else
 
 OPTIM = -O0 ;
 
-HDRS = libs/base2.0 ;
+HDRS =
+$(BASE2_DIR)
+$(BASE2_DIR)/dependencies/SFML/include
+;
+
+# TODO: Make base hold all this weirdness?
+if $(DEBUG_BUILD)
+{
+  SFML_LINKLIBS = -lsfml-audio-d -lsfml-graphics-d -lsfml-window-d -lsfml-system-d ;
+}
+else
+{
+  SFML_LINKLIBS = -lsfml-audio -lsfml-graphics -lsfml-window -lsfml-system ;
+}
 
 
+LINKFLAGS = -g -stdlib=libstdc++
+-Wl,-rpath,.:$(BASE2_DIR)/dependencies/SFML/lib ;
 
-# Some helpful Jam commands
-# -q        : stop on failed target
-# -jN       : use N cores
-# -sVAR=VAL : Set VAR to VAL. Note that setting WINDOWS=false is the same as setting UNREAL=true,
-#              frustratingly
-# -dx       : print commands being used
-# -n        : don't actually run commands
+LINKLIBS =
+# Standard (e.g. for Tracy)
+-lpthread -ldl
+
+# SFML
+-L$(BASE2_DIR)/dependencies/SFML/lib
+$(SFML_LINKLIBS)
+
+# OpenGL
+-lGL
+-lGLU
+-lGLEW
+
+# Base
+-L$(BASE2_DIR) -lBase20
+;

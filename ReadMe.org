@@ -1,0 +1,60 @@
+* Deathcall: a 7 Day Roguelike 2018
+You are Deathcaller, a warrior tasked with destroying the Callers in the world. 
+Callers summon unnatural horrors which must be eradicated!
+
+Made in 7 days for 7 Day Roguelike 2018 by Macoy Madson.
+
+Some people played this game. Check out what they thought on my blog:
+- [[https://macoy.me/blog/gamedev/7DayRoguelike2018][Commentary and Judges' Opinions]]
+- [[https://macoy.me/blog/gamedev/DeathcallLetsPlays][Let's Plays]]
+
+* Building
+Make sure to have ~jam~ and ~libSFML~ installed and run ~git submodule update --init --recursive~.
+
+* Setup
+
+** Clone repository
+Clone and init submodules for dependencies:
+
+#+BEGIN_SRC sh
+git clone --recurse-submodules https://github.com/makuto/7drl2018
+#+END_SRC
+
+If you didn't do submodules, run this:
+
+#+BEGIN_SRC sh
+git submodule update --init --recursive
+#+END_SRC
+** Set up build system
+Jam is used to build the project. Install Jam:
+
+#+BEGIN_SRC sh
+sudo apt install jam
+#+END_SRC
+
+** Build dependencies
+Currently, SFML relies on system installs for its dependencies:
+
+#+BEGIN_SRC sh
+sudo apt install libopenal-dev libvorbis-dev libflac-dev libglew
+#+END_SRC
+
+Build the rest of the dependencies from source:
+
+#+BEGIN_SRC sh
+./BuildDependencies_Release.sh
+#+END_SRC
+
+Use the ~*_Debug.sh~ scripts if you want debug symbols. Note that you need to use Debug/Release scripts in every case, otherwise the libraries will fail to link.
+
+** Build project
+
+#+BEGIN_SRC sh
+./Build_Release.sh
+#+END_SRC
+
+Finally, run ~./7drl2018~.
+
+* Screenshots
+[[file:images/7drlDeathCallLogo.png]]
+[[file:images/7drlScreenieDeath2.png]]

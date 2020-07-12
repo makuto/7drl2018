@@ -21,7 +21,7 @@ Main 7drl2018 : src/main.cpp
                 src/Art.cpp
                 ;
 
-LinkLibraries 7drl2018 : libBase20 ;
+# LinkLibraries 7drl2018 : libBase20 ;
 
 if $(WINDOWS)
 {
@@ -32,4 +32,4 @@ else
         MakeLocate 7drl2018 : bin ;
 }
 
-SubInclude . libs ;
+# SubInclude . libs ;
