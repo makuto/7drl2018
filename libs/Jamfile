@@ -1,3 +1,0 @@
-SubDir . libs ;
-
-SubInclude . libs base2.0 ;
